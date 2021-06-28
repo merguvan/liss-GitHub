@@ -1,0 +1,34 @@
+import React from 'react'
+import AcademicWork from '../components/academic/AcademicWork'
+import PersonalInfoSummary from '../components/personal/PersonalInfoSummary'
+import Background from '../components/background/Background'
+import Education from '../components/education/Education'
+import Affiliations from '../components/affiliations/Affiliations'
+import Achievements from '../components/achievements/Achievements'
+import Certifications from '../components/certifications/Certifications'
+import Capacity from '../components/capacity/Capacity'
+import References from '../components/references/References'
+import Remarks from '../components/remarks/Remarks'
+import Projects from '../components/projects/Projects'
+
+
+
+
+export default function MainPage() {
+    return (
+        <div>
+            <PersonalInfoSummary/>
+             <Background/>
+             <Education/>
+             <Affiliations/>
+             <Achievements/>
+             <Certifications/>
+             <AcademicWork/>
+             <Projects/>
+             <Capacity/>
+             <References/>
+             <Remarks/>
+
+        </div>
+    )
+}
