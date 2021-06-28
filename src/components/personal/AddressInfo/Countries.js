@@ -69,7 +69,7 @@ export default function Countries({
 
   return (
     <Row>
-      <Col xs={6} md={4} lg={4}>
+      <Col xs={6} md={6} lg={6}>
         <Form.Group>
           <Form.Label> Country</Form.Label>
           <Form.Control
@@ -99,7 +99,7 @@ export default function Countries({
           </ListGroup>
         )}
       </Col>
-      <Col xs={6} md={4} lg={4}>
+      <Col xs={6} md={6} lg={6}>
         <Form.Group>
           <Form.Label> City</Form.Label>
           <Form.Control

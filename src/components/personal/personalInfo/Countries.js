@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { Col, Dropdown, Form, ListGroup, Row } from "react-bootstrap";
 
+import { Country, State, City }  from 'country-state-city';
 
 const url='https://countriesnow.space/api/v0.1/countries/states'
 
@@ -11,59 +12,50 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
   const [countryName,setCountryName]=useState(personalInfo?.personCountryOB||'')
   const[cityName,setCityName]=useState(personalInfo?.personCityOB||'')
 
-  const fetchData=()=> fetch(url)
-  .then(res=>res.json())
-  .then(res=>{
-    setCountries(res.data)
-  })
+
 
   useEffect(()=>{
-  fetchData()
+  setCountries(Country.getAllCountries())
+
   }
   
   ,[])
+
+
+
   const handleChange=(e)=>{
       
-    
-    if(e.target.value<countryName){
-      fetchData()
-      setCountryName(e.target.value)
-      setCountries( countries.filter(country=>(
-        country.name.toLowerCase().includes(countryName.toLowerCase())
-      )))
-    }else{
-
-      setCountryName(e.target.value)
-      setCountries( countries.filter(country=>(
-        country.name.toLowerCase().includes(countryName.toLowerCase())
-      )))
-
-    }
-   
-   
+    setCountryName(e.target.value)
+    setCountries(Country.getAllCountries())
+    console.log(countries)
+    console.log(countryName)
+    setCountries(countries.filter(country=>country.name.toLowerCase().includes(countryName.toLowerCase())))
+    console.log(countries)
   }
   const handleCountryClick=(e)=>{
-    fetchData()
+   
     setPersonalInfo({...personalInfo,"personCountryOB":e.target.innerText})
-    setCountryName(e.target.innerText)
-  }
-  const handleCityClick=(e)=>{
-    setPersonalInfo({...personalInfo,personCityOB:e.target.innerText})
-    setCityName(e.target.innerText)
-  }
-  const findCities=(e)=>{
 
-    const city=countries.find(country=>country.name===countryName)
-    setCities(city.states)
-    // setCityName(e.target.innerText)
-  
+    setCountryName(e.target.innerText)
+
+   let  country =countries.find(country=>country.name===e.target.innerText).isoCode
+   
+   setCities(State.getStatesOfCountry(country))
+    
   }
+
+  const handleCityClick=(e)=>{
+    setCityName(e.target.innerText)
+    setPersonalInfo({...personalInfo,personCityOB:cityName})
+   
+  }
+
   const handleCityChange=(e)=>{
     
-    setCityName(e.target.value)
-    findCities()
-    const tempcity=cities.filter(city=>city.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    setCities(tempcity)
+    // setCityName(e.target.value)
+  
+    // const tempcity=cities.filter(city=>city.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    // setCities(tempcity)
   }
 
   return (
@@ -105,7 +97,7 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
         disabled={!countryName}
          value={cityName}
          onChange={handleCityChange}
-         onClick={findCities}
+        //  onClick={findCities}
       />
     </Form.Group>
       {cities.length>0&&citiesOptionsOn&&

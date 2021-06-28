@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+
   Form,
   Col,
   Container,
@@ -50,25 +51,25 @@ function PersonalInfo(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton onClick={()=>{
-        history.push('/')
-      }
-       }>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Personal Information
+      <Modal.Header closeButton onClick={() => history.push('/')}>
+        <Modal.Title className='modal-title' id="contained-modal-title-vcenter">
+          <h2>Personal Information</h2>
+          <p className='modal-description'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, unde.
+          </p>
         </Modal.Title>
       </Modal.Header>
 
       <Container onClick={handdleOptionsOn} className="container">
         <Form>
           <Form.Row>
-            <Col xs={6} md={6} lg="4">
+          <Col xs={12} md={6} lg={6}>
               <Form.Group>
-                <Col>
+                
                   <Form.Label
              
                 > Title</Form.Label>
-                </Col>
+              
                 <Form.Control
                   onChange={handlePersonalInfo}
                   name="personTitle"
@@ -83,7 +84,7 @@ function PersonalInfo(props) {
                 </Form.Control>
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label> First Name</Form.Label>
                 <Form.Control onChange={handlePersonalInfo}
@@ -92,7 +93,7 @@ function PersonalInfo(props) {
               </Form.Group>
             </Col>
             ​
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Middle Name </Form.Label>
                 <Form.Control onChange={handlePersonalInfo} 
@@ -100,7 +101,7 @@ function PersonalInfo(props) {
                 name="personMiddle" />
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Surname </Form.Label>
                 <Form.Control onChange={handlePersonalInfo} 
@@ -108,7 +109,7 @@ function PersonalInfo(props) {
                 name="personSurname" />
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>User Name </Form.Label>
                 <Form.Control onChange={handlePersonalInfo} 
@@ -116,7 +117,7 @@ function PersonalInfo(props) {
                 name="personUserName" />
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Display Name </Form.Label>
                 <Form.Control onChange={handlePersonalInfo} 
@@ -124,7 +125,7 @@ function PersonalInfo(props) {
                 name="personDisplayName" />
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Gender </Form.Label>
                 <Form.Control 
@@ -139,7 +140,7 @@ function PersonalInfo(props) {
                 </Form.Control>
               </Form.Group>
             </Col>
-            <Col xs={6} md={6} lg="4">
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label> Martial Status</Form.Label>
                 <Form.Control
@@ -156,7 +157,7 @@ function PersonalInfo(props) {
                 </Form.Control>
               </Form.Group>
             </Col>
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Date Of Birth </Form.Label>
                 <Form.Control
