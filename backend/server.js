@@ -5,14 +5,17 @@ const app = express()
 const port = process.env.PORT
 const URI=process.env.URI
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use('/userpersonalinfo',require('./api/routes/userPersonalInfo'))
 
 
 const start=async()=>{
      
     try {
     await mongoose.connect(URI,{useNewUrlParser:true,useUnifiedTopology:true})
-        app.listen(port,()=>{console.log('all is okay '+port)})
+        app.listen(port,()=>{console.log('server is on '+port)})
     } catch (error) {
          console.log(error)
     }
