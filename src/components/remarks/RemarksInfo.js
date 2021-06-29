@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Redirect, useParams } from 'react-router-dom'
-import Remarks from './index'
+import Remarks from './index2'
 
 export default function RemarksInfo(props) {
     const {id}=useParams()//props.match.params
