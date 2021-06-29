@@ -20,6 +20,7 @@ export default function App() {
   return (
     <div>
       
+      
      <Switch>
       <Route path='/' exact component={MainPage} />
       <Route path='/personalInfo/:id' component={PersonalInfoPage}/>
