@@ -16,20 +16,32 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
 
   useEffect(()=>{
   setCountries(Country.getAllCountries())
-
+    
   }
   
   ,[])
 
 
+  const handleKeydown=(e)=>{
+    if(e.target.name==='personCountryOB'){
+      setCountries(Country.getAllCountries())
+    }else{
+      let  country =countries.find(country=>country.name===countryName).isoCode
+   
+      setCities(State.getStatesOfCountry(country))
+    }
+  }
 
   const handleChange=(e)=>{
       
     setCountryName(e.target.value)
-    setCountries(Country.getAllCountries())
-    console.log(countries)
-    console.log(countryName)
-    setCountries(countries.filter(country=>country.name.toLowerCase().includes(countryName.toLowerCase())))
+    if(countryName===''){
+      setCountries(Country.getAllCountries())
+    }else{
+     
+      setCountries(countries.filter(country=>country.name.toLowerCase().includes(countryName.toLowerCase())))
+    }
+   
     console.log(countries)
   }
   const handleCountryClick=(e)=>{
@@ -51,11 +63,10 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
   }
 
   const handleCityChange=(e)=>{
-    
-    // setCityName(e.target.value)
-  
-    // const tempcity=cities.filter(city=>city.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    // setCities(tempcity)
+    setCityName(e.target.value)
+    if(e.target.value!==''){
+      setCities(cities.filter(city=>city.name.toLowerCase().includes(cityName.toLowerCase())))
+    }
   }
 
   return (
@@ -66,7 +77,7 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
       <Form.Control name="personCountryOB" 
          value={countryName}
          onChange={handleChange}
-    
+        onKeyDown={handleKeydown}
       />
     </Form.Group>
       {countriesOptionsOn&&
@@ -92,23 +103,25 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
     </Col>
     <Col xs={6} md={6} lg={6}>
     <Form.Group>
-    <Form.Label>Birth Of City</Form.Label>
+    <Form.Label> City Of Birth</Form.Label>
       <Form.Control name="personCityOB"
         disabled={!countryName}
          value={cityName}
          onChange={handleCityChange}
-        //  onClick={findCities}
+        onKeyDown={handleKeydown}
       />
     </Form.Group>
       {cities.length>0&&citiesOptionsOn&&
         <ListGroup 
-   
+        
         name="personCityOB"
+        
         className='city-container' >
         {
           cities?.map((city,idx)=>(
             <ListGroup.Item 
             key={idx}
+            
             onClick={handleCityClick}
             className='city'>
               {city.name}

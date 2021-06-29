@@ -6,7 +6,7 @@ import AddressInfo from './AddressInfo'
 export default function PersonalInfo(props) {
     const {id}=useParams()
     const [modalShow,setModalShow]=useState(true) 
-    console.log(props)
+  
     switch(+id){
 
         case 1:
