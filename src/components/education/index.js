@@ -13,27 +13,31 @@ import {
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { addEducation } from "../../actions/education";
+
 const Background = (props) => {
   const history=useHistory()
   
+  const {addEducation,educationInformation}=props
   
-  const [workExperience, setWorkExperience] = useState({});
+  const [education, setEducation] = useState(educationInformation||{});
 
-  const handleWorkExperience = (e) => {
+  const handleEducation = (e) => {
  
     
-    setWorkExperience({
-       ...workExperience, 
+    setEducation({
+       ...education, 
        [e.target.name]: e.target.value
       
       });
   };
 
   const handleSubmit=()=>{
-   
+    console.log('handle Submit calisyr' ,education)
+    addEducation(education)
 
   }
-  console.log(workExperience)
+  console.log(education)
   return (
     <Modal 
     
@@ -54,16 +58,16 @@ const Background = (props) => {
               <Col xs={6} md={4}>
 						
                 From <Form.Control type="date" name='personEduFrom'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduFrom']}
+                onChange={handleEducation}
+                value={education['personEduFrom']}
                 />
               </Col>
               <Col xs={6} md={4}>
                 To
                 <Form.Control
                 name='personEduTo'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduTo']}
+                onChange={handleEducation}
+                value={education['personEduTo']}
                 type="date" />
               </Col>
             </Row>
@@ -74,8 +78,8 @@ const Background = (props) => {
                 <Form.Label>Type</Form.Label>
                 <Form.Control as="select"
                 name='personInstitutionType1'
-                onChange={handleWorkExperience}
-                value={workExperience['personInstitutionType1']}
+                onChange={handleEducation}
+                value={education['personInstitutionType1']}
                 >
                   <option>School</option>
                   <option>College</option>
@@ -92,7 +96,8 @@ const Background = (props) => {
                
                   <FormControl
                      name='personInstitutionName'
-                     onChange={handleWorkExperience}
+                     value={education['personInstitutionName']}
+                     onChange={handleEducation}
                   id="basic-url" aria-describedby="basic-addon3" />
             
               </Col>
@@ -105,8 +110,9 @@ const Background = (props) => {
                 <label htmlFor="basic-url">Website</label>
                 <InputGroup className="mb-3">
                   <FormControl
+                  value={education['personInstitutionWebsite']}
                   name='personInstitutionWebsite'
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="basic-url" aria-describedby="basic-addon3" />
                 </InputGroup>
               </Col>
@@ -119,7 +125,8 @@ const Background = (props) => {
                 <InputGroup className="mb-3">
                   <FormControl
                     name='personInstitutionPosition'
-                    onChange={handleWorkExperience}
+                    value={education['personInstitutionPosition']}
+                    onChange={handleEducation}
                   id="basic-url" aria-describedby="basic-addon3" />
                 </InputGroup>
               </Col>
@@ -131,7 +138,7 @@ const Background = (props) => {
                 <Form.Label>Position type</Form.Label>
                 <Form.Control
                 name='personInstitutionPositionType1'
-                onChange={handleWorkExperience}
+                onChange={handleEducation}
                 as="select">
                   <option>Academic</option>
                   <option>Administrative</option>
@@ -147,23 +154,21 @@ const Background = (props) => {
         <Link to='/' >
         <Button
         onClick={handleSubmit}
-        > {Object.keys(workExperience).length>0?'save':'close'}  </Button>
+        > {Object.keys(education).length>0?'save':'close'}  </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps=(state)=>{
-  console.log(state)
+const mapStateToProps=({educationReducer})=>{
+    
   return {
-    workExperience:state.workExperienceReducer.workExperience
+    educationInformation:educationReducer.education
   }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-  return {
-
-  }
+const mapDispatchToProps={
+  addEducation
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Background);
