@@ -3,11 +3,12 @@ import {personalInfoReducer} from '../reducers/personalInfoReducer'
 import {academicWorksDetailsReducer} from './academicWorkDetailsReducer'
 import {workExperienceReducer} from './workExperience'
 import {referenceReducer} from './referenceReducer'
-
+import {educationReducer} from './educationReducer'
 const reducer=combineReducers ({
     personalInfoReducer,
     academicWorksDetailsReducer,
     workExperienceReducer,
-    referenceReducer
+    referenceReducer,
+    educationReducer
 })
 export default reducer
