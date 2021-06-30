@@ -9,21 +9,25 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
+import SelectLanguage from "./language/SelectLanguage";
+// import ReactLanguageSelect from './language/Lang'
+// import Lang from './language/Lang'
 
 
+import { addCapacityDetails } from "../../actions/capacityAction";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Background = (props) => {
   const history=useHistory()
   
   
-  const [workExperience, setWorkExperience] = useState({});
+  const [capacityDetails, setCapacityDetails] = useState({});
 
-  const handleWorkExperience = (e) => {
+  const handleCapacityDetails = (e) => {
  
     
-    setWorkExperience({
-       ...workExperience, 
+    setCapacityDetails({
+       ...capacityDetails, 
        [e.target.name]: e.target.value
       
       });
@@ -33,7 +37,7 @@ const Background = (props) => {
    
 
   }
-  console.log(workExperience)
+  console.log(capacityDetails)
   return (
     <Modal 
     
@@ -54,16 +58,16 @@ const Background = (props) => {
               <Col xs={6} md={4}>
 						
                 From <Form.Control type="date" name='personEduFrom'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduFrom']}
+                onChange={handleCapacityDetails}
+                value={capacityDetails['personEduFrom']}
                 />
               </Col>
               <Col xs={6} md={4}>
                 To
                 <Form.Control
                 name='personEduTo'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduTo']}
+                onChange={handleCapacityDetails}
+                value={capacityDetails['personEduTo']}
                 type="date" />
               </Col>
             </Row>
@@ -74,8 +78,8 @@ const Background = (props) => {
                 <Form.Label>Type</Form.Label>
                 <Form.Control as="select"
                 name='personInstitutionType1'
-                onChange={handleWorkExperience}
-                value={workExperience['personInstitutionType1']}
+                onChange={handleCapacityDetails}
+                value={capacityDetails['personInstitutionType1']}
                 >
                   <option>School</option>
                   <option>College</option>
@@ -88,11 +92,12 @@ const Background = (props) => {
           <Form.Group>
             <Row>
               <Col xs={12} md={8}>
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Course Name</Form.Label>
                
                   <FormControl
+                    placeholder='Course you would like to offer'
                      name='personInstitutionName'
-                     onChange={handleWorkExperience}
+                     onChange={handleCapacityDetails}
                   id="basic-url" aria-describedby="basic-addon3" />
             
               </Col>
@@ -102,24 +107,28 @@ const Background = (props) => {
           <Form.Group>
             <Row>
               <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Website</label>
-                <InputGroup className="mb-3">
+                <label htmlFor="basic-url">Language</label>
+                {/* <InputGroup className="mb-3">
                   <FormControl
                   name='personInstitutionWebsite'
-                  onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-                </InputGroup>
+                  onChange={handleCapacityDetails}
+                  id="basic-url" aria-describedby="basic-addon3"
+                  />
+                </InputGroup> */}
+                <SelectLanguage/>
+                {/* <ReactLanguageSelect/> */}
+                {/* <Lang/> */}
               </Col>
             </Row>
           </Form.Group>
           <Form.Group>
             <Row>
               <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Position</label>
+                <label htmlFor="basic-url">Experience</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name='personInstitutionPosition'
-                    onChange={handleWorkExperience}
+                    onChange={handleCapacityDetails}
                   id="basic-url" aria-describedby="basic-addon3" />
                 </InputGroup>
               </Col>
@@ -128,14 +137,14 @@ const Background = (props) => {
           <Form.Group>
             <Row>
               <Col xs={12} md={8}>
-                <Form.Label>Position type</Form.Label>
+                <Form.Label>Level</Form.Label>
                 <Form.Control
                 name='personInstitutionPositionType1'
-                onChange={handleWorkExperience}
+                onChange={handleCapacityDetails}
                 as="select">
-                  <option>Academic</option>
-                  <option>Administrative</option>
-                  <option>Teacher</option>
+                  <option>Bachelor</option>
+                  <option>Master</option>
+                  <option>PhD</option>
                   <option>Other</option>
                 </Form.Control>
               </Col>
@@ -147,7 +156,7 @@ const Background = (props) => {
         <Link to='/' >
         <Button
         onClick={handleSubmit}
-        > {Object.keys(workExperience).length>0?'save':'close'}  </Button>
+        > {Object.keys(capacityDetails).length>0?'save':'close'}  </Button>
         </Link>
       </Modal.Footer>
     </Modal>
@@ -157,13 +166,11 @@ const Background = (props) => {
 const mapStateToProps=(state)=>{
   console.log(state)
   return {
-    workExperience:state.workExperienceReducer.workExperience
+    capacityDetails:state.capacityReducer.capacityDetails
   }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-  return {
-
-  }
+const mapDispatchToProps={
+  addCapacityDetails
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Background);
