@@ -4,11 +4,14 @@ import {academicWorksDetailsReducer} from './academicWorkDetailsReducer'
 import {workExperienceReducer} from './workExperience'
 import {referenceReducer} from './referenceReducer'
 import {educationReducer} from './educationReducer'
+import {capacityReducer} from './capacityReducer'
 const reducer=combineReducers ({
     personalInfoReducer,
     academicWorksDetailsReducer,
     workExperienceReducer,
     referenceReducer,
-    educationReducer
+    educationReducer,
+    capacityReducer
+
 })
 export default reducer
