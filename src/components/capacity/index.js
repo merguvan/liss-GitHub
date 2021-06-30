@@ -19,10 +19,19 @@ import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Background = (props) => {
   const history=useHistory()
-  
+  const [displayLanguageList,setDisplayLanguageList]=useState(true)
   
   const [capacityDetails, setCapacityDetails] = useState({});
 
+  const showLanguageList=(e)=>{
+
+if(e.target.name==='personCourseLanguage'){
+  setDisplayLanguageList(false)
+}else{
+  setDisplayLanguageList(true)
+}
+
+  }
   const handleCapacityDetails = (e) => {
  
     
@@ -40,7 +49,7 @@ const Background = (props) => {
   console.log(capacityDetails)
   return (
     <Modal 
-    
+    onClick={showLanguageList}
     {...props}
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
@@ -115,7 +124,10 @@ const Background = (props) => {
                   id="basic-url" aria-describedby="basic-addon3"
                   />
                 </InputGroup> */}
-                <SelectLanguage/>
+                <SelectLanguage
+               displayLanguageList={displayLanguageList}
+                
+                />
                 {/* <ReactLanguageSelect/> */}
                 {/* <Lang/> */}
               </Col>
