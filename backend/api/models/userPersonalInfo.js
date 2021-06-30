@@ -98,15 +98,6 @@ const userPersonalInfoSchema=new mongoose.Schema({
     personMedicalDoc:String
 
 
-
-
-
-
-
-
-
-
-
 })
 
 module.exports=mongoose.model('userPersonalInfo',userPersonalInfoSchema)
