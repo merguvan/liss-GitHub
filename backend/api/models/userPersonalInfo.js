@@ -37,7 +37,47 @@ const userPersonalInfoSchema=new mongoose.Schema({
         type:String,
         required:[true, 'Please, enter your city of Birth']
 
+    },
+    personGender:{
+        type:String,
+        required:[true, 'Please, enter your gender']
+    },
+    personAddressType:{
+        type:String,
+        required:[true, 'Please, enter address']
+    },
+    personFlatNo:{
+        type:Number,
+    },
+    personBuildingNo:{
+        type:Number,
+    },
+    personStreet:String,
+    personDistrict:String,
+    postalCode:String,
+    personCity:{
+        type:String,
+        required:[true, 'Please, enter your current city']
+    },
+    personState:String,
+    personCountry:{
+        type:String,
+        required:[true, 'Please, enter your current country']
+    },
+    personMaritalStatus:{
+        type:String,
+        required:[true, 'Please, enter your martrial Status']
+    },
+    personPhoneType:String,
+    personPhoneCountryCode:String,
+    personPhoneNumber:{
+        type:Number,
+        required:[true,'Please, enter your phone number ']
     }
+
+
+
+
 
 
 
