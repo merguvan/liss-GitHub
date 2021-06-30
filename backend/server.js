@@ -15,7 +15,7 @@ const start=async()=>{
      
     try {
     await mongoose.connect(URI,{useNewUrlParser:true,useUnifiedTopology:true})
-        app.listen(port,()=>{console.log('Listening   the server on '+port)})
+        app.listen(port,()=>{console.log('Listening    on '+port)})
     } catch (error) {
          console.log(error)
     }
