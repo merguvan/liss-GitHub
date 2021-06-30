@@ -96,6 +96,10 @@ jm .country,
   /* border: 1px solid black; */
   text-align: center;
 }
+.hidden{
+  display: none !important;
+}
+
 @media (max-width: 676px) {
   .person-summary-container {
     flex-direction: column;
