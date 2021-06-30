@@ -9,7 +9,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-
+//certification
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Background = (props) => {
