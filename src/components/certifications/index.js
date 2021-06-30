@@ -10,160 +10,268 @@ import {
   FormControl,
 } from "react-bootstrap";
 
-
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Background = (props) => {
-  const history=useHistory()
-  
-  
-  const [workExperience, setWorkExperience] = useState({});
+  const history = useHistory();
 
-  const handleWorkExperience = (e) => {
- 
-    
-    setWorkExperience({
-       ...workExperience, 
-       [e.target.name]: e.target.value
-      
-      });
+  const [certification, setCertification] = useState({});
+
+  const handleCertification = (e) => {
+    setCertification({
+      ...certification,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit=()=>{
-   
-
-  }
-  console.log(workExperience)
+  const handleSubmit = () => {};
+  console.log(certification);
   return (
-    <Modal 
-    
-    {...props}
-    size="lg"
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
-      
-      <Modal.Header closeButton onClick={()=>{
-          history.push('/')
-      }} >Institution</Modal.Header>
-      
+      <Modal.Header closeButton onClick={() => history.push("/")}>
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>Certifications</h2>
+          <p className="modal-description">
+            Please enter details about the certificates you have earned so far.
+          </p>
+        </Modal.Title>
+      </Modal.Header>
+
       <Modal.Body className="show-grid">
         <Container>
           <Form.Group>
             <Row>
-              <Col xs={6} md={4}>
-						
-                From <Form.Control type="date" name='personEduFrom'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduFrom']}
+              <Col xs={12} md={12}>
+                <Form.Label>Awarded by</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Tooltip on top"
+                  Tooltipontop
                 />
-              </Col>
-              <Col xs={6} md={4}>
-                To
-                <Form.Control
-                name='personEduTo'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduTo']}
-                type="date" />
               </Col>
             </Row>
           </Form.Group>
-          <Row>
-            <Col xs={12} md={8}>
-              <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={6}>
+                <Form.Label>Country</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+              <Col xs={6} md={6}>
+                <Form.Label>City</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={12}>
+                <label htmlFor="basic-url">Website</label>
+                <InputGroup className="mb-3">
+                  <FormControl
+                    name="personInstitutionWebsite"
+                    onChange={handleCertification}
+                    id="basic-url"
+                    aria-describedby="basic-addon3"
+                  />
+                </InputGroup>
+              </Col>
+            </Row>
+          </Form.Group>
+
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={6}>
                 <Form.Label>Type</Form.Label>
-                <Form.Control as="select"
-                name='personInstitutionType1'
-                onChange={handleWorkExperience}
-                value={workExperience['personInstitutionType1']}
+
+                <Form.Control
+                  as="select"
+                  name="personInstitutionType1"
+                  onChange={handleCertification}
+                  value={certification["personInstitutionType1"]}
                 >
+                  <option>Select</option>
                   <option>School</option>
                   <option>College</option>
                   <option>University</option>
                   <option>Other</option>
                 </Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Label>Name</Form.Label>
-               
-                  <FormControl
-                     name='personInstitutionName'
-                     onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-            
               </Col>
-            </Row>
-          </Form.Group>
-         
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Website</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                  name='personInstitutionWebsite'
-                  onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-                </InputGroup>
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Position</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    name='personInstitutionPosition'
-                    onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-                </InputGroup>
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Label>Position type</Form.Label>
+              <Col xs={6} md={6}>
+                <Form.Label>Status</Form.Label>
+
                 <Form.Control
-                name='personInstitutionPositionType1'
-                onChange={handleWorkExperience}
-                as="select">
-                  <option>Academic</option>
-                  <option>Administrative</option>
-                  <option>Teacher</option>
+                  as="select"
+                  name="personInstitutionType1"
+                  onChange={handleCertification}
+                  value={certification["personInstitutionType1"]}
+                >
+                  <option>Select</option>
+                  <option>School</option>
+                  <option>College</option>
+                  <option>University</option>
                   <option>Other</option>
                 </Form.Control>
               </Col>
             </Row>
           </Form.Group>
+
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={6}>
+                From{" "}
+                <Form.Control
+                  type="date"
+                  name="personEduFrom"
+                  onChange={handleCertification}
+                  value={certification["personEduFrom"]}
+                />
+              </Col>
+              <Col xs={12} md={6}>
+                To
+                <Form.Control
+                  name="personEduTo"
+                  onChange={handleCertification}
+                  value={certification["personEduTo"]}
+                  type="date"
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={4}>
+                <Form.Label>Hours</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+              <Col xs={12} md={4}>
+                <Form.Label>Days</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+              <Col xs={12} md={4}>
+                <Form.Label>Grade (if any)</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={6}>
+                <Form.Label>Certificate Number</Form.Label>
+
+                <FormControl
+                  name="personInstitutionName"
+                  onChange={handleCertification}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+              <Col xs={6} md={6}>
+                <Form.Label>Certificate Type</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="personInstitutionType1"
+                  onChange={handleCertification}
+                  value={certification["personInstitutionType1"]}
+                >
+                  <option>Select</option>
+                  <option>Language</option>
+                  <option>
+                    Appreciation (Thanks, Gratitude, Recognition, Honor)
+                  </option>
+                  <option>
+                    Attendance (Completion, Participation, Graduation)
+                  </option>
+                  <option>Other</option>
+                </Form.Control>
+              </Col>
+            </Row>
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Topic (if any)</Form.Label>
+            <Form.Control
+              value={certification["personInstitutionType1"]}
+              name="personPublicationAPA"
+              onChange={handleCertification}
+              as="textarea"
+              rows={3}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Certificate</Form.Label>
+            <Form.Control
+              type="file"
+              name="personPhoto"
+              // files={addressInfo['personPhoto']}
+              onChange={(e) => {
+                //setAddressInfo({ ...addressInfo, [e.target.name]: e.target.files[0] });
+              }}
+            />
+          </Form.Group>
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to='/' >
-        <Button
-        onClick={handleSubmit}
-        > {Object.keys(workExperience).length>0?'save':'close'}  </Button>
+        <Link to="/">
+          <Button onClick={handleSubmit}>
+            {" "}
+            {Object.keys(certification).length > 0 ? "save" : "close"}{" "}
+          </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps=(state)=>{
-  console.log(state)
+const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    workExperience:state.workExperienceReducer.workExperience
-  }
-}
+    certification: state.workExperienceReducer.certification,
+  };
+};
 
-const mapDispatchToProps=(dispatch)=>{
-  return {
-
-  }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Background);
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Background);
