@@ -16,7 +16,6 @@ React.useEffect(()=>{
       languages.filter(language=>language.value.toLowerCase().includes(lang.toLowerCase()))
     )
   }
-
 },[lang])
 
   const onSelect=(e)=>{
@@ -36,7 +35,7 @@ const handleListItemClick=(e)=>{
         name='personCourseLanguage'
         value={lang}
         onChange={onSelect}
-        placeholder="Language"
+        placeholder="Select language"
       
       >
       </FormControl>
