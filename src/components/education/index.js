@@ -162,9 +162,9 @@ const Background = (props) => {
 };
 
 const mapStateToProps=({educationReducer})=>{
-    
+    console.log(educationReducer)
   return {
-    educationInformation:educationReducer.education
+    educationInformation:educationReducer?.education
   }
 }
 

@@ -9,7 +9,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-
+import { addReference } from "../../actions/reference";
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
@@ -17,23 +17,23 @@ const Background = (props) => {
   const history=useHistory()
   
   
-  const [workExperience, setWorkExperience] = useState({});
+  const [addReference, setAddReference] = useState({});
 
-  const handleWorkExperience = (e) => {
+  const handleAddRefrence = (e) => {
  
     
-    setWorkExperience({
-       ...workExperience, 
+    setAddReference({
+       ...addReference, 
        [e.target.name]: e.target.value
       
       });
   };
 
   const handleSubmit=()=>{
-   
-
+   props.addReference(addReference)
+    console.log(props)
   }
-  console.log(workExperience)
+  console.log(addReference)
   return (
     <Modal 
     
@@ -54,16 +54,16 @@ const Background = (props) => {
               <Col xs={6} md={4}>
 						
                 From <Form.Control type="date" name='personEduFrom'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduFrom']}
+                onChange={handleAddRefrence}
+                value={addReference['personEduFrom']}
                 />
               </Col>
               <Col xs={6} md={4}>
                 To
                 <Form.Control
                 name='personEduTo'
-                onChange={handleWorkExperience}
-                value={workExperience['personEduTo']}
+                onChange={handleAddRefrence}
+                value={addReference['personEduTo']}
                 type="date" />
               </Col>
             </Row>
@@ -74,8 +74,8 @@ const Background = (props) => {
                 <Form.Label>Type</Form.Label>
                 <Form.Control as="select"
                 name='personInstitutionType1'
-                onChange={handleWorkExperience}
-                value={workExperience['personInstitutionType1']}
+                onChange={handleAddRefrence}
+                value={addReference['personInstitutionType1']}
                 >
                   <option>School</option>
                   <option>College</option>
@@ -92,7 +92,7 @@ const Background = (props) => {
                
                   <FormControl
                      name='personInstitutionName'
-                     onChange={handleWorkExperience}
+                     onChange={handleAddRefrence}
                   id="basic-url" aria-describedby="basic-addon3" />
             
               </Col>
@@ -106,7 +106,7 @@ const Background = (props) => {
                 <InputGroup className="mb-3">
                   <FormControl
                   name='personInstitutionWebsite'
-                  onChange={handleWorkExperience}
+                  onChange={handleAddRefrence}
                   id="basic-url" aria-describedby="basic-addon3" />
                 </InputGroup>
               </Col>
@@ -119,7 +119,7 @@ const Background = (props) => {
                 <InputGroup className="mb-3">
                   <FormControl
                     name='personInstitutionPosition'
-                    onChange={handleWorkExperience}
+                    onChange={handleAddRefrence}
                   id="basic-url" aria-describedby="basic-addon3" />
                 </InputGroup>
               </Col>
@@ -131,7 +131,7 @@ const Background = (props) => {
                 <Form.Label>Position type</Form.Label>
                 <Form.Control
                 name='personInstitutionPositionType1'
-                onChange={handleWorkExperience}
+                onChange={handleAddRefrence}
                 as="select">
                   <option>Academic</option>
                   <option>Administrative</option>
@@ -147,7 +147,7 @@ const Background = (props) => {
         <Link to='/' >
         <Button
         onClick={handleSubmit}
-        > {Object.keys(workExperience).length>0?'save':'close'}  </Button>
+        > {Object.keys(addReference).length>0?'save':'close'}  </Button>
         </Link>
       </Modal.Footer>
     </Modal>
@@ -157,13 +157,12 @@ const Background = (props) => {
 const mapStateToProps=(state)=>{
   console.log(state)
   return {
-    workExperience:state.workExperienceReducer.workExperience
+    addReference:state.referenceReducer.addReference
   }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-  return {
-
-  }
+const mapDispatchToProps={
+  addReference
 }
+
 export default connect(mapStateToProps,mapDispatchToProps)(Background);
