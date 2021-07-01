@@ -1,6 +1,6 @@
-import { ADD_EDUCATION } from "../actionTypes"
+import { ADD_EDUCATION } from "../actionTypes";
 
-export const addEducation=(data)=>{
-    console.log('action calisyr' ,data)
-    return {type:ADD_EDUCATION,payload:data}
-}
+export const addEducation = (data) => {
+  console.log("action calisiyor", data);
+  return { type: ADD_EDUCATION, payload: data };
+};

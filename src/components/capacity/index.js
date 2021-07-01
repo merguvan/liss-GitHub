@@ -16,7 +16,8 @@ import SelectLanguage from "./language/SelectLanguage";
 import { addCapacityDetails } from "../../actions/capacityAction";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+
+const Capacity = (props) => {
   const history = useHistory();
   const [displayLanguageList, setDisplayLanguageList] = useState(true);
 
@@ -59,7 +60,7 @@ const Background = (props) => {
         <Container>
           <Form.Group>
             <Row>
-              <Col xs={6} md={4}>
+              <Col xs={12} md={6}>
                 From{" "}
                 <Form.Control
                   type="date"
@@ -68,7 +69,7 @@ const Background = (props) => {
                   value={capacityDetails["personEduFrom"]}
                 />
               </Col>
-              <Col xs={6} md={4}>
+              <Col xs={12} md={6}>
                 To
                 <Form.Control
                   name="personEduTo"
@@ -80,7 +81,7 @@ const Background = (props) => {
             </Row>
           </Form.Group>
           <Row>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={12}>
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label>Type</Form.Label>
                 <Form.Control
@@ -99,7 +100,7 @@ const Background = (props) => {
           </Row>
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <Form.Label>Course Name</Form.Label>
 
                 <FormControl
@@ -115,7 +116,7 @@ const Background = (props) => {
 
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Language</label>
                 <SelectLanguage displayLanguageList={displayLanguageList} />
               </Col>
@@ -123,7 +124,7 @@ const Background = (props) => {
           </Form.Group>
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Experience</label>
                 <InputGroup className="mb-3">
                   <FormControl
@@ -138,7 +139,7 @@ const Background = (props) => {
           </Form.Group>
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <Form.Label>Level</Form.Label>
                 <Form.Control
                   name="personCourseLevel"
@@ -177,4 +178,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addCapacityDetails,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Capacity);
