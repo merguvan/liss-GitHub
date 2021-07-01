@@ -4,13 +4,13 @@ import { Card,Collapse } from 'react-bootstrap'
 import { MdEdit } from 'react-icons/md'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
- function Background(props) {
+ function WorkExperience(props) {
     return (
         <Card className='person-summary'>
             <Card.Header>
                 <h5>Work Experience
                 <span>
-          <Link to='background/1'>
+          <Link to='workexperience/1'>
           <MdEdit/>
           </Link>
            </span>
@@ -38,4 +38,4 @@ const mapStateToProps=(state)=>{
   const mapDispatchToProps={
   
   }
-  export default connect(mapStateToProps,mapDispatchToProps)(Background)
+  export default connect(mapStateToProps,mapDispatchToProps)(WorkExperience)
