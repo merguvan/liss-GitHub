@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   Form,
-  InputGroup,
   FormControl,
 } from "react-bootstrap";
 
@@ -15,17 +14,17 @@ import { connect } from "react-redux";
 const Background = (props) => {
   const history = useHistory();
 
-  const [workExperience, setWorkExperience] = useState({});
+  const [affiliations, setAffiliations] = useState({});
 
-  const handleWorkExperience = (e) => {
-    setWorkExperience({
-      ...workExperience,
+  const handleAffiliations = (e) => {
+    setAffiliations({
+      ...affiliations,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = () => {};
-  console.log(workExperience);
+  console.log(affiliations);
   return (
     <Modal
       {...props}
@@ -68,7 +67,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAffiliatedInstitution"
-                  onChange={handleWorkExperience}
+                  onChange={handleAffiliations}
                   id="personAffiliatedInstitution"
                   aria-describedby="basic-addon3"
                 />
@@ -83,9 +82,9 @@ const Background = (props) => {
                 <Form.Control
                   type="date"
                   name="personAffiliationFrom"
-                  onChange={handleWorkExperience}
+                  onChange={handleAffiliations}
                   id="personAffiliationFrom"
-                  value={workExperience["personAffiliationFrom"]}
+                  value={affiliations["personAffiliationFrom"]}
                 />
               </Col>
 
@@ -93,9 +92,9 @@ const Background = (props) => {
                 To
                 <Form.Control
                   name="personAffiliationTo"
-                  onChange={handleWorkExperience}
+                  onChange={handleAffiliations}
                   id="personAffiliationTo"
-                  value={workExperience["personAffiliationTo"]}
+                  value={affiliations["personAffiliationTo"]}
                   type="date"
                 />
               </Col>
@@ -110,8 +109,8 @@ const Background = (props) => {
                   <Form.Control
                     as="select"
                     name="personAffiliationType"
-                    onChange={handleWorkExperience}
-                    value={workExperience["personAffiliationType"]}
+                    onChange={handleAffiliations}
+                    value={affiliations["personAffiliationType"]}
                   >
                     <option>Member</option>
                     <option>Associate</option>
@@ -131,7 +130,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAffiliationOthers1"
-                  onChange={handleWorkExperience}
+                  onChange={handleAffiliations}
                   id="personAffiliationOthers1"
                   aria-describedby="basic-addon3"
                 />
@@ -148,7 +147,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAffiliationCountry"
-                  onChange={handleWorkExperience}
+                  onChange={handleAffiliations}
                   id="personAffiliationCountry"
                   aria-describedby="basic-addon3"
                 />
@@ -161,7 +160,7 @@ const Background = (props) => {
         <Link to="/">
           <Button onClick={handleSubmit}>
             {" "}
-            {Object.keys(workExperience).length > 0 ? "save" : "close"}{" "}
+            {Object.keys(affiliations).length > 0 ? "save" : "close"}{" "}
           </Button>
         </Link>
       </Modal.Footer>
@@ -172,7 +171,7 @@ const Background = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    workExperience: state.workExperienceReducer.workExperience,
+    affiliations: state.affiliationsReducer.affiliations,
   };
 };
 

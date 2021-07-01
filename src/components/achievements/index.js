@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   Form,
-  InputGroup,
   FormControl,
 } from "react-bootstrap";
 
@@ -15,17 +14,17 @@ import { connect } from "react-redux";
 const Background = (props) => {
   const history = useHistory();
 
-  const [workExperience, setWorkExperience] = useState({});
+  const [achievements, setAchievements] = useState({});
 
-  const handleWorkExperience = (e) => {
-    setWorkExperience({
-      ...workExperience,
+  const handleAchievements = (e) => {
+    setAchievements({
+      ...achievements,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = () => {};
-  console.log(workExperience);
+  console.log(achievements);
   return (
     <Modal
       {...props}
@@ -64,7 +63,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAchievementGrantedBy"
-                  onChange={handleWorkExperience}
+                  onChange={handleAchievements}
                   id="personAchievementGrantedBy"
                   aria-describedby="basic-addon3"
                 />
@@ -75,7 +74,7 @@ const Background = (props) => {
             <Row>
               <Col xs={12} md={6}>
                 <Form.Label>Country</Form.Label>
-​
+                ​
                 <FormControl
                   data-toggle="tooltip"
                   data-placement="top"
@@ -84,7 +83,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAchievementCountry"
-                  onChange={handleWorkExperience}
+                  onChange={handleAchievements}
                   id="personAchievementCountry"
                   aria-describedby="basic-addon3"
                 />
@@ -101,7 +100,7 @@ const Background = (props) => {
                   on
                   top
                   name="personAchievementName"
-                  onChange={handleWorkExperience}
+                  onChange={handleAchievements}
                   id="personAchievementName"
                   aria-describedby="basic-addon3"
                 />
@@ -115,8 +114,8 @@ const Background = (props) => {
                 <Form.Control
                   type="date"
                   name="personAchievementFrom"
-                  onChange={handleWorkExperience}
-                  value={workExperience["personAchievementFrom"]}
+                  onChange={handleAchievements}
+                  value={achievements["personAchievementFrom"]}
                 />
               </Col>
             </Row>
@@ -127,7 +126,7 @@ const Background = (props) => {
         <Link to="/">
           <Button onClick={handleSubmit}>
             {" "}
-            {Object.keys(workExperience).length > 0 ? "save" : "close"}{" "}
+            {Object.keys(achievements).length > 0 ? "save" : "close"}{" "}
           </Button>
         </Link>
       </Modal.Footer>
@@ -138,7 +137,7 @@ const Background = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    workExperience: state.workExperienceReducer.workExperience,
+    achievements: state.achievementsReducer.achievements,
   };
 };
 

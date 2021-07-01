@@ -15,17 +15,17 @@ import { connect } from "react-redux";
 const Background = (props) => {
   const history = useHistory();
 
-  const [workExperience, setWorkExperience] = useState({});
+  const [education, setEducation] = useState({});
 
-  const handleWorkExperience = (e) => {
-    setWorkExperience({
-      ...workExperience,
+  const handleEducation = (e) => {
+    setEducation({
+      ...education,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = () => {};
-  console.log(workExperience);
+  console.log(education);
   return (
     <Modal
       {...props}
@@ -61,18 +61,18 @@ const Background = (props) => {
                 <Form.Control
                   type="date"
                   name="personEduFrom"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personEduFrom"
-                  value={workExperience["personEduFrom"]}
+                  value={education["personEduFrom"]}
                 />
               </Col>
               <Col xs={6} md={6}>
                 To
                 <Form.Control
                   name="personEduTo"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personEduTo"
-                  value={workExperience["personEduTo"]}
+                  value={education["personEduTo"]}
                   type="date"
                 />
               </Col>
@@ -91,9 +91,9 @@ const Background = (props) => {
                 <Form.Control
                   as="select"
                   name="personInstitutionType2"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionType2"
-                  value={workExperience["personInstitutionType2"]}
+                  value={education["personInstitutionType2"]}
                 >
                   <option>State</option>
                   <option>Private</option>
@@ -108,9 +108,9 @@ const Background = (props) => {
                 <Form.Control
                   as="select"
                   name="personInstitutionType1"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionType1"
-                  value={workExperience["personInstitutionType1"]}
+                  value={education["personInstitutionType1"]}
                 >
                   <option>School</option>
                   <option>College</option>
@@ -130,7 +130,7 @@ const Background = (props) => {
                 on
                 top
                 name="personInstitutionOthers1"
-                onChange={handleWorkExperience}
+                onChange={handleEducation}
                 id="personInstitutionOthers1"
                 aria-describedby="basic-addon3"
               />
@@ -150,7 +150,7 @@ const Background = (props) => {
                   on
                   top
                   name="personInstitutionName"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionName"
                   aria-describedby="basic-addon3"
                 />
@@ -171,7 +171,7 @@ const Background = (props) => {
                   on
                   top
                   name="personInstitutionCity"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionCity"
                   aria-describedby="basic-addon3"
                 />
@@ -187,7 +187,7 @@ const Background = (props) => {
                   on
                   top
                   name="personInstitutionCountry"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionCountry"
                   aria-describedby="basic-addon3"
                 />
@@ -208,7 +208,7 @@ const Background = (props) => {
                     on
                     top
                     name="personInstitutionWebsite"
-                    onChange={handleWorkExperience}
+                    onChange={handleEducation}
                     id="personInstitutionWebsite"
                     aria-describedby="basic-addon3"
                   />
@@ -235,7 +235,7 @@ const Background = (props) => {
                     on
                     top
                     name="personInstitutionProgram"
-                    onChange={handleWorkExperience}
+                    onChange={handleEducation}
                     id="personInstitutionProgram"
                     aria-describedby="basic-addon3"
                   />
@@ -247,7 +247,7 @@ const Background = (props) => {
                 <Form.Label>Degree Obtained</Form.Label>
                 <Form.Control
                   name="personInstitutionDegree"
-                  onChange={handleWorkExperience}
+                  onChange={handleEducation}
                   id="personInstitutionDegree"
                   as="select"
                 >
@@ -276,7 +276,7 @@ const Background = (props) => {
                     on
                     top
                     name="personInstitutionDegreeTitle"
-                    onChange={handleWorkExperience}
+                    onChange={handleEducation}
                     id="personInstitutionDegreeTitle"
                     aria-describedby="basic-addon3"
                   />
@@ -295,7 +295,7 @@ const Background = (props) => {
         <Link to="/">
           <Button onClick={handleSubmit}>
             {" "}
-            {Object.keys(workExperience).length > 0 ? "save" : "close"}{" "}
+            {Object.keys(education).length > 0 ? "save" : "close"}{" "}
           </Button>
         </Link>
       </Modal.Footer>
@@ -306,7 +306,7 @@ const Background = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    workExperience: state.workExperienceReducer.workExperience,
+    education: state.educationReducer.education,
   };
 };
 
