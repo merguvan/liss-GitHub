@@ -6,148 +6,176 @@ import {
   Row,
   Col,
   Form,
-  InputGroup,
   FormControl,
 } from "react-bootstrap";
-
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Background = (props) => {
-  const history=useHistory()
-  
-  
-  const [workExperience, setWorkExperience] = useState({});
+  const history = useHistory();
 
-  const handleWorkExperience = (e) => {
- 
-    
-    setWorkExperience({
-       ...workExperience, 
-       [e.target.name]: e.target.value
-      
-      });
+  const [affiliations, setAffiliations] = useState({});
+
+  const handleAffiliations = (e) => {
+    setAffiliations({
+      ...affiliations,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit=()=>{
-   
-
-  }
-  console.log(workExperience)
+  const handleSubmit = () => {};
+  console.log(affiliations);
   return (
-    <Modal 
-    
-    {...props}
-    size="lg"
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
-      
-      <Modal.Header closeButton onClick={()=>{
-          history.push('/')
-      }} >Affiliation / Membership Details</Modal.Header>
-      
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>Affiliation</h2>
+          <p className="modal-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+            unde.
+          </p>
+        </Modal.Title>
+      </Modal.Header>
+
       <Modal.Body className="show-grid">
         <Container>
-        <Form.Group>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Label>Affiliation / Membership Institution</Form.Label>
-               
-                  <FormControl
-                     name='personInstitutionName'
-                     onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-            
-              </Col>
-            </Row>
-          </Form.Group>
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
-                <Form.Label>Country</Form.Label>
-               
-                  <FormControl
-                     name='personInstitutionName'
-                     onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-            
-              </Col>
+              <h6>Membership</h6>
             </Row>
-          </Form.Group>
-         
-          <Row>
-            <Col xs={12} md={8}>
-              <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Type</Form.Label>
-                <Form.Control as="select"
-                name='personInstitutionType1'
-                onChange={handleWorkExperience}
-                value={workExperience['personInstitutionType1']}
-                >
-                  <option>School</option>
-                  <option>College</option>
-                  <option>University</option>
-                  <option>Other</option>
-                </Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group>
+            <hr />
+
             <Row>
-              <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Website</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                  name='personInstitutionWebsite'
-                  onChange={handleWorkExperience}
-                  id="basic-url" aria-describedby="basic-addon3" />
-                </InputGroup>
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={6} md={4}>
-						
-                From <Form.Control type="date" name='personAffiliationFrom'
-                onChange={handleWorkExperience}
-                value={workExperience['personAffiliationFrom']}
+              <Col xs={12} md={12}>
+                <Form.Label>Institution</Form.Label>
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="To which Institution are you affiliated to?"
+                  Tooltip
+                  on
+                  top
+                  name="personAffiliatedInstitution"
+                  onChange={handleAffiliations}
+                  id="personAffiliatedInstitution"
+                  aria-describedby="basic-addon3"
                 />
               </Col>
-              <Col xs={6} md={4}>
+            </Row>
+          </Form.Group>
+
+          <Form.Group>
+            <Row>
+              <Col xs={6} md={6}>
+                From{" "}
+                <Form.Control
+                  type="date"
+                  name="personAffiliationFrom"
+                  onChange={handleAffiliations}
+                  id="personAffiliationFrom"
+                  value={affiliations["personAffiliationFrom"]}
+                />
+              </Col>
+
+              <Col xs={6} md={6}>
                 To
                 <Form.Control
-                name='personAffiliationTo'
-                onChange={handleWorkExperience}
-                value={workExperience['personAffiliationTo']}
-                type="date" />
+                  name="personAffiliationTo"
+                  onChange={handleAffiliations}
+                  id="personAffiliationTo"
+                  value={affiliations["personAffiliationTo"]}
+                  type="date"
+                />
               </Col>
             </Row>
           </Form.Group>
-         </Container>
+
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={6}>
+                <Form.Group controlId="exampleForm.ControlSelect">
+                  <Form.Label>Type</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="personAffiliationType"
+                    onChange={handleAffiliations}
+                    value={affiliations["personAffiliationType"]}
+                  >
+                    <option>Member</option>
+                    <option>Associate</option>
+                    <option>Fellow</option>
+                    <option>Other</option>
+                  </Form.Control>
+                </Form.Group>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Label>*If others (please specify)</Form.Label>
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="The type of the membership"
+                  Tooltip
+                  on
+                  top
+                  name="personAffiliationOthers1"
+                  onChange={handleAffiliations}
+                  id="personAffiliationOthers1"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+
+              <Col xs={12} md={12}>
+                <Form.Label>Country</Form.Label>
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Where is the institution located?"
+                  Tooltip
+                  on
+                  top
+                  name="personAffiliationCountry"
+                  onChange={handleAffiliations}
+                  id="personAffiliationCountry"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+        </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to='/' >
-        <Button
-        onClick={handleSubmit}
-        > {Object.keys(workExperience).length>0?'save':'close'}  </Button>
+        <Link to="/">
+          <Button onClick={handleSubmit}>
+            {" "}
+            {Object.keys(affiliations).length > 0 ? "save" : "close"}{" "}
+          </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps=(state)=>{
-  console.log(state)
+const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    workExperience:state.workExperienceReducer.workExperience
-  }
-}
+    affiliations: state.affiliationsReducer.affiliations,
+  };
+};
 
-const mapDispatchToProps=(dispatch)=>{
-  return {
-
-  }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Background);
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Background);

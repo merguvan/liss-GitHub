@@ -12,7 +12,7 @@ import {
 //certification
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Certifications = (props) => {
   const history = useHistory();
 
   const [certification, setCertification] = useState({});
@@ -274,4 +274,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Certifications);

@@ -39,12 +39,12 @@ function PersonalInfo(props) {
     addPersonalInfo(personalInfo);
   };
   const handlePersonalInfo = (e) => {
-    console.log(personalInfo)
+    // console.log(personalInfo)
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   
     
   };
-console.log(props)
+// console.log(props)
   return (
     <Modal
       {...props}
