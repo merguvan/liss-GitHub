@@ -10,165 +10,307 @@ import {
   FormControl,
 } from "react-bootstrap";
 
-
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { addEducation } from "../../actions/education";
-
 const Background = (props) => {
-  const history=useHistory()
-  
-  const {addEducation,educationInformation}=props
-  
-  const [education, setEducation] = useState(educationInformation||{});
+  const history = useHistory();
 
-  const handleEducation = (e) => {
- 
-    
-    setEducation({
-       ...education, 
-       [e.target.name]: e.target.value
-      
-      });
+  const [workExperience, setWorkExperience] = useState({});
+
+  const handleWorkExperience = (e) => {
+    setWorkExperience({
+      ...workExperience,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit=()=>{
-    console.log('handle Submit calisyr' ,education)
-    addEducation(education)
-
-  }
-  console.log(education)
+  const handleSubmit = () => {};
+  console.log(workExperience);
   return (
-    <Modal 
-    
-    {...props}
-    size="lg"
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
-      
-      <Modal.Header closeButton onClick={()=>{
-          history.push('/')
-      }} >Institution</Modal.Header>
-      
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>Education</h2>
+          <p className="modal-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+            unde.
+          </p>
+        </Modal.Title>
+      </Modal.Header>
+
       <Modal.Body className="show-grid">
         <Container>
           <Form.Group>
             <Row>
-              <Col xs={6} md={4}>
-						
-                From <Form.Control type="date" name='personEduFrom'
-                onChange={handleEducation}
-                value={education['personEduFrom']}
+              <h6>Date</h6>
+            </Row>
+            <hr />
+            <Row>
+              <Col xs={6} md={6}>
+                From{" "}
+                <Form.Control
+                  type="date"
+                  name="personEduFrom"
+                  onChange={handleWorkExperience}
+                  id="personEduFrom"
+                  value={workExperience["personEduFrom"]}
                 />
               </Col>
-              <Col xs={6} md={4}>
+              <Col xs={6} md={6}>
                 To
                 <Form.Control
-                name='personEduTo'
-                onChange={handleEducation}
-                value={education['personEduTo']}
-                type="date" />
+                  name="personEduTo"
+                  onChange={handleWorkExperience}
+                  id="personEduTo"
+                  value={workExperience["personEduTo"]}
+                  type="date"
+                />
               </Col>
             </Row>
           </Form.Group>
+
+          <br />
           <Row>
-            <Col xs={12} md={8}>
-              <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Type</Form.Label>
-                <Form.Control as="select"
-                name='personInstitutionType1'
-                onChange={handleEducation}
-                value={education['personInstitutionType1']}
+            <h6>Institution</h6>
+          </Row>
+          <hr />
+          <Row>
+            <Col xs={12} md={6}>
+              <Form.Group controlId="exampleForm.ControlSelect2">
+                <Form.Label>Type1</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="personInstitutionType2"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionType2"
+                  value={workExperience["personInstitutionType2"]}
                 >
-                  <option>School</option>
-                  <option>College</option>
-                  <option>University</option>
-                  <option>Other</option>
+                  <option>State</option>
+                  <option>Private</option>
                 </Form.Control>
               </Form.Group>
             </Col>
           </Row>
+          <Row>
+            <Col xs={12} md={6}>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Type2</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="personInstitutionType1"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionType1"
+                  value={workExperience["personInstitutionType1"]}
+                >
+                  <option>School</option>
+                  <option>College</option>
+                  <option>University</option>
+                  <option>Others</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={6}>
+              <Form.Label>*If others (please specify)</Form.Label>
+
+              <FormControl
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Type of the educational institution"
+                Tooltip
+                on
+                top
+                name="personInstitutionOthers1"
+                onChange={handleWorkExperience}
+                id="personInstitutionOthers1"
+                aria-describedby="basic-addon3"
+              />
+            </Col>
+          </Row>
+
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <Form.Label>Name</Form.Label>
-               
-                  <FormControl
-                     name='personInstitutionName'
-                     value={education['personInstitutionName']}
-                     onChange={handleEducation}
-                  id="basic-url" aria-describedby="basic-addon3" />
-            
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Name of the educational institution"
+                  Tooltip
+                  on
+                  top
+                  name="personInstitutionName"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionName"
+                  aria-describedby="basic-addon3"
+                />
               </Col>
             </Row>
           </Form.Group>
-         
+
           <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={6}>
+                <Form.Label>City</Form.Label>
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="City of the educational institution"
+                  Tooltip
+                  on
+                  top
+                  name="personInstitutionCity"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionCity"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Label>Country</Form.Label>
+
+                <FormControl
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Country of the educational institution"
+                  Tooltip
+                  on
+                  top
+                  name="personInstitutionCountry"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionCountry"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Website</label>
                 <InputGroup className="mb-3">
                   <FormControl
-                  value={education['personInstitutionWebsite']}
-                  name='personInstitutionWebsite'
-                  onChange={handleEducation}
-                  id="basic-url" aria-describedby="basic-addon3" />
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Website of the educational institution"
+                    Tooltip
+                    on
+                    top
+                    name="personInstitutionWebsite"
+                    onChange={handleWorkExperience}
+                    id="personInstitutionWebsite"
+                    aria-describedby="basic-addon3"
+                  />
                 </InputGroup>
               </Col>
             </Row>
           </Form.Group>
+
           <Form.Group>
+            <br />
             <Row>
-              <Col xs={12} md={8}>
-                <label htmlFor="basic-url">Position</label>
+              <h6>Degree/Academic Title</h6>
+            </Row>
+            <hr />
+            <Row>
+              <Col xs={12} md={12}>
+                <label htmlFor="basic-url">Program</label>
                 <InputGroup className="mb-3">
                   <FormControl
-                    name='personInstitutionPosition'
-                    value={education['personInstitutionPosition']}
-                    onChange={handleEducation}
-                  id="basic-url" aria-describedby="basic-addon3" />
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Academic program studied"
+                    Tooltip
+                    on
+                    top
+                    name="personInstitutionProgram"
+                    onChange={handleWorkExperience}
+                    id="personInstitutionProgram"
+                    aria-describedby="basic-addon3"
+                  />
                 </InputGroup>
               </Col>
             </Row>
-          </Form.Group>
-          <Form.Group>
             <Row>
-              <Col xs={12} md={8}>
-                <Form.Label>Position type</Form.Label>
+              <Col xs={12} md={12}>
+                <Form.Label>Degree Obtained</Form.Label>
                 <Form.Control
-                name='personInstitutionPositionType1'
-                onChange={handleEducation}
-                as="select">
-                  <option>Academic</option>
-                  <option>Administrative</option>
-                  <option>Teacher</option>
-                  <option>Other</option>
+                  name="personInstitutionDegree"
+                  onChange={handleWorkExperience}
+                  id="personInstitutionDegree"
+                  as="select"
+                >
+                  <option>High School</option>
+                  <option>Bachelor's</option>
+                  <option>Master's</option>
+                  <option>Doctoral</option>
+                  <option>Assistant Professorship</option>
+                  <option> Associate Professors</option>
+                  <option>Professor</option>
                 </Form.Control>
               </Col>
             </Row>
           </Form.Group>
+
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={12}>
+                <label htmlFor="basic-url">Degree Title</label>
+                <InputGroup className="mb-3">
+                  <FormControl
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Title of the degree"
+                    Tooltip
+                    on
+                    top
+                    name="personInstitutionDegreeTitle"
+                    onChange={handleWorkExperience}
+                    id="personInstitutionDegreeTitle"
+                    aria-describedby="basic-addon3"
+                  />
+                </InputGroup>
+              </Col>
+            </Row>
+          </Form.Group>
+
+          <Form.File name="personEduDiploma" id="personEduDiploma">
+            <Form.File.Label>Upload Diploma</Form.File.Label>
+            <Form.File.Input />
+          </Form.File>
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to='/' >
-        <Button
-        onClick={handleSubmit}
-        > {Object.keys(education).length>0?'save':'close'}  </Button>
+        <Link to="/">
+          <Button onClick={handleSubmit}>
+            {" "}
+            {Object.keys(workExperience).length > 0 ? "save" : "close"}{" "}
+          </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps=({educationReducer})=>{
-    console.log(educationReducer)
+const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    educationInformation:educationReducer?.education
-  }
-}
+    workExperience: state.workExperienceReducer.workExperience,
+  };
+};
 
-const mapDispatchToProps={
-  addEducation
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Background);
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Background);
