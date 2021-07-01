@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import PersonalInfoPage from "./components/personal/PersonalInfoPage";
 import AcademicInfo from "./components/academic/AcademicInfoPage";
-import BackgroundInfo from "./components/background/BackgroundInfo";
+import WorkExperienceInfo from "./components/workexperience/WorkExperienceInfo";
 import EducationInfo from "./components/education/EducationInfo";
 import AffiliationsInfo from "./components/affiliations/AffiliationsInfo";
 import AchievementsInfo from "./components/achievements/AchievementsInfo";
@@ -21,7 +21,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={MainPage} />
         <Route path="/personalInfo/:id" component={PersonalInfoPage} />
-        <Route path="/background/:id" component={BackgroundInfo} />
+        <Route path="/workexperience/:id" component={WorkExperienceInfo} />
         <Route path="/education/:id" component={EducationInfo} />
         <Route path="/affiliations/:id" component={AffiliationsInfo} />
         <Route path="/achievements/:id" component={AchievementsInfo} />
