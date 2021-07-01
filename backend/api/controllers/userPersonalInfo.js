@@ -8,12 +8,12 @@ console.log(req.body)
         await userPersonalInfo.save()
         
         return res.status(200).json({
-            message:'User has been added'
+            message:'User has been added',
         })
     } catch (error) {
-        console.log(error)
+    
         return res.status(500).json({
-            message:'Something went wrong here'
+            message:error
         })     
     }
 
