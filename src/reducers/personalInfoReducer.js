@@ -10,7 +10,7 @@ const initialState={
 } 
 
 export const personalInfoReducer=(state=initialState,action)=>{
-    
+        console.log(action.payload)
     switch(action.type){
 
         case ADD_PERSONAL_INFO:
@@ -19,7 +19,7 @@ export const personalInfoReducer=(state=initialState,action)=>{
           
             personalInformation:{...state.personalInformation,personalDetailInformation:action.payload}}
         case ADD_ADDRESS_INFO:
-            console.log('dada')
+           
             return {
                 ...state,
              
