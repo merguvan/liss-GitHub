@@ -1,7 +1,7 @@
 const userPersonalInfoSchema=require('../../models/user/userPersonalInfo')
 
 module.exports.addUserPersonalInfo=async(req,res,next)=>{
-console.log(req.body)
+
     try {
         const userPersonalInfo= await userPersonalInfoSchema(req.body.data)
        

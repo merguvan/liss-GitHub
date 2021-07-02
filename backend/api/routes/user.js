@@ -8,7 +8,7 @@ router
 
 router
         .route('/login')
-        .patch(authorizeUser)
+        .post(authorizeUser)
 
 router
         .route('/userpersonalinfo/:id')
