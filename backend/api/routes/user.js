@@ -1,6 +1,10 @@
 const {addUser,authorizeUser,getSingleUser,deleteSingleUSer}=require('../controllers/user/user')
-const {addUserPersonalInfo,updateUserPersonalInfo}=require('../controllers/user/userPersonalInfo')
+const {addUserPersonalInfo,updateUserPersonalInfo,getUserPersonalInfo}=require('../controllers/user/userPersonalInfo')
+const checkAuth = require('../middlewares/check-auth')
+const userPersonalInfo = require('../models/user/userPersonalInfo')
 const router=require('express').Router()
+
+
 
 router
     .route('/signup')
@@ -12,14 +16,15 @@ router
 
 router
         .route('/userpersonalinfo/:id')
-        .post(addUserPersonalInfo)
-        .patch(updateUserPersonalInfo)
+        .get(checkAuth,getUserPersonalInfo)
+        .post(checkAuth, addUserPersonalInfo)
+        .patch(checkAuth, updateUserPersonalInfo)
    
         
 router
         .route('/:id')
-        .get(getSingleUser)
-        .delete(deleteSingleUSer)
+        .get(checkAuth,getSingleUser)
+        .delete(checkAuth,deleteSingleUSer)
  
 
 module.exports=router
