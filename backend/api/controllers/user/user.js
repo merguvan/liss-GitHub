@@ -3,6 +3,8 @@ const userSchema=require('../../models/user/user')
 
 
 module.exports.addUser=async(req,res)=>{
+ 
+    if(req.body.gdprConsent){
 
     try {
         const user= await userSchema.findOne({personEmail:req.body.personEmail})
@@ -42,6 +44,12 @@ module.exports.addUser=async(req,res)=>{
         
     }
 
+    }else{
+
+        return res.status(500).json({
+            message:'Please, accept Gdpr Consent'
+        })
+    }
 
    
 

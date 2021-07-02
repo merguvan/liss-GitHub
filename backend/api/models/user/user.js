@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please, type your surName"],
   },
-  gdprConsent: Boolean,
+  gdprConsent: {
+    type:Boolean,
+    default:false
+  },
   personEmail: {
     type: String,
     required: true,
