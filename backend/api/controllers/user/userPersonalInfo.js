@@ -34,3 +34,6 @@ module.exports.updateUserPersonalInfo=async(req,res)=>{
         })
     }
 }
+module.exports.getUserPersonalInfo=(req,res)=>{
+    
+}
