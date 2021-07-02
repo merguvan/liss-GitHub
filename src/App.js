@@ -16,6 +16,13 @@ import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
 
 export default function App() {
+  const [user,setUSer]=useState(false)
+  if(!user){
+    <Switch>
+         <Route path="/login" exact component={MainPage} />
+         <Route path="/signup" exact component={MainPage} />
+    </Switch>
+  }
   return (
     <div>
       <Switch>
