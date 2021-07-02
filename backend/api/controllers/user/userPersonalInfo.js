@@ -1,7 +1,7 @@
 const userPersonalInfoSchema=require('../../models/user/userPersonalInfo')
 
 module.exports.addUserPersonalInfo=async(req,res,next)=>{
-
+    console.log(req.body)
     try {
         const userPersonalInfo= await userPersonalInfoSchema(req.body.data)
        
@@ -34,6 +34,17 @@ module.exports.updateUserPersonalInfo=async(req,res)=>{
         })
     }
 }
-module.exports.getUserPersonalInfo=(req,res)=>{
+module.exports.getUserPersonalInfo=async(req,res)=>{
+    try {
+        const userPersonalInfo= await userPersonalInfoSchema.findById(req.params.id)
+
+        return res.status(200).json({
+            userPersonalInfo
+        })
     
+    } catch (error) {
+        return res.status(404).json({
+            message:'Something was wrong'
+        })
+    }
 }
