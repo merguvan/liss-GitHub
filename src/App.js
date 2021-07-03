@@ -17,18 +17,10 @@ import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
 
 function App(props) {
-  const [user,setUser]=useState(true)
+ 
+  const [user,setUser]=useState(props.user)
   
-  useEffect(()=>{
-
-    setUser(props.state.userLoginDetailsReducer)
-  },[props.state.userLoginDetailsReducer])
-  
-  if(!user){
-  <Redirect to='/login' />
-
-  }
-
+ 
   return (
     <div>
    
@@ -52,9 +44,16 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  state
-})
+const mapStateToProps = (state) => {
+  
+  return {
+    user:state.userLoginDetailsReducer.user
+    }
+}
+
+
+
+
 
 const mapDispatchToProps = {
   

@@ -56,7 +56,7 @@ module.exports.addUser=async(req,res)=>{
 
 }
 module.exports.authorizeUser=async(req,res)=>{
-    console.log(req.body)
+
     const {personEmail,password}=req.body
     try {
         const user=await userSchema.find({personEmail:personEmail})
@@ -71,6 +71,7 @@ module.exports.authorizeUser=async(req,res)=>{
          
          bcrypt.compare(password,user[0].password,(err,respond)=>{
                 if(err){
+                    console.log('hata')
                     return res
                     .status(401)
                     .json({
@@ -79,7 +80,7 @@ module.exports.authorizeUser=async(req,res)=>{
                 
                 }
                 if(respond){
-                    
+                    console.log('hata 2')
                    const token= jwt.sign({
                     personEmail:user[0].personEmail,
                         userId:user[0]._id
@@ -104,7 +105,7 @@ module.exports.authorizeUser=async(req,res)=>{
     }
         
     } catch (error) {
-      
+        console.log('hata 3')
         return res.status(500).json({
             message:"Either passwor or email is wrong "
         })
