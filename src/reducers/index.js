@@ -9,7 +9,9 @@ import { capacityReducer } from "./capacityReducer";
 import { certificationsReducer } from "./certificationsReducer";
 import { affiliationsReducer } from "./affiliationsReducer";
 import { achievementsReducer } from "./achievementsReducer";
-
+import { projectsReducer } from "./projectsReducer";
+import { remarksReducer } from "./remarksReducer";
+import {userLoginDetailsReducer} from './userLoginDetailsReducer'
 const reducer = combineReducers({
   personalInfoReducer,
   academicWorksDetailsReducer,
@@ -20,5 +22,8 @@ const reducer = combineReducers({
   certificationsReducer,
   affiliationsReducer,
   achievementsReducer,
+  projectsReducer,
+  remarksReducer,
+  userLoginDetailsReducer
 });
 export default reducer;

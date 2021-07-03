@@ -53,7 +53,7 @@ const Capacity = (props) => {
           history.push("/");
         }}
       >
-        Institution
+        Capacity
       </Modal.Header>
 
       <Modal.Body className="show-grid">
@@ -105,7 +105,7 @@ const Capacity = (props) => {
 
                 <FormControl
                   placeholder="Course you would like to offer"
-                  name="personInstitutionName"
+                  name="personCourseName"
                   onChange={handleCapacityDetails}
                   id="basic-url"
                   aria-describedby="basic-addon3"
@@ -128,7 +128,7 @@ const Capacity = (props) => {
                 <label htmlFor="basic-url">Experience</label>
                 <InputGroup className="mb-3">
                   <FormControl
-                    name="personInstitutionPosition"
+                    name="personCourseExperience"
                     onChange={handleCapacityDetails}
                     id="basic-url"
                     aria-describedby="basic-addon3"
@@ -142,7 +142,7 @@ const Capacity = (props) => {
               <Col xs={12} md={12}>
                 <Form.Label>Level</Form.Label>
                 <Form.Control
-                  name="personInstitutionPositionType1"
+                  name="personCourseLevel"
                   onChange={handleCapacityDetails}
                   as="select"
                 >

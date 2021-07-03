@@ -44,7 +44,7 @@ function PersonalInfo(props) {
   
     
   };
-// console.log(props)
+
   return (
     <Modal
       {...props}
