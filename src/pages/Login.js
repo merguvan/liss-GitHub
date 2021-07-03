@@ -1,11 +1,12 @@
+
 import axios from 'axios'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom'
 import {userLoginDetails} from '../actions/userLogin'
-import App from '../App'
+import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes'
+
  const Login = (props) => {
-     const history=useHistory()
+    
      const [data,setData]=useState({})
 
 const handleChange=(e)=>{
@@ -16,10 +17,17 @@ const handleChange=(e)=>{
     })
 }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault()
-        // console.log(data)
-        userLoginDetails(data)
+     
+    try {
+        const respond= await axios.post("http://localhost:5000/user/login",{...data})
+        await props.userLoginDetailsFulfilled(respond)
+    } catch (error) {
+        console.log(error)
+        props.userLoginDetailsRejected(error)
+    }
+        
     }
     
     return (
@@ -51,8 +59,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-userLoginDetails
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        userLoginDetailsFulfilled:(data)=>dispatch({type:GET_USER_LOGIN_DETAILS_FULFILLED,payload:data}),
+        userLoginDetailsRejected:(error)=>dispatch({type:GET_USER_LOGIN_DETAILS_REJECTED,payload:error}),
+
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
