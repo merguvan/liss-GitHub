@@ -14,6 +14,7 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
+import LoginPage from "./pages/Login/LoginPage"
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/capacity/:id" component={CapacityInfo} />
         <Route path="/references/:id" component={ReferencesInfo} />
         <Route path="/remarks/:id" component={RemarksInfo} />
+        <Route path="/login_register" component={LoginPage} />
       </Switch>
     </div>
   );
