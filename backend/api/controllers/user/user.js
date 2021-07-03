@@ -56,16 +56,19 @@ module.exports.addUser=async(req,res)=>{
 
 }
 module.exports.authorizeUser=async(req,res)=>{
+    console.log(req.body)
     const {personEmail,password}=req.body
     try {
         const user=await userSchema.find({personEmail:personEmail})
-     
+      
         if(user.length<0){
+            console.log('deneme wrong')
             return res.status(400).json({
                 message:'Either passwor or email is wrong'
             })
             
         }else{
+         
          bcrypt.compare(password,user[0].password,(err,respond)=>{
                 if(err){
                     return res
@@ -76,6 +79,7 @@ module.exports.authorizeUser=async(req,res)=>{
                 
                 }
                 if(respond){
+                    
                    const token= jwt.sign({
                     personEmail:user[0].personEmail,
                         userId:user[0]._id
@@ -88,11 +92,11 @@ module.exports.authorizeUser=async(req,res)=>{
                     return res
                     .status(200)
                             .json({
-                message:'Authorized user',
-                data:user[0],
-                token
-                
-                            })
+                data:{
+                    message:'Authorized user',
+                    userInfo:user[0],
+                    token
+                }})
                 }
 
         })
@@ -100,6 +104,7 @@ module.exports.authorizeUser=async(req,res)=>{
     }
         
     } catch (error) {
+      
         return res.status(500).json({
             message:"Either passwor or email is wrong "
         })
