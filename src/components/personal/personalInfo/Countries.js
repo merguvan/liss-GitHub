@@ -57,12 +57,15 @@ export default function Countries({countriesOptionsOn,citiesOptionsOn,setPersona
   }
 
   const handleCityClick=(e)=>{
+
     setCityName(e.target.innerText)
-    setPersonalInfo({...personalInfo,personCityOB:cityName})
+    console.log(cityName)
+    setPersonalInfo({...personalInfo,'personCityOB':e.target.innerText})
    
   }
 
   const handleCityChange=(e)=>{
+    
     setCityName(e.target.value)
     if(e.target.value!==''){
       setCities(cities.filter(city=>city.name.toLowerCase().includes(cityName.toLowerCase())))

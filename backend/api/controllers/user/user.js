@@ -1,4 +1,5 @@
 const bcrypt=require('bcrypt')
+const jwt =require('jsonwebtoken')
 const userSchema=require('../../models/user/user')
 
 
@@ -54,7 +55,61 @@ module.exports.addUser=async(req,res)=>{
    
 
 }
-module.exports.authorizeUser=(req,res)=>{
+module.exports.authorizeUser=async(req,res)=>{
+
+    const {personEmail,password}=req.body
+    try {
+        const user=await userSchema.find({personEmail:personEmail})
+      
+        if(user.length<0){
+            console.log('deneme wrong')
+            return res.status(400).json({
+                message:'Either passwor or email is wrong'
+            })
+            
+        }else{
+         
+         bcrypt.compare(password,user[0].password,(err,respond)=>{
+                if(err){
+                    console.log('hata')
+                    return res
+                    .status(401)
+                    .json({
+                        message:'Either passwor or email is wrong' 
+                    })
+                
+                }
+                if(respond){
+                    console.log('hata 2')
+                   const token= jwt.sign({
+                    personEmail:user[0].personEmail,
+                        userId:user[0]._id
+                    },
+                    process.env.JWT_KEY||'secret',
+                    {
+                        expiresIn: "3hr"
+                    }
+                    )
+                    return res
+                    .status(200)
+                            .json({
+                data:{
+                    message:'Authorized user',
+                    userInfo:user[0],
+                    token
+                }})
+                }
+
+        })
+
+    }
+        
+    } catch (error) {
+        console.log('hata 3')
+        return res.status(500).json({
+            message:"Either passwor or email is wrong "
+        })
+    }
 
 }
 module.exports.getSingleUser=(req,res)=>{

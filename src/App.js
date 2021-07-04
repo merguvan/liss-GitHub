@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-import { Route, Switch } from "react-router-dom";
-
+import { useState,useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { connect } from 'react-redux'
+import Login from './pages/Login'
 import MainPage from "./pages/MainPage";
 import PersonalInfoPage from "./components/personal/PersonalInfoPage";
 import AcademicInfo from "./components/academic/AcademicInfoPage";
@@ -14,11 +15,19 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
+import LoginPage from "./pages/Login/LoginPage"
 
-export default function App() {
+function App(props) {
+ 
+  const [user,setUser]=useState(props.user)
+  
+ 
   return (
     <div>
+   
+    
       <Switch>
+        <Route path='/login' exact component={Login} />
         <Route path="/" exact component={MainPage} />
         <Route path="/personalInfo/:id" component={PersonalInfoPage} />
         <Route path="/workexperience/:id" component={WorkExperienceInfo} />
@@ -31,7 +40,31 @@ export default function App() {
         <Route path="/capacity/:id" component={CapacityInfo} />
         <Route path="/references/:id" component={ReferencesInfo} />
         <Route path="/remarks/:id" component={RemarksInfo} />
+        <Route path="/login_register" component={LoginPage} />
       </Switch>
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  
+  return {
+    user:state.userLoginDetailsReducer.user
+    }
+}
+
+
+
+
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
+
+
+
+
