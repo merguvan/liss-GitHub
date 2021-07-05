@@ -61,7 +61,7 @@ module.exports.authorizeUser=async(req,res)=>{
     try {
         const user=await userSchema.find({personEmail:personEmail})
       
-        if(user.length<0){
+        if(user.length<1){
             console.log('deneme wrong')
             return res.status(400).json({
                 message:'Either passwor or email is wrong'
@@ -70,17 +70,18 @@ module.exports.authorizeUser=async(req,res)=>{
         }else{
          
          bcrypt.compare(password,user[0].password,(err,respond)=>{
+             
                 if(err){
                     console.log('hata')
                     return res
                     .status(401)
                     .json({
-                        message:'Either passwor or email is wrong' 
+                        message:'Either password or email is wrong' 
                     })
                 
                 }
                 if(respond){
-                    console.log('hata 2')
+                    
                    const token= jwt.sign({
                     personEmail:user[0].personEmail,
                         userId:user[0]._id
@@ -98,6 +99,15 @@ module.exports.authorizeUser=async(req,res)=>{
                     userInfo:user[0],
                     token
                 }})
+                }else{
+
+                    return res
+                    .status(401)
+                    .json({
+                        message:'Either password or email is wrong' 
+                    })
+
+
                 }
 
         })
