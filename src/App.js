@@ -15,7 +15,6 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
-import LoginPage from "./pages/Login/LoginPage"
 
 function App(props) {
  
@@ -44,7 +43,6 @@ function App(props) {
         <Route path="/capacity/:id" component={CapacityInfo} />
         <Route path="/references/:id" component={ReferencesInfo} />
         <Route path="/remarks/:id" component={RemarksInfo} />
-        <Route path="/login_register" component={LoginPage} />
       </Switch>
     </div>
   );

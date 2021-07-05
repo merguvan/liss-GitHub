@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
 } */
 
 /* LOGIN PAGE */
@@ -138,3 +139,6 @@
 .btn:focus {
     outline: none;
 }
+=======
+} */
+>>>>>>> parent of beb815e... login_register page added
