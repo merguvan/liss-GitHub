@@ -21,6 +21,10 @@ function App(props) {
  
   const [user,setUser]=useState(props.user)
   
+  if(!user){
+
+    <Redirect exact to='/login'/>
+  }
  
   return (
     <div>
@@ -47,7 +51,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  
+  console.log(state)
   return {
     user:state.userLoginDetailsReducer.user
     }
