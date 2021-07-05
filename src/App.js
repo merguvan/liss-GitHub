@@ -15,12 +15,15 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
-import LoginPage from "./pages/Login/LoginPage"
 
 function App(props) {
  
   const [user,setUser]=useState(props.user)
   
+  if(!user){
+
+    <Redirect exact to='/login'/>
+  }
  
   return (
     <div>
@@ -40,14 +43,13 @@ function App(props) {
         <Route path="/capacity/:id" component={CapacityInfo} />
         <Route path="/references/:id" component={ReferencesInfo} />
         <Route path="/remarks/:id" component={RemarksInfo} />
-        <Route path="/login_register" component={LoginPage} />
       </Switch>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  
+  console.log(state)
   return {
     user:state.userLoginDetailsReducer.user
     }
