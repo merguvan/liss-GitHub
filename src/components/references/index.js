@@ -156,13 +156,19 @@ const References = (props) => {
           </Form.Group>
           {/* <Form.Group>
             <Row>
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
               <Col xs={12} md={12}>
                 <Form.Label>Position type</Form.Label>
                 <Form.Control
                   name="personInstitutionPositionType1"
                   onChange={handleAddReference}
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
                   as="select"
                 >
                   <option>Academic</option>

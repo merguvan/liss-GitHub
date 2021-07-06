@@ -15,9 +15,7 @@ module.exports.addUser=async(req,res)=>{
                 message:'This email has already been taken'
             })
         }else{
-
-
-    bcrypt.hash(req.body.password,10, async function (err, hash) {
+         bcrypt.hash(req.body.password,10, async function (err, hash) {
         if(err) return res.staus(404).json(err)
  
         try {
@@ -64,7 +62,7 @@ module.exports.authorizeUser=async(req,res)=>{
         if(user.length<1){
             console.log('deneme wrong')
             return res.status(400).json({
-                message:'Either passwor or email is wrong'
+                message:'Either password or email is wrong'
             })
             
         }else{
@@ -72,7 +70,7 @@ module.exports.authorizeUser=async(req,res)=>{
          bcrypt.compare(password,user[0].password,(err,respond)=>{
              
                 if(err){
-                    console.log('hata')
+                   
                     return res
                     .status(401)
                     .json({
