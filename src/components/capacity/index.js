@@ -64,17 +64,17 @@ const Capacity = (props) => {
                 From{" "}
                 <Form.Control
                   type="date"
-                  name="personEduFrom"
+                  name="personAvailableFrom"
                   onChange={handleCapacityDetails}
-                  value={capacityDetails["personEduFrom"]}
+                  value={capacityDetails["personAvailableFrom"]}
                 />
               </Col>
               <Col xs={12} md={6}>
                 To
                 <Form.Control
-                  name="personEduTo"
+                  name="personAvailableTo"
                   onChange={handleCapacityDetails}
-                  value={capacityDetails["personEduTo"]}
+                  value={capacityDetails["personAvailableTo"]}
                   type="date"
                 />
               </Col>
