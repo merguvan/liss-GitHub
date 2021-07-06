@@ -20,8 +20,8 @@ app.use((req, res, next) => {
 });
 app.use(express.static("public"));
 
+app.use('/user',require('./api/routes/user'))
 
-app.use('/userpersonalinfo',require('./api/routes/userPersonalInfo'))
 
 
 const start=async()=>{

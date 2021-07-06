@@ -17,6 +17,7 @@ import { Link,  useHistory} from "react-router-dom";
 function PersonalInfo(props) {
   
     const history=useHistory()
+    
   const { addPersonalInfo} = props;
  
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
@@ -44,7 +45,7 @@ function PersonalInfo(props) {
   
     
   };
-// console.log(props)
+
   return (
     <Modal
       {...props}
