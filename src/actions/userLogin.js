@@ -6,7 +6,6 @@ import {
 } from "../actionTypes/useLoginDetails";
 
 export const userLoginDetails = (data) => async (dispatch) => {
-  console.log(data);
   try {
     dispatch({
       type: GET_USER_LOGIN_DETAILS_PENDING,
