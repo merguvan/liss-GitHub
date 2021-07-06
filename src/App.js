@@ -22,7 +22,7 @@ function App(props) {
   if (!user) {
     <Redirect exact to="/login" />;
   }
-
+  console.log(props);
   return (
     <div>
       <Switch>

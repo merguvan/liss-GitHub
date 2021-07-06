@@ -12,7 +12,6 @@ const initialState = {
 };
 
 export function userLoginDetailsReducer(state = initialState, action) {
-  console.log(action.payload);
   switch (action.type) {
     case GET_USER_LOGIN_DETAILS_FULFILLED:
       return {

@@ -1,13 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { userLoginDetails } from "../actions/userLogin";
-import {
-  GET_USER_LOGIN_DETAILS_FULFILLED,
-  GET_USER_LOGIN_DETAILS_REJECTED,
-} from "../actionTypes";
 
 const Login = (props) => {
+  const { userLoginDetails } = props;
   const [data, setData] = useState({});
 
   const handleChange = (e) => {
@@ -19,6 +15,8 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(data);
+    userLoginDetails(data);
   };
 
   return (
@@ -44,13 +42,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    userLoginDetailsFulfilled: (data) =>
-      dispatch({ type: GET_USER_LOGIN_DETAILS_FULFILLED, payload: data }),
-    userLoginDetailsRejected: (error) =>
-      dispatch({ type: GET_USER_LOGIN_DETAILS_REJECTED, payload: error }),
-  };
-};
+const mapDispatchToProps = { userLoginDetails };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -6,17 +6,18 @@ import {
 } from "../actionTypes/useLoginDetails";
 
 export const userLoginDetails = (data) => async (dispatch) => {
+  console.log(data);
   try {
     dispatch({
       type: GET_USER_LOGIN_DETAILS_PENDING,
     });
-    const { data } = await axios.post("http://localhost:5000/user/login", {
+    const { data: res } = await axios.post("http://localhost:5000/user/login", {
       ...data,
     });
 
     dispatch({
       type: GET_USER_LOGIN_DETAILS_FULFILLED,
-      payload: data,
+      payload: res.data,
     });
   } catch (error) {
     dispatch({
