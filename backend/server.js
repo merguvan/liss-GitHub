@@ -1,13 +1,12 @@
-const express = require('express')
-const mongoose=require('mongoose')
-require('dotenv').config()
-const app = express()
-const port = process.env.PORT
-const URI=process.env.URI
-
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const app = express();
+const port = process.env.PORT;
+const URI = process.env.URI;
+const { errorHandler, notFound } = require("./api/middlewares/error-handlers");
 app.use(express.json());
 app.use(express.urlencoded());
-
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -20,17 +19,22 @@ app.use((req, res, next) => {
 });
 app.use(express.static("public"));
 
-app.use('/user',require('./api/routes/user'))
+app.use("/user", require("./api/routes/user"));
 
+app.use(notFound);
+app.use(errorHandler);
 
-
-const start=async()=>{
-     
-    try {
-    await mongoose.connect(URI,{useNewUrlParser:true,useUnifiedTopology:true})
-        app.listen(port,()=>{console.log('Listening    on '+port)})
-    } catch (error) {
-         console.log(error)
-    }
- }
- start()
+const start = async () => {
+  try {
+    await mongoose.connect(URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    app.listen(port, () => {
+      console.log("Listening    on " + port);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+start();
