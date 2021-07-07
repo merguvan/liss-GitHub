@@ -17,13 +17,12 @@ const References = (props) => {
   const history = useHistory();
   const [addReference, setAddReference] = useState({});
   const handleAddReference = (e) => {
-
     setAddReference({
       ...addReference,
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = () => {
     props.addReference(addReference);
     console.log(props);
@@ -49,15 +48,12 @@ const References = (props) => {
         <Container>
           <Row>
             <Col xs={12} md={12}>
-
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   as="select"
                   name="personTitle"
-
                   onChange={handleAddReference}
-
                   value={addReference["personTitle"]}
                 >
                   <option>Mrs</option>
@@ -71,7 +67,7 @@ const References = (props) => {
               </Form.Group>
             </Col>
           </Row>
-        <Form.Group>
+          <Form.Group>
             <Row>
               <Col xs={12} md={12}>
                 <Form.Label>Name</Form.Label>
@@ -109,7 +105,6 @@ const References = (props) => {
                   <FormControl
                     name="personRefereeInstitution"
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -117,17 +112,15 @@ const References = (props) => {
               </Col>
             </Row>
           </Form.Group>
-          
+
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Email</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereeEmail"
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -137,16 +130,12 @@ const References = (props) => {
           </Form.Group>
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
-
                 <label htmlFor="basic-url">Phone Number</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereePhoneNumber"
-
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -181,7 +170,6 @@ const References = (props) => {
           </Form.Group> */}
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
                 Date Signed{" "}
                 <Form.Control
@@ -189,7 +177,6 @@ const References = (props) => {
                   name="personRefDateSigned"
                   onChange={handleAddReference}
                   value={addReference["personRefDateSigned"]}
-
                 />
               </Col>
             </Row>
@@ -219,4 +206,3 @@ const mapDispatchToProps = {
   addReference,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(References);
-
