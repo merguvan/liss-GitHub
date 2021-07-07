@@ -1,32 +1,59 @@
-import {ADD_ADDRESS_INFO, ADD_PERSONAL_INFO} from '../actionTypes'
+import {
+  ADD_PERSONAL_INFO_FULFILLED,
+  ADD_PERSONAL_INFO_REJECTED,
+  ADD_PERSONAL_INFO_PENDING,
+} from "../actionTypes/personalInfo";
+import {
+  ADD_ADDRESS_INFO_FULFILLED,
+  ADD_ADDRESS_INFO_REJECTED,
+  ADD_ADDRESS_INFO_PENDING,
+} from "../actionTypes/addressInfo";
 
-const initialState={
+const initialState = {
+  personalInfo: {},
+  loading: false,
+  addressInfo: {},
+  error: "",
+};
 
-   personalInformation:{
-       personalDetailInformation:{},
-       addressInformation:{}
-   }
+export const personalInfoReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_PERSONAL_INFO_PENDING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_PERSONAL_INFO_FULFILLED:
+      return {
+        ...state,
+        loading: false,
+        personalInfo: action.payload,
+      };
+    case ADD_PERSONAL_INFO_REJECTED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case ADD_ADDRESS_INFO_PENDING:
+      return {
+        ...state,
+        loading: true,
+      };
 
-} 
-
-export const personalInfoReducer=(state=initialState,action)=>{
-        
-    switch(action.type){
-
-        case ADD_PERSONAL_INFO:
-        return {
-            ...state,
-          
-            personalInformation:{...state.personalInformation,personalDetailInformation:action.payload}}
-        case ADD_ADDRESS_INFO:
-           
-            return {
-                ...state,
-             
-                personalInformation:{...state.personalInformation,addressInformation:action.payload}
-            }    
-
-        default :
-        return state
-    }
-}
+    case ADD_ADDRESS_INFO_FULFILLED:
+      return {
+        ...state,
+        loading: false,
+        addressInfo: action.payload,
+      };
+    case ADD_ADDRESS_INFO_REJECTED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

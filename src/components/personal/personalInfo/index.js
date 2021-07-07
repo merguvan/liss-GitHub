@@ -1,32 +1,24 @@
 import React, { useState } from "react";
-import {
-
-  Form,
-  Col,
-  Container,
-  Button,
-  Row,
-  Modal,
-} from "react-bootstrap";
+import { Form, Col, Container, Button, Row, Modal } from "react-bootstrap";
 import { connect } from "react-redux";
 import Countries from "./Countries";
 import { titles, marialStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
-import { Link,  useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function PersonalInfo(props) {
-  
-    const history=useHistory()
-    
-  const { addPersonalInfo} = props;
- 
+  const history = useHistory();
+
+  const { addPersonalInfo } = props;
+
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
-  const [personalInfo, setPersonalInfo] = useState(props.personInformation||{});
-  
+  const [personalInfo, setPersonalInfo] = useState(
+    props.personInformation || {}
+  );
+
   const handdleOptionsOn = (e) => {
     if (e.target.name === "personCountryOB") {
-    
       setCountriesOptionsOn(true);
     } else if (e.target.name === "personCityOB") {
       setCitiesOptionsOn(true);
@@ -36,14 +28,11 @@ function PersonalInfo(props) {
     }
   };
   const handleClick = () => {
-    
     addPersonalInfo(personalInfo);
   };
   const handlePersonalInfo = (e) => {
     // console.log(personalInfo)
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
-  
-    
   };
 
   return (
@@ -53,11 +42,12 @@ function PersonalInfo(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton onClick={() => history.push('/')}>
-        <Modal.Title className='modal-title' id="contained-modal-title-vcenter">
+      <Modal.Header closeButton onClick={() => history.push("/")}>
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Personal Information</h2>
-          <p className='modal-description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, unde.
+          <p className="modal-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+            unde.
           </p>
         </Modal.Title>
       </Modal.Header>
@@ -65,13 +55,10 @@ function PersonalInfo(props) {
       <Container onClick={handdleOptionsOn} className="container">
         <Form>
           <Form.Row>
-          <Col xs={12} md={6} lg={6}>
+            <Col xs={12} md={6} lg={6}>
               <Form.Group>
-                
-                  <Form.Label
-             
-                > Title</Form.Label>
-              
+                <Form.Label> Title</Form.Label>
+
                 <Form.Control
                   onChange={handlePersonalInfo}
                   name="personTitle"
@@ -89,56 +76,66 @@ function PersonalInfo(props) {
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label> First Name</Form.Label>
-                <Form.Control onChange={handlePersonalInfo}
-                value={personalInfo["personName"]}
-                name="personName" />
+                <Form.Control
+                  onChange={handlePersonalInfo}
+                  value={personalInfo["personName"]}
+                  name="personName"
+                />
               </Form.Group>
             </Col>
             ​
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Middle Name </Form.Label>
-                <Form.Control onChange={handlePersonalInfo} 
-                value={personalInfo["personMiddle"]}
-                name="personMiddle" />
+                <Form.Control
+                  onChange={handlePersonalInfo}
+                  value={personalInfo["personMiddle"]}
+                  name="personMiddle"
+                />
               </Form.Group>
             </Col>
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Surname </Form.Label>
-                <Form.Control onChange={handlePersonalInfo} 
-                value={personalInfo["personSurname"]}
-                name="personSurname" />
+                <Form.Control
+                  onChange={handlePersonalInfo}
+                  value={personalInfo["personSurname"]}
+                  name="personSurname"
+                />
               </Form.Group>
             </Col>
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>User Name </Form.Label>
-                <Form.Control onChange={handlePersonalInfo} 
+                <Form.Control
+                  onChange={handlePersonalInfo}
                   value={personalInfo["personUserName"]}
-                name="personUserName" />
+                  name="personUserName"
+                />
               </Form.Group>
             </Col>
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Display Name </Form.Label>
-                <Form.Control onChange={handlePersonalInfo} 
+                <Form.Control
+                  onChange={handlePersonalInfo}
                   value={personalInfo["personDisplayName"]}
-                name="personDisplayName" />
+                  name="personDisplayName"
+                />
               </Form.Group>
             </Col>
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label>Gender </Form.Label>
-                <Form.Control 
-                as='select'
-                onChange={handlePersonalInfo} 
+                <Form.Control
+                  as="select"
+                  onChange={handlePersonalInfo}
                   value={personalInfo["personGender"]}
-                name="personGender">
+                  name="personGender"
+                >
                   <option value="female">Female</option>
                   <option value="male">Male</option>
                   <option value="other">Prefer Not To Say</option>
-
                 </Form.Control>
               </Form.Group>
             </Col>
@@ -177,7 +174,6 @@ function PersonalInfo(props) {
                 countriesOptionsOn={countriesOptionsOn}
                 personalInfo={personalInfo}
                 setPersonalInfo={setPersonalInfo}
-    
               />
             </Col>
           </Form.Row>
@@ -185,28 +181,25 @@ function PersonalInfo(props) {
       </Container>
       <Modal.Footer>
         <Row className="button-container">
-          <Link to='/' >
-          <Button>Back</Button>
+          <Link to="/">
+            <Button>Back</Button>
           </Link>
 
-       
-      <Link to='/personalInfo/2' >
-      <Button
-      type='submit' 
-         onClick={handleClick}
-         > Save & Next </Button>
-      </Link>
-         
+          <Link to="/personalInfo/2">
+            <Button type="submit" onClick={handleClick}>
+              {" "}
+              Save & Next{" "}
+            </Button>
+          </Link>
         </Row>
       </Modal.Footer>
     </Modal>
   );
 }
 const mapStateToProps = (state) => {
-
-    return{
-      personInformation:state.personalInfoReducer.personalInformation.personalDetailInformation
-    }
+  return {
+    personInformation: state.personalInfoReducer.personalInformation,
+  };
 };
 const mapDispatchToProps = { addPersonalInfo };
 
