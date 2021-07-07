@@ -81,7 +81,7 @@ login = (e) => {
     return (
       <form className="login_base-container" ref={this.props.containerRef} onSubmit={this.login}>
         <div className="login_image">
-          <img src={loginImg} />
+          <img alt="loginImg" src={loginImg} />
         </div>
         <div className="login_header"> Login </div>
 
@@ -112,3 +112,4 @@ login = (e) => {
     );
   }
 }
+

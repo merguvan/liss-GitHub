@@ -3,19 +3,19 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {userLoginDetails} from '../actions/userLogin'
-import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes'
+import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes/useLoginDetails'
 
  const Login = (props) => {
     
      const [data,setData]=useState({})
 
-const handleChange=(e)=>{
+    const handleChange=(e)=>{
    
-    setData({ 
-        ...data,
-        [e.target.name]:e.target.value
+        setData({ 
+            ...data,
+            [e.target.name]:e.target.value
     })
-}
+    }
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
