@@ -11,7 +11,7 @@ import {
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Affiliations = (props) => {
   const history = useHistory();
 
   const [affiliations, setAffiliations] = useState({});
@@ -60,15 +60,15 @@ const Background = (props) => {
                 <Form.Label>Institution</Form.Label>
 
                 <FormControl
+                  id="personAffiliatedInstitution"
+                  name="personAffiliatedInstitution"
+                  type=""
+                  value={affiliations["personAffiliatedInstitution"]}
+                  onChange={handleAffiliations}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="To which Institution are you affiliated to?"
-                  Tooltip
-                  on
-                  top
-                  name="personAffiliatedInstitution"
-                  onChange={handleAffiliations}
-                  id="personAffiliatedInstitution"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -80,22 +80,32 @@ const Background = (props) => {
               <Col xs={6} md={6}>
                 From{" "}
                 <Form.Control
-                  type="date"
-                  name="personAffiliationFrom"
-                  onChange={handleAffiliations}
                   id="personAffiliationFrom"
+                  name="personAffiliationFrom"
+                  type="date"
                   value={affiliations["personAffiliationFrom"]}
+                  onChange={handleAffiliations}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Project number"
+                  placeholder=""
+                  aria-describedby="basic-addon3"
                 />
               </Col>
 
               <Col xs={6} md={6}>
                 To
                 <Form.Control
-                  name="personAffiliationTo"
-                  onChange={handleAffiliations}
                   id="personAffiliationTo"
-                  value={affiliations["personAffiliationTo"]}
+                  name="personAffiliationTo"
                   type="date"
+                  value={affiliations["personAffiliationTo"]}
+                  onChange={handleAffiliations}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title=""
+                  placeholder=""
+                  aria-describedby="basic-addon3"
                 />
               </Col>
             </Row>
@@ -107,10 +117,16 @@ const Background = (props) => {
                 <Form.Group controlId="exampleForm.ControlSelect">
                   <Form.Label>Type</Form.Label>
                   <Form.Control
-                    as="select"
+                    id="personAffiliationType"
                     name="personAffiliationType"
-                    onChange={handleAffiliations}
+                    as="select"
                     value={affiliations["personAffiliationType"]}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Type"
+                    placeholder=""
+                    aria-describedby="basic-addon3"
                   >
                     <option>Member</option>
                     <option>Associate</option>
@@ -123,15 +139,14 @@ const Background = (props) => {
                 <Form.Label>*If others (please specify)</Form.Label>
 
                 <FormControl
+                  id="personAffiliationOthers1"
+                  name="personAffiliationOthers1"
+                  type=""
+                  value={affiliations["personAffiliationOthers1"]}
+                  onChange={handleAffiliations}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="The type of the membership"
-                  Tooltip
-                  on
-                  top
-                  name="personAffiliationOthers1"
-                  onChange={handleAffiliations}
-                  id="personAffiliationOthers1"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -140,15 +155,14 @@ const Background = (props) => {
                 <Form.Label>Country</Form.Label>
 
                 <FormControl
+                  id="personAffiliationCountry"
+                  name="personAffiliationCountry"
+                  type=""
+                  value={affiliations["personAffiliationCountry"]}
+                  onChange={handleAffiliations}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Where is the institution located?"
-                  Tooltip
-                  on
-                  top
-                  name="personAffiliationCountry"
-                  onChange={handleAffiliations}
-                  id="personAffiliationCountry"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -178,4 +192,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);
