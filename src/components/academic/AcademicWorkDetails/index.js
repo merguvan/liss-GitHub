@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button, Modal,Row,
-  Col, Form } from "react-bootstrap";
+import { Button, Modal, Row, Col, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
@@ -29,7 +28,7 @@ function AcademicWorkDetails(props) {
     props.addAcademicWorkDetails(academicWork);
     history.push("/academicInfo/2");
   };
-  
+
   return (
     <Modal
       onClick={showLanguageList}
@@ -47,8 +46,7 @@ function AcademicWorkDetails(props) {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Academic Work Details</h2>
           <p className="modal-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            unde.
+          Please enter details about your academic work in the past.
           </p>
         </Modal.Title>
       </Modal.Header>
@@ -57,28 +55,33 @@ function AcademicWorkDetails(props) {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Full APA7 Citation</Form.Label>
             <Form.Control
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Full APA7 Citation"
+              id="personPublicationAPA"
+              name="personPublicationAPA"
               type="text"
               value={academicWork["personPublicationAPA"]}
-              name="personPublicationAPA"
               onChange={handleAcademicWork}
               as="textarea"
               rows={3}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Full APA7 Citation"
+              placeholder=""
+              aria-describedby="basic-addon3"
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>DOI</Form.Label>
             <Form.Control
-               data-toggle="tooltip"
-               data-placement="top"
-               title="DOI"
-              value={academicWork["personPublicationDOI"]}
+              id="personPublicationDOI"
               name="personPublicationDOI"
-              onChange={handleAcademicWork}
               type="text"
+              value={academicWork["personPublicationDOI"]}
+              onChange={handleAcademicWork}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="DOI"
               placeholder=""
+              aria-describedby="basic-addon3"
             />
           </Form.Group>
           <Form.Group>
@@ -92,44 +95,54 @@ function AcademicWorkDetails(props) {
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Type</Form.Label>
             <Form.Control
-               data-toggle="tooltip"
-               data-placement="top"
-               title="Type"
-               value={academicWork["personPublicationType"]}
-               name="personPublicationType"
-               onChange={handleAcademicWork}
-               as="select"
-             >
+              id="personPublicationType"
+              name="personPublicationType"
+              as="select"
+              value={academicWork["personPublicationType"]}
+              onChange={handleAcademicWork}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Type"
+              placeholder=""
+              aria-describedby="basic-addon3"
+            >
               <option>Select</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+              <option>Article</option>
+              <option>Book</option>
+              <option>Book Chapter</option>
+              <option>Conference Paper</option>
+              <option>Computer Program</option>
+              <option>Report</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Date </Form.Label>
             <Form.Control
-               data-toggle="tooltip"
-               data-placement="top"
-               title="Date"
-               value={academicWork["personPublicationDate"]}
-               name="personPublicationDate"
-               onChange={handleAcademicWork}
-               type="date"
+              id="personPublicationDate"
+              name="personPublicationDate"
+              type="date"
+              value={academicWork["personPublicationDate"]}
+              onChange={handleAcademicWork}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Date"
+              placeholder=""
+              aria-describedby="basic-addon3"
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>URL</Form.Label>
             <Form.Control
-               data-toggle="tooltip"
-               data-placement="top"
-               title="URL"
-              value={academicWork["personPublicationURL"]}
+              id="personPublicationURL"
               name="personPublicationURL"
-              onChange={handleAcademicWork}
               type="text"
+              value={academicWork["personPublicationURL"]}
+              onChange={handleAcademicWork}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="URL"
               placeholder=""
+              aria-describedby="basic-addon3"
             />
           </Form.Group>
         </Form>

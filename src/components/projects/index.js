@@ -50,16 +50,16 @@ const Projects = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Project Name</Form.Label>
                   <Form.Control
+                    id="personProjectName"
+                    name="personProjectName"
+                    type="text"
+                    value={projects["personProjectName"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Name of the project"
-                    onChange={handleProjects}
-                    id="personProjectName"
-                    type="text"
-                    name="personProjectName"
                     placeholder=""
                     aria-describedby="basic-addon3"
-                    maxLength={5}
                   />
                 </Col>
               </Form.Row>
@@ -70,13 +70,14 @@ const Projects = (props) => {
                 <Col xs={12} md={6}>
                   <Form.Label>Number</Form.Label>
                   <Form.Control
+                    id="personProjectNumber"
+                    name="personProjectNumber"
+                    type="text"
+                    value={projects["personProjectNumber"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Project number"
-                    onChange={handleProjects}
-                    id="personProjectNumber"
-                    type="text"
-                    name="personProjectNumber"
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -85,13 +86,14 @@ const Projects = (props) => {
                 <Col xs={12} md={6}>
                   <Form.Label>Acronym</Form.Label>
                   <Form.Control
+                    id="personProjectAcronym"
+                    name="personProjectAcronym"
+                    type="text"
+                    value={projects["personProjectAcronym"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Project acronym"
-                    onChange={handleProjects}
-                    id="personProjectAcronym"
-                    type="text"
-                    name="personProjectAcronym"
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -104,13 +106,14 @@ const Projects = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Grant Provider</Form.Label>
                   <Form.Control
+                    id="personProjectGrantProvider"
+                    name="personProjectGrantProvider"
+                    type="text"
+                    value={projects["personProjectGrantProvider"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Grant provider"
-                    onChange={handleProjects}
-                    id="personProjectGrantProvider"
-                    type="text"
-                    name="personProjectGrantProvider"
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -127,18 +130,18 @@ const Projects = (props) => {
                   >
                     <Form.Label>Currency</Form.Label>
                     <Form.Control
+                      id="personGrantCurrency"
+                      name="personGrantCurrency"
+                      type="text"
+                      value={projects["personGrantCurrency"]}
+                      onChange={handleProjects}
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Currency"
-                      onChange={handleProjects}
-                      id="personGrantCurrency"
-                      type="text"
-                      name="personGrantCurrency"
                       placeholder=""
                       className="options_cn"
                       aria-describedby="basic-addon3"
                       as="select"
-                      value={projects["personInstitutionType1"]}
                     >
                       <option>Select</option>
                       <option>USD</option>
@@ -152,12 +155,15 @@ const Projects = (props) => {
                 <Col xs={12} md={6}>
                   <Form.Label>*If others (please specify)</Form.Label>
                   <Form.Control
+                    id="personProjectsOtherCurrency"
+                    name="personProjectsOtherCurrency"
+                    type="text"
+                    value={projects["personProjectsOtherCurrency"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
+                    placeholder=""
                     title="Other currency"
-                    name="personProjectsOtherCurrency"
-                    onChange={handleProjects}
-                    id="personInstitutionOthers1"
                     aria-describedby="basic-addon3"
                   />
                 </Col>
@@ -169,13 +175,14 @@ const Projects = (props) => {
                 <Col xs={12} md={4}>
                   <Form.Label>Total Amount</Form.Label>
                   <Form.Control
+                    id="personProjectGrantAmount"
+                    name="personProjectGrantAmount"
+                    type="text"
+                    value={projects["personProjectGrantAmount"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Total amount"
-                    onChange={handleProjects}
-                    id="personProjectGrantAmount"
-                    type="text"
-                    name="personProjectGrantAmount"
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -184,13 +191,14 @@ const Projects = (props) => {
                 <Col xs={12} md={4}>
                   <Form.Label>Amount Involed</Form.Label>
                   <Form.Control
+                    id="personInstGrantAmount"
+                    name="personInstGrantAmount"
+                    type="text"
+                    value={projects["personInstGrantAmount"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Amount your institution was involved"
-                    onChange={handleProjects}
-                    id="personInstGrantAmount"
-                    type="text"
-                    name="personInstGrantAmount"
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -199,13 +207,14 @@ const Projects = (props) => {
                 <Col xs={12} md={4}>
                   <Form.Label>Role</Form.Label>
                   <Form.Control
+                    id="personProjectRole"
+                    name="personProjectRole"
+                    type="text"
+                    value={projects["personProjectRole"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Your role in the project"
-                    onChange={handleProjects}
-                    id="personProjectRole"
-                    type="text"
-                    name="personProjectRole"
                     placeholder=""
                     aria-describedby="basic-addon3"
                     as="select"
@@ -227,15 +236,16 @@ const Projects = (props) => {
                   <Form.Group>
                     <Form.Label>From </Form.Label>
                     <Form.Control
+                      id="personProjectFrom"
+                      name="personProjectFrom"
+                      type="date"
+                      value={projects["personProjectFrom"]}
+                      onChange={handleProjects}
                       data-toggle="tooltip"
                       data-placement="top"
                       title="When did the project start?"
-                      onChange={handleProjects}
-                      id="personProjectFrom"
-                      name="personProjectFrom"
                       placeholder=""
                       aria-describedby="basic-addon3"
-                      type="date"
                     />
                   </Form.Group>
                 </Col>
@@ -244,27 +254,29 @@ const Projects = (props) => {
                   <Form.Group>
                     <Form.Label>To</Form.Label>
                     <Form.Control
+                      id="personProjectTo"
+                      name="personProjectTo"
+                      type="date"
+                      value={projects["personProjectTo"]}
+                      onChange={handleProjects}
                       data-toggle="tooltip"
                       data-placement="top"
                       title="When did the project end?"
-                      onChange={handleProjects}
-                      id="personProjectTo"
-                      name="personProjectTo"
                       placeholder=""
                       aria-describedby="basic-addon3"
-                      type="date"
                     />
                     <Form.Check
+                      id="personProjectTo"
+                      name="personProjectTo"
+                      type="checkbox"
+                      value={projects["personProjectTo"]}
+                      onChange={handleChange}
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Is this an ongoing project?"
-                      id="personProjectTo"
-                      name="personProjectTo"
                       placeholder=""
                       aria-describedby="basic-addon3"
-                      type="checkbox"
                       label="ongoing"
-                      onChange={handleChange}
                     />
                   </Form.Group>
                 </Col>
@@ -274,15 +286,16 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Label>URL</Form.Label>
               <Form.Control
+                id="personProjectWebsite"
+                name="personProjectWebsite"
+                type="text"
+                value={projects["personProjectWebsite"]}
+                onChange={handleProjects}
                 data-toggle="tooltip"
                 data-placement="top"
                 title="The website of the project"
-                onChange={handleProjects}
-                id="personProjectWebsite"
-                name="personProjectWebsite"
                 placeholder=""
                 aria-describedby="basic-addon3"
-                type="text"
               />
             </Form.Group>
           </Form>
