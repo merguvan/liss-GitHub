@@ -12,6 +12,7 @@ module.exports.addUserPersonalInfo = async (req, res, next) => {
     });
   } catch (error) {
     res.status(404);
+    console.log(error);
     const systemError = new Error("Something is wrong");
     next(systemError);
   }

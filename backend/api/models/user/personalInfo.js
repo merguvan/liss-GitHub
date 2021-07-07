@@ -46,9 +46,7 @@ const PersonalInfoSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  gdprConsent: {
-    type: Boolean,
-  },
+
   personAutoID: String,
 });
 
