@@ -59,6 +59,7 @@ const Background = (props) => {
                   id="personAchievementGrantedBy"
                   name="personAchievementGrantedBy"
                   type="text"
+                  value={achievements["personAchievementGrantedBy"]}
                   onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
@@ -77,6 +78,7 @@ const Background = (props) => {
                   id="personAchievementCountry"
                   name="personAchievementCountry"
                   type="number"
+                  value={achievements["personAchievementCountry"]}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Country of the Donor"
@@ -92,10 +94,12 @@ const Background = (props) => {
                   id="personAchievementName"
                   name="personAchievementName"
                   type="text"
+                  value={achievements["personAchievementName"]}
                   onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Name of the Donor"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -109,10 +113,11 @@ const Background = (props) => {
                   id="personAchievementFrom"
                   name="personAchievementFrom"
                   type="date"
-                  onChange={handleAchievements}
                   value={achievements["personAchievementFrom"]}
+                  onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
+                  placeholder=""
                   title="Date"
                 />
               </Col>

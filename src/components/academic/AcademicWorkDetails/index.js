@@ -97,9 +97,9 @@ function AcademicWorkDetails(props) {
             <Form.Control
               id="personPublicationType"
               name="personPublicationType"
+              as="select"
               value={academicWork["personPublicationType"]}
               onChange={handleAcademicWork}
-              as="select"
               data-toggle="tooltip"
               data-placement="top"
               title="Type"
