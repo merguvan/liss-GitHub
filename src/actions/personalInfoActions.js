@@ -5,8 +5,9 @@ import {
 } from "../actionTypes/personalInfo";
 import axios from "axios";
 export const addPersonalInfo = (data) => async (dispatch) => {
-  const id = "id buraya gelecek";
-  const token = "token buraya gelecek";
+  const id = "60df61f8e32a48f4cdd245d9";
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJzb25FbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJ1c2VySWQiOiI2MGRmNjFmOGUzMmE0OGY0Y2RkMjQ1ZDkiLCJpYXQiOjE2MjU2MTk1MDMsImV4cCI6MTYyNTYzMDMwM30.3IcL5DOOiaGnLaMF57f8_TFXEmDL2oyBJljGZczs-R4";
   try {
     dispatch({
       type: ADD_PERSONAL_INFO_PENDING,
