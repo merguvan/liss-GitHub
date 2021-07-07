@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.modal-description {
+    font-family: 'Roboto', sans-serif;
+		font-weight: 500;
+		color: rgb(3, 3, 102);
+}
+
+
+
+.deneme > * {
+  color: black !important;
+}
+

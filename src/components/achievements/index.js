@@ -11,7 +11,7 @@ import {
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Achievements = (props) => {
   const history = useHistory();
 
   const [achievements, setAchievements] = useState({});
@@ -56,15 +56,15 @@ const Background = (props) => {
                 <Form.Label>Granted by</Form.Label>
 
                 <FormControl
+                  id="personAchievementGrantedBy"
+                  name="personAchievementGrantedBy"
+                  type="text"
+                  value={achievements["personAchievementGrantedBy"]}
+                  onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Grant Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementGrantedBy"
-                  onChange={handleAchievements}
-                  id="personAchievementGrantedBy"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -74,17 +74,17 @@ const Background = (props) => {
             <Row>
               <Col xs={12} md={6}>
                 <Form.Label>Country</Form.Label>
-                ​
+
                 <FormControl
+                  id="personAchievementCountry"
+                  name="personAchievementCountry"
+                  type="number"
+                  value={achievements["personAchievementCountry"]}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Country of the Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementCountry"
                   onChange={handleAchievements}
-                  id="personAchievementCountry"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -93,15 +93,15 @@ const Background = (props) => {
                 <Form.Label>Name</Form.Label>
 
                 <FormControl
+                  id="personAchievementName"
+                  name="personAchievementName"
+                  type="text"
+                  value={achievements["personAchievementName"]}
+                  onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Name of the Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementName"
-                  onChange={handleAchievements}
-                  id="personAchievementName"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -112,10 +112,15 @@ const Background = (props) => {
               <Col xs={6} md={6}>
                 Date{" "}
                 <Form.Control
-                  type="date"
+                  id="personAchievementFrom"
                   name="personAchievementFrom"
-                  onChange={handleAchievements}
+                  type="date"
                   value={achievements["personAchievementFrom"]}
+                  onChange={handleAchievements}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Date"
+                  placeholder=""
                 />
               </Col>
             </Row>
@@ -144,4 +149,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Achievements);
