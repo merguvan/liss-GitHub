@@ -56,15 +56,13 @@ const Background = (props) => {
                 <Form.Label>Granted by</Form.Label>
 
                 <FormControl
+                  id="personAchievementGrantedBy"
+                  name="personAchievementGrantedBy"
+                  type="text"
+                  onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Grant Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementGrantedBy"
-                  onChange={handleAchievements}
-                  id="personAchievementGrantedBy"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -74,17 +72,15 @@ const Background = (props) => {
             <Row>
               <Col xs={12} md={6}>
                 <Form.Label>Country</Form.Label>
-                ​
+
                 <FormControl
+                  id="personAchievementCountry"
+                  name="personAchievementCountry"
+                  type="number"
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Country of the Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementCountry"
                   onChange={handleAchievements}
-                  id="personAchievementCountry"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -93,15 +89,13 @@ const Background = (props) => {
                 <Form.Label>Name</Form.Label>
 
                 <FormControl
+                  id="personAchievementName"
+                  name="personAchievementName"
+                  type="text"
+                  onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Name of the Donor"
-                  Tooltip
-                  on
-                  top
-                  name="personAchievementName"
-                  onChange={handleAchievements}
-                  id="personAchievementName"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -112,10 +106,14 @@ const Background = (props) => {
               <Col xs={6} md={6}>
                 Date{" "}
                 <Form.Control
-                  type="date"
+                  id="personAchievementFrom"
                   name="personAchievementFrom"
+                  type="date"
                   onChange={handleAchievements}
                   value={achievements["personAchievementFrom"]}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Date"
                 />
               </Col>
             </Row>

@@ -60,15 +60,13 @@ const Background = (props) => {
                 <Form.Label>Institution</Form.Label>
 
                 <FormControl
+                  id="personAffiliatedInstitution"
+                  name="personAffiliatedInstitution"
+                  type=""
+                  onChange={handleAffiliations}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="To which Institution are you affiliated to?"
-                  Tooltip
-                  on
-                  top
-                  name="personAffiliatedInstitution"
-                  onChange={handleAffiliations}
-                  id="personAffiliatedInstitution"
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -80,11 +78,14 @@ const Background = (props) => {
               <Col xs={6} md={6}>
                 From{" "}
                 <Form.Control
-                  type="date"
-                  name="personAffiliationFrom"
-                  onChange={handleAffiliations}
                   id="personAffiliationFrom"
+                  name="personAffiliationFrom"
+                  type="date"
+                  onChange={handleAffiliations}
                   value={affiliations["personAffiliationFrom"]}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Project number"
                 />
               </Col>
 

@@ -50,17 +50,17 @@ const Projects = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Project Name</Form.Label>
                   <Form.Control
+                    id="personProjectName"
+                    name="personProjectName"
+                    type="text"
+                    value={projects["personProjectName"]}
+                    onChange={handleProjects}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Name of the project"
-                    onChange={handleProjects}
-                    id="personProjectName"
-                    type="text"
-                    name="personProjectName"
                     placeholder=""
                     aria-describedby="basic-addon3"
-                    maxLength={5}
-                  />
+                    />
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -77,6 +77,7 @@ const Projects = (props) => {
                     id="personProjectNumber"
                     type="text"
                     name="personProjectNumber"
+                    value={projects["personProjectNumber"]}
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -92,6 +93,7 @@ const Projects = (props) => {
                     id="personProjectAcronym"
                     type="text"
                     name="personProjectAcronym"
+                    value={projects["personProjectAcronym"]}
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -111,6 +113,7 @@ const Projects = (props) => {
                     id="personProjectGrantProvider"
                     type="text"
                     name="personProjectGrantProvider"
+                    value={projects["personProjectGrantProvider"]}
                     placeholder=""
                     aria-describedby="basic-addon3"
                   />
@@ -134,6 +137,7 @@ const Projects = (props) => {
                       id="personGrantCurrency"
                       type="text"
                       name="personGrantCurrency"
+                      value={projects["personGrantCurrency"]}
                       placeholder=""
                       className="options_cn"
                       aria-describedby="basic-addon3"
@@ -156,8 +160,10 @@ const Projects = (props) => {
                     data-placement="top"
                     title="Other currency"
                     name="personProjectsOtherCurrency"
+                    type="text"
                     onChange={handleProjects}
                     id="personInstitutionOthers1"
+                    value={projects["personProjectsOtherCurrency"]}
                     aria-describedby="basic-addon3"
                   />
                 </Col>
@@ -175,6 +181,7 @@ const Projects = (props) => {
                     onChange={handleProjects}
                     id="personProjectGrantAmount"
                     type="text"
+                    value={projects["personProjectGrantAmount"]}
                     name="personProjectGrantAmount"
                     placeholder=""
                     aria-describedby="basic-addon3"
@@ -190,6 +197,7 @@ const Projects = (props) => {
                     onChange={handleProjects}
                     id="personInstGrantAmount"
                     type="text"
+                    value={projects["personInstGrantAmount"]}
                     name="personInstGrantAmount"
                     placeholder=""
                     aria-describedby="basic-addon3"
@@ -205,6 +213,7 @@ const Projects = (props) => {
                     onChange={handleProjects}
                     id="personProjectRole"
                     type="text"
+                    value={projects["personProjectRole"]}
                     name="personProjectRole"
                     placeholder=""
                     aria-describedby="basic-addon3"
@@ -233,6 +242,7 @@ const Projects = (props) => {
                       onChange={handleProjects}
                       id="personProjectFrom"
                       name="personProjectFrom"
+                      value={projects["personProjectFrom"]}
                       placeholder=""
                       aria-describedby="basic-addon3"
                       type="date"
@@ -250,6 +260,7 @@ const Projects = (props) => {
                       onChange={handleProjects}
                       id="personProjectTo"
                       name="personProjectTo"
+                      value={projects["personProjectTo"]}
                       placeholder=""
                       aria-describedby="basic-addon3"
                       type="date"
@@ -263,6 +274,7 @@ const Projects = (props) => {
                       placeholder=""
                       aria-describedby="basic-addon3"
                       type="checkbox"
+                      value={projects["personProjectTo"]}
                       label="ongoing"
                       onChange={handleChange}
                     />
@@ -283,6 +295,7 @@ const Projects = (props) => {
                 placeholder=""
                 aria-describedby="basic-addon3"
                 type="text"
+                value={projects["personProjectWebsite"]}
               />
             </Form.Group>
           </Form>
