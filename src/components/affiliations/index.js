@@ -11,7 +11,7 @@ import {
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Affiliations = (props) => {
   const history = useHistory();
 
   const [affiliations, setAffiliations] = useState({});
@@ -68,6 +68,7 @@ const Background = (props) => {
                   data-toggle="tooltip"
                   data-placement="top"
                   title="To which Institution are you affiliated to?"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -191,4 +192,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);
