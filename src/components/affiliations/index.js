@@ -41,8 +41,7 @@ const Affiliations = (props) => {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Affiliation</h2>
           <p className="modal-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            unde.
+           Please enter details about the institutions you are affiliated to.
           </p>
         </Modal.Title>
       </Modal.Header>

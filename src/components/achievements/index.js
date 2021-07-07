@@ -42,8 +42,7 @@ const Achievements = (props) => {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Achievements</h2>
           <p className="modal-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            unde.
+            Please enter details about your selected achievements.
           </p>
         </Modal.Title>
       </Modal.Header>
