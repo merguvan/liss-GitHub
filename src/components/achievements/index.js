@@ -11,7 +11,7 @@ import {
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Achievements = (props) => {
   const history = useHistory();
 
   const [achievements, setAchievements] = useState({});
@@ -64,6 +64,7 @@ const Background = (props) => {
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Grant Donor"
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -83,6 +84,7 @@ const Background = (props) => {
                   data-placement="top"
                   title="Country of the Donor"
                   onChange={handleAchievements}
+                  placeholder=""
                   aria-describedby="basic-addon3"
                 />
               </Col>
@@ -117,8 +119,8 @@ const Background = (props) => {
                   onChange={handleAchievements}
                   data-toggle="tooltip"
                   data-placement="top"
-                  placeholder=""
                   title="Date"
+                  placeholder=""
                 />
               </Col>
             </Row>
@@ -147,4 +149,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Achievements);
