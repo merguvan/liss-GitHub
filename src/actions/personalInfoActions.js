@@ -12,7 +12,7 @@ export const addPersonalInfo = (data) => async (dispatch) => {
       type: ADD_PERSONAL_INFO_PENDING,
     });
     const { data: res } = await axios.post(
-      `http://localhost:5000/user/userpersonalinfo/${id}`,
+      `http://localhost:5000/user/personalinfo/${id}`,
       { data },
       {
         headers: {

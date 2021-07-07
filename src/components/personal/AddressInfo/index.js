@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import Countries from "./Countries";
-
+import { addAddressInfo } from "../../../actions/addressInfo";
 import { Link, useHistory } from "react-router-dom";
 
 function PersonAddressInfo(props) {
@@ -346,10 +346,5 @@ const mapStateToProps = (state) => {
     addressInfo: state.personalInfoReducer.addressInfo,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addAddressInfo: (data) =>
-      dispatch({ type: "ADD_ADDRESS_INFO", payload: data }),
-  };
-};
+const mapDispatchToProps = { addAddressInfo };
 export default connect(mapStateToProps, mapDispatchToProps)(PersonAddressInfo);
