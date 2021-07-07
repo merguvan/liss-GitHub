@@ -10,7 +10,6 @@ import Capacity from "../components/capacity/Capacity";
 import References from "../components/references/References";
 import Remarks from "../components/remarks/Remarks";
 import Projects from "../components/projects/Projects";
-import { Link } from "react-router-dom";
 
 export default function MainPage() {
   return (
@@ -26,9 +25,6 @@ export default function MainPage() {
       <Capacity />
       <References />
       <Remarks />
-      <Link to="/login_register">
-              <button>Login</button>
-            </Link>
     </div>
   );
 }

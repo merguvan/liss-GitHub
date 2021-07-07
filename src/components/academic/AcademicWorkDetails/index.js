@@ -1,12 +1,22 @@
 import { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal,Row,
+  Col, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
+import SelectLanguage from "../../capacity/language/SelectLanguage";
 function AcademicWorkDetails(props) {
   const history = useHistory();
+  const [displayLanguageList, setDisplayLanguageList] = useState(true);
   const [academicWork, setAcademicWork] = useState(props.academicWork || {});
 
+  const showLanguageList = (e) => {
+    if (e.target.name === "personCourseLanguage") {
+      setDisplayLanguageList(false);
+    } else {
+      setDisplayLanguageList(true);
+    }
+  };
   const handleAcademicWork = (e) => {
     setAcademicWork({
       ...academicWork,
@@ -19,8 +29,10 @@ function AcademicWorkDetails(props) {
     props.addAcademicWorkDetails(academicWork);
     history.push("/academicInfo/2");
   };
+  
   return (
     <Modal
+      onClick={showLanguageList}
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -32,8 +44,12 @@ function AcademicWorkDetails(props) {
           history.push("/");
         }}
       >
-        <Modal.Title id="contained-modal-title-vcenter">
-          Academic Work Details
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>Academic Work Details</h2>
+          <p className="modal-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+            unde.
+          </p>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -41,6 +57,10 @@ function AcademicWorkDetails(props) {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Full APA7 Citation</Form.Label>
             <Form.Control
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Full APA7 Citation"
+              type="text"
               value={academicWork["personPublicationAPA"]}
               name="personPublicationAPA"
               onChange={handleAcademicWork}
@@ -51,6 +71,9 @@ function AcademicWorkDetails(props) {
           <Form.Group>
             <Form.Label>DOI</Form.Label>
             <Form.Control
+               data-toggle="tooltip"
+               data-placement="top"
+               title="DOI"
               value={academicWork["personPublicationDOI"]}
               name="personPublicationDOI"
               onChange={handleAcademicWork}
@@ -58,29 +81,25 @@ function AcademicWorkDetails(props) {
               placeholder=""
             />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Language</Form.Label>
-            <Form.Control
-              value={academicWork["personPublicationLanguage"]}
-              name="personPublicationLanguage"
-              onChange={handleAcademicWork}
-              as="select"
-            >
-              <option>Select</option>
-              <option>English</option>
-              <option>Turkish</option>
-              <option>Chinese</option>
-              <option>Spanish</option>
-            </Form.Control>
+          <Form.Group>
+            <Row>
+              <Col xs={12} md={12}>
+                <label htmlFor="basic-url">Language</label>
+                <SelectLanguage displayLanguageList={displayLanguageList} />
+              </Col>
+            </Row>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Type</Form.Label>
             <Form.Control
-              value={academicWork["personPublicationType"]}
-              name="personPublicationType"
-              onChange={handleAcademicWork}
-              as="select"
-            >
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Type"
+               value={academicWork["personPublicationType"]}
+               name="personPublicationType"
+               onChange={handleAcademicWork}
+               as="select"
+             >
               <option>Select</option>
               <option>1</option>
               <option>2</option>
@@ -91,15 +110,21 @@ function AcademicWorkDetails(props) {
           <Form.Group>
             <Form.Label>Date </Form.Label>
             <Form.Control
-              value={academicWork["personPublicationDate"]}
-              name="personPublicationDate"
-              onChange={handleAcademicWork}
-              type="date"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Date"
+               value={academicWork["personPublicationDate"]}
+               name="personPublicationDate"
+               onChange={handleAcademicWork}
+               type="date"
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>URL</Form.Label>
             <Form.Control
+               data-toggle="tooltip"
+               data-placement="top"
+               title="URL"
               value={academicWork["personPublicationURL"]}
               name="personPublicationURL"
               onChange={handleAcademicWork}
