@@ -2,7 +2,7 @@ const AddressInfoSchema = require("../../models/user/addressInfo");
 
 module.exports.addAddressInfo = async (req, res, next) => {
   try {
-    const addressInfo = await AddressInfoSchema(req.body);
+    const addressInfo = await AddressInfoSchema(req.body.data);
 
     await addressInfo.save();
 

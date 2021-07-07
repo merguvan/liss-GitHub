@@ -17,12 +17,11 @@ import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
 
 function App(props) {
-  const [user, setUser] = useState(props.user);
+  const [user, setUser] = useState(true);
+  console.log(
+    JSON.parse(localStorage.getItem("user").message === "Authorized user")
+  );
 
-  if (!user) {
-    <Redirect exact to="/login" />;
-  }
-  console.log(props);
   return (
     <div>
       <Switch>
@@ -47,7 +46,7 @@ function App(props) {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    user: state.userLoginDetailsReducer.user,
+    user: state.userLoginDetailsReducer,
   };
 };
 
