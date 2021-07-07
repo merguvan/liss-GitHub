@@ -27,7 +27,7 @@ const Login = (props) => {
           <input onChange={handleChange} type="text" name="personEmail" />
         </div>
         <div>
-          <label htmlFor="gmail">gmail</label>
+          <label htmlFor="gmail">password</label>
           <input onChange={handleChange} type="text" name="password" />
         </div>
         <input type="submit" value="Login" />
