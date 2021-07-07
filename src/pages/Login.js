@@ -11,7 +11,7 @@ import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } fro
 
 const handleChange=(e)=>{
    
-    setData({
+    setData({ 
         ...data,
         [e.target.name]:e.target.value
     })
