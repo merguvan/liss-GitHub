@@ -40,7 +40,7 @@ const handleChange=(e)=>{
             type="text" name='personEmail'/>
            </div>
            <div>
-           <label htmlFor="gmail">gmail</label>
+           <label htmlFor="gmail">password</label>
             <input 
             onChange={handleChange}
             type="text" name='password'/>

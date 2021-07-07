@@ -24,13 +24,7 @@ function Achievements(props) {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    personalInfo:
-      state.personalInfoReducer.personalInformation.personalDetailInformation,
-
-    addressInfo:
-      state.personalInfoReducer.personalInformation.addressInformation,
-  };
+  return {};
 };
 const mapDispatchToProps = {};
 export default connect(mapStateToProps, mapDispatchToProps)(Achievements);
