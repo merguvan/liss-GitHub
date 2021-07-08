@@ -37,7 +37,7 @@ function PersonalInfo(props) {
 
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
