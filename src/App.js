@@ -18,9 +18,9 @@ import ProjectsInfo from "./components/projects/ProjectsInfo";
 
 function App(props) {
   const [user, setUser] = useState(true);
-  console.log(
-    JSON.parse(localStorage.getItem("user").message === "Authorized user")
-  );
+  // console.log(
+  //   JSON.parse(localStorage.getItem("user").message === "Authorized user")
+  // );
 
   return (
     <div>

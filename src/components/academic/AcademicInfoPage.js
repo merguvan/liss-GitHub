@@ -1,27 +1,18 @@
-import React,{useState} from 'react'
-import { Redirect, useParams } from 'react-router-dom'
-import AcademicProjects from './academicProjects'
-import AcademicWork from './AcademicWorkDetails'
+import React, { useState } from "react";
+import { Redirect, useParams } from "react-router-dom";
+import AcademicProjects from "./academicProjects";
+import AcademicWork from "./AcademicWorkDetails";
 
 export default function AcademicInfo() {
-    const {id}=useParams()
-   
-    const [modalShow,setModalShow]=useState(true) 
+  const { id } = useParams();
 
-    switch(+id){
+  switch (+id) {
+    case 1:
+      return <AcademicWork />;
+    case 2:
+      return <AcademicProjects />;
 
-        case 1:
-       
-             return(
-                 <AcademicWork show={modalShow} setModalShow={setModalShow} />
-             )
-        case 2:
-            return (
-                <AcademicProjects show={modalShow} setModalShow={setModalShow} />
-            ) 
-       
-        default:
-            <Redirect to='/'/>        
-    }
-   
+    default:
+      <Redirect to="/" />;
+  }
 }
