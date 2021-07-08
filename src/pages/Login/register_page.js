@@ -1,5 +1,6 @@
 import React from "react";
-// import login from "./logo.png";
+import logo from './logo.png';
+
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
 
 export class Register extends React.Component {
@@ -72,9 +73,10 @@ export class Register extends React.Component {
     return (
       <form className="login_base-container" ref={this.props.containerRef} onSubmit={this.login}>
         <div className="login_logo">
-          {/* <img src={login}></img> */}
+          <img src={logo} alt="Logo" />
+
         </div>
-        <hr />
+        {/* <hr /> */}
 
         <div className="login_radio_buttons">
           <input
@@ -102,7 +104,7 @@ export class Register extends React.Component {
           <label for="login_radio_button">Admin</label>
         </div>
         
-        <hr />
+        {/* <hr /> */}
         <div className="login_header">Register</div>
 
         <div className="login_content">
@@ -110,19 +112,19 @@ export class Register extends React.Component {
 
             <div className="login_form-group" >
               <label htmlFor="username">Name - Surname</label>
-              <input type="text" name="username" placeholder="name and surname" />
+              <input type="text" name="username" required placeholder="name and surname" />
             </div>
 
             <div className="login_form-group" validationState={ formSubmitted ? (errors.email ? 'error' : 'success') : null }>
               <label htmlFor="email">Email</label>
               <input type="email" name="email" placeholder="email" onChange={this.handleInputChange} />
-              <span>{errors.email}</span>
+              <span style={{color:'red'}}>{errors.email}</span>
             </div>
 
             <div className="login_form-group" validationState={ formSubmitted ? (errors.password ? 'error' : 'success') : null }>
               <label htmlFor="password">Password</label>
               <input type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
-              <span>{errors.password}</span>
+              <span style={{color:'red'}}>{errors.password}</span>
             </div>
           </div>
         </div>
