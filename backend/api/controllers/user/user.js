@@ -69,7 +69,7 @@ module.exports.authorizeUser = async (req, res, next) => {
             },
             process.env.JWT_KEY || "secret",
             {
-              expiresIn: "3hr",
+              expiresIn: "30hr",
             }
           );
           return res.status(200).json({

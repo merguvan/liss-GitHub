@@ -32,7 +32,7 @@ function AcademicWorkDetails(props) {
   return (
     <Modal
       onClick={showLanguageList}
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -46,7 +46,7 @@ function AcademicWorkDetails(props) {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Academic Work Details</h2>
           <p className="modal-description">
-          Please enter details about your academic work in the past.
+            Please enter details about your academic work in the past.
           </p>
         </Modal.Title>
       </Modal.Header>

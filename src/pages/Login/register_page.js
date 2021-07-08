@@ -1,5 +1,6 @@
 import React from "react";
 import logo from './logo.png';
+
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
 
 export class Register extends React.Component {
@@ -73,6 +74,7 @@ export class Register extends React.Component {
       <form className="login_base-container" ref={this.props.containerRef} onSubmit={this.login}>
         <div className="login_logo">
           <img src={logo} alt="Logo" />
+
         </div>
         {/* <hr /> */}
 

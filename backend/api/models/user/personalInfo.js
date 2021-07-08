@@ -26,7 +26,6 @@ const PersonalInfoSchema = new mongoose.Schema({
   },
   personCityOB: {
     type: String,
-    required: [true, "Please, enter your country of Birth"],
   },
   personCountryOB: {
     type: String,
@@ -46,9 +45,7 @@ const PersonalInfoSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  gdprConsent: {
-    type: Boolean,
-  },
+
   personAutoID: String,
 });
 

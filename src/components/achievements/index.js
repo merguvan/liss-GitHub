@@ -8,10 +8,11 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-
+import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Achievements = (props) => {
+  const { addAchivements } = props;
   const history = useHistory();
 
   const [achievements, setAchievements] = useState({});
@@ -23,11 +24,13 @@ const Achievements = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(achievements);
+  const handleSubmit = () => {
+    addAchivements(achievements);
+  };
+
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -42,8 +45,7 @@ const Achievements = (props) => {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Achievements</h2>
           <p className="modal-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            unde.
+            Please enter details about your selected achievements.
           </p>
         </Modal.Title>
       </Modal.Header>
@@ -78,7 +80,7 @@ const Achievements = (props) => {
                 <FormControl
                   id="personAchievementCountry"
                   name="personAchievementCountry"
-                  type="number"
+                  type="text"
                   value={achievements["personAchievementCountry"]}
                   data-toggle="tooltip"
                   data-placement="top"
@@ -140,13 +142,13 @@ const Achievements = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     achievements: state.achievementsReducer.achievements,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+const mapDispatchToProps = {
+  addAchivements,
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Achievements);
