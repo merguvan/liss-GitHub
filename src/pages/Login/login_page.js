@@ -1,5 +1,6 @@
 import React from "react";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from './validator';
+import {Alert} from 'react-bootstrap'
 
 const loginImg =
   "https://freepikpsd.com/media/2019/10/user-login-png-transparent-6-Transparent-Images.png";
@@ -90,15 +91,15 @@ login = (e) => {
             <div className="login_form-group" validationState={ formSubmitted ? (errors.email ? 'error' : 'success') : null }>
               <label htmlFor="email">Email</label>
               <input type="text" name="email" placeholder="email" onChange={this.handleInputChange}/>
-              {/* pop up yap */}
-              <p>{errors.email}</p>
+          
+              <span style={{color:'red'}}>{errors.email}</span>
             </div>
 
             <div className="login_form-group" validationState={ formSubmitted ? (errors.password ? 'error' : 'success') : null }>
               <label htmlFor="password">Password</label>
               <input type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
-              {/* pop up yap */}
-              <p>{errors.password}</p>
+              <span style={{color:'red'}}>{errors.password}</span>
+           
             </div>
 
           </div>
