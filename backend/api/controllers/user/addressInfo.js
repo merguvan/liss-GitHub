@@ -1,6 +1,7 @@
 const AddressInfoSchema = require("../../models/user/addressInfo");
 
 module.exports.addAddressInfo = async (req, res, next) => {
+  console.log("deneme");
   try {
     const addressInfo = await AddressInfoSchema(req.body.data);
 
