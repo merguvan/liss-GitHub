@@ -8,17 +8,21 @@ import {
   Row,
   Modal,
 } from "react-bootstrap";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
 import { addAddressInfo } from "../../../actions/addressInfo";
 import { Link, useHistory } from "react-router-dom";
 
-function PersonAddressInfo(props) {
+function PersonAddressInfo() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { addAddressInfo: storeAddressInfo } = useSelector(
+    (state) => state.personalInfoReducer
+  );
 
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
-  const [addressInfo, setAddressInfo] = useState(props.addressInfo || {});
+  const [addressInfo, setAddressInfo] = useState(storeAddressInfo || {});
   const handdleOptionsOn = (e) => {
     if (e.target.name === "personCountry") {
       setCountriesOptionsOn(true);
@@ -31,7 +35,7 @@ function PersonAddressInfo(props) {
   };
 
   const handleClick = () => {
-    props.addAddressInfo(addressInfo);
+    dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
     setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
@@ -341,10 +345,5 @@ function PersonAddressInfo(props) {
     </Modal>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    addressInfo: state.personalInfoReducer.addressInfo,
-  };
-};
-const mapDispatchToProps = { addAddressInfo };
-export default connect(mapStateToProps, mapDispatchToProps)(PersonAddressInfo);
+
+export default PersonAddressInfo;
