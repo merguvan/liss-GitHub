@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-
-import axios from 'axios'
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import {userLoginDetails} from '../actions/userLogin'
-import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes/userLoginDetails'
-
- const Login = (props) => {
-    
-     const [data,setData]=useState({})
-
-const handleChange=(e)=>{
-   
-    setData({ 
-        ...data,
-        [e.target.name]:e.target.value
-    })
-}
-
-    const handleSubmit=async(e)=>{
-        e.preventDefault()
-     
-    try {
-        const respond= await axios.post("http://localhost:5000/user/login",{...data})
-        await props.userLoginDetailsFulfilled(respond)
-    } catch (error) {
-        console.log(error)
-        props.userLoginDetailsRejected(error)
-    }
-        
-    }
-    
-    return (
-=======
 import axios from "axios";
 import React, { useState } from "react";
 import { connect } from "react-redux";
@@ -57,7 +22,6 @@ const Login = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
->>>>>>> master
         <div>
           <label htmlFor="gmail">gmail</label>
           <input onChange={handleChange} type="text" name="personEmail" />
