@@ -3,7 +3,7 @@ import {
   Modal,
   Container,
   Button,
-  Row,
+  CloseButton,
   Col,
   Form,
   FormControl,
@@ -12,7 +12,6 @@ import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Achievements = (props) => {
-  const { addAchivements } = props;
   const history = useHistory();
 
   const [achievements, setAchievements] = useState({});
@@ -35,98 +34,98 @@ const Achievements = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          history.push("/");
-        }}
-      >
+      <Modal.Header>
         {" "}
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Achievements</h2>
           <p className="modal-description">
-            Please enter details about your selected achievements.
+            Please provide details about your academic achievements so far.
           </p>
         </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
         <Container>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={12}>
-                <Form.Label>Granted by</Form.Label>
+          <Form>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={12}>
+                  <Form.Label>
+                    Name of the Achievement / Award / Token
+                  </Form.Label>
+                  <FormControl
+                    id="personAchievementName"
+                    name="personAchievementName"
+                    type="text"
+                    value={achievements["personAchievementName"]}
+                    onChange={handleAchievements}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Name of the achievement / award / token"
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={6}>
+                  <Form.Label>Country</Form.Label>
+                  <FormControl
+                    id="personAchievementCountry"
+                    name="personAchievementCountry"
+                    type="number"
+                    value={achievements["personAchievementCountry"]}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Country where you received the award / token from"
+                    onChange={handleAchievements}
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
 
-                <FormControl
-                  id="personAchievementGrantedBy"
-                  name="personAchievementGrantedBy"
-                  type="text"
-                  value={achievements["personAchievementGrantedBy"]}
-                  onChange={handleAchievements}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Grant Donor"
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={6}>
-                <Form.Label>Country</Form.Label>
-
-                <FormControl
-                  id="personAchievementCountry"
-                  name="personAchievementCountry"
-                  type="text"
-                  value={achievements["personAchievementCountry"]}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Country of the Donor"
-                  onChange={handleAchievements}
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={6}>
-                <Form.Label>Name</Form.Label>
-
-                <FormControl
-                  id="personAchievementName"
-                  name="personAchievementName"
-                  type="text"
-                  value={achievements["personAchievementName"]}
-                  onChange={handleAchievements}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Name of the Donor"
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={6} md={6}>
-                Date{" "}
-                <Form.Control
-                  id="personAchievementFrom"
-                  name="personAchievementFrom"
-                  type="date"
-                  value={achievements["personAchievementFrom"]}
-                  onChange={handleAchievements}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Date"
-                  placeholder=""
-                />
-              </Col>
-            </Row>
-          </Form.Group>
+                <Col xs={12} md={6}>
+                  <Form.Label>Granted by</Form.Label>
+                  <FormControl
+                    id="personAchievementGrantedBy"
+                    name="personAchievementGrantedBy"
+                    type="text"
+                    value={achievements["personAchievementGrantedBy"]}
+                    onChange={handleAchievements}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="The organization that awarded you with the award / token"
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={6}>
+                  Date{" "}
+                  <Form.Control
+                    id="personAchievementDate"
+                    name="personAchievementDate"
+                    type="date"
+                    value={achievements["personAchievementDate"]}
+                    onChange={handleAchievements}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Date you received the award / token"
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Form>
         </Container>
       </Modal.Body>
       <Modal.Footer>
@@ -150,5 +149,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addAchivements,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Achievements);

@@ -1,4 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import liss from "./liss.png";
+import { Nav, Navbar } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
@@ -27,6 +30,15 @@ function App(props) {
 
   return (
     <div>
+      <Navbar bg="myRed" variant="dark" sticky="top">
+        <Navbar.Brand>
+          <img src={liss} alt="logo" width="220" />
+        </Navbar.Brand>
+
+        <Nav>
+          <Nav.Link href="#">Sign out</Nav.Link>
+        </Nav>
+      </Navbar>
       <Switch>
         <Route path="/login" exact component={Login} />
         <Route path="/" exact component={MainPage} />

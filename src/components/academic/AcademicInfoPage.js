@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import AcademicProjects from "./academicProjects";
 import AcademicWork from "./AcademicWorkDetails";
 
 export default function AcademicInfo() {
@@ -8,9 +7,7 @@ export default function AcademicInfo() {
 
   switch (+id) {
     case 1:
-      return <AcademicWork />;
-    case 2:
-      return <AcademicProjects />;
+      return <AcademicWork show={modalShow} setModalShow={setModalShow} />;
 
     default:
       <Redirect to="/" />;

@@ -3,7 +3,7 @@ import {
   Modal,
   Container,
   Button,
-  Row,
+  CloseButton,
   Col,
   Form,
   FormControl,
@@ -32,22 +32,49 @@ const Affiliations = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          history.push("/");
-        }}
-      >
+      <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Affiliation</h2>
           <p className="modal-description">
+<<<<<<< HEAD
+            Please provide details about the organizations you are affiliated
+            to.
+=======
            Please enter details about the institutions you are affiliated to.
+>>>>>>> master
           </p>
         </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
         <Container>
+<<<<<<< HEAD
+          <Form>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={12}>
+                  <Form.Label>Institution</Form.Label>
+                  <FormControl
+                    id="personAffiliatedInstitution"
+                    name="personAffiliatedInstitution"
+                    type="text"
+                    value={affiliations["personAffiliatedInstitution"]}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="To which Institution are you affiliated to?"
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+=======
           <Form.Group>
             <Row>
               <h6>Membership</h6>
@@ -91,82 +118,106 @@ const Affiliations = (props) => {
                   aria-describedby="basic-addon3"
                 />
               </Col>
+>>>>>>> master
 
-              <Col xs={6} md={6}>
-                To
-                <Form.Control
-                  id="personAffiliationTo"
-                  name="personAffiliationTo"
-                  type="date"
-                  value={affiliations["personAffiliationTo"]}
-                  onChange={handleAffiliations}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title=""
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={6}>
-                <Form.Group controlId="exampleForm.ControlSelect">
-                  <Form.Label>Type</Form.Label>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={6}>
+                  From{" "}
                   <Form.Control
-                    id="personAffiliationType"
-                    name="personAffiliationType"
-                    as="select"
-                    value={affiliations["personAffiliationType"]}
+                    id="personAffiliationFrom"
+                    name="personAffiliationFrom"
+                    type="date"
+                    value={affiliations["personAffiliationFrom"]}
                     onChange={handleAffiliations}
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="Type"
+                    title="Affiliation started from ..."
                     placeholder=""
                     aria-describedby="basic-addon3"
-                  >
-                    <option>Member</option>
-                    <option>Associate</option>
-                    <option>Fellow</option>
-                    <option>Other</option>
-                  </Form.Control>
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={6}>
-                <Form.Label>*If others (please specify)</Form.Label>
+                  />
+                </Col>
 
-                <FormControl
-                  id="personAffiliationOthers1"
-                  name="personAffiliationOthers1"
-                  type=""
-                  value={affiliations["personAffiliationOthers1"]}
-                  onChange={handleAffiliations}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="The type of the membership"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
+                <Col xs={12} md={6}>
+                  To
+                  <Form.Control
+                    id="personAffiliationTo"
+                    name="personAffiliationTo"
+                    type="date"
+                    value={affiliations["personAffiliationTo"]}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title=""
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
 
-              <Col xs={12} md={12}>
-                <Form.Label>Country</Form.Label>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={6}>
+                  <Form.Group controlId="exampleForm.ControlSelect">
+                    <Form.Label>Type</Form.Label>
+                    <Form.Control
+                      id="personAffiliationType"
+                      name="personAffiliationType"
+                      as="select"
+                      value={affiliations["personAffiliationType"]}
+                      onChange={handleAffiliations}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="What is your affiliation type?"
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    >
+                      <option>Member</option>
+                      <option>Associate</option>
+                      <option>Fellow</option>
+                      <option>Honour</option>
+                      <option>Emeritus</option>
+                      <option>Volunteer</option>
+                      <option>Other</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+                <Col xs={12} md={6}>
+                  <Form.Label>Other?</Form.Label>
+                  <FormControl
+                    id="personAffiliationOthers1"
+                    name="personAffiliationOthers1"
+                    type=""
+                    value={affiliations["personAffiliationOthers1"]}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Please enter the type of affiliation that you could not find in the list."
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
 
-                <FormControl
-                  id="personAffiliationCountry"
-                  name="personAffiliationCountry"
-                  type=""
-                  value={affiliations["personAffiliationCountry"]}
-                  onChange={handleAffiliations}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Where is the institution located?"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Row>
-          </Form.Group>
+                <Col xs={12} md={12}>
+                  <Form.Label>Country</Form.Label>
+
+                  <FormControl
+                    id="personAffiliationCountry"
+                    name="personAffiliationCountry"
+                    type=""
+                    value={affiliations["personAffiliationCountry"]}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="In which country is the institution you are affiliated located?"
+                    placeholder=""
+                    aria-describedby="basic-addon3"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Form>
         </Container>
       </Modal.Body>
       <Modal.Footer>
@@ -191,4 +242,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);

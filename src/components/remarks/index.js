@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Container, Button, Form } from "react-bootstrap";
+import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
@@ -24,13 +24,19 @@ const Remarks = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        Remarks
+      <Modal.Header>
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>Remarks</h2>
+          <p className="modal-description">
+            You may enter any further remarks for the LISS Administration in
+            this section.
+          </p>
+        </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
@@ -38,9 +44,13 @@ const Remarks = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Remarks</Form.Label>
             <Form.Control
-              value={remarks["personRemarks"]}
+              id="personRemarks"
               name="personRemarks"
+              value={remarks["personRemarks"]}
               onChange={handleRemarks}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Your remarks"
               as="textarea"
               rows={3}
             />
