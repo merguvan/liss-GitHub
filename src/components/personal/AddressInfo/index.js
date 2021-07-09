@@ -23,7 +23,7 @@ function PersonAddressInfo() {
 
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
-  const [addressInfo, setAddressInfo] = useState(props.addressInfo || {});
+  const [addressInfo, setAddressInfo] = useState(storeAddressInfo || {});
 
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountry") {
@@ -250,7 +250,7 @@ function PersonAddressInfo() {
                 />
               </Col>
             </Form.Row>
-          </Form.Group>          
+          </Form.Group>
 
           <Form.Group>
             <Form.Row>
@@ -310,14 +310,14 @@ function PersonAddressInfo() {
                   />
                 </Form.Group>
               </Col>
-              </Form.Row>
-              </Form.Group>
+            </Form.Row>
+          </Form.Group>
 
           <br />
           <h6>Contact</h6>
           <hr />
           <Form.Group>
-            <Form.Row>              
+            <Form.Row>
               <Col xs={12} md={6} lg={6}>
                 <Form.Label>Email Type</Form.Label>
                 <Form.Control
@@ -332,28 +332,26 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 >
-                  <option value="select">Select</option> 
+                  <option value="select">Select</option>
                   <option value="person">Person</option>
                   <option value="work">Work</option>
                 </Form.Control>
               </Col>
 
               <Col xs={12} md={6} lg={6}>
-
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    id="personEmail"
-                    name="personEmail"
-                    type="text"
-                    value={addressInfo["personEmail"]}
-                    onChange={handlePersonAddressInfo}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Please type your email."
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-  
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  id="personEmail"
+                  name="personEmail"
+                  type="text"
+                  value={addressInfo["personEmail"]}
+                  onChange={handlePersonAddressInfo}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Please type your email."
+                  placeholder=""
+                  aria-describedby="basic-addon3"
+                />
               </Col>
             </Form.Row>
           </Form.Group>

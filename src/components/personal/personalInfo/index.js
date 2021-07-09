@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import {
   Form,
   Col,
@@ -9,11 +8,7 @@ import {
   Row,
   Modal,
 } from "react-bootstrap";
-import { connect } from "react-redux";
-=======
-import { Form, Col, Container, Button, Row, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
->>>>>>> master
+import { connect, useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
 import { titles, maritalStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
@@ -70,7 +65,7 @@ function PersonalInfo() {
 
       <Container onClick={handleOptionsOn} className="container">
         <Form>
-        <br />
+          <br />
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
@@ -276,7 +271,6 @@ function PersonalInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
-          
         </Form>
       </Container>
       <Modal.Footer>

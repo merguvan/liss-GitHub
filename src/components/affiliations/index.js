@@ -36,12 +36,8 @@ const Affiliations = (props) => {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Affiliation</h2>
           <p className="modal-description">
-<<<<<<< HEAD
             Please provide details about the organizations you are affiliated
             to.
-=======
-           Please enter details about the institutions you are affiliated to.
->>>>>>> master
           </p>
         </Modal.Title>
         <CloseButton
@@ -53,7 +49,6 @@ const Affiliations = (props) => {
 
       <Modal.Body className="show-grid">
         <Container>
-<<<<<<< HEAD
           <Form>
             <Form.Group>
               <Form.Row>
@@ -74,51 +69,6 @@ const Affiliations = (props) => {
                 </Col>
               </Form.Row>
             </Form.Group>
-=======
-          <Form.Group>
-            <Row>
-              <h6>Membership</h6>
-            </Row>
-            <hr />
-
-            <Row>
-              <Col xs={12} md={12}>
-                <Form.Label>Institution</Form.Label>
-
-                <FormControl
-                  id="personAffiliatedInstitution"
-                  name="personAffiliatedInstitution"
-                  type=""
-                  value={affiliations["personAffiliatedInstitution"]}
-                  onChange={handleAffiliations}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="To which Institution are you affiliated to?"
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-
-          <Form.Group>
-            <Row>
-              <Col xs={6} md={6}>
-                From{" "}
-                <Form.Control
-                  id="personAffiliationFrom"
-                  name="personAffiliationFrom"
-                  type="date"
-                  value={affiliations["personAffiliationFrom"]}
-                  onChange={handleAffiliations}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Project number"
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
->>>>>>> master
 
             <Form.Group>
               <Form.Row>
@@ -242,8 +192,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);

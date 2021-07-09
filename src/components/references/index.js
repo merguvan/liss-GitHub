@@ -174,14 +174,4 @@ const References = () => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    addReference: state.referenceReducer.addReference,
-  };
-};
-
-const mapDispatchToProps = {
-  addReference,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(References);
+export default References;

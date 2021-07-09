@@ -7,7 +7,7 @@ export default function AcademicInfo() {
 
   switch (+id) {
     case 1:
-      return <AcademicWork show={modalShow} setModalShow={setModalShow} />;
+      return <AcademicWork />;
 
     default:
       <Redirect to="/" />;
