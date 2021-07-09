@@ -21,6 +21,7 @@ const Workexperience = (props) => {
   const [workExperience, setWorkExperience] = useState(
     props.workExperience || {}
   );
+  const [show, setShow] = useState(true);
 
   const handleWorkExperience = (e) => {
     setWorkExperience({
@@ -29,11 +30,17 @@ const Workexperience = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (Object.values(workExperience).join('').length > 0) {
+      console.log("calisti")
+    } else {
+      console.log("calismadi")
+    }
+  };
   console.log(workExperience);
   return (
     <Modal
-      {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -47,6 +54,7 @@ const Workexperience = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show)
             history.push("/");
           }}
         />
@@ -299,7 +307,7 @@ const Workexperience = (props) => {
         <Link to="/">
           <Button onClick={handleSubmit}>
             {" "}
-            {Object.keys(workExperience).length > 0 ? "save" : "close"}{" "}
+            {Object.values(workExperience).join('').length > 0 ? "save" : "close"}{" "}
           </Button>
         </Link>
       </Modal.Footer>
