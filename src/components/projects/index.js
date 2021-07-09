@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Modal, Container, Button, Col, Form } from "react-bootstrap";
+import {
+  Modal,
+  Container,
+  CloseButton,
+  Button,
+  Col,
+  Form,
+} from "react-bootstrap";
 
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
@@ -32,7 +39,7 @@ const Projects = (props) => {
       keyboard
       animation
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Projects</h2>
           <p className="modal-description">
@@ -40,6 +47,11 @@ const Projects = (props) => {
             far.
           </p>
         </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body>

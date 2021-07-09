@@ -3,7 +3,7 @@ import {
   GET_USER_LOGIN_DETAILS_FULFILLED,
   GET_USER_LOGIN_DETAILS_REJECTED,
   GET_USER_LOGIN_DETAILS_PENDING,
-} from "../actionTypes/useLoginDetails";
+} from "../actionTypes/userLoginDetails";
 
 export const userLoginDetails = (data) => async (dispatch) => {
   try {

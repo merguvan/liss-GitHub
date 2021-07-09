@@ -3,12 +3,13 @@ import {
   Modal,
   Container,
   Button,
+  CloseButton,
   Col,
   Form,
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-//certification
+
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -33,13 +34,21 @@ const Certifications = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton onClick={() => history.push("/")}>
-        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+      <Modal.Header>
+        <Modal.Title 
+          id="contained-modal-title-vcenter"
+          className="modal-title" 
+          >
           <h2>Certifications</h2>
           <p className="modal-description">
             Please enter details about the certificates you have earned so far.
           </p>
         </Modal.Title>
+        <CloseButton 
+          onClick={() => { 
+            history.push("/")
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
@@ -50,15 +59,16 @@ const Certifications = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Awarded by</Form.Label>
                   <FormControl
-                    name="personInstitutionName"
-                    onChange={handleCertification}
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
+                    id="personCertificationInstitutionName"
+                    name="personCertificationInstitutionName"
                     type="text"
+                    value={certification["personCertificationInstitutionName"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Organization awarding the certificate"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
               </Form.Row>
@@ -68,32 +78,35 @@ const Certifications = (props) => {
               <Form.Row>
                 <Col xs={12} md={6}>
                   <Form.Label>Country</Form.Label>
-
                   <FormControl
-                    name="personCertificationInstitutionCountry"
-                    onChange={handleCertification}
                     id="personCertificationInstitutionCountry"
-                    aria-describedby="basic-addon3"
+                    name="personCertificationInstitutionCountry"
                     type="text"
+                    value={
+                      certification["personCertificationInstitutionCountry"]
+                    }
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Country of the organization awarding the certificate"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
                 <Col xs={12} md={6}>
                   <Form.Label>City</Form.Label>
 
                   <FormControl
-                    name="personCertificationInstitutionCity"
-                    onChange={handleCertification}
                     id="personCertificationInstitutionCity"
-                    aria-describedby="basic-addon3"
+                    name="personCertificationInstitutionCity"
                     type="text"
+                    value={certification["personCertificationInstitutionCity"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="City of the organization awarding the certificate"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
               </Form.Row>
@@ -104,15 +117,18 @@ const Certifications = (props) => {
                   <label htmlFor="basic-url">Website</label>
                   <InputGroup className="mb-3">
                     <FormControl
-                      name="personCertificationInstitutionWebsite"
-                      onChange={handleCertification}
                       id="personCertificationInstitutionWebsite"
-                      aria-describedby="basic-addon3"
+                      name="personCertificationInstitutionWebsite"
                       type="text"
+                      value={
+                        certification["personCertificationInstitutionWebsite"]
+                      }
+                      onChange={handleCertification}
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Website of the organization awarding the certificate"
                       placeholder=""
+                      aria-describedby="basic-addon3"
                     />
                   </InputGroup>
                 </Col>
@@ -124,11 +140,11 @@ const Certifications = (props) => {
                 <Col xs={12} md={6}>
                   <Form.Label>Type</Form.Label>
                   <Form.Control
-                    as="select"
-                    name="personInstitutionType1"
-                    onChange={handleCertification}
                     id="personInstitutionType1"
+                    name="personInstitutionType1"
+                    as="select"
                     value={certification["personInstitutionType1"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Type of the organization"
@@ -146,15 +162,16 @@ const Certifications = (props) => {
                 <Col xs={12} md={6}>
                   <Form.Label>Status</Form.Label>
                   <Form.Control
-                    as="select"
-                    name="personInstitutionType2"
                     id="personInstitutionType2"
-                    onChange={handleCertification}
+                    name="personInstitutionType2"
+                    as="select"
                     value={certification["personInstitutionType2"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="State or Private?"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   >
                     <option>Select</option>
                     <option>State</option>
@@ -169,29 +186,31 @@ const Certifications = (props) => {
                 <Col xs={12} md={6}>
                   From{" "}
                   <Form.Control
-                    type="date"
-                    name="personCertificateFrom"
                     id="personCertificateFrom"
-                    onChange={handleCertification}
+                    name="personCertificateFrom"
+                    type="date"
                     value={certification["personCertificateFrom"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="When did the certification period start?"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
                 <Col xs={12} md={6}>
                   To
                   <Form.Control
-                    name="personCertificateTo"
-                    onChange={handleCertification}
-                    value={certification["personCertificateTo"]}
-                    type="date"
                     id="personCertificateTo"
+                    name="personCertificateTo"
+                    type="date"
+                    value={certification["personCertificateTo"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="When did the certification period end?"
                     placeholder=""
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
               </Form.Row>
@@ -200,47 +219,47 @@ const Certifications = (props) => {
               <Form.Row>
                 <Col xs={12} md={4}>
                   <Form.Label>Hours</Form.Label>
-
                   <FormControl
-                    name="personCertificateHours"
-                    onChange={handleCertification}
                     id="personCertificateHours"
-                    aria-describedby="basic-addon3"
+                    name="personCertificateHours"
+                    type="number"
+                    value={certification["personCertificateHours"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="How many hours did it last in total?"
                     placeholder=""
-                    type="number"
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
                 <Col xs={12} md={4}>
                   <Form.Label>Days</Form.Label>
-
                   <FormControl
-                    name="personCertificateDays"
-                    onChange={handleCertification}
                     id="personCertificateDays"
-                    aria-describedby="basic-addon3"
+                    name="personCertificateDays"
+                    type="number"
+                    value={certification["personCertificateDays"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="How many days did it last in total?"
                     placeholder=""
-                    type="number"
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
                 <Col xs={12} md={4}>
                   <Form.Label>Grade (if any)</Form.Label>
-
                   <FormControl
-                    name="personCertificateGrade"
-                    onChange={handleCertification}
                     id="personCertificateGrade"
-                    aria-describedby="basic-addon3"
+                    name="personCertificateGrade"
+                    type="text"
+                    value={certification["personCertificateGrade"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Did you receive a grade?"
                     placeholder=""
-                    type="text"
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
               </Form.Row>
@@ -251,25 +270,26 @@ const Certifications = (props) => {
                   <Form.Label>Certificate Number</Form.Label>
 
                   <FormControl
-                    name="personCertificateNumber"
-                    onChange={handleCertification}
                     id="personCertificateNumber"
-                    aria-describedby="basic-addon3"
+                    name="personCertificateNumber"
+                    type="text"
+                    value={certification["personCertificateNumber"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Your certificate number (if any)"
                     placeholder=""
-                    type="text"
+                    aria-describedby="basic-addon3"
                   />
                 </Col>
                 <Col xs={12} md={6}>
                   <Form.Label>Certificate Type</Form.Label>
                   <Form.Control
-                    as="select"
-                    name="personCertificateType"
                     id="personCertificateType"
-                    onChange={handleCertification}
+                    name="personCertificateType"
+                    as="select"
                     value={certification["personCertificateType"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="What kind of certificate did you receive?"
@@ -294,17 +314,16 @@ const Certifications = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Topic (if any)</Form.Label>
                   <Form.Control
-                    value={certification["personCertificateTopic"]}
-                    name="personCertificateTopic"
                     id="personCertificateTopic"
-                    onChange={handleCertification}
+                    name="personCertificateTopic"
                     as="textarea"
                     rows={3}
+                    value={certification["personCertificateTopic"]}
+                    onChange={handleCertification}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="What was the certificate about? (please use the wording on the certificate - if any"
                     placeholder=""
-                    type="number"
                   />
                 </Col>
               </Form.Row>

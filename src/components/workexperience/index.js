@@ -3,7 +3,7 @@ import {
   Modal,
   Container,
   Button,
-  Row,
+  CloseButton,
   Col,
   Form,
   InputGroup,
@@ -14,10 +14,10 @@ import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-const Background = (props) => {
+const Workexperience = (props) => {
   const history = useHistory();
   const [value, setValue] = useState(null);
-
+  const [ongoing, setOngoing] = useState(false);
   const [workExperience, setWorkExperience] = useState(
     props.workExperience || {}
   );
@@ -38,176 +38,260 @@ const Background = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton onClick={() => history.push('/')}>
-        <Modal.Title className='modal-title' id="contained-modal-title-vcenter">
+      <Modal.Header>
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Work Experience</h2>
-          <p className='modal-description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, unde.
+          <p className="modal-description">
+            Please provide details about your work experience.
           </p>
         </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
         <Container>
           <Form>
-          <Form.Row>
-          
-              <Col xs={12} md={6} lg={6}>
-                <Form.Group>
-                  <Form.Label> From</Form.Label>
-                  <Form.Control
-                  type="date"
-                  name="personWorkFrom"
-                  onChange={handleWorkExperience}
-                  value={workExperience["personWorkFrom"]}
-                />
-                </Form.Group>
-              </Col>
-
-              <Col xs={12} md={6} lg={6}>
-                <Form.Group>
-                  <Form.Label>To </Form.Label>
-                  <Form.Control
-                  name="personWorkTo"
-                  onChange={handleWorkExperience}
-                  value={workExperience["personWorkTo"]}
-                  type="date"
-                />
-                </Form.Group>
-              </Col>
-      
-            <Col xs={12} md={6} lg={6}>
-              <Form.Group>
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="personInstitutionType1"
-                  onChange={handleWorkExperience}
-                  value={workExperience["personInstitutionType1"]}
-                >
-                  <option>School</option>
-                  <option>College</option>
-                  <option>University</option>
-                  <option>Other</option>
-                </Form.Control>
-              </Form.Group>
-            </Col>
-
-            <Col xs={12} md={6} lg={6}>
-              <Form.Group>
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="personInstitutionType1"
-                  onChange={handleWorkExperience}
-                  value={workExperience["personInstitutionType1"]}
-                >
-                  <option>State</option>
-                  <option>Private</option>
-                </Form.Control>
-              </Form.Group>
-            </Col>
-            
-         
-          <Col xs={12} md={6} lg={6}>
-              
-                <Form.Group>
-                <Form.Label htmlFor="basic-url">City</Form.Label>
-                <CountrySelect
-                  className="country"
-                  value={value}
-                  onChange={setValue}
-                  noMatchesText
-                />
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={6} lg={6}>
-              
-              <Form.Group>
-              <Form.Label htmlFor="basic-url">Country</Form.Label>
-              <CountrySelect
-                className="country"
-                value={value}
-                onChange={setValue}
-                noMatchesText
-              />
-              </Form.Group>
-            </Col>
-
-          
-          <Col xs={12} md={6} lg={6}>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
+              <Form.Row>
+                <Col xs={12} md={6} lg={6}>
+                  <Form.Group>
+                    <Form.Label>Name of the Institution</Form.Label>
+                    <FormControl
+                      id="personInstitutionName"
+                      name="personInstitutionName"
+                      type="text"
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please enter the name of the institution you worked"
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    />
+                  </Form.Group>
+                </Col>
+                <Col xs={12} md={6} lg={6}>
+                  <Form.Group>
+                    <Form.Label>Website of the Institution</Form.Label>
+                    <InputGroup className="mb-3">
+                      <FormControl
+                        id="personInstitutionWebsite"
+                        name="personInstitutionWebsite"
+                        type="text"
+                        value={workExperience["personInstitutionWebsite"]}
+                        onChange={handleWorkExperience}
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Please enter the website of the institution"
+                        placeholder=""
+                        aria-describedby="basic-addon3"
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                </Col>
+              </Form.Row>
+            </Form.Group>
 
-              <FormControl
-                name="personInstitutionName"
-                onChange={handleWorkExperience}
-                id="basic-url"
-                aria-describedby="basic-addon3"
-              />
-            </Form.Group>
-          </Col>
-          <Col xs={12} md={6} lg={6}>
             <Form.Group>
-              <label htmlFor="basic-url">Website</label>
-              <InputGroup className="mb-3">
-                <FormControl
-                  name="personInstitutionWebsite"
-                  onChange={handleWorkExperience}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </InputGroup>
+              <Form.Row>
+                <Col xs={12} md={6} lg={6}>
+                  <Form.Group>
+                    <Form.Label>City</Form.Label>
+                    <CountrySelect
+                      id=""
+                      className="country"
+                      value={value}
+                      onChange={setValue}
+                      noMatchesText
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      placeholder=""
+                      title="In which city was this institution located?"
+                    />
+                  </Form.Group>
+                </Col>
+                <Col xs={12} md={6} lg={6}>
+                  <Form.Group>
+                    <Form.Label>Country</Form.Label>
+                    <CountrySelect
+                      className="country"
+                      value={value}
+                      onChange={setValue}
+                      noMatchesText
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      placeholder=""
+                      title="In which country was this institution located?"
+                    />
+                  </Form.Group>
+                </Col>
+              </Form.Row>
             </Form.Group>
-          </Col>
-          <Col xs={12} md={6} lg={6}>
-            <Form.Group>
-              <label htmlFor="basic-url">Position</label>
-              <InputGroup className="mb-3">
-                <FormControl
-                  name="personInstitutionPosition"
-                  onChange={handleWorkExperience}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </InputGroup>
-            </Form.Group>
-          </Col>
-         
-            
-              <Col xs={12} md={6} lg={6}>
-              <Form.Group>
-                <Form.Label>Position type</Form.Label>
-                <Form.Control
-                  name="personInstitutionPositionType1"
-                  onChange={handleWorkExperience}
-                  as="select"
-                >
-                  <option>Academic</option>
-                  <option>Administrative</option>
-                  <option>Teacher</option>
-                  <option>Other</option>
-                </Form.Control>
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={6} lg={6}>
-                <Form.Group>
-                <Form.Label>Position type</Form.Label>
-                <Form.Control
-                  name="personInstitutionPositionType1"
-                  onChange={handleWorkExperience}
-                  as="select"
-                >
-                  <option>Top Management</option>
-                  <option>Senior Management</option>
-                  <option>Mid-Management</option>
-                </Form.Control>
 
-                </Form.Group>
-              </Col>
-          
-          
-          </Form.Row>
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={3} lg={3}>
+                  <Form.Group>
+                    <Form.Label>Started on ...</Form.Label>
+                    <Form.Control
+                      id="personWorkFrom"
+                      name="personWorkFrom"
+                      type="date"
+                      value={workExperience["personWorkFrom"]}
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="You started working at this institution on ..."
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    />
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} md={3} lg={3}>
+                  <Form.Group>
+                    <Form.Label>Worked until ...</Form.Label>
+                    <Form.Control
+                      id="personWorkTo"
+                      name="personWorkTo"
+                      type="date"
+                      value={workExperience["personWorkTo"]}
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="You worked at this institution until ..."
+                      placeholder=""
+                      disabled={ongoing}
+                      aria-describedby="basic-addon3"
+                    />
+                    <Form.Check
+                      id="personWorkOngoing"
+                      name="personWorkOngoing"
+                      type="checkbox"
+                      value={workExperience["personWorkOngoing"]}
+                      onClick={() => {
+                        setOngoing(!ongoing);
+                        setWorkExperience({
+                          ...workExperience,
+                          "personWorkTo": "",
+                        });
+                      }}
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Still working there?"
+                      placeholder=""
+                      label="ongoing"
+                    />
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} md={3} lg={3}>
+                  <Form.Group>
+                    <Form.Label>Institutional type-1</Form.Label>
+                    <Form.Control
+                      id="personInstitutionType1"
+                      name="personInstitutionType1"
+                      value={workExperience["personInstitutionType1"]}
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please select the type of the institution from the list ..."
+                      as="select"
+                    >
+                      <option value="select">Select</option>
+                      <option value="school">School</option>
+                      <option value="college">College</option>
+                      <option value="university">University</option>
+                      <option value="other">Other</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} md={3} lg={3}>
+                  <Form.Group>
+                    <Form.Label>Institutional type-2</Form.Label>
+                    <Form.Control
+                      id="personInstitutionType1"
+                      name="personInstitutionType1"
+                      value={workExperience["personInstitutionType1"]}
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please select the type of the institution from the list ..."
+                      as="select"
+                    >
+                      <option value="select">Select</option>
+                      <option value="state">State</option>
+                      <option value="private">Private</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Row>
+                <Col xs={12} md={4} lg={4}>
+                  <Form.Group>
+                    <label htmlFor="basic-url">Your Position</label>
+                    <InputGroup className="mb-3">
+                      <FormControl
+                        id="personInstitutionPosition"
+                        name="personInstitutionPosition"
+                        value={workExperience["personInstitutionPosition"]}
+                        onChange={handleWorkExperience}
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Please type the position you occupied ..."
+                        aria-describedby="basic-addon3"
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} md={4} lg={4}>
+                  <Form.Group>
+                    <Form.Label>Position type-1</Form.Label>
+                    <Form.Control
+                      name="personInstitutionPositionType1"
+                      onChange={handleWorkExperience}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please select the type of the institution from the list ..."
+                      aria-describedby="basic-addon3"
+                      as="select"
+                    >
+                      <option value="select">Select</option>
+                      <option value="academic">Academic</option>
+                      <option value="administrative">Administrative</option>
+                      <option value="teacher">Teacher</option>
+                      <option value="other">Other</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+                <Col xs={12} md={4} lg={4}>
+                  <Form.Group>
+                    <Form.Label>Position type-2</Form.Label>
+                    <Form.Control
+                      name="personInstitutionPositionType1"
+                      onChange={handleWorkExperience}
+                      as="select"
+                    >
+                      <option value="select">Select</option>
+                      <option value="topmanagement">Top Management</option>
+                      <option value="seniormanagement">
+                        Senior Management
+                      </option>
+                      <option value="midmanagement">Mid-Management</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Form.Row>
+            </Form.Group>
           </Form>
         </Container>
       </Modal.Body>
@@ -233,4 +317,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Background);
+export default connect(mapStateToProps, mapDispatchToProps)(Workexperience);

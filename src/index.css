@@ -41,7 +41,10 @@
   overflow: scroll;
   height: 20vh;
   padding: 0;
+  z-index: 1000;
+  position: absolute;
 }
+
 jm .country,
 .city {
   z-index: 1000;

@@ -29,7 +29,7 @@ export default function SelectLanguage(props) {
   return (
     <div>
       <FormControl
-        name="personCourseLanguage"
+        name={props.name}
         value={lang}
         onChange={onSelect}
         placeholder="Select language"
@@ -39,7 +39,7 @@ export default function SelectLanguage(props) {
       >
         {languages.map((language) => (
           <ListGroupItem
-            name="personCourseLanguage"
+            name="personCourseLanguage2"
             key={language.code}
             onClick={handleListItemClick}
           >

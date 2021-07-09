@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {userLoginDetails} from '../actions/userLogin'
-import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes'
+import { GET_USER_LOGIN_DETAILS_FULFILLED, GET_USER_LOGIN_DETAILS_REJECTED } from '../actionTypes/userLoginDetails'
 
  const Login = (props) => {
     

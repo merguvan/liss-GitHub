@@ -3,6 +3,7 @@ import {
   Modal,
   Container,
   Button,
+  CloseButton,
   Row,
   Col,
   Form,
@@ -17,13 +18,12 @@ const References = (props) => {
   const history = useHistory();
   const [addReference, setAddReference] = useState({});
   const handleAddReference = (e) => {
-
     setAddReference({
       ...addReference,
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = () => {
     props.addReference(addReference);
     console.log(props);
@@ -36,164 +36,127 @@ const References = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        Reference
+      <Modal.Header>
+        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+          <h2>References</h2>
+          <p className="modal-description">
+            Please upload your reference letters here.
+          </p>
+        </Modal.Title>
+        <CloseButton
+          onClick={() => {
+            history.push("/");
+          }}
+        />
       </Modal.Header>
 
       <Modal.Body className="show-grid">
         <Container>
-          <Row>
-            <Col xs={12} md={12}>
-
-              <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
+            <Form.Row>
+              <Col xs={12} md={4}>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   as="select"
                   name="personTitle"
-
                   onChange={handleAddReference}
-
                   value={addReference["personTitle"]}
                 >
-                  <option>Mrs</option>
-                  <option>Miss</option>
-                  <option>Mr</option>
-                  <option>Prof</option>
-                  <option>Dr</option>
-                  <option>Assoc.Prof.Dr</option>
-                  <option>Assist.Prof.Dr</option>
+                  <option value="select">Select</option>
+                  <option value="ms">Ms</option>
+                  <option value="mr">Mr</option>
+                  <option value="prof">Prof.Dr.</option>
+                  <option value="assocprof">Assoc.Prof.Dr</option>
+                  <option value="assistprof">Assist.Prof.Dr</option>
+                  <option value="dr">Dr</option>
                 </Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
-        <Form.Group>
-            <Row>
-              <Col xs={12} md={12}>
-                <Form.Label>Name</Form.Label>
+              </Col>
 
+              <Col xs={12} md={4}>
+                <Form.Label>Full Name</Form.Label>
                 <FormControl
                   name="personRefereeName"
+                  onChange={handleAddReference}
+                  id=""
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+
+              <Col xs={12} md={4}>
+                <Form.Label>Position</Form.Label>
+                <FormControl
+                  name="personRefereePosition"
                   onChange={handleAddReference}
                   id="basic-url"
                   aria-describedby="basic-addon3"
                 />
               </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-              <Col xs={12} md={12}>
-                <label htmlFor="basic-url">Position</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    name="personRefereePosition"
-                    onChange={handleAddReference}
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
+            </Form.Row>
           </Form.Group>
 
           <Form.Group>
-            <Row>
+            <Form.Row>
               <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Institution</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereeInstitution"
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
                 </InputGroup>
               </Col>
-            </Row>
+            </Form.Row>
           </Form.Group>
-          
+
           <Form.Group>
-            <Row>
-
-              <Col xs={12} md={12}>
-                <label htmlFor="basic-url">Email</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    name="personRefereeEmail"
-                    onChange={handleAddReference}
-
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group>
-            <Row>
-
-              <Col xs={12} md={12}>
-
-                <label htmlFor="basic-url">Phone Number</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    name="personRefereePhoneNumber"
-
-                    onChange={handleAddReference}
-
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
-          </Form.Group>
-          {/* <Form.Group>
-            <Row>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-              <Col xs={12} md={12}>
-                <Form.Label>Position type</Form.Label>
-                <Form.Control
-                  name="personInstitutionPositionType1"
+            <Form.Row>
+              <Col xs={12} md={4}>
+                <Form.Label>Email</Form.Label>
+                <FormControl
+                  name="personRefereeEmail"
                   onChange={handleAddReference}
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-                  as="select"
-                >
-                  <option>Academic</option>
-                  <option>Administrative</option>
-                  <option>Teacher</option>
-                  <option>Other</option>
-                </Form.Control>
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
               </Col>
-            </Row>
-          </Form.Group> */}
-          <Form.Group>
-            <Row>
 
-              <Col xs={12} md={12}>
-                Date Signed{" "}
+              <Col xs={12} md={4}>
+                <Form.Label>Phone Number</Form.Label>
+                <FormControl
+                  name="personRefereePhoneNumber"
+                  onChange={handleAddReference}
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                />
+              </Col>
+
+              <Col xs={12} md={4}>
+                <Form.Label>Date Signed</Form.Label>
                 <Form.Control
                   type="date"
                   name="personRefDateSigned"
                   onChange={handleAddReference}
                   value={addReference["personRefDateSigned"]}
-
                 />
               </Col>
-            </Row>
+            </Form.Row>
           </Form.Group>
+
+          <Form.Row>
+            <Form.Group>
+              <Form.Label>Reference Letter</Form.Label>
+              <Form.Control
+                type="file"
+                name="personReferenceLetter"
+                // files={addressInfo['personPhoto']}
+                onChange={(e) => {
+                  //setAddressInfo({ ...addressInfo, [e.target.name]: e.target.files[0] });
+                }}
+              />
+            </Form.Group>
+          </Form.Row>
         </Container>
       </Modal.Body>
       <Modal.Footer>
@@ -219,4 +182,3 @@ const mapDispatchToProps = {
   addReference,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(References);
-
