@@ -8,7 +8,7 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-
+import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Achievements = (props) => {
@@ -23,11 +23,13 @@ const Achievements = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(achievements);
+  const handleSubmit = () => {
+    addAchivements(achievements);
+  };
+
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -139,13 +141,12 @@ const Achievements = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     achievements: state.achievementsReducer.achievements,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+const mapDispatchToProps = {
+  addAchivements,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Achievements);

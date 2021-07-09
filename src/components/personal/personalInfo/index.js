@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import {
   Form,
   Col,
@@ -9,21 +10,25 @@ import {
   Modal,
 } from "react-bootstrap";
 import { connect } from "react-redux";
+=======
+import { Form, Col, Container, Button, Row, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+>>>>>>> master
 import Countries from "./Countries";
 import { titles, maritalStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { Link, useHistory } from "react-router-dom";
 
-function PersonalInfo(props) {
+function PersonalInfo() {
   const history = useHistory();
-
-  const { addPersonalInfo } = props;
+  const dispatch = useDispatch();
+  const { personalInfo: storePersonalInfo } = useSelector(
+    (state) => state.personalInfoReducer
+  );
 
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
-  const [personalInfo, setPersonalInfo] = useState(
-    props.personInformation || {}
-  );
+  const [personalInfo, setPersonalInfo] = useState(storePersonalInfo || {});
 
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountryOB") {
@@ -36,16 +41,15 @@ function PersonalInfo(props) {
     }
   };
   const handleClick = () => {
-    addPersonalInfo(personalInfo);
+    dispatch(addPersonalInfo(personalInfo));
   };
   const handlePersonalInfo = (e) => {
-    // console.log(personalInfo)
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   };
 
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -292,11 +296,5 @@ function PersonalInfo(props) {
     </Modal>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    personInformation: state.personalInfoReducer.personalInformation,
-  };
-};
-const mapDispatchToProps = { addPersonalInfo };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo);
+export default PersonalInfo;

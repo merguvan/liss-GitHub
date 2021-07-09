@@ -12,6 +12,7 @@ module.exports.addUserPersonalInfo = async (req, res, next) => {
     });
   } catch (error) {
     res.status(404);
+    console.log(error);
     const systemError = new Error("Something is wrong");
     next(systemError);
   }
@@ -33,11 +34,11 @@ module.exports.updateUserPersonalInfo = async (req, res, next) => {
   }
 };
 module.exports.getUserPersonalInfo = async (req, res, next) => {
-  console.log(req.params.id);
   try {
     const userPersonalInfo = await PersonalInfoSchema.find({
       user: req.params.id,
     });
+
     return res.status(200).json({
       userPersonalInfo,
     });

@@ -14,6 +14,19 @@ const {
   getAddressInfo,
   updateAddressInfo,
 } = require("../controllers/user/addressInfo");
+
+const {
+  getAchievementsInfo,
+  updateAchievementsInfo,
+  addAchievementsInfo,
+} = require("../controllers/user/achievements");
+
+const {
+  getAcademicsInfo,
+  updateAcademicsInfo,
+  addAcademicsInfo,
+} = require("../controllers/user/academics");
+
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
@@ -32,6 +45,18 @@ router
   .get(checkAuth, getAddressInfo)
   .post(checkAuth, addAddressInfo)
   .patch(checkAuth, updateAddressInfo);
+
+router
+  .route("/achievements/:id")
+  .get(checkAuth, getAchievementsInfo)
+  .post(checkAuth, addAchievementsInfo)
+  .patch(checkAuth, updateAchievementsInfo);
+
+router
+  .route("/academics/:id")
+  .get(checkAuth, getAcademicsInfo)
+  .post(checkAuth, addAcademicsInfo)
+  .patch(checkAuth, updateAcademicsInfo);
 
 router
   .route("/:id")

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import AcademicWork from "../components/academic/AcademicWork";
 import PersonalInfoSummary from "../components/personal/PersonalInfoSummary";
 import WorkExperience from "../components/workexperience/WorkExperience";
@@ -25,6 +26,7 @@ export default function MainPage() {
       <Capacity />
       <References />
       <Remarks />
+      <Link to="/login_register"><button type="button" >Login</button></Link>
     </div>
   );
 }

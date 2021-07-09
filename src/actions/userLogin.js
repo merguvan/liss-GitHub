@@ -18,6 +18,7 @@ export const userLoginDetails = (data) => async (dispatch) => {
       type: GET_USER_LOGIN_DETAILS_FULFILLED,
       payload: res.data,
     });
+    localStorage.setItem("user", JSON.stringify(res.data));
   } catch (error) {
     dispatch({
       type: GET_USER_LOGIN_DETAILS_REJECTED,

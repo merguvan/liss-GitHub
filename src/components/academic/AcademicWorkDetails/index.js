@@ -39,7 +39,7 @@ function AcademicWorkDetails(props) {
   return (
     <Modal
       onClick={showLanguageList}
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered

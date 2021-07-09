@@ -4,19 +4,23 @@ import {
   Container,
   Button,
   CloseButton,
-  Row,
   Col,
   Form,
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import { addReference } from "../../actions/reference";
+import { addReferenceAction } from "../../actions/reference";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 
-const References = (props) => {
+const References = () => {
+  const dispatch = useDispatch();
+  const { addReference: storeAddReference } = useSelector(
+    (state) => state.referenceReducer
+  );
+
   const history = useHistory();
-  const [addReference, setAddReference] = useState({});
+  const [addReference, setAddReference] = useState(storeAddReference || {});
   const handleAddReference = (e) => {
     setAddReference({
       ...addReference,
@@ -25,13 +29,12 @@ const References = (props) => {
   };
 
   const handleSubmit = () => {
-    props.addReference(addReference);
-    console.log(props);
+    dispatch(addReferenceAction(addReference));
   };
-  console.log(addReference);
+
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered

@@ -9,13 +9,17 @@ import {
   Row,
   Modal,
 } from "react-bootstrap";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
 import { addAddressInfo } from "../../../actions/addressInfo";
 import { Link, useHistory } from "react-router-dom";
 
-function PersonAddressInfo(props) {
+function PersonAddressInfo() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { addAddressInfo: storeAddressInfo } = useSelector(
+    (state) => state.personalInfoReducer
+  );
 
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
@@ -33,7 +37,7 @@ function PersonAddressInfo(props) {
   };
 
   const handleClick = () => {
-    props.addAddressInfo(addressInfo);
+    dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
     setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
@@ -41,7 +45,7 @@ function PersonAddressInfo(props) {
 
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -506,10 +510,5 @@ function PersonAddressInfo(props) {
     </Modal>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    addressInfo: state.personalInfoReducer.addressInfo,
-  };
-};
-const mapDispatchToProps = { addAddressInfo };
-export default connect(mapStateToProps, mapDispatchToProps)(PersonAddressInfo);
+
+export default PersonAddressInfo;
