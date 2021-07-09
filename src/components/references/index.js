@@ -9,29 +9,32 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import { addReference } from "../../actions/reference";
+import { addReferenceAction } from "../../actions/reference";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 
-const References = (props) => {
+const References = () => {
+  const dispatch = useDispatch();
+  const { addReference: storeAddReference } = useSelector(
+    (state) => state.referenceReducer
+  );
+
   const history = useHistory();
-  const [addReference, setAddReference] = useState({});
+  const [addReference, setAddReference] = useState(storeAddReference || {});
   const handleAddReference = (e) => {
-
     setAddReference({
       ...addReference,
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = () => {
-    props.addReference(addReference);
-    console.log(props);
+    dispatch(addReferenceAction(addReference));
   };
-  console.log(addReference);
+
   return (
     <Modal
-      {...props}
+      show={true}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -49,15 +52,12 @@ const References = (props) => {
         <Container>
           <Row>
             <Col xs={12} md={12}>
-
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   as="select"
                   name="personTitle"
-
                   onChange={handleAddReference}
-
                   value={addReference["personTitle"]}
                 >
                   <option>Mrs</option>
@@ -71,7 +71,7 @@ const References = (props) => {
               </Form.Group>
             </Col>
           </Row>
-        <Form.Group>
+          <Form.Group>
             <Row>
               <Col xs={12} md={12}>
                 <Form.Label>Name</Form.Label>
@@ -109,7 +109,6 @@ const References = (props) => {
                   <FormControl
                     name="personRefereeInstitution"
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -117,17 +116,15 @@ const References = (props) => {
               </Col>
             </Row>
           </Form.Group>
-          
+
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
                 <label htmlFor="basic-url">Email</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereeEmail"
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -137,16 +134,12 @@ const References = (props) => {
           </Form.Group>
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
-
                 <label htmlFor="basic-url">Phone Number</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereePhoneNumber"
-
                     onChange={handleAddReference}
-
                     id="basic-url"
                     aria-describedby="basic-addon3"
                   />
@@ -156,10 +149,6 @@ const References = (props) => {
           </Form.Group>
           {/* <Form.Group>
             <Row>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
               <Col xs={12} md={12}>
                 <Form.Label>Position type</Form.Label>
                 <Form.Control
@@ -181,7 +170,6 @@ const References = (props) => {
           </Form.Group> */}
           <Form.Group>
             <Row>
-
               <Col xs={12} md={12}>
                 Date Signed{" "}
                 <Form.Control
@@ -189,7 +177,6 @@ const References = (props) => {
                   name="personRefDateSigned"
                   onChange={handleAddReference}
                   value={addReference["personRefDateSigned"]}
-
                 />
               </Col>
             </Row>
@@ -208,15 +195,4 @@ const References = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    addReference: state.referenceReducer.addReference,
-  };
-};
-
-const mapDispatchToProps = {
-  addReference,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(References);
-
+export default References;
