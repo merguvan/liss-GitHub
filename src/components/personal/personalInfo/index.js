@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Col, Container, Button, Row, Modal } from "react-bootstrap";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
 import { titles, marialStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
