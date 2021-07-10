@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Container,
@@ -13,13 +13,20 @@ import CountrySelect from "react-bootstrap-country-select";
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+
 const Workexperience = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { workExperience: storeWorkExperience } = useSelector(
+    (state) => state.workExperienceReducer
+  );
+
+  const [save, setSave] = useState(false);
   const [value, setValue] = useState(null);
   const [ongoing, setOngoing] = useState(false);
   const [workExperience, setWorkExperience] = useState(
-    props.workExperience || {}
+    storeWorkExperience || {}
   );
   const [show, setShow] = useState(true);
 
@@ -29,15 +36,24 @@ const Workexperience = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = () => {
-    if (Object.values(workExperience).join('').length > 0) {
-      console.log("calisti")
+  useEffect(() => {
+    if (
+      Object.values(storeWorkExperience).join("") !==
+      Object.values(workExperience).join("")
+    ) {
+      setSave(true);
     } else {
-      console.log("calismadi")
+      setSave(false);
+    }
+  }, [storeWorkExperience, workExperience]);
+  const handleSubmit = () => {
+    if (Object.values(workExperience).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
     }
   };
-  console.log(workExperience);
+  // console.log(workExperience);
   return (
     <Modal
       show={show}
@@ -54,7 +70,7 @@ const Workexperience = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
-            setShow(!show)
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -184,7 +200,7 @@ const Workexperience = (props) => {
                         setOngoing(!ongoing);
                         setWorkExperience({
                           ...workExperience,
-                          "personWorkTo": "",
+                          personWorkTo: "",
                         });
                       }}
                       onChange={handleWorkExperience}
@@ -305,24 +321,11 @@ const Workexperience = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.values(workExperience).join('').length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    workExperience: state.workExperienceReducer.workExperience,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Workexperience);
+export default Workexperience;
