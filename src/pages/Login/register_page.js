@@ -114,6 +114,7 @@ export class Register extends React.Component {
           ></input>
           <label for="login_radio_button">Admin</label>
         </div> */}
+        <div className="login_header">Register</div>
         <ButtonGroup>
           {radios.map((radio, idx) => (
             <ToggleButton
@@ -132,7 +133,7 @@ export class Register extends React.Component {
           ))}
         </ButtonGroup>
         {/* <hr /> */}
-        <div className="login_header">Register</div>
+        
 
         <div className="login_content">
           <div className="login_form">
