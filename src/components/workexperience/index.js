@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Container,
@@ -46,7 +46,6 @@ const Workexperience = (props) => {
       setSave(false);
     }
   }, [storeWorkExperience, workExperience]);
-
   const handleSubmit = () => {
     if (Object.values(workExperience).join("").length > 0) {
       console.log("calisti");
