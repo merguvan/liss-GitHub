@@ -106,7 +106,7 @@ export default function Countries({
         </Col>
         <Col xs={12} md={6} lg={6}>
           <Form.Group>
-            <Form.Label>City Of Birth</Form.Label>
+            <Form.Label>City of Birth</Form.Label>
             <Form.Control
               name="personCityOB"
               disabled={!countryName}
