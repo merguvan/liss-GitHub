@@ -14,7 +14,14 @@ import axios from "axios";
 const {
   token,
   userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"));
+} = JSON.parse(localStorage.getItem("user"))
+  ? JSON.parse(localStorage.getItem("user"))
+  : {
+      token: "token",
+      userInfo: {
+        _id: 12345,
+      },
+    };
 
 export const addAddressInfo = (data) => async (dispatch) => {
   try {

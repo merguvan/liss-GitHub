@@ -8,11 +8,12 @@ import {
   Form,
   InputGroup,
   FormControl,
+  Navbar,
 } from "react-bootstrap";
 import CountrySelect from "react-bootstrap-country-select";
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const Workexperience = (props) => {
   const history = useHistory();
@@ -46,6 +47,8 @@ const Workexperience = (props) => {
       centered
     >
       <Modal.Header>
+        
+     
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Work Experience</h2>
           <p className="modal-description">
