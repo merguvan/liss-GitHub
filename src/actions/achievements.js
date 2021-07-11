@@ -8,7 +8,14 @@ import {
 const {
   token,
   userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"));
+} = JSON.parse(localStorage.getItem("user"))
+  ? JSON.parse(localStorage.getItem("user"))
+  : {
+      token: "asdasdad",
+      userInfo: {
+        _id: "dasdadsa",
+      },
+    };
 
 export const addAchivements = (achievements) => async (dispatch) => {
   console.log("token=>" + token);

@@ -14,7 +14,14 @@ import axios from "axios";
 const {
   token,
   userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"));
+} = JSON.parse(localStorage.getItem("user"))
+  ? JSON.parse(localStorage.getItem("user"))
+  : {
+      token: "asdasdad",
+      userInfo: {
+        _id: "dasdadsa",
+      },
+    };
 
 export const addAddressInfo = (data) => async (dispatch) => {
   try {
@@ -41,7 +48,7 @@ export const addAddressInfo = (data) => async (dispatch) => {
     });
   }
 };
-export const updateAddressInfo = (data) => async (dispatch) => {
+export const updateAddressInfo = (data) => async (dispatch, getState) => {
   try {
     dispatch({
       type: UPDATE_ADDRESS_INFO_PENDING,

@@ -14,9 +14,16 @@ import axios from "axios";
 const {
   token,
   userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"));
+} = JSON.parse(localStorage.getItem("user"))
+  ? JSON.parse(localStorage.getItem("user"))
+  : {
+      token: "asdasdad",
+      userInfo: {
+        _id: "dasdadsa",
+      },
+    };
 
-export const addPersonalInfo = (data) => async (dispatch) => {
+export const addPersonalInfo = (data) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ADD_PERSONAL_INFO_PENDING,
