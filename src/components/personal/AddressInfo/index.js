@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
-  Card,
   Col,
   CloseButton,
   Container,
@@ -17,13 +16,26 @@ import { Link, useHistory } from "react-router-dom";
 function PersonAddressInfo() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { addAddressInfo: storeAddressInfo } = useSelector(
+  const { addressInfo: storeAddressInfo } = useSelector(
     (state) => state.personalInfoReducer
   );
 
+  const [save, setSave] = useState(false);
+  const [show, setShow] = useState(true);
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
   const [addressInfo, setAddressInfo] = useState(storeAddressInfo || {});
+
+  useEffect(() => {
+    if (
+      Object.values(storeAddressInfo).join("") !==
+      Object.values(addressInfo).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeAddressInfo, addressInfo]);
 
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountry") {
@@ -45,7 +57,7 @@ function PersonAddressInfo() {
 
   return (
     <Modal
-      show={true}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -59,6 +71,7 @@ function PersonAddressInfo() {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -501,7 +514,7 @@ function PersonAddressInfo() {
           </Link>
 
           <Link to="/">
-            <Button onClick={handleClick}> Save & Next </Button>
+            <Button onClick={handleClick}> {save ? "save" : "close"} </Button>
           </Link>
         </Row>
       </Modal.Footer>
