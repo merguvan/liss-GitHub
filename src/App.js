@@ -22,12 +22,6 @@ import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
 
-
-
-  // console.log(
-  //   JSON.parse(localStorage.getItem("user").message === "Authorized user")
-  // );
-
   return (
     <div>
       <Navbar bg="myRed" variant="dark" sticky="top">
