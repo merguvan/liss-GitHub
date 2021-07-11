@@ -21,13 +21,6 @@ import ProjectsInfo from "./components/projects/ProjectsInfo";
 import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
-
-  const [user, setUser] = useState(true);
-
-  // console.log(
-  //   JSON.parse(localStorage.getItem("user").message === "Authorized user")
-  // );
-
   return (
     <div>
       <Navbar bg="myRed" variant="dark" sticky="top">
@@ -59,6 +52,4 @@ function App(props) {
   );
 }
 
-
 export default App;
-
