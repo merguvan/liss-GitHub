@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Col,
@@ -8,7 +8,7 @@ import {
   Row,
   Modal,
 } from "react-bootstrap";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
 import { titles, maritalStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
@@ -20,10 +20,23 @@ function PersonalInfo() {
   const { personalInfo: storePersonalInfo } = useSelector(
     (state) => state.personalInfoReducer
   );
+  const [show, setShow] = useState(true);
 
+  const [save, setSave] = useState(false);
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
   const [personalInfo, setPersonalInfo] = useState(storePersonalInfo || {});
+
+  useEffect(() => {
+    if (
+      Object.values(storePersonalInfo).join("") !==
+      Object.values(personalInfo).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storePersonalInfo, personalInfo]);
 
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountryOB") {
@@ -44,7 +57,7 @@ function PersonalInfo() {
 
   return (
     <Modal
-      show={true}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -58,6 +71,7 @@ function PersonalInfo() {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -281,8 +295,7 @@ function PersonalInfo() {
 
           <Link to="/personalInfo/2">
             <Button type="submit" onClick={handleClick}>
-              {" "}
-              Save & Next{" "}
+              {save ? "save" : "close"}
             </Button>
           </Link>
         </Row>
