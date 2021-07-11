@@ -14,7 +14,7 @@ const {
       token: "token",
       userInfo: {
         _id: 12345
-    };
+    }};
 
 export const addAchivements = (achievements) => async (dispatch) => {
   console.log("token=>" + token);
