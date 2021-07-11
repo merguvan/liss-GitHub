@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Container,
@@ -8,10 +8,12 @@ import {
   Form,
   InputGroup,
   FormControl,
+  Navbar,
 } from "react-bootstrap";
 import CountrySelect from "react-bootstrap-country-select";
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
+
 import { Link, useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 
@@ -46,7 +48,6 @@ const Workexperience = (props) => {
       setSave(false);
     }
   }, [storeWorkExperience, workExperience]);
-
   const handleSubmit = () => {
     if (Object.values(workExperience).join("").length > 0) {
       console.log("calisti");
@@ -63,6 +64,8 @@ const Workexperience = (props) => {
       centered
     >
       <Modal.Header>
+        
+     
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Work Experience</h2>
           <p className="modal-description">

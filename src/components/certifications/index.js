@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Container,
@@ -9,14 +9,24 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-
+import CountrySelect from "react-bootstrap-country-select";
+import "bootstrap/dist/css/bootstrap.css";
+import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 const Certifications = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { certifications: storeCertification } = useSelector(
+    (state) => state.certificationsReducer
+  );
 
+  const [save, setSave] = useState(false);
+  const [value, setValue] = useState(null);
   const [certification, setCertification] = useState({});
+  const [certificate, setCertificate] = useState(storeCertification || {});
+  const [show, setShow] = useState(true);
 
   const handleCertification = (e) => {
     setCertification({
@@ -25,28 +35,42 @@ const Certifications = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(certification);
+  useEffect(() => {
+    if (
+      Object.values(storeCertification).join("") !==
+      Object.values(certification).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeCertification, certification]);
+
+  const handleSubmit = () => {
+    if (Object.values(certification).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
+  };
   return (
     <Modal
-      {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header>
-        <Modal.Title 
-          id="contained-modal-title-vcenter"
-          className="modal-title" 
-          >
+        <Modal.Title id="contained-modal-title-vcenter" className="modal-title">
           <h2>Certifications</h2>
           <p className="modal-description">
             Please enter details about the certificates you have earned so far.
           </p>
         </Modal.Title>
-        <CloseButton 
-          onClick={() => { 
-            history.push("/")
+        <CloseButton
+          onClick={() => {
+            setShow(!show);
+            history.push("/");
           }}
         />
       </Modal.Header>
@@ -150,13 +174,13 @@ const Certifications = (props) => {
                     title="Type of the organization"
                     placeholder=""
                   >
-                    <option>Select</option>
-                    <option>School</option>
-                    <option>College</option>
-                    <option>University</option>
-                    <option>Company</option>
-                    <option>NGO</option>
-                    <option>Governmental Organization</option>
+                    <option value="select">Select</option>
+                    <option value="school">School</option>
+                    <option value="college">College</option>
+                    <option value="university">University</option>
+                    <option value="company">Company</option>
+                    <option value="ngo">NGO</option>
+                    <option value="govorg">Governmental Organization</option>
                   </Form.Control>
                 </Col>
                 <Col xs={12} md={6}>
@@ -173,9 +197,9 @@ const Certifications = (props) => {
                     placeholder=""
                     aria-describedby="basic-addon3"
                   >
-                    <option>Select</option>
-                    <option>State</option>
-                    <option>Private</option>
+                    <option value="select">Select</option>
+                    <option value="state">State</option>
+                    <option value="private">Private</option>
                   </Form.Control>
                 </Col>
               </Form.Row>
@@ -295,15 +319,15 @@ const Certifications = (props) => {
                     title="What kind of certificate did you receive?"
                     placeholder=""
                   >
-                    <option>Select</option>
-                    <option>Language</option>
-                    <option>
+                    <option value="select">Select</option>
+                    <option value="language">Language</option>
+                    <option value="typeone">
                       Appreciation (Thanks, Gratitude, Recognition, Honor)
                     </option>
-                    <option>
+                    <option value="typetwo">
                       Attendance (Completion, Participation, Graduation)
                     </option>
-                    <option>Other</option>
+                    <option value="other">Other</option>
                   </Form.Control>
                 </Col>
               </Form.Row>
@@ -347,24 +371,11 @@ const Certifications = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(certification).length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    certification: state.certificationsReducer.certification,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Certifications);
+export default Certifications;
