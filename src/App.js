@@ -2,9 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import liss from "./liss.png";
 import { Nav, Navbar } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
+
+import { Route, Switch } from "react-router-dom";
+
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import PersonalInfoPage from "./components/personal/PersonalInfoPage";
@@ -18,7 +18,7 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
-import LoginPage from "./pages/Login/LoginPage"
+import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
 
@@ -59,13 +59,6 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    user: state.userLoginDetailsReducer,
-  };
-};
 
-const mapDispatchToProps = {};
+export default App;
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);

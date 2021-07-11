@@ -11,10 +11,9 @@ const {
 } = JSON.parse(localStorage.getItem("user"))
   ? JSON.parse(localStorage.getItem("user"))
   : {
-      token: "asdasdad",
+      token: "token",
       userInfo: {
-        _id: "dasdadsa",
-      },
+        _id: 12345
     };
 
 export const addAchivements = (achievements) => async (dispatch) => {

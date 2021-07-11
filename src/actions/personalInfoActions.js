@@ -17,6 +17,7 @@ const {
 } = JSON.parse(localStorage.getItem("user"))
   ? JSON.parse(localStorage.getItem("user"))
   : {
+
       token: "asdasdad",
       userInfo: {
         _id: "dasdadsa",
