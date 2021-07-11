@@ -23,9 +23,9 @@ const Certifications = (props) => {
   );
 
   const [save, setSave] = useState(false);
-  const [value, setValue] = useState(null);
-  const [certification, setCertification] = useState({});
-  const [certificate, setCertificate] = useState(storeCertification || {});
+  // const [value, setValue] = useState(null);
+
+  const [certification, setCertification] = useState(storeCertification || {});
   const [show, setShow] = useState(true);
 
   const handleCertification = (e) => {

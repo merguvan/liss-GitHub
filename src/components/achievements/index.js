@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Container,
@@ -10,26 +10,50 @@ import {
 } from "react-bootstrap";
 import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+
 const Achievements = (props) => {
   const history = useHistory();
-
-  const [achievements, setAchievements] = useState({});
+  const dispatch = useDispatch();
+  const { achievements: storeAchievement } = useSelector(
+    (state) => state.achievementsReducer
+  );
+  const [save, setSave] = useState(false);
+  const [value, setValue] = useState(null);
+  const [achievements, setAchievement] = useState(
+    storeAchievement || {}
+  );
+  const [show, setShow] = useState(true);
 
   const handleAchievements = (e) => {
-    setAchievements({
+    setAchievement({
       ...achievements,
       [e.target.name]: e.target.value,
     });
   };
 
+  useEffect(() => {
+    if (
+      Object.values(storeAchievement).join("") !==
+      Object.values(achievements).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeAchievement, achievements]);
+
   const handleSubmit = () => {
-    addAchivements(achievements);
+    if (Object.values(achievements).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
   };
 
   return (
     <Modal
-      show={true}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -44,6 +68,7 @@ const Achievements = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -130,23 +155,12 @@ const Achievements = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(achievements).length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    achievements: state.achievementsReducer.achievements,
-  };
-};
 
-const mapDispatchToProps = {
-  addAchivements,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Achievements);
+export default Achievements;
