@@ -21,6 +21,7 @@ import ProjectsInfo from "./components/projects/ProjectsInfo";
 import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
+
   return (
     <div>
       <Navbar bg="myRed" variant="dark" sticky="top">
