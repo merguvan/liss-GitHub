@@ -18,10 +18,9 @@ import CapacityInfo from "./components/capacity/CapacityInfo";
 import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
-import LoginPage from "./pages/Login/LoginPage"
+import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
-
   const [user, setUser] = useState(true);
 
   // console.log(
@@ -60,7 +59,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     user: state.userLoginDetailsReducer,
   };
