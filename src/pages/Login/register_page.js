@@ -1,6 +1,6 @@
 import React from "react";
-import logo from './logo.png';
-
+import logo from "./logo.png";
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
 
 export class Register extends React.Component {
@@ -11,6 +11,8 @@ export class Register extends React.Component {
       errors: {}, // Contains login field errors
       formSubmitted: false, // Indicates submit status of login form
       loading: false, // Indicates in progress state of login form
+      checked: false,
+      radioValue: 1,
     };
   }
 
@@ -69,15 +71,24 @@ export class Register extends React.Component {
   };
 
   render() {
+    const radios = [
+      { name: "Admin", value: "1" },
+      { name: "Institutional", value: "2" },
+      { name: "Individual", value: "3" },
+    ];
     const { errors, formSubmitted } = this.state;
     return (
-      <form className="login_base-container" ref={this.props.containerRef} onSubmit={this.login}>
-        <div className="login_logo">
+      <form
+        className="login_base-container"
+        ref={this.props.containerRef}
+        onSubmit={this.login}
+      >
+        {/* <div className="login_logo">
           <img src={logo} alt="Logo" />
 
-        </div>
+        </div> */}
         {/* <hr /> */}
-
+        {/* 
         <div className="login_radio_buttons">
           <input
             id="individual"
@@ -102,29 +113,70 @@ export class Register extends React.Component {
             type="radio"
           ></input>
           <label for="login_radio_button">Admin</label>
-        </div>
-        
-        {/* <hr /> */}
+        </div> */}
         <div className="login_header">Register</div>
+        <ButtonGroup>
+          {radios.map((radio, idx) => (
+            <ToggleButton
+            className="radioBtn"
+              key={idx}
+              id={`radio-${idx}`}
+              type="radio"
+              
+              name="radio"
+              value={radio.value}
+              checked={this.state.radioValue === radio.value}
+              onChange={(e) => this.setState({radioValue: e.currentTarget.value})}
+            >
+              {radio.name}
+            </ToggleButton>
+          ))}
+        </ButtonGroup>
+        {/* <hr /> */}
+        
 
         <div className="login_content">
           <div className="login_form">
-
-            <div className="login_form-group" >
-              <label htmlFor="username">Name - Surname</label>
-              <input type="text" name="username" required placeholder="name and surname" />
+            <div className="login_form-group">
+              {/* <label htmlFor="username">Name - Surname</label> */}
+              <input
+                type="text"
+                name="username"
+                required
+                placeholder="name and surname"
+              />
             </div>
 
-            <div className="login_form-group" validationState={ formSubmitted ? (errors.email ? 'error' : 'success') : null }>
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" placeholder="email" onChange={this.handleInputChange} />
-              <span style={{color:'red'}}>{errors.email}</span>
+            <div
+              className="login_form-group"
+              validationState={
+                formSubmitted ? (errors.email ? "error" : "success") : null
+              }
+            >
+              {/* <label htmlFor="email">Email</label> */}
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                onChange={this.handleInputChange}
+              />
+              <span style={{ color: "red" }}>{errors.email}</span>
             </div>
 
-            <div className="login_form-group" validationState={ formSubmitted ? (errors.password ? 'error' : 'success') : null }>
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
-              <span style={{color:'red'}}>{errors.password}</span>
+            <div
+              className="login_form-group"
+              validationState={
+                formSubmitted ? (errors.password ? "error" : "success") : null
+              }
+            >
+              {/* <label htmlFor="password">Password</label> */}
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={this.handleInputChange}
+              />
+              <span style={{ color: "red" }}>{errors.password}</span>
             </div>
           </div>
         </div>
@@ -134,7 +186,6 @@ export class Register extends React.Component {
             Register
           </button>
         </div>
-
       </form>
     );
   }

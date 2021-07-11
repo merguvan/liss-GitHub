@@ -81,22 +81,22 @@ login = (e) => {
 
     return (
       <form className="login_base-container" ref={this.props.containerRef} onSubmit={this.login}>
-        <div className="login_image">
+        {/* <div className="login_image">
           <img alt="loginImg" src={loginImg} />
-        </div>
+        </div> */}
         <div className="login_header"> Login </div>
 
         <div className="login_content">
           <div className="login_form">
             <div className="login_form-group" validationState={ formSubmitted ? (errors.email ? 'error' : 'success') : null }>
-              <label htmlFor="email">Email</label>
+              {/* <label htmlFor="email">Email</label> */}
               <input type="text" name="email" placeholder="email" onChange={this.handleInputChange}/>
           
               <span style={{color:'red'}}>{errors.email}</span>
             </div>
 
             <div className="login_form-group" validationState={ formSubmitted ? (errors.password ? 'error' : 'success') : null }>
-              <label htmlFor="password">Password</label>
+              {/* <label htmlFor="password">Password</label> */}
               <input type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
               <span style={{color:'red'}}>{errors.password}</span>
            
