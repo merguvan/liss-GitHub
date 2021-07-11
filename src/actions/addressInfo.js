@@ -17,9 +17,10 @@ const {
 } = JSON.parse(localStorage.getItem("user"))
   ? JSON.parse(localStorage.getItem("user"))
   : {
-      token: "token",
+
+      token: "asdasdad",
       userInfo: {
-        _id: 12345,
+        _id: "dasdadsa",
       },
     };
 
@@ -48,7 +49,7 @@ export const addAddressInfo = (data) => async (dispatch) => {
     });
   }
 };
-export const updateAddressInfo = (data) => async (dispatch) => {
+export const updateAddressInfo = (data) => async (dispatch, getState) => {
   try {
     dispatch({
       type: UPDATE_ADDRESS_INFO_PENDING,

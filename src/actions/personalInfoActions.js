@@ -17,9 +17,10 @@ const {
 } = JSON.parse(localStorage.getItem("user"))
   ? JSON.parse(localStorage.getItem("user"))
   : {
-      token: "token",
+
+      token: "asdasdad",
       userInfo: {
-        _id: 12345,
+        _id: "dasdadsa",
       },
     };
 
