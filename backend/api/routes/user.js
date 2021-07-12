@@ -1,5 +1,5 @@
 const {
-  addUser,
+  registerUser,
   authorizeUser,
   getSingleUser,
   deleteSingleUSer,
@@ -30,7 +30,7 @@ const {
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
-router.route("/signup").post(addUser);
+router.route("/signup").post(registerUser);
 
 router.route("/login").post(authorizeUser);
 

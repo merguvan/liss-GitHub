@@ -1,11 +1,18 @@
-const bcrypt = require("bcrypt");
 const userSchema = require("../../models/user/user");
 const generateToken = require("../../utils/generateToken");
-module.exports.addUser = async (req, res, next) => {
-  if (req.body.gdprConsent) {
+module.exports.registerUser = async (req, res, next) => {
+  const {
+    gdprConsent,
+    personEmail,
+    personName,
+    personSurname,
+    password,
+  } = req.body;
+  if (gdprConsent) {
+    console.log("hata");
     try {
       const user = await userSchema.findOne({
-        personEmail: req.body.personEmail,
+        personEmail,
       });
 
       if (user) {
@@ -13,25 +20,31 @@ module.exports.addUser = async (req, res, next) => {
         const error = new Error("This email already in use");
         next(error);
       } else {
-        bcrypt.hash(req.body.password, 10, async function (err, hash) {
-          if (err) return res.staus(404).json(err);
-
-          try {
-            const newUser = await new userSchema({
-              ...req.body,
-              password: hash,
-            });
-            await newUser.save();
+        try {
+          const user = await userSchema.create({
+            personEmail,
+            personName,
+            personSurname,
+            password,
+          });
+          if (user) {
             return res.status(200).json({
               message: "User has been registered",
-              data: newUser,
+              user: {
+                _id: user._id,
+                name: user.personName,
+                surname: user.personSurname,
+                email: user.personEmail,
+                token: generateToken(user._id),
+              },
             });
-          } catch (error) {
-            res.status(404);
-            const systemError = new Error("USer ccouldn't be registered");
-            next(systemError);
           }
-        });
+        } catch (error) {
+          console.log(error);
+          res.status(404);
+          const systemError = new Error("USer ccouldn't be registered");
+          next(systemError);
+        }
       }
     } catch (error) {
       res.status(404);
