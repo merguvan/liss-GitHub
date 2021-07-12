@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
   personName: {
     type: String,
@@ -10,8 +10,8 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please, type your surName"],
   },
   gdprConsent: {
-    type:Boolean,
-    default:false
+    type: Boolean,
+    default: false,
   },
   personEmail: {
     type: String,
@@ -19,10 +19,13 @@ const userSchema = new mongoose.Schema({
     unique: true,
     match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
   },
-  password:{
-    type:String,
-    required:true
-  }
+  password: {
+    type: String,
+    required: true,
+  },
 });
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 module.exports = mongoose.model("user", userSchema);
