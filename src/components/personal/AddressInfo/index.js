@@ -7,6 +7,7 @@ import {
   Form,
   Row,
   Modal,
+  Alert,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
@@ -19,7 +20,8 @@ function PersonAddressInfo() {
   const { addressInfo: storeAddressInfo } = useSelector(
     (state) => state.personalInfoReducer
   );
-
+  const [context, setContext] = useState("");
+  const [validation, setValidation] = useState(false);
   const [save, setSave] = useState(false);
   const [show, setShow] = useState(true);
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
@@ -49,12 +51,25 @@ function PersonAddressInfo() {
   };
 
   const handleClick = () => {
+    console.log("deneme");
     dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
     setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
   };
-
+  const handleFileUpload = (e) => {
+    const fileSize = e.target.files[0].size / 1024 > 500;
+    console.log(fileSize);
+    if (fileSize) {
+      setAddressInfo({
+        ...addressInfo,
+        [e.target.name]: e.target.files[0],
+      });
+    } else {
+      setValidation(true);
+      setContext("Please, upload smaller file");
+    }
+  };
   return (
     <Modal
       show={show}
@@ -76,7 +91,7 @@ function PersonAddressInfo() {
           }}
         />
       </Modal.Header>
-
+      {validation && <Alert variant="danger">{context}</Alert>}
       <Container onClick={handleOptionsOn} className="container">
         <Form>
           <Form.Group>
@@ -425,12 +440,7 @@ function PersonAddressInfo() {
                   name="personCvDoc"
                   type="file"
                   files={addressInfo["personCvDoc"]}
-                  onChange={(e) => {
-                    setAddressInfo({
-                      ...addressInfo,
-                      [e.target.name]: e.target.files[0],
-                    });
-                  }}
+                  onChange={handleFileUpload}
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Please upload your CV in pdf format."
@@ -507,6 +517,7 @@ function PersonAddressInfo() {
           </Form.Group>
         </Form>
       </Container>
+
       <Modal.Footer>
         <Row className="button-container">
           <Link to="/personalInfo/1">
