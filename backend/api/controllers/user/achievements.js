@@ -3,7 +3,7 @@ const AchievementsSchema = require("../../models/user/achievements");
 module.exports.getAchievementsInfo = async (req, res, next) => {
   try {
     const achievementsInfo = await AchievementsSchema.find({
-      user: req.params.id,
+      user: req.user._id,
     });
 
     return res.status(200).json({
@@ -17,7 +17,6 @@ module.exports.getAchievementsInfo = async (req, res, next) => {
 };
 
 module.exports.addAchievementsInfo = async (req, res, next) => {
-  console.log("hata 1");
   try {
     const achievements = await AchievementsSchema(req.body);
 
@@ -34,12 +33,8 @@ module.exports.addAchievementsInfo = async (req, res, next) => {
   }
 };
 module.exports.updateAchievementsInfo = async (req, res, next) => {
-  console.log(req.params.id);
   try {
-    await AchievementsSchema.findOneAndUpdate(
-      { user: req.params.id },
-      req.body
-    );
+    await AchievementsSchema.findOneAndUpdate({ user: req.user._id }, req.body);
     console.log("hata");
     return res.status(200).json({
       message: "Achivements has been updated",
