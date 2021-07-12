@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Container,
@@ -14,12 +14,16 @@ import { Link, useHistory } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
 
 const References = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { addReference: storeAddReference } = useSelector(
     (state) => state.referenceReducer
   );
 
-  const history = useHistory();
+  const [save, setSave] = useState(false);
+  const [value, setValue] = useState(null);
+  const [show, setShow] = useState(true);
+
   const [addReference, setAddReference] = useState(storeAddReference || {});
   const handleAddReference = (e) => {
     setAddReference({
@@ -28,8 +32,27 @@ const References = () => {
     });
   };
 
+  // const handleSubmit = () => {
+  //   dispatch(addReferenceAction(addReference));
+  // };
+
+  useEffect(() => {
+    if (
+      Object.values(storeAddReference).join("") !==
+      Object.values(addReference).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeAddReference, addReference]);
+
   const handleSubmit = () => {
-    dispatch(addReferenceAction(addReference));
+    if (Object.values(addReference).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
   };
 
   return (
@@ -48,6 +71,7 @@ const References = () => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -164,10 +188,8 @@ const References = () => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(addReference).length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+
         </Link>
       </Modal.Footer>
     </Modal>
