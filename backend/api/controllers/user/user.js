@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const userSchema = require("../../models/user/user");
-
+const generateToken = require("../../utils/generateToken");
 module.exports.addUser = async (req, res, next) => {
   if (req.body.gdprConsent) {
     try {
@@ -52,25 +51,16 @@ module.exports.authorizeUser = async (req, res, next) => {
     const user = await userSchema.find({ personEmail: personEmail });
 
     if (user[0] && (await user[0].matchPassword(password))) {
-      const token = jwt.sign(
-        {
-          personEmail: user[0].personEmail,
-          userId: user[0]._id,
-        },
-        process.env.JWT_KEY || "secret",
-        {
-          expiresIn: "30hr",
-        }
-      );
       return res.status(200).json({
         _id: user[0]._id,
         name: user[0].personName,
         surname: user[0].personSurname,
         email: user[0].personEmail,
-        token,
+        token: generateToken(user[0]._id),
       });
     }
   } catch (error) {
+    console.log(error);
     res.status(404);
     const systemError = new Error("Either password or email is wrong");
     next(systemError);
