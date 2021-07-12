@@ -35,25 +35,25 @@ router.route("/signup").post(addUser);
 router.route("/login").post(authorizeUser);
 
 router
-  .route("/personalinfo/:id")
+  .route("/personalinfo")
   .get(checkAuth, getUserPersonalInfo)
   .post(checkAuth, addUserPersonalInfo)
   .patch(checkAuth, updateUserPersonalInfo);
 
 router
-  .route("/addressinfo/:id")
+  .route("/addressinfo")
   .get(checkAuth, getAddressInfo)
   .post(checkAuth, addAddressInfo)
   .patch(checkAuth, updateAddressInfo);
 
 router
-  .route("/achievements/:id")
+  .route("/achievements")
   .get(checkAuth, getAchievementsInfo)
   .post(checkAuth, addAchievementsInfo)
   .patch(checkAuth, updateAchievementsInfo);
 
 router
-  .route("/academics/:id")
+  .route("/academics")
   .get(checkAuth, getAcademicsInfo)
   .post(checkAuth, addAcademicsInfo)
   .patch(checkAuth, updateAcademicsInfo);
