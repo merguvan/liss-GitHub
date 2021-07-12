@@ -45,45 +45,29 @@ module.exports.addUser = async (req, res, next) => {
     next(systemError);
   }
 };
+
 module.exports.authorizeUser = async (req, res, next) => {
   const { personEmail, password } = req.body;
   try {
     const user = await userSchema.find({ personEmail: personEmail });
 
-    if (user.length < 1) {
-      res.status(404);
-      const systemError = new Error("Either password or email is wrong");
-      next(systemError);
-    } else {
-      bcrypt.compare(password, user[0].password, (err, respond) => {
-        if (err) {
-          res.status(404);
-          const systemError = new Error("Either password or email is wrong");
-          next(systemError);
+    if (user[0] && (await user[0].matchPassword(password))) {
+      const token = jwt.sign(
+        {
+          personEmail: user[0].personEmail,
+          userId: user[0]._id,
+        },
+        process.env.JWT_KEY || "secret",
+        {
+          expiresIn: "30hr",
         }
-        if (respond) {
-          const token = jwt.sign(
-            {
-              personEmail: user[0].personEmail,
-              userId: user[0]._id,
-            },
-            process.env.JWT_KEY || "secret",
-            {
-              expiresIn: "30hr",
-            }
-          );
-          return res.status(200).json({
-            data: {
-              message: "Authorized user",
-              userInfo: user[0],
-              token,
-            },
-          });
-        } else {
-          res.status(404);
-          const systemError = new Error("Either password or email is wrong");
-          next(systemError);
-        }
+      );
+      return res.status(200).json({
+        _id: user[0]._id,
+        name: user[0].personName,
+        surname: user[0].personSurname,
+        email: user[0].personEmail,
+        token,
       });
     }
   } catch (error) {
