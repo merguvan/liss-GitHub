@@ -8,6 +8,7 @@ import {
   Row,
   Modal,
   Alert,
+  Accordion,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
@@ -260,6 +261,25 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 />
+                <Accordion defaultActiveKey="0">
+                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
+        Add
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="0">
+      <Form.Control
+                  id="personCitizenship"
+                  name="personCitizenship"
+                  type="text"
+                  value={addressInfo["personCitizenship"]}
+                  onChange={handlePersonAddressInfo}
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Please enter your citizenship."
+                  placeholder=""
+                  aria-describedby="basic-addon3"
+                />
+    </Accordion.Collapse>
+    </Accordion>
               </Col>
 
               <Col xs={12} md={6} lg={6}>
@@ -276,6 +296,26 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 />
+                        <Accordion defaultActiveKey="0">
+                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
+        Add
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="0">
+      <Form.Control
+                 id="personWorkPermit"
+                 name="personWorkPermit"
+                 type="text"
+                 value={addressInfo["personWorkPermit"]}
+                 onChange={handlePersonAddressInfo}
+                 data-toggle="tooltip"
+                 data-placement="top"
+                 title="Please enter the country you can work in."
+                 placeholder=""
+                 aria-describedby="basic-addon3"
+                 
+                />
+    </Accordion.Collapse>
+    </Accordion>
               </Col>
             </Form.Row>
           </Form.Group>
