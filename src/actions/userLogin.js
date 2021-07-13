@@ -11,9 +11,19 @@ export const login = (data) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_PENDING,
     });
-    const { data: res } = await axios.post("http://localhost:5000/user/login", {
-      ...data,
-    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data: res } = await axios.post(
+      "http://localhost:5000/user/login",
+      {
+        ...data,
+      },
+      config
+    );
 
     dispatch({
       type: USER_LOGIN_FULFILLED,
