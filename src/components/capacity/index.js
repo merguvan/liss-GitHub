@@ -72,7 +72,7 @@ const Capacity = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={4}>
-                  <Form.Label>From</Form.Label>
+                  <Form.Label class="font-weight-bold">From</Form.Label>
                   <Form.Control
                     id="personAvailableFrom"
                     name="personAvailableFrom"
@@ -129,8 +129,9 @@ const Capacity = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Course Name</Form.Label>
+                  <Form.Label class="font-weight-bold">Course Name</Form.Label>
                   <FormControl
+                    class="form-control form-control-sm"
                     id="personCourseName"
                     name="personCourseName"
                     type="text"
@@ -150,10 +151,7 @@ const Capacity = (props) => {
               <Form.Row>
                 <Col xs={12} md={6}>
                   <label htmlFor="basic-url">Language</label>
-                  <SelectLanguage 
-                    name="lang1"
-                    displayLanguageList={lang1}
-                  />
+                  <SelectLanguage name="lang1" displayLanguageList={lang1} />
                 </Col>
 
                 <Col xs={12} md={6}>
@@ -168,7 +166,7 @@ const Capacity = (props) => {
                       data-toggle="tooltip"
                       data-placement="top"
                       title="How many years of experience do you have in teaching this subject?"
-                      placeholder=""                      
+                      placeholder=""
                       aria-describedby="basic-addon3"
                     />
                   </InputGroup>
@@ -190,7 +188,7 @@ const Capacity = (props) => {
                     onChange={handleCapacityDetails}
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="At which level have you supervised theses?"                    
+                    title="At which level have you supervised theses?"
                     as="select"
                   >
                     <option value="select">Select</option>
@@ -201,10 +199,7 @@ const Capacity = (props) => {
                 </Col>
                 <Col xs={12} md={6}>
                   <label htmlFor="basic-url">Language</label>
-                  <SelectLanguage 
-                    name="lang2"
-                    displayLanguageList={lang2} 
-                  />
+                  <SelectLanguage name="lang2" displayLanguageList={lang2} />
                 </Col>
               </Form.Row>
             </Form.Group>
