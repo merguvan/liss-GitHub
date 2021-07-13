@@ -72,7 +72,7 @@ const Capacity = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={4}>
-                  <Form.Label>From</Form.Label>
+                  <Form.Label class="font-weight-bold">From</Form.Label>
                   <Form.Control
                     id="personAvailableFrom"
                     name="personAvailableFrom"
@@ -129,8 +129,9 @@ const Capacity = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Course Name</Form.Label>
+                  <Form.Label class="font-weight-bold">Course Name</Form.Label>
                   <FormControl
+                    class="form-control form-control-sm"
                     id="personCourseName"
                     name="personCourseName"
                     type="text"
