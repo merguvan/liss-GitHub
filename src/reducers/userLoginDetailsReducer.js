@@ -1,33 +1,28 @@
 import {
-  GET_USER_LOGIN_DETAILS_FULFILLED,
-  GET_USER_LOGIN_DETAILS_REJECTED,
-  GET_USER_LOGIN_DETAILS_PENDING,
+  USER_LOGIN_FULFILLED,
+  USER_LOGIN_REJECTED,
+  USER_LOGIN_PENDING,
   USER_LOGOUT,
 } from "../actionTypes/userLoginDetails";
 
-const initialState = {
-  userLoginDetails: {},
-  user: false,
-  loading: false,
-  error: "",
-};
+const initialState = {};
 
 export function userLoginDetailsReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_USER_LOGIN_DETAILS_FULFILLED:
+    case USER_LOGIN_FULFILLED:
       return {
         ...state,
         userLoginDetails: action.payload,
         user: true,
         loading: false,
       };
-    case GET_USER_LOGIN_DETAILS_REJECTED:
+    case USER_LOGIN_REJECTED:
       return {
         ...state,
         error: action.payload,
         loading: false,
       };
-    case GET_USER_LOGIN_DETAILS_PENDING:
+    case USER_LOGIN_PENDING:
       return {
         ...state,
         loading: true,

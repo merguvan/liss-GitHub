@@ -11,7 +11,7 @@ import { affiliationsReducer } from "./affiliationsReducer";
 import { achievementsReducer } from "./achievementsReducer";
 import { projectsReducer } from "./projectsReducer";
 import { remarksReducer } from "./remarksReducer";
-import {userLoginDetailsReducer} from './userLoginDetailsReducer'
+import { userLoginDetailsReducer } from "./userLoginDetailsReducer";
 const reducer = combineReducers({
   personalInfoReducer,
   academicWorksDetailsReducer,
@@ -24,6 +24,6 @@ const reducer = combineReducers({
   achievementsReducer,
   projectsReducer,
   remarksReducer,
-  userLoginDetailsReducer
+  userLogin: userLoginDetailsReducer,
 });
 export default reducer;

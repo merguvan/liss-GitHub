@@ -1,27 +1,28 @@
 import axios from "axios";
 import {
-  GET_USER_LOGIN_DETAILS_FULFILLED,
-  GET_USER_LOGIN_DETAILS_REJECTED,
-  GET_USER_LOGIN_DETAILS_PENDING,
+  USER_LOGIN_FULFILLED,
+  USER_LOGIN_PENDING,
+  USER_LOGIN_REJECTED,
+  USER_LOGOUT,
 } from "../actionTypes/userLoginDetails";
 
-export const userLoginDetails = (data) => async (dispatch) => {
+export const login = (data) => async (dispatch) => {
   try {
     dispatch({
-      type: GET_USER_LOGIN_DETAILS_PENDING,
+      type: USER_LOGIN_PENDING,
     });
     const { data: res } = await axios.post("http://localhost:5000/user/login", {
       ...data,
     });
 
     dispatch({
-      type: GET_USER_LOGIN_DETAILS_FULFILLED,
+      type: USER_LOGIN_FULFILLED,
       payload: res.data,
     });
-    localStorage.setItem("user", JSON.stringify(res.data));
+    localStorage.setItem("userInfo", JSON.stringify(res.data));
   } catch (error) {
     dispatch({
-      type: GET_USER_LOGIN_DETAILS_REJECTED,
+      type: USER_LOGIN_REJECTED,
       payload: error,
     });
   }
