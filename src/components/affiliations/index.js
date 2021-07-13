@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Container,
@@ -8,13 +8,27 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
+import CountrySelect from "react-bootstrap-country-select";
+import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
+import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-const Affiliations = (props) => {
-  const history = useHistory();
+import { connect, useSelector } from "react-redux";
 
-  const [affiliations, setAffiliations] = useState({});
+const Affiliations = (props) => { 
+  const history = useHistory();
+  const { affiliations: storeAffiliations } = useSelector(
+    (state) => state.affiliationsReducer
+  );
+  const [save, setSave] = useState(false);
+  const [ongoing, setOngoing] = useState(false);
+  // const [value, setValue] = useState(null);
+  const [affiliations, setAffiliations] = useState(
+    storeAffiliations || {}
+  );
+
+  // const [affiliations, setAffiliations] = useState({});
+  const [show, setShow] = useState(true);
 
   const handleAffiliations = (e) => {
     setAffiliations({
@@ -22,12 +36,28 @@ const Affiliations = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = () => {};
-  console.log(affiliations);
+  
+  useEffect(() => {
+    if (
+      Object.values(storeAffiliations).join("") !==
+      Object.values(affiliations).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeAffiliations, affiliations]);
+  const handleSubmit = () => {
+    if (Object.values(affiliations).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
+  };
   return (
     <Modal
-      {...props}
+      // {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -42,6 +72,7 @@ const Affiliations = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -100,8 +131,28 @@ const Affiliations = (props) => {
                     data-placement="top"
                     title=""
                     placeholder=""
+                    disabled={ongoing}
                     aria-describedby="basic-addon3"
                   />
+                  <Form.Check
+                      id="personWorkOngoing"
+                      name="personWorkOngoing"
+                      type="checkbox"
+                      value={affiliations["personWorkOngoing"]}
+                      onClick={() => {
+                        setOngoing(!ongoing);
+                        setAffiliations({
+                          ...affiliations,
+                          personWorkTo: "",
+                        });
+                      }}
+                      onChange={handleAffiliations}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Still working there?"
+                      placeholder=""
+                      label="ongoing"
+                    />
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -152,18 +203,21 @@ const Affiliations = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Country</Form.Label>
 
-                  <FormControl
+                  
+                    <CountrySelect
                     id="personAffiliationCountry"
                     name="personAffiliationCountry"
-                    type=""
+                    className="country"
                     value={affiliations["personAffiliationCountry"]}
                     onChange={handleAffiliations}
+                  
+                    noMatchesText
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="In which country is the institution you are affiliated located?"
                     placeholder=""
                     aria-describedby="basic-addon3"
-                  />
+                    title="In which country is the institution you are affiliated located?"
+                  /> 
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -172,24 +226,11 @@ const Affiliations = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(affiliations).length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    affiliations: state.affiliationsReducer.affiliations,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);
+export default  Affiliations;
