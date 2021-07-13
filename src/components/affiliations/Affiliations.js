@@ -24,9 +24,7 @@ function Affiliations(props) {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    state,
-  };
+  return {};
 };
 const mapDispatchToProps = {};
 export default connect(mapStateToProps, mapDispatchToProps)(Affiliations);

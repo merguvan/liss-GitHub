@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Container,
@@ -9,14 +9,27 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
+import CountrySelect from "react-bootstrap-country-select";
+import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
+import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Education = (props) => {
   const history = useHistory();
+  const { education: storeEducation } = useSelector(
+    (state) => state.educationReducer
+  );
+  const [save, setSave] = useState(false);
+  const [ongoing, setOngoing] = useState(false);
+  // const [value, setValue] = useState(null);
+  const [education, setEducation] = useState(
+    storeEducation || {}
+  );
 
-  const [education, setEducation] = useState({});
+  // const [education, setEducation] = useState({});
+  const [show, setShow] = useState(true);
 
   const handleEducation = (e) => {
     setEducation({
@@ -25,11 +38,27 @@ const Education = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(education);
+  useEffect(() => {
+    if (
+      Object.values(storeEducation).join("") !==
+      Object.values(education).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeEducation, education]);
+  const handleSubmit = () => {
+    if (Object.values(education).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
+  };
   return (
     <Modal
-      {...props}
+      // {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -43,12 +72,12 @@ const Education = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
       </Modal.Header>
-
-      <Modal.Body className="show-grid">
+        <Modal.Body className="show-grid">
         <Container>
           <Form>
             <Form.Group>
@@ -85,8 +114,28 @@ const Education = (props) => {
                     data-placement="top"
                     title="Educational period continued until ..."
                     placeholder=""
+                    disabled={ongoing}
                     aria-describedby="basic-addon3"
                   />
+                  <Form.Check
+                      id="personWorkOngoing"
+                      name="personWorkOngoing"
+                      type="checkbox"
+                      value={education["personWorkOngoing"]}
+                      onClick={() => {
+                        setOngoing(!ongoing);
+                        setEducation({
+                          ...education,
+                          personWorkTo: "",
+                        });
+                      }}
+                      onChange={handleEducation}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Still working there?"
+                      placeholder=""
+                      label="ongoing"
+                    />
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -198,7 +247,7 @@ const Education = (props) => {
 
                 <Col xs={12} md={6}>
                   <Form.Label>Country</Form.Label>
-                  <FormControl
+                  <CountrySelect
                     id="personEduInstitutionCountry"
                     name="personEduInstitutionCountry"
                     type="text"
@@ -320,25 +369,13 @@ const Education = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(education).length > 0 ? "save" : "close"}{" "}
-          </Button>
-        </Link>
+      <Link to="/">
+        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+      </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    education: state.educationReducer.education,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Education);
+export default Education;
