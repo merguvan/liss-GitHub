@@ -2,6 +2,7 @@ import {
   GET_USER_LOGIN_DETAILS_FULFILLED,
   GET_USER_LOGIN_DETAILS_REJECTED,
   GET_USER_LOGIN_DETAILS_PENDING,
+  USER_LOGOUT,
 } from "../actionTypes/userLoginDetails";
 
 const initialState = {
@@ -31,6 +32,8 @@ export function userLoginDetailsReducer(state = initialState, action) {
         ...state,
         loading: true,
       };
+    case USER_LOGOUT:
+      return {};
     default:
       return state;
   }
