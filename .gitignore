@@ -12,6 +12,9 @@
 # production
 /build
 
+# new reacta app
+/react-gh-pages
+
 # misc
 .DS_Store
 .env.local
