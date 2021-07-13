@@ -262,24 +262,24 @@ function PersonAddressInfo() {
                   aria-describedby="basic-addon3"
                 />
                 <Accordion defaultActiveKey="0">
-                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-        Add
-      </Accordion.Toggle>
-      <Accordion.Collapse eventKey="0">
-      <Form.Control
-                  id="personCitizenship"
-                  name="personCitizenship"
-                  type="text"
-                  value={addressInfo["personCitizenship"]}
-                  onChange={handlePersonAddressInfo}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Please enter your citizenship."
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                />
-    </Accordion.Collapse>
-    </Accordion>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Add
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Form.Control
+                      id="personCitizenship"
+                      name="personCitizenship"
+                      type="text"
+                      value={addressInfo["personCitizenship"]}
+                      onChange={handlePersonAddressInfo}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please enter your citizenship."
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    />
+                  </Accordion.Collapse>
+                </Accordion>
               </Col>
 
               <Col xs={12} md={6} lg={6}>
@@ -296,26 +296,25 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 />
-                        <Accordion defaultActiveKey="0">
-                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-        Add
-      </Accordion.Toggle>
-      <Accordion.Collapse eventKey="0">
-      <Form.Control
-                 id="personWorkPermit"
-                 name="personWorkPermit"
-                 type="text"
-                 value={addressInfo["personWorkPermit"]}
-                 onChange={handlePersonAddressInfo}
-                 data-toggle="tooltip"
-                 data-placement="top"
-                 title="Please enter the country you can work in."
-                 placeholder=""
-                 aria-describedby="basic-addon3"
-                 
-                />
-    </Accordion.Collapse>
-    </Accordion>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Add
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Form.Control
+                      id="personWorkPermit"
+                      name="personWorkPermit"
+                      type="text"
+                      value={addressInfo["personWorkPermit"]}
+                      onChange={handlePersonAddressInfo}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please enter the country you can work in."
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    />
+                  </Accordion.Collapse>
+                </Accordion>
               </Col>
             </Form.Row>
           </Form.Group>
@@ -404,6 +403,29 @@ function PersonAddressInfo() {
                   <option value="person">Person</option>
                   <option value="work">Work</option>
                 </Form.Control>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Add
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Form.Control
+                      id="personEmailType"
+                      name="personEmailType"
+                      as="select"
+                      value={addressInfo["personEmailType"]}
+                      onChange={handlePersonAddressInfo}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please select your email type."
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    >
+                      <option value="select">Select</option>
+                      <option value="person">Person</option>
+                      <option value="work">Work</option>
+                    </Form.Control>
+                  </Accordion.Collapse>
+                </Accordion>
               </Col>
 
               <Col xs={12} md={6} lg={6}>
@@ -420,6 +442,26 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 />
+
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Add
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Form.Control
+                      id="personEmail"
+                      name="personEmail"
+                      type="text"
+                      value={addressInfo["personEmail"]}
+                      onChange={handlePersonAddressInfo}
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Please type your email."
+                      placeholder=""
+                      aria-describedby="basic-addon3"
+                    ></Form.Control>
+                  </Accordion.Collapse>
+                </Accordion>
               </Col>
             </Form.Row>
           </Form.Group>
