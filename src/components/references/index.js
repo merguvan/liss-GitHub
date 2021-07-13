@@ -189,7 +189,6 @@ const References = () => {
       <Modal.Footer>
         <Link to="/">
           <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-
         </Link>
       </Modal.Footer>
     </Modal>

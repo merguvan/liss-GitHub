@@ -13,26 +13,27 @@ import { connect } from "react-redux";
 const Projects = (props) => {
   const history = useHistory();
 
-  // const errorCheck = [[ad, kural], [ad, kural]]
-
   const [projects, setProjects] = useState({});
-
+  const [show, setShow] = useState(true);
   const handleProjects = (e) => {
     setProjects({
       ...projects,
       [e.target.name]: e.target.value,
-      // if (errorCheck.find() == ) {
-
-      // }
     });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (Object.values(projects).length > 0) {
+      console.log("data sent");
+    } else {
+      console.log("fill all the values");
+    }
+  };
   const handleChange = () => {};
-  console.log(projects);
+
   return (
     <Modal
-      {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered

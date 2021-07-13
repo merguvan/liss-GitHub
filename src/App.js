@@ -45,7 +45,7 @@ function App(props) {
         <Route path="/projects/:id" component={ProjectsInfo} />
         <Route path="/capacity/:id" component={CapacityInfo} />
         <Route path="/references/:id" component={ReferencesInfo} />
-        <Route path="/remarks/:id" component={RemarksInfo} />
+        <Route path="/remarks/:id/" component={RemarksInfo} />
         <Route path="/login_register" component={LoginPage} />
       </Switch>
     </div>

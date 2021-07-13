@@ -291,7 +291,9 @@ const Education = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">Title of the Degree (including field)</label>
+                  <label htmlFor="basic-url">
+                    Title of the Degree (including field)
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       id="personEduInstitutionDegreeTitle"

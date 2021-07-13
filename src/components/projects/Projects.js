@@ -16,8 +16,10 @@ function Projects(props) {
           </span>
         </h5>
       </Card.Header>
-      <Collapse in={true}>
-        <div className="person-summary-container"></div>
+      <Collapse in={false}>
+        <div className="person-summary-container">
+          <h1>Projects</h1>
+        </div>
       </Collapse>
     </Card>
   );
