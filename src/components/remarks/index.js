@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
+import CountrySelect from "react-bootstrap-country-select";
+import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
+import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
+
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 const Remarks = (props) => {
   const history = useHistory();
+  const { remarks: storeRemarks } = useSelector(
+    (state) => state.remarksReducer
+  );
+  const [save, setSave] = useState(false);
+  const [remarks, setRemarks] = useState(
+    storeRemarks || {}
+  );
 
-  const [remarks, setRemarks] = useState({});
+
+//const [remarks, setRemarks] = useState({});
+  const [show, setShow] = useState(true);
 
   const handleRemarks = (e) => {
     setRemarks({
@@ -15,11 +28,28 @@ const Remarks = (props) => {
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(remarks);
+  useEffect(() => {
+    if (
+      Object.values(storeRemarks).join("") !==
+      Object.values(remarks).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeRemarks, remarks]);
+
+  const handleSubmit = () => {
+    if (Object.values(remarks).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
+  };
   return (
     <Modal
-      {...props}
+      // {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -34,6 +64,7 @@ const Remarks = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -58,25 +89,12 @@ const Remarks = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(remarks).length > 0 ? "save" : "close"}{" "}
-          </Button>
-        </Link>
+      <Link to="/">
+        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+      </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    remarks: state.remarksReducer.remarks,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Remarks);
+export default Remarks;
