@@ -1,10 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { userLoginDetails } from "../actions/userLogin";
+import { login } from "../actions/userLogin";
 
 const Login = (props) => {
-  const { userLoginDetails } = props;
+  const { login } = props;
   const [data, setData] = useState({});
 
   const handleChange = (e) => {
@@ -16,7 +15,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    userLoginDetails(data);
+    login(data);
   };
 
   return (
@@ -43,7 +42,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  userLoginDetails,
+  login,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

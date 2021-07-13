@@ -4,8 +4,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import reducer from "../reducers";
 
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const initialState = {
+  userLogin: userInfoFromStorage,
+};
 const store = createStore(
   reducer,
+  initialState,
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 export default store;
