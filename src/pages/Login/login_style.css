@@ -176,11 +176,18 @@
 }
 
 .login .text {
-    font-size: 21px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+    width:100px;
+    float: right;
     color: #fff;
     margin-right: 3em;
     margin-left: 3em;
+    text-align: center;
+}
+
+.login .text span {
+  color:#65acdb
 }
 
 .login .left {

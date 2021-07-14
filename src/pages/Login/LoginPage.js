@@ -34,7 +34,7 @@ class LoginPage extends React.Component {
 
   render() {
     const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" : "Login";
+    const current = isLogginActive ? <div><span>You don't have an account yet?</span><br/><br/><h5>Register</h5></div> : <div><span>You already have an account?</span><br/><br/><h5>Login</h5></div>;
     const currentActive = isLogginActive ? "login" : "register";
     return (
       <div className="LoginPage">
