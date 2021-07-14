@@ -14,7 +14,7 @@ import Projects from "../components/projects/Projects";
 
 export default function MainPage() {
   return (
-    <div>
+    <div className="mainPage">
       <PersonalInfoSummary />
       <WorkExperience />
       <Education />
