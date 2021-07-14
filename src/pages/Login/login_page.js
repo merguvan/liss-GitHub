@@ -1,5 +1,7 @@
 import React from "react";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from './validator';
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
+
 import {Alert} from 'react-bootstrap'
 
 const loginImg =
@@ -14,7 +16,9 @@ export class Login extends React.Component {
         formData: {}, // Contains login form data
         errors: {}, // Contains login field errors
         formSubmitted: false, // Indicates submit status of login form
-        loading: false // Indicates in progress state of login form
+        loading: false, // Indicates in progress state of login form
+        checked: false,
+        radioValue: 1,
     }
 }
 
@@ -76,7 +80,11 @@ login = (e) => {
 
 
   render() {
-
+    const radios = [
+      { name: "Admin", value: "1" },
+      { name: "Institutional", value: "2" },
+      { name: "Individual", value: "3" },
+    ];
     const { errors, formSubmitted } = this.state;
 
     return (
@@ -85,7 +93,23 @@ login = (e) => {
           <img alt="loginImg" src={loginImg} />
         </div> */}
         <div className="login_header"> Login </div>
-
+        <ButtonGroup>
+          {radios.map((radio, idx) => (
+            <ToggleButton
+            className="radioBtn"
+              key={idx}
+              id={`radio-${idx}`}
+              type="radio"
+              
+              name="radio"
+              value={radio.value}
+              checked={this.state.radioValue === radio.value}
+              onChange={(e) => this.setState({radioValue: e.currentTarget.value})}
+            >
+              {radio.name}
+            </ToggleButton>
+          ))}
+        </ButtonGroup>
         <div className="login_content">
           <div className="login_form">
             <div className="login_form-group" validationState={ formSubmitted ? (errors.email ? 'error' : 'success') : null }>

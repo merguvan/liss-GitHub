@@ -22,7 +22,7 @@ import LoginPage from "./pages/Login/LoginPage";
 
 function App(props) {
   return (
-    <div>
+    <div className="app">
       <Navbar bg="myRed" variant="dark" sticky="top">
         <Navbar.Brand>
           <img src={liss} alt="logo" width="220" />

@@ -263,6 +263,10 @@
 }
 
 .LoginPage{
+  opacity: 0.6;
+  height:fit-content;
   background-image: url('https://cdn.wallpapersafari.com/95/25/Ae7kpY.jpg');
-
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
 }

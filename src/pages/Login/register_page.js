@@ -72,7 +72,7 @@ export class Register extends React.Component {
 
   render() {
     const radios = [
-      { name: "Admin", value: "1" },
+      // { name: "Admin", value: "1" },
       { name: "Institutional", value: "2" },
       { name: "Individual", value: "3" },
     ];
