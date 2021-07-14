@@ -88,7 +88,7 @@ const Capacity = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label>To</Form.Label>
+                  <Form.Label class="font-weight-bold">To</Form.Label>
                   <Form.Control
                     id="personAvailableTo"
                     name="personAvailableTo"
@@ -104,7 +104,7 @@ const Capacity = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label>Level</Form.Label>
+                  <Form.Label class="font-weight-bold">Level</Form.Label>
                   <Form.Control
                     id="personInstitutionType1"
                     name="personInstitutionType1"
@@ -150,12 +150,12 @@ const Capacity = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <label htmlFor="basic-url">Language</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
                   <SelectLanguage name="lang1" displayLanguageList={lang1} />
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <label htmlFor="basic-url">Experience</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Experience</label>
                   <InputGroup className="mb-3">
                     <FormControl
                       id="personCourseExperience"
@@ -176,11 +176,11 @@ const Capacity = (props) => {
 
             <Form.Group>
               <br />
-              <h6>Supervision</h6>
+              <h6 class="font-weight-bold"><b>SUPERVISION</b></h6>
               <hr />
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Level</Form.Label>
+                  <Form.Label class="font-weight-bold">Level</Form.Label>
                   <Form.Control
                     id="personCourseLevel"
                     name="personCourseLevel"
@@ -198,7 +198,7 @@ const Capacity = (props) => {
                   </Form.Control>
                 </Col>
                 <Col xs={12} md={6}>
-                  <label htmlFor="basic-url">Language</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
                   <SelectLanguage name="lang2" displayLanguageList={lang2} />
                 </Col>
               </Form.Row>
