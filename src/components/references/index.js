@@ -64,7 +64,7 @@ const References = () => {
     >
       <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2>References</h2>
+          <h2 class="font-weight-bold">References</h2>
           <p className="modal-description">
             Please upload your reference letters here.
           </p>
@@ -82,7 +82,7 @@ const References = () => {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={4}>
-                <Form.Label>Title</Form.Label>
+                <Form.Label class="font-weight-bold">Title</Form.Label>
                 <Form.Control
                   as="select"
                   name="personTitle"
@@ -100,7 +100,7 @@ const References = () => {
               </Col>
 
               <Col xs={12} md={4}>
-                <Form.Label>Full Name</Form.Label>
+                <Form.Label class="font-weight-bold">Full Name</Form.Label>
                 <FormControl
                   name="personRefereeName"
                   onChange={handleAddReference}
@@ -110,7 +110,7 @@ const References = () => {
               </Col>
 
               <Col xs={12} md={4}>
-                <Form.Label>Position</Form.Label>
+                <Form.Label class="font-weight-bold">Position</Form.Label>
                 <FormControl
                   name="personRefereePosition"
                   onChange={handleAddReference}
@@ -124,7 +124,7 @@ const References = () => {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={12}>
-                <label htmlFor="basic-url">Institution</label>
+                <label htmlFor="basic-url" class="font-weight-bold">Institution</label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personRefereeInstitution"
@@ -140,7 +140,7 @@ const References = () => {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={4}>
-                <Form.Label>Email</Form.Label>
+                <Form.Label class="font-weight-bold">Email</Form.Label>
                 <FormControl
                   name="personRefereeEmail"
                   onChange={handleAddReference}
@@ -150,7 +150,7 @@ const References = () => {
               </Col>
 
               <Col xs={12} md={4}>
-                <Form.Label>Phone Number</Form.Label>
+                <Form.Label class="font-weight-bold">Phone Number</Form.Label>
                 <FormControl
                   name="personRefereePhoneNumber"
                   onChange={handleAddReference}
@@ -160,7 +160,7 @@ const References = () => {
               </Col>
 
               <Col xs={12} md={4}>
-                <Form.Label>Date Signed</Form.Label>
+                <Form.Label class="font-weight-bold">Date Signed</Form.Label>
                 <Form.Control
                   type="date"
                   name="personRefDateSigned"
@@ -173,7 +173,7 @@ const References = () => {
 
           <Form.Row>
             <Form.Group>
-              <Form.Label>Reference Letter</Form.Label>
+              <Form.Label class="font-weight-bold">Reference Letter</Form.Label>
               <Form.Control
                 type="file"
                 name="personReferenceLetter"
