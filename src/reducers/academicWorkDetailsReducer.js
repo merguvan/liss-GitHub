@@ -12,7 +12,7 @@ export function academicWorksDetailsReducer (state = initialState,action){
         case ADD_ACADEMIC_WORK_DETAILS:
             
             return {
-                ...state,academicWork:{...state.academicWork,...action.payload}}
+                ...state,academicWork:{...state.academicWork,newData:action.payload}}
 
     default:
         return state
