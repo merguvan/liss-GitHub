@@ -15,12 +15,16 @@ import SelectLanguage from "../../../commonModules/language/SelectLanguage";
 function AcademicWorkDetails(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const {academicWork: storeAcademicWorkDetails }=useSelector((state)=>state.academicWorkDetailsReducer || {} ) ////
+  const { academicWork: storeAcademicWorkDetails } = useSelector(
+    (state) => state.academicWorksDetailsReducer
+  ); ////
 
-  const [save, setSave]=useState(false)
+  const [save, setSave] = useState(false);
   const [displayLanguageList, setDisplayLanguageList] = useState(true);
-  const [academicWork, setAcademicWork] = useState(storeAcademicWorkDetails|| {});
-  const [show, setShow] = useState(true)
+  const [academicWork, setAcademicWork] = useState(
+    storeAcademicWorkDetails || {}
+  );
+  const [show, setShow] = useState(true);
 
   const showLanguageList = (e) => {
     if (e.target.name === "personCourseLanguage") {
@@ -34,25 +38,25 @@ function AcademicWorkDetails(props) {
       ...academicWork,
       [e.target.name]: e.target.value,
     });
-    console.log(academicWork)
+    console.log(academicWork);
   };
 
-  useEffect(()=>{
-    if(
-      Object.values(storeAcademicWorkDetails).join("")!==
+  useEffect(() => {
+    if (
+      Object.values(storeAcademicWorkDetails).join("") !==
       Object.values(academicWork).join("")
-    ){
-      setSave(true)
-    }else {
-      setSave(false)
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
     }
-  },[storeAcademicWorkDetails, academicWork])
+  }, [storeAcademicWorkDetails, academicWork]);
 
   const handleSubmit = (e) => {
-    if (Object.values(academicWork).join('').length > 0){
-      console.log("data sent")
+    if (Object.values(academicWork).join("").length > 0) {
+      console.log("data sent");
     } else {
-      console.log("fill all the values")
+      console.log("fill all the values");
     }
     // e.preventDefault();
 
@@ -194,14 +198,13 @@ function AcademicWorkDetails(props) {
                 />
               </Form.Row>
             </Form.Group>
-
           </Form>
         </Container>
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
           <Button type="submit" onClick={handleSubmit}>
-          {save ? "save" : "close"}
+            {save ? "save" : "close"}
           </Button>
         </Link>
       </Modal.Footer>
