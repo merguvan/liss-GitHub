@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Modal,
@@ -7,14 +7,20 @@ import {
   Col,
   Form,
 } from "react-bootstrap";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
 import SelectLanguage from "../../../commonModules/language/SelectLanguage";
+
 function AcademicWorkDetails(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const {academicWork: storeAcademicWorkDetails }=useSelector((state)=>state.academicWorkDetailsReducer || {} ) ////
+
+  const [save, setSave]=useState(false)
   const [displayLanguageList, setDisplayLanguageList] = useState(true);
-  const [academicWork, setAcademicWork] = useState(props.academicWork || {});
+  const [academicWork, setAcademicWork] = useState(storeAcademicWorkDetails|| {});
+  const [show, setShow] = useState(true)
 
   const showLanguageList = (e) => {
     if (e.target.name === "personCourseLanguage") {
@@ -28,13 +34,33 @@ function AcademicWorkDetails(props) {
       ...academicWork,
       [e.target.name]: e.target.value,
     });
+    console.log(academicWork)
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    props.addAcademicWorkDetails(academicWork);
-    history.push("/");
+  useEffect(()=>{
+    if(
+      Object.values(storeAcademicWorkDetails).join("")!==
+      Object.values(academicWork).join("")
+    ){
+      setSave(true)
+    }else {
+      setSave(false)
+    }
+  },[storeAcademicWorkDetails, academicWork])
+
+  const handleSubmit = (e) => {
+    if (Object.values(academicWork).join('').length > 0){
+      console.log("data sent")
+    } else {
+      console.log("fill all the values")
+    }
+    // e.preventDefault();
+
+    // props.addAcademicWorkDetails(academicWork);
+    // history.push("/");
   };
+
+  // const handleChange = () => {}
 
   return (
     <Modal
@@ -53,6 +79,7 @@ function AcademicWorkDetails(props) {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -174,7 +201,7 @@ function AcademicWorkDetails(props) {
       <Modal.Footer>
         <Link to="/">
           <Button type="submit" onClick={handleSubmit}>
-            Close
+          {save ? "save" : "close"}
           </Button>
         </Link>
       </Modal.Footer>
@@ -182,14 +209,15 @@ function AcademicWorkDetails(props) {
   );
 }
 
-const mapStateToPros = (state) => {
-  return { academicWork: state.academicWorksDetailsReducer.academicWork };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addAcademicWorkDetails: (details) =>
-      dispatch(addAcademicWorkDetails(details)),
-  };
-};
+// const mapStateToPros = (state) => {
+//   return { academicWork: state.academicWorksDetailsReducer.academicWork };
+// };
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addAcademicWorkDetails: (details) =>
+//       dispatch(addAcademicWorkDetails(details)),
+//   };
+// };
 
-export default connect(mapStateToPros, mapDispatchToProps)(AcademicWorkDetails);
+// export default connect(mapStateToPros, mapDispatchToProps)(AcademicWorkDetails);
+export default AcademicWorkDetails;
