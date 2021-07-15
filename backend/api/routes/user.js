@@ -30,6 +30,7 @@ const {
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
+// router.get('/')
 router.route("/signup").post(registerUser);
 
 router.route("/login").post(authorizeUser);
