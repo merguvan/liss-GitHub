@@ -48,6 +48,7 @@ const Workexperience = (props) => {
       setSave(false);
     }
   }, [storeWorkExperience, workExperience]);
+  
   const handleSubmit = () => {
     if (Object.values(workExperience).join("").length > 0) {
       console.log("calisti");
