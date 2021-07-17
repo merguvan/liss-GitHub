@@ -80,7 +80,7 @@ const Achievements = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>
+                  <Form.Label class="font-weight-bold">
                     Name of the Achievement / Award / Token
                   </Form.Label>
                   <FormControl
@@ -101,7 +101,7 @@ const Achievements = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Country</Form.Label>
+                  <Form.Label class="font-weight-bold">Country</Form.Label>
                   <FormControl
                     id="personAchievementCountry"
                     name="personAchievementCountry"
@@ -116,7 +116,7 @@ const Achievements = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label>Granted by</Form.Label>
+                  <Form.Label class="font-weight-bold">Granted by</Form.Label>
                   <FormControl
                     id="personAchievementGrantedBy"
                     name="personAchievementGrantedBy"

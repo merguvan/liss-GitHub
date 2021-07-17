@@ -42,7 +42,7 @@ const Projects = (props) => {
     >
       <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2 class="font-weight-bold">Projects</h2>
+          <h2>Projects</h2>
           <p className="modal-description">
             Please enter details about the projects you have been involved in so
             far.
