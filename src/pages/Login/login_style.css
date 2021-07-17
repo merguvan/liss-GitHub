@@ -295,3 +295,10 @@
   background-size: cover;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%,rgba(255, 255, 255, 0.3) 100%), url('https://cdn.wallpapersafari.com/95/25/Ae7kpY.jpg');
 }
+.gdpr {
+  margin-top:20px
+}
+.gdpr span {
+  padding-left:10px ;
+  color:#fff
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo.png";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
+// import CookieConsent from "react-cookie-consent";
 
 export class Register extends React.Component {
   constructor(props) {
@@ -118,22 +118,22 @@ export class Register extends React.Component {
         <ButtonGroup>
           {radios.map((radio, idx) => (
             <ToggleButton
-            className="radioBtn"
+              className="radioBtn"
               key={idx}
               id={`radio-${idx}`}
               type="radio"
-              
               name="radio"
               value={radio.value}
               checked={this.state.radioValue === radio.value}
-              onChange={(e) => this.setState({radioValue: e.currentTarget.value})}
+              onChange={(e) =>
+                this.setState({ radioValue: e.currentTarget.value })
+              }
             >
               {radio.name}
             </ToggleButton>
           ))}
         </ButtonGroup>
         {/* <hr /> */}
-        
 
         <div className="login_content">
           <div className="login_form">
@@ -146,7 +146,7 @@ export class Register extends React.Component {
                 required
                 placeholder="name"
               />
-               <input
+              <input
                 className="register_surname"
                 type="text"
                 name="username2"
@@ -193,6 +193,13 @@ export class Register extends React.Component {
           <button type="submit" className="login_btn">
             Register
           </button>
+        </div>
+        <div className="gdpr">
+        <label class="container">
+          <input type="checkbox"/>
+          <span class="checkmark">To read <a href="#">Terms&conditions</a>..</span>
+        </label>
+        
         </div>
       </form>
     );
