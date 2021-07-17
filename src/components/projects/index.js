@@ -42,7 +42,7 @@ const Projects = (props) => {
     >
       <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2>Projects</h2>
+          <h2 class="font-weight-bold">Projects</h2>
           <p className="modal-description">
             Please enter details about the projects you have been involved in so
             far.
@@ -61,7 +61,7 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Project Name</Form.Label>
+                  <Form.Label class="font-weight-bold">Project Name</Form.Label>
                   <Form.Control
                     id="personProjectName"
                     name="personProjectName"
@@ -81,7 +81,7 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Number</Form.Label>
+                  <Form.Label class="font-weight-bold">Number</Form.Label>
                   <Form.Control
                     id="personProjectNumber"
                     name="personProjectNumber"
@@ -97,7 +97,7 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label>Acronym</Form.Label>
+                  <Form.Label class="font-weight-bold">Acronym</Form.Label>
                   <Form.Control
                     id="personProjectAcronym"
                     name="personProjectAcronym"
@@ -117,7 +117,7 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Grant Provider</Form.Label>
+                  <Form.Label class="font-weight-bold">Grant Provider</Form.Label>
                   <Form.Control
                     id="personProjectGrantProvider"
                     name="personProjectGrantProvider"
@@ -141,7 +141,7 @@ const Projects = (props) => {
                     controlId="exampleForm.ControlSelect1"
                     className="deneme"
                   >
-                    <Form.Label>Currency</Form.Label>
+                    <Form.Label class="font-weight-bold">Currency</Form.Label>
                     <Form.Control
                       id="personGrantCurrency"
                       name="personGrantCurrency"
@@ -166,7 +166,7 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label>*If others (please specify)</Form.Label>
+                  <Form.Label class="font-weight-bold">*If others (please specify)</Form.Label>
                   <Form.Control
                     id="personProjectsOtherCurrency"
                     name="personProjectsOtherCurrency"
@@ -186,7 +186,7 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={4}>
-                  <Form.Label>Total Amount</Form.Label>
+                  <Form.Label class="font-weight-bold">Total Amount</Form.Label>
                   <Form.Control
                     id="personProjectGrantAmount"
                     name="personProjectGrantAmount"
@@ -202,7 +202,7 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label>Amount Involed</Form.Label>
+                  <Form.Label class="font-weight-bold">Amount Involed</Form.Label>
                   <Form.Control
                     id="personInstGrantAmount"
                     name="personInstGrantAmount"
@@ -218,7 +218,7 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label>Role</Form.Label>
+                  <Form.Label class="font-weight-bold">Role</Form.Label>
                   <Form.Control
                     id="personProjectRole"
                     name="personProjectRole"
@@ -247,7 +247,7 @@ const Projects = (props) => {
               <Form.Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>From </Form.Label>
+                    <Form.Label class="font-weight-bold">From </Form.Label>
                     <Form.Control
                       id="personProjectFrom"
                       name="personProjectFrom"
@@ -265,7 +265,7 @@ const Projects = (props) => {
 
                 <Col>
                   <Form.Group>
-                    <Form.Label>To</Form.Label>
+                    <Form.Label class="font-weight-bold">To</Form.Label>
                     <Form.Control
                       id="personProjectTo"
                       name="personProjectTo"
@@ -297,7 +297,7 @@ const Projects = (props) => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>URL</Form.Label>
+              <Form.Label class="font-weight-bold">URL</Form.Label>
               <Form.Control
                 id="personProjectWebsite"
                 name="personProjectWebsite"

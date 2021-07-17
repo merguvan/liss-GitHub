@@ -7,7 +7,7 @@ const URI = process.env.URI;
 const { errorHandler, notFound } = require("./api/middlewares/error-handlers");
 app.use(express.json());
 app.use(express.urlencoded());
-
+const userRouter = require("./api/routes/user");
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
@@ -19,9 +19,10 @@ app.use((req, res, next) => {
 });
 app.use(express.static("public"));
 
-app.use("/user", require("./api/routes/user"));
+app.use("/user", userRouter);
 
 app.use(notFound);
+///error status code=>404
 app.use(errorHandler);
 
 const start = async () => {

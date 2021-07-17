@@ -54,7 +54,7 @@ function PersonalInfo() {
   const handlePersonalInfo = (e) => {
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   };
-
+  console.log(personalInfo);
   return (
     <Modal
       show={show}

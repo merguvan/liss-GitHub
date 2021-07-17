@@ -8,8 +8,8 @@ module.exports.registerUser = async (req, res, next) => {
     personSurname,
     password,
   } = req.body;
+
   if (gdprConsent) {
-    console.log("hata");
     try {
       const user = await userSchema.findOne({
         personEmail,
@@ -40,10 +40,9 @@ module.exports.registerUser = async (req, res, next) => {
             });
           }
         } catch (error) {
-          console.log(error);
           res.status(404);
-          const systemError = new Error("USer ccouldn't be registered");
-          next(systemError);
+
+          next(error);
         }
       }
     } catch (error) {
@@ -53,8 +52,8 @@ module.exports.registerUser = async (req, res, next) => {
     }
   } else {
     res.status(404);
-    const systemError = new Error("Please, accept gdprConsent");
-    next(systemError);
+    const error = new Error("Please, accept gdprConsent");
+    next(error);
   }
 };
 

@@ -27,9 +27,16 @@ const {
   addAcademicsInfo,
 } = require("../controllers/user/academics");
 
+const {
+  getUserReferenceInfo,
+  updateUserReferenceInfo,
+  addUserReferenceInfo,
+} = require("../controllers/user/reference");
+
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
+// router.get('/')
 router.route("/signup").post(registerUser);
 
 router.route("/login").post(authorizeUser);
@@ -57,6 +64,11 @@ router
   .get(checkAuth, getAcademicsInfo)
   .post(checkAuth, addAcademicsInfo)
   .patch(checkAuth, updateAcademicsInfo);
+router
+  .route("/reference")
+  .get(checkAuth, getUserReferenceInfo)
+  .post(checkAuth, addUserReferenceInfo)
+  .patch(checkAuth, updateUserReferenceInfo);
 
 router
   .route("/:id")
