@@ -140,7 +140,7 @@ const Education = (props) => {
               </Form.Row>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group >
               <Form.Row>
                 <h6>Institution</h6>
               </Form.Row>
