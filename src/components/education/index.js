@@ -82,7 +82,7 @@ const Education = (props) => {
           <Form>
             <Form.Group>
               <Form.Row>
-                <h6>Dates</h6>
+                <h6 class="font-weight-bold">Dates</h6>
               </Form.Row>
               <hr />
               <Form.Row>
@@ -142,13 +142,13 @@ const Education = (props) => {
 
             <Form.Group >
               <Form.Row>
-                <h6>Institution</h6>
+                <h6 class="font-weight-bold">Institution</h6>
               </Form.Row>
               <hr />
               <Form.Row>
                 <Col xs={12} md={4}>
                   <Form.Group controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Institutional Type-1</Form.Label>
+                    <Form.Label class="font-weight-bold">Institutional Type-1</Form.Label>
                     <Form.Control
                       id="personEduInstitutionType2"
                       name="personEduInstitutionType2"
@@ -169,7 +169,7 @@ const Education = (props) => {
 
                 <Col xs={12} md={4}>
                   <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Institutional Type-2</Form.Label>
+                    <Form.Label class="font-weight-bold">Institutional Type-2</Form.Label>
                     <Form.Control
                       id="personEduInstitutionType1"
                       name="personEduInstitutionType1"
@@ -191,7 +191,7 @@ const Education = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label>Other? (please specify)</Form.Label>
+                  <Form.Label class="font-weight-bold">Other? (please specify)</Form.Label>
                   <FormControl
                     id="personEduInstitutionOther"
                     name="personEduInstitutionOther"
@@ -211,7 +211,7 @@ const Education = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label class="font-weight-bold">Name</Form.Label>
                   <FormControl
                     id="personEduInstitutionName"
                     name="personEduInstitutionName"
@@ -231,7 +231,7 @@ const Education = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>City</Form.Label>
+                  <Form.Label class="font-weight-bold">City</Form.Label>
                   <FormControl
                     id="personEduInstitutionCity"
                     name="personEduInstitutionCity"
@@ -246,7 +246,7 @@ const Education = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label>Country</Form.Label>
+                  <Form.Label class="font-weight-bold">Country</Form.Label>
                   <CountrySelect
                     id="personEduInstitutionCountry"
                     name="personEduInstitutionCountry"
@@ -266,7 +266,7 @@ const Education = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">Website</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Website</label>
                   <InputGroup className="mb-3">
                     <FormControl
                       id="personEduInstitutionWebsite"
@@ -288,12 +288,12 @@ const Education = (props) => {
             <Form.Group>
               <br />
               <Form.Row>
-                <h6>Degree/Academic Title</h6>
+                <h6 class="font-weight-bold">Degree/Academic Title</h6>
               </Form.Row>
               <hr />
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">Program</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Program</label>
                   <InputGroup className="mb-3">
                     <FormControl
                       id="personEduInstitutionProgram"
@@ -312,7 +312,7 @@ const Education = (props) => {
               </Form.Row>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Degree/Title Obtained</Form.Label>
+                  <Form.Label class="font-weight-bold">Degree/Title Obtained</Form.Label>
                   <Form.Control
                     id="personEduInstitutionDegree"
                     name="personEduInstitutionDegree"
@@ -340,7 +340,7 @@ const Education = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">
+                  <label htmlFor="basic-url" class="font-weight-bold">
                     Title of the Degree (including field)
                   </label>
                   <InputGroup className="mb-3">
@@ -362,7 +362,7 @@ const Education = (props) => {
             </Form.Group>
 
             <Form.File id="personEduDiploma" name="personEduDiploma">
-              <Form.File.Label>Upload Diploma</Form.File.Label>
+              <Form.File.Label class="font-weight-bold">Upload Diploma</Form.File.Label>
               <Form.File.Input />
             </Form.File>
           </Form>

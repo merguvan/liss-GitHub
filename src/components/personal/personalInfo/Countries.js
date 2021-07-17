@@ -81,7 +81,7 @@ export default function Countries({
     <Form.Group>
       <Form.Row>
         <Col xs={12} md={6} lg={6}>
-          <Form.Label>Country of Birth</Form.Label>
+          <Form.Label class="font-weight-bold">Country of Birth</Form.Label>
           <Form.Control
             name="personCountryOB"
             value={countryName}
@@ -106,7 +106,7 @@ export default function Countries({
         </Col>
         <Col xs={12} md={6} lg={6}>
           <Form.Group>
-            <Form.Label>City of Birth</Form.Label>
+            <Form.Label class="font-weight-bold">City of Birth</Form.Label>
             <Form.Control
               name="personCityOB"
               disabled={!countryName}

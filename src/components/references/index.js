@@ -64,7 +64,7 @@ const References = () => {
     >
       <Modal.Header>
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2 class="font-weight-bold">References</h2>
+          <h2>References</h2>
           <p className="modal-description">
             Please upload your reference letters here.
           </p>

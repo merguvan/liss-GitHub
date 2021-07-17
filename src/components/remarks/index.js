@@ -73,7 +73,7 @@ const Remarks = (props) => {
       <Modal.Body className="show-grid">
         <Container className="mb-3">
           <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Remarks</Form.Label>
+            <Form.Label class="font-weight-bold">Remarks</Form.Label>
             <Form.Control
               id="personRemarks"
               name="personRemarks"

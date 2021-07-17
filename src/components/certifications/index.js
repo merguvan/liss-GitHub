@@ -81,7 +81,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Awarded by</Form.Label>
+                  <Form.Label class="font-weight-bold">Awarded by</Form.Label>
                   <FormControl
                     id="personCertificationInstitutionName"
                     name="personCertificationInstitutionName"
@@ -101,7 +101,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Country</Form.Label>
+                  <Form.Label class="font-weight-bold">Country</Form.Label>
                   <FormControl
                     id="personCertificationInstitutionCountry"
                     name="personCertificationInstitutionCountry"
@@ -118,7 +118,7 @@ const Certifications = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <Form.Label>City</Form.Label>
+                  <Form.Label class="font-weight-bold">City</Form.Label>
 
                   <FormControl
                     id="personCertificationInstitutionCity"
@@ -138,7 +138,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">Website</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Website</label>
                   <InputGroup className="mb-3">
                     <FormControl
                       id="personCertificationInstitutionWebsite"
@@ -162,7 +162,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Type</Form.Label>
+                  <Form.Label class="font-weight-bold">Type</Form.Label>
                   <Form.Control
                     id="personInstitutionType1"
                     name="personInstitutionType1"
@@ -184,7 +184,7 @@ const Certifications = (props) => {
                   </Form.Control>
                 </Col>
                 <Col xs={12} md={6}>
-                  <Form.Label>Status</Form.Label>
+                  <Form.Label class="font-weight-bold">Status</Form.Label>
                   <Form.Control
                     id="personInstitutionType2"
                     name="personInstitutionType2"
@@ -242,7 +242,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={4}>
-                  <Form.Label>Hours</Form.Label>
+                  <Form.Label class="font-weight-bold">Hours</Form.Label>
                   <FormControl
                     id="personCertificateHours"
                     name="personCertificateHours"
@@ -257,7 +257,7 @@ const Certifications = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={4}>
-                  <Form.Label>Days</Form.Label>
+                  <Form.Label class="font-weight-bold">Days</Form.Label>
                   <FormControl
                     id="personCertificateDays"
                     name="personCertificateDays"
@@ -272,7 +272,7 @@ const Certifications = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={4}>
-                  <Form.Label>Grade (if any)</Form.Label>
+                  <Form.Label class="font-weight-bold">Grade (if any)</Form.Label>
                   <FormControl
                     id="personCertificateGrade"
                     name="personCertificateGrade"
@@ -291,7 +291,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Certificate Number</Form.Label>
+                  <Form.Label class="font-weight-bold">Certificate Number</Form.Label>
 
                   <FormControl
                     id="personCertificateNumber"
@@ -307,7 +307,7 @@ const Certifications = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <Form.Label>Certificate Type</Form.Label>
+                  <Form.Label class="font-weight-bold">Certificate Type</Form.Label>
                   <Form.Control
                     id="personCertificateType"
                     name="personCertificateType"
@@ -336,7 +336,7 @@ const Certifications = (props) => {
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label>Topic (if any)</Form.Label>
+                  <Form.Label class="font-weight-bold">Topic (if any)</Form.Label>
                   <Form.Control
                     id="personCertificateTopic"
                     name="personCertificateTopic"
@@ -355,7 +355,7 @@ const Certifications = (props) => {
 
             <Form.Row>
               <Form.Group>
-                <Form.Label>Certificate</Form.Label>
+                <Form.Label class="font-weight-bold">Certificate</Form.Label>
                 <Form.Control
                   type="file"
                   name="personPhoto"

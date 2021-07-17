@@ -93,7 +93,7 @@ function AcademicWorkDetails(props) {
         <Container>
           <Form>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Full APA7 Citation</Form.Label>
+              <Form.Label class="font-weight-bold">Full APA7 Citation</Form.Label>
               <Form.Control
                 id="personPublicationAPA"
                 name="personPublicationAPA"
@@ -111,7 +111,7 @@ function AcademicWorkDetails(props) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>DOI</Form.Label>
+              <Form.Label class="font-weight-bold">DOI</Form.Label>
               <Form.Control
                 id="personPublicationDOI"
                 name="personPublicationDOI"
@@ -129,7 +129,7 @@ function AcademicWorkDetails(props) {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url">Language</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
                   <SelectLanguage
                     displayLanguageList={displayLanguageList}
                     onClick={showLanguageList}
@@ -141,7 +141,7 @@ function AcademicWorkDetails(props) {
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Row>
                 <Col xs={12} md={6}>
-                  <Form.Label>Type</Form.Label>
+                  <Form.Label class="font-weight-bold">Type</Form.Label>
                   <Form.Control
                     id="personPublicationType"
                     name="personPublicationType"
@@ -165,7 +165,7 @@ function AcademicWorkDetails(props) {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label>Date</Form.Label>
+                  <Form.Label class="font-weight-bold">Date</Form.Label>
                   <Form.Control
                     id="personPublicationDate"
                     name="personPublicationDate"
@@ -184,7 +184,7 @@ function AcademicWorkDetails(props) {
 
             <Form.Group>
               <Form.Row>
-                <Form.Label>URL</Form.Label>
+                <Form.Label class="font-weight-bold">URL</Form.Label>
                 <Form.Control
                   id="personPublicationURL"
                   name="personPublicationURL"

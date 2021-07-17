@@ -88,7 +88,7 @@ const Workexperience = (props) => {
               <Form.Row>
                 <Col xs={12} md={6} lg={6}>
                   <Form.Group>
-                    <Form.Label>Name of the Institution</Form.Label>
+                    <Form.Label class="font-weight-bold">Name of the Institution</Form.Label>
                     <FormControl
                       id="personInstitutionName"
                       name="personInstitutionName"
@@ -104,7 +104,7 @@ const Workexperience = (props) => {
                 </Col>
                 <Col xs={12} md={6} lg={6}>
                   <Form.Group>
-                    <Form.Label>Website of the Institution</Form.Label>
+                    <Form.Label class="font-weight-bold">Website of the Institution</Form.Label>
                     <InputGroup className="mb-3">
                       <FormControl
                         id="personInstitutionWebsite"
@@ -128,7 +128,7 @@ const Workexperience = (props) => {
               <Form.Row>
                 <Col xs={12} md={6} lg={6}>
                   <Form.Group>
-                    <Form.Label>City</Form.Label>
+                    <Form.Label class="font-weight-bold">City</Form.Label>
                     <CountrySelect
                       id=""
                       className="country"
@@ -144,7 +144,7 @@ const Workexperience = (props) => {
                 </Col>
                 <Col xs={12} md={6} lg={6}>
                   <Form.Group>
-                    <Form.Label>Country</Form.Label>
+                    <Form.Label class="font-weight-bold">Country</Form.Label>
                     <CountrySelect
                       className="country"
                       value={value}
@@ -164,7 +164,7 @@ const Workexperience = (props) => {
               <Form.Row>
                 <Col xs={12} md={3} lg={3}>
                   <Form.Group>
-                    <Form.Label>Started on ...</Form.Label>
+                    <Form.Label class="font-weight-bold">Started on ...</Form.Label>
                     <Form.Control
                       id="personWorkFrom"
                       name="personWorkFrom"
@@ -182,7 +182,7 @@ const Workexperience = (props) => {
 
                 <Col xs={12} md={3} lg={3}>
                   <Form.Group>
-                    <Form.Label>Worked until ...</Form.Label>
+                    <Form.Label class="font-weight-bold">Worked until ...</Form.Label>
                     <Form.Control
                       id="personWorkTo"
                       name="personWorkTo"
@@ -220,7 +220,7 @@ const Workexperience = (props) => {
 
                 <Col xs={12} md={3} lg={3}>
                   <Form.Group>
-                    <Form.Label>Institutional type-1</Form.Label>
+                    <Form.Label class="font-weight-bold">Institutional type-1</Form.Label>
                     <Form.Control
                       id="personInstitutionType1"
                       name="personInstitutionType1"
@@ -242,7 +242,7 @@ const Workexperience = (props) => {
 
                 <Col xs={12} md={3} lg={3}>
                   <Form.Group>
-                    <Form.Label>Institutional type-2</Form.Label>
+                    <Form.Label class="font-weight-bold">Institutional type-2</Form.Label>
                     <Form.Control
                       id="personInstitutionType1"
                       name="personInstitutionType1"
@@ -266,7 +266,7 @@ const Workexperience = (props) => {
               <Form.Row>
                 <Col xs={12} md={4} lg={4}>
                   <Form.Group>
-                    <label htmlFor="basic-url">Your Position</label>
+                    <label htmlFor="basic-url" class="font-weight-bold">Your Position</label>
                     <InputGroup className="mb-3">
                       <FormControl
                         id="personInstitutionPosition"
@@ -284,7 +284,7 @@ const Workexperience = (props) => {
 
                 <Col xs={12} md={4} lg={4}>
                   <Form.Group>
-                    <Form.Label>Position type-1</Form.Label>
+                    <Form.Label class="font-weight-bold">Position type-1</Form.Label>
                     <Form.Control
                       name="personInstitutionPositionType1"
                       onChange={handleWorkExperience}
@@ -304,7 +304,7 @@ const Workexperience = (props) => {
                 </Col>
                 <Col xs={12} md={4} lg={4}>
                   <Form.Group>
-                    <Form.Label>Position type-2</Form.Label>
+                    <Form.Label class="font-weight-bold">Position type-2</Form.Label>
                     <Form.Control
                       name="personInstitutionPositionType1"
                       onChange={handleWorkExperience}
