@@ -14,8 +14,9 @@ const userInfoFromStorage = async () => {
     return null;
   }
 };
+
 const initialState = {
-  userLogin: userInfoFromStorage,
+  userLogin: userInfoFromStorage(),
 };
 const store = createStore(
   reducer,

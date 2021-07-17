@@ -13,6 +13,7 @@ import { projectsReducer } from "./projectsReducer";
 import { remarksReducer } from "./remarksReducer";
 import { userLoginDetailsReducer } from "./userLoginDetailsReducer";
 import { userRegistrationDetailsReducer } from "./userRegistrationReducer";
+
 const reducer = combineReducers({
   personalInfoReducer,
   academicWorksDetailsReducer,
@@ -28,4 +29,5 @@ const reducer = combineReducers({
   userLogin: userLoginDetailsReducer,
   userRegistration: userRegistrationDetailsReducer,
 });
+
 export default reducer;
