@@ -15,7 +15,7 @@ import SelectLanguage from "../../../commonModules/language/SelectLanguage";
 function AcademicWorkDetails(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const {academicWork: storeAcademicWorkDetails }=useSelector((state)=>state.academicWorkDetailsReducer || {} ) ////
+  const {academicWork: storeAcademicWorkDetails }=useSelector((state)=>state.academicWorksDetailsReducer) ////
 
   const [save, setSave]=useState(false)
   const [displayLanguageList, setDisplayLanguageList] = useState(true);

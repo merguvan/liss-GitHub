@@ -38,6 +38,10 @@
   height: 100%;
 } */
 
+.register_name{
+  height:100px;
+ }
+
 .login_logo {
  
   max-width:100%;
