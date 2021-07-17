@@ -20,7 +20,7 @@ const Header = () => {
             <Navbar.Brand>
               <img
                 src={logo}
-                height="40px"
+                height="50px"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
