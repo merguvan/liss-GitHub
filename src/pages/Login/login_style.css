@@ -59,6 +59,11 @@
   height: 80px;
 
 }
+
+.register_name{
+ height:100px;
+}
+
 /* 
 .login_form-group label {
   color:white;
