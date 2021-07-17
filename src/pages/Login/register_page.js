@@ -137,7 +137,7 @@ export class Register extends React.Component {
 
         <div className="login_content">
           <div className="login_form">
-            <div className="login_form-group">
+            <div className="login_form-group-name-surname">
               {/* <label htmlFor="username">Name - Surname</label> */}
               <input
                 className="register_name"
