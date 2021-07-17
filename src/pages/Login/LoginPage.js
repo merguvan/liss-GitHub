@@ -1,6 +1,8 @@
 import React from "react";
 import { Login } from "../Login/login_page";
-import { Register } from "../Login/register_page";
+
+import Register from "../Login/register_page";
+
 import "../../App.css";
 import "./login_style.css";
 
@@ -19,7 +21,7 @@ class LoginPage extends React.Component {
 
   changeState() {
     const { isLogginActive } = this.state;
-
+    console.log(isLogginActive);
     if (isLogginActive) {
       this.rightSide.classList.remove("right");
       this.rightSide.classList.add("left");

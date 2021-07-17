@@ -1,9 +1,11 @@
 import React from "react";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
-// import CookieConsent from "react-cookie-consent";
 
-export class Register extends React.Component {
+import { connect } from "react-redux";
+import { signup } from "../../actions/userRegistration";
+class Register extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -60,8 +62,8 @@ export class Register extends React.Component {
     let errors = this.validateLoginForm();
 
     if (errors === true) {
-      alert("You are successfully signed in...");
-      window.location.reload();
+      // alert("You are successfully signed in...");
+      // window.location.reload();
     } else {
       this.setState({
         errors: errors,
@@ -69,7 +71,9 @@ export class Register extends React.Component {
       });
     }
   };
-
+  handleUserRegistration = () => {
+    this.props.signup(this.state.formData);
+  };
   render() {
     const radios = [
       // { name: "Admin", value: "1" },
@@ -144,15 +148,20 @@ export class Register extends React.Component {
                 type="text"
                 name="username"
                 required
-                placeholder="name"
+
+                placeholder="name and surname"
+                onChange={(e) =>
+                  this.setState({
+                    formData: {
+                      ...this.state.formData,
+                      personName: e.target.value.split(" ")[0],
+                      personSurname: e.target.value.split(" ")[1],
+                    },
+                  })
+                }
+
               />
-              <input
-                className="register_surname"
-                type="text"
-                name="username2"
-                required
-                placeholder="surname"
-              />
+
             </div>
 
             <div
@@ -164,7 +173,7 @@ export class Register extends React.Component {
               {/* <label htmlFor="email">Email</label> */}
               <input
                 type="email"
-                name="email"
+                name="personEmail"
                 placeholder="email"
                 onChange={this.handleInputChange}
               />
@@ -190,7 +199,11 @@ export class Register extends React.Component {
         </div>
 
         <div className="login_footer">
-          <button type="submit" className="login_btn">
+          <button
+            type="submit"
+            onClick={this.handleUserRegistration}
+            className="login_btn"
+          >
             Register
           </button>
         </div>
@@ -205,3 +218,9 @@ export class Register extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => ({});
+const mapDispatchToProps = {
+  signup,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
