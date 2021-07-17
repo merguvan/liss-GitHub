@@ -2,8 +2,9 @@ import React from "react";
 import logo from "./logo.png";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
-
-export class Register extends React.Component {
+import { connect } from "react-redux";
+import { signup } from "../../actions/userRegistration";
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,8 +61,8 @@ export class Register extends React.Component {
     let errors = this.validateLoginForm();
 
     if (errors === true) {
-      alert("You are successfully signed in...");
-      window.location.reload();
+      // alert("You are successfully signed in...");
+      // window.location.reload();
     } else {
       this.setState({
         errors: errors,
@@ -69,7 +70,9 @@ export class Register extends React.Component {
       });
     }
   };
-
+  handleUserRegistration = () => {
+    this.props.signup(this.state.formData);
+  };
   render() {
     const radios = [
       // { name: "Admin", value: "1" },
@@ -118,22 +121,22 @@ export class Register extends React.Component {
         <ButtonGroup>
           {radios.map((radio, idx) => (
             <ToggleButton
-            className="radioBtn"
+              className="radioBtn"
               key={idx}
               id={`radio-${idx}`}
               type="radio"
-              
               name="radio"
               value={radio.value}
               checked={this.state.radioValue === radio.value}
-              onChange={(e) => this.setState({radioValue: e.currentTarget.value})}
+              onChange={(e) =>
+                this.setState({ radioValue: e.currentTarget.value })
+              }
             >
               {radio.name}
             </ToggleButton>
           ))}
         </ButtonGroup>
         {/* <hr /> */}
-        
 
         <div className="login_content">
           <div className="login_form">
@@ -144,6 +147,15 @@ export class Register extends React.Component {
                 name="username"
                 required
                 placeholder="name and surname"
+                onChange={(e) =>
+                  this.setState({
+                    formData: {
+                      ...this.state.formData,
+                      personName: e.target.value.split(" ")[0],
+                      personSurname: e.target.value.split(" ")[1],
+                    },
+                  })
+                }
               />
             </div>
 
@@ -156,7 +168,7 @@ export class Register extends React.Component {
               {/* <label htmlFor="email">Email</label> */}
               <input
                 type="email"
-                name="email"
+                name="personEmail"
                 placeholder="email"
                 onChange={this.handleInputChange}
               />
@@ -182,7 +194,11 @@ export class Register extends React.Component {
         </div>
 
         <div className="login_footer">
-          <button type="submit" className="login_btn">
+          <button
+            type="submit"
+            onClick={this.handleUserRegistration}
+            className="login_btn"
+          >
             Register
           </button>
         </div>
@@ -190,3 +206,9 @@ export class Register extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => ({});
+const mapDispatchToProps = {
+  signup,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

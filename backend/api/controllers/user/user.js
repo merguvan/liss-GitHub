@@ -1,6 +1,7 @@
 const userSchema = require("../../models/user/user");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
+  console.log(req.body);
   const {
     gdprConsent,
     personEmail,
@@ -27,6 +28,7 @@ module.exports.registerUser = async (req, res, next) => {
             personSurname,
             password,
           });
+
           if (user) {
             return res.status(200).json({
               message: "User has been registered",
