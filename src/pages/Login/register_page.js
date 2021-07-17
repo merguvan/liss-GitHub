@@ -1,10 +1,11 @@
 import React from "react";
-import logo from "./logo.png";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
+
 import { connect } from "react-redux";
 import { signup } from "../../actions/userRegistration";
 class Register extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -140,12 +141,14 @@ class Register extends React.Component {
 
         <div className="login_content">
           <div className="login_form">
-            <div className="login_form-group">
+            <div className="login_form-group-name-surname">
               {/* <label htmlFor="username">Name - Surname</label> */}
               <input
+                className="register_name"
                 type="text"
                 name="username"
                 required
+
                 placeholder="name and surname"
                 onChange={(e) =>
                   this.setState({
@@ -156,7 +159,9 @@ class Register extends React.Component {
                     },
                   })
                 }
+
               />
+
             </div>
 
             <div
@@ -201,6 +206,13 @@ class Register extends React.Component {
           >
             Register
           </button>
+        </div>
+        <div className="gdpr">
+        <label class="container">
+          <input type="checkbox"/>
+          <span class="checkmark">To read <a href="#">Terms&conditions</a>..</span>
+        </label>
+        
         </div>
       </form>
     );
