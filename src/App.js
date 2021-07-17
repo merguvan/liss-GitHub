@@ -19,12 +19,11 @@ import ReferencesInfo from "./components/references/ReferencesInfo";
 import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
 import LoginPage from "./pages/Login/LoginPage";
-
-
+import Header from "./components/Header/Header";
 function App(props) {
   return (
     <div className="app">
-      <Navbar bg="myRed" variant="dark" sticky="top">
+      {/* <Navbar bg="myRed" variant="dark" sticky="top">
         <Navbar.Brand>
           <img src={liss} alt="logo" width="220" />
         </Navbar.Brand>
@@ -32,7 +31,8 @@ function App(props) {
         <Nav>
           <Nav.Link href="#">Sign out</Nav.Link>
         </Nav>
-      </Navbar>
+      </Navbar> */}
+      <Header />
       <Switch>
         <Route path="/login" exact component={Login} />
         <Route path="/" exact component={MainPage} />

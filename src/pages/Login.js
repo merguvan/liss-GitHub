@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/userLogin";
-
-const Login = (props) => {
-  const { login } = props;
+import { useSelector } from "react-redux";
+const Login = ({ login, location, history }) => {
   const [data, setData] = useState({});
-
+  const userInfo = useSelector((state) => state.userLogin?.userLoginDetails);
+  const redirect = location?.search ? location.search.split("=")[1] : "/";
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
