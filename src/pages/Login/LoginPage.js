@@ -35,6 +35,7 @@ class LoginPage extends React.Component {
   }
 
   render() {
+    const { history, location } = this.props;
     const { isLogginActive } = this.state;
     const current = isLogginActive ? (
       <div>
@@ -57,7 +58,11 @@ class LoginPage extends React.Component {
         <div className="login">
           <div className="container" ref={(ref) => (this.container = ref)}>
             {isLogginActive && (
-              <Login containerRef={(ref) => (this.current = ref)} />
+              <Login
+                containerRef={(ref) => (this.current = ref)}
+                history={history}
+                location={location}
+              />
             )}
             {!isLogginActive && (
               <Register containerRef={(ref) => (this.current = ref)} />
