@@ -25,7 +25,7 @@ import { useState } from "react";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (true) {
+  if (userInfo) {
     return (
       <div className="app">
         <Header />
