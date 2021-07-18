@@ -26,17 +26,22 @@ export const login = (data) => async (dispatch) => {
       },
       config
     );
-    console.log(res);
+
     dispatch({
       type: USER_LOGIN_FULFILLED,
       payload: res,
     });
     localStorage.setItem("userInfo", JSON.stringify(res));
   } catch (error) {
-    console.log(error);
+    const {
+      response: {
+        data: { message },
+      },
+    } = error;
+
     dispatch({
       type: USER_LOGIN_REJECTED,
-      payload: error,
+      payload: message,
     });
   }
 };
