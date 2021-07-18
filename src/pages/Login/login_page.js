@@ -19,7 +19,9 @@ export function Login({ history, location, containerRef }) {
   const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState(1);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const userInfo = useSelector((state) => state.userLogin?.userLogin);
+  const { userLogin: userInfo, error } = useSelector(
+    (state) => state.userLogin
+  );
   const dispatch = useDispatch();
   const redirect = location?.search ? location.search.split("=")[1] : "/";
   useEffect(() => {
@@ -71,6 +73,7 @@ export function Login({ history, location, containerRef }) {
       setErrors(errors);
       setFormSubmitted(true);
     }
+    setFormData({});
   };
 
   return (
@@ -79,9 +82,9 @@ export function Login({ history, location, containerRef }) {
       ref={containerRef}
       onSubmit={handleLogin}
     >
-      {/* <div className="login_image">
-          <img alt="loginImg" src={loginImg} />
-        </div> */}
+      {error?.length > 0 && Object.values(formData)?.length === 0 && (
+        <Alert variant="danger">{error}</Alert>
+      )}
       <div className="login_header"> Login </div>
       <ButtonGroup>
         {radios.map((radio, idx) => (
