@@ -6,7 +6,7 @@ import logo from "../../logo.png";
 import { logout } from "../../actions/userLogin";
 const Header = () => {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userLogin?.userLoginDetails);
+  const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
   const logoutHandler = () => {
     dispatch(logout());

@@ -1,7 +1,6 @@
 const userSchema = require("../../models/user/user");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
-  console.log(req.body);
   const {
     gdprConsent,
     personEmail,
@@ -64,7 +63,7 @@ module.exports.authorizeUser = async (req, res, next) => {
   try {
     const user = await userSchema.find({ personEmail: personEmail });
 
-    if (user[0] && (await user[0].matchPassword(password))) {
+    if (user.length > 0 && (await user[0].matchPassword(password))) {
       return res.status(200).json({
         _id: user[0]._id,
         name: user[0].personName,
@@ -72,6 +71,10 @@ module.exports.authorizeUser = async (req, res, next) => {
         email: user[0].personEmail,
         token: generateToken(user[0]._id),
       });
+    } else {
+      res.status(404);
+      const systemError = new Error("Either password or email is wrong");
+      next(systemError);
     }
   } catch (error) {
     console.log(error);

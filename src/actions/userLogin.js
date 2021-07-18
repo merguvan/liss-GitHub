@@ -7,6 +7,7 @@ import {
 } from "../actionTypes/userLoginDetails";
 
 export const login = (data) => async (dispatch) => {
+  const { email, password } = data;
   try {
     dispatch({
       type: USER_LOGIN_PENDING,
@@ -20,17 +21,19 @@ export const login = (data) => async (dispatch) => {
     const { data: res } = await axios.post(
       "http://localhost:5000/user/login",
       {
-        ...data,
+        personEmail: email,
+        password,
       },
       config
     );
-
+    console.log(res);
     dispatch({
       type: USER_LOGIN_FULFILLED,
       payload: res,
     });
-    localStorage.setItem("userInfo", JSON.stringify(res.data));
+    localStorage.setItem("userInfo", JSON.stringify(res));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: USER_LOGIN_REJECTED,
       payload: error,

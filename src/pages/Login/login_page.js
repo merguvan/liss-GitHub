@@ -1,42 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
-
+import { login } from "../../actions/userLogin";
 import { Alert } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
 const loginImg =
   "https://freepikpsd.com/media/2019/10/user-login-png-transparent-6-Transparent-Images.png";
+const radios = [
+  { name: "Admin", value: "1" },
+  { name: "Institutional", value: "2" },
+  { name: "Individual", value: "3" },
+];
 
-export class Login extends React.Component {
-  constructor(props) {
-    super(props);
+export function Login({ history, location, containerRef }) {
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState(1);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const userInfo = useSelector((state) => state.userLogin?.userLogin);
+  const dispatch = useDispatch();
+  const redirect = location?.search ? location.search.split("=")[1] : "/";
+  useEffect(() => {
+    if (userInfo) {
+      console.log(history);
+      history?.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
 
-    this.state = {
-      formData: {}, // Contains login form data
-      errors: {}, // Contains login field errors
-      formSubmitted: false, // Indicates submit status of login form
-      loading: false, // Indicates in progress state of login form
-      checked: false,
-      radioValue: 1,
-    };
-  }
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    let { formData } = this.state;
-    formData[name] = value;
-
-    this.setState({
-      formData: formData,
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
   };
-
-  validateLoginForm = (e) => {
+  const validateLoginForm = (e) => {
     let errors = {};
-    const { formData } = this.state;
 
     if (isEmpty(formData.email)) {
       errors.email = "Email can't be blank";
@@ -59,100 +59,87 @@ export class Login extends React.Component {
     }
   };
 
-  login = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    let errors = this.validateLoginForm();
+    let errors = validateLoginForm();
 
     if (errors === true) {
-      // alert("You are successfully signed in...");
-      // window.location.reload();
+      console.log(formData);
+      dispatch(login(formData));
     } else {
-      this.setState({
-        errors: errors,
-        formSubmitted: true,
-      });
+      setErrors(errors);
+      setFormSubmitted(true);
     }
   };
 
-  render() {
-    const radios = [
-      { name: "Admin", value: "1" },
-      { name: "Institutional", value: "2" },
-      { name: "Individual", value: "3" },
-    ];
-    const { errors, formSubmitted } = this.state;
-
-    return (
-      <form
-        className="login_base-container"
-        ref={this.props.containerRef}
-        onSubmit={this.login}
-      >
-        {/* <div className="login_image">
+  return (
+    <form
+      className="login_base-container"
+      ref={containerRef}
+      onSubmit={handleLogin}
+    >
+      {/* <div className="login_image">
           <img alt="loginImg" src={loginImg} />
         </div> */}
-        <div className="login_header"> Login </div>
-        <ButtonGroup>
-          {radios.map((radio, idx) => (
-            <ToggleButton
-              className="radioBtn"
-              key={idx}
-              id={`radio-${idx}`}
-              type="radio"
-              name="radio"
-              value={radio.value}
-              checked={this.state.radioValue === radio.value}
-              onChange={(e) =>
-                this.setState({ radioValue: e.currentTarget.value })
-              }
-            >
-              {radio.name}
-            </ToggleButton>
-          ))}
-        </ButtonGroup>
-        <div className="login_content">
-          <div className="login_form">
-            <div
-              className="login_form-group"
-              validationState={
-                formSubmitted ? (errors.email ? "error" : "success") : null
-              }
-            >
-              {/* <label htmlFor="email">Email</label> */}
-              <input
-                type="text"
-                name="email"
-                placeholder="email"
-                onChange={this.handleInputChange}
-              />
+      <div className="login_header"> Login </div>
+      <ButtonGroup>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            className="radioBtn"
+            key={idx}
+            id={`radio-${idx}`}
+            type="radio"
+            name="radio"
+            value={radio.value}
+            checked={radioValue === radio.value}
+            onChange={(e) => setRadioValue(e.target.value)}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+      <div className="login_content">
+        <div className="login_form">
+          <div
+            className="login_form-group"
+            validationState={
+              formSubmitted ? (errors.email ? "error" : "success") : null
+            }
+          >
+            {/* <label htmlFor="email">Email</label> */}
+            <input
+              type="text"
+              name="email"
+              placeholder="email"
+              onChange={handleInputChange}
+            />
 
-              <span style={{ color: "red" }}>{errors.email}</span>
-            </div>
+            <span style={{ color: "red" }}>{errors.email}</span>
+          </div>
 
-            <div
-              className="login_form-group"
-              validationState={
-                formSubmitted ? (errors.password ? "error" : "success") : null
-              }
-            >
-              {/* <label htmlFor="password">Password</label> */}
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                onChange={this.handleInputChange}
-              />
-              <span style={{ color: "red" }}>{errors.password}</span>
-            </div>
+          <div
+            className="login_form-group"
+            validationState={
+              formSubmitted ? (errors.password ? "error" : "success") : null
+            }
+          >
+            {/* <label htmlFor="password">Password</label> */}
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              onChange={handleInputChange}
+            />
+            <span style={{ color: "red" }}>{errors.password}</span>
           </div>
         </div>
-        <div className="login_footer">
-          <button to="/login-register" type="submit" className="login_btn">
-            Login
-          </button>
-        </div>
-      </form>
-    );
-  }
+      </div>
+      <div className="login_footer">
+        <button to="/login-register" type="submit" className="login_btn">
+          Login
+        </button>
+      </div>
+    </form>
+  );
 }

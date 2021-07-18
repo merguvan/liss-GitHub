@@ -20,37 +20,42 @@ import RemarksInfo from "./components/remarks/RemarksInfo";
 import ProjectsInfo from "./components/projects/ProjectsInfo";
 import LoginPage from "./pages/Login/LoginPage";
 import Header from "./components/Header/Header";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 function App(props) {
-  return (
-    <div className="app">
-      {/* <Navbar bg="myRed" variant="dark" sticky="top">
-        <Navbar.Brand>
-          <img src={liss} alt="logo" width="220" />
-        </Navbar.Brand>
+  const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-        <Nav>
-          <Nav.Link href="#">Sign out</Nav.Link>
-        </Nav>
-      </Navbar> */}
-      <Header />
-      <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/" exact component={MainPage} />
-        <Route path="/personalInfo/:id" component={PersonalInfoPage} />
-        <Route path="/workexperience/:id" component={WorkExperienceInfo} />
-        <Route path="/education/:id" component={EducationInfo} />
-        <Route path="/affiliations/:id" component={AffiliationsInfo} />
-        <Route path="/achievements/:id" component={AchievementsInfo} />
-        <Route path="/certifications/:id" component={CertificationsInfo} />
-        <Route path="/academicInfo/:id" component={AcademicInfo} />
-        <Route path="/projects/:id" component={ProjectsInfo} />
-        <Route path="/capacity/:id" component={CapacityInfo} />
-        <Route path="/references/:id" component={ReferencesInfo} />
-        <Route path="/remarks/:id/" component={RemarksInfo} />
-        <Route path="/login_register" component={LoginPage} />
-      </Switch>
-    </div>
-  );
+  if (true) {
+    return (
+      <div className="app">
+        <Header />
+        <Switch>
+          <Route path="/login" exact component={LoginPage} />
+          <Route path="/" exact component={MainPage} />
+          <Route path="/personalInfo/:id" component={PersonalInfoPage} />
+          <Route path="/workexperience/:id" component={WorkExperienceInfo} />
+          <Route path="/education/:id" component={EducationInfo} />
+          <Route path="/affiliations/:id" component={AffiliationsInfo} />
+          <Route path="/achievements/:id" component={AchievementsInfo} />
+          <Route path="/certifications/:id" component={CertificationsInfo} />
+          <Route path="/academicInfo/:id" component={AcademicInfo} />
+          <Route path="/projects/:id" component={ProjectsInfo} />
+          <Route path="/capacity/:id" component={CapacityInfo} />
+          <Route path="/references/:id" component={ReferencesInfo} />
+          <Route path="/remarks/:id/" component={RemarksInfo} />
+        </Switch>
+      </div>
+    );
+  } else {
+    return (
+      <div className="app">
+        <Header />
+        <Switch>
+          <Route path="/" component={LoginPage} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
