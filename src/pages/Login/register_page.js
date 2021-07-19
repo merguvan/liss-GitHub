@@ -1,226 +1,148 @@
-import React from "react";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
+import React, { useState, useEffecct } from "react";
+import { ButtonGroup, ToggleButton, Alert } from "react-bootstrap";
 
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { signup } from "../../actions/userRegistration";
-class Register extends React.Component {
+import { Link } from "react-router-dom";
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      formData: {}, // Contains login form data
-      errors: {}, // Contains login field errors
-      formSubmitted: false, // Indicates submit status of login form
-      loading: false, // Indicates in progress state of login form
-      checked: false,
-      radioValue: 1,
-    };
-  }
+const radios = [
+  // { name: "Admin", value: "1" },
+  { name: "Institutional", value: "2" },
+  { name: "Individual", value: "3" },
+];
 
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    let { formData } = this.state;
-    formData[name] = value;
-
-    this.setState({
-      formData: formData,
+function RegisterPage(props) {
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState(1);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const dispatch = useDispatch();
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
+    console.log(formData);
   };
 
-  validateLoginForm = (e) => {
-    let errors = {};
-    const { formData } = this.state;
-
-    if (isEmpty(formData.email)) {
-      errors.email = "Email can't be blank";
-    } else if (!isEmail(formData.email)) {
-      errors.email = "Please enter a valid email";
-    }
-
-    if (isEmpty(formData.password)) {
-      errors.password = "Password can't be blank";
-    } else if (isContainWhiteSpace(formData.password)) {
-      errors.password = "Password should not contain white spaces";
-    } else if (!isLength(formData.password, { gte: 6, lte: 16, trim: true })) {
-      errors.password = "Password's length must between 6 to 16";
-    }
-
-    if (isEmpty(errors)) {
-      return true;
-    } else {
-      return errors;
-    }
-  };
-
-  login = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-
-    let errors = this.validateLoginForm();
-
-    if (errors === true) {
-      // alert("You are successfully signed in...");
-      // window.location.reload();
+    if (formData?.gdprConsent) {
+      dispatch(signup(formData));
+      setFormData({});
     } else {
-      this.setState({
-        errors: errors,
-        formSubmitted: true,
-      });
+      setError("Please, accept GdprConsent");
+      setFormData({});
     }
   };
-  handleUserRegistration = () => {
-    this.props.signup(this.state.formData);
-  };
-  render() {
-    const radios = [
-      // { name: "Admin", value: "1" },
-      { name: "Institutional", value: "2" },
-      { name: "Individual", value: "3" },
-    ];
-    const { errors, formSubmitted } = this.state;
-    return (
-      <form
-        className="login_base-container"
-        ref={this.props.containerRef}
-        onSubmit={this.login}
-      >
-        {/* <div className="login_logo">
-          <img src={logo} alt="Logo" />
 
-        </div> */}
-        {/* <hr /> */}
-        {/* 
-        <div className="login_radio_buttons">
-          <input
-            id="individual"
-            name="login_radio_button"
-            value="individual_login"
+  return (
+    <form
+      className="login_base-container"
+      ref={props.containerRef}
+      onSubmit={handleRegister}
+    >
+      {error.length > 0 && Object.keys(formData).length === 0 && (
+        <Alert variant="danger">{error}</Alert>
+      )}
+      <div className="login_header">Register</div>
+      <ButtonGroup>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            className="radioBtn"
+            key={idx}
+            id={`radio-${idx}`}
             type="radio"
-          ></input>
-          <label for="login_radio_button">Individual</label>
+            name={radio.name}
+            onChange={(e) => {
+              setFormData({
+                ...formData,
+                userType: e.target.name,
+              });
+            }}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+      {/* <hr /> */}
 
-          <input
-            id="institutional"
-            name="login_radio_button"
-            value="institutional_login"
-            type="radio"
-          ></input>
-          <label for="login_radio_button">Institutional</label>
+      <div className="login_content">
+        <div className="login_form">
+          <div className="login_form-group">
+            {/* <label htmlFor="email">Email</label> */}
+            <input
+              type="text"
+              name="personName"
+              placeholder="name"
+              value={formData?.personName || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="login_form-group">
+            {/* <label htmlFor="email">Email</label> */}
+            <input
+              type="text"
+              name="personSurname"
+              placeholder="surname"
+              value={formData?.personSurname || ""}
+              onChange={handleInputChange}
+            />
+          </div>
 
-          <input
-            id="admin"
-            name="login_radio_button"
-            value="admin_login"
-            type="radio"
-          ></input>
-          <label for="login_radio_button">Admin</label>
-        </div> */}
-        <div className="login_header">Register</div>
-        <ButtonGroup>
-          {radios.map((radio, idx) => (
-            <ToggleButton
-              className="radioBtn"
-              key={idx}
-              id={`radio-${idx}`}
-              type="radio"
-              name="radio"
-              value={radio.value}
-              checked={this.state.radioValue === radio.value}
-              onChange={(e) =>
-                this.setState({ radioValue: e.currentTarget.value })
-              }
-            >
-              {radio.name}
-            </ToggleButton>
-          ))}
-        </ButtonGroup>
-        {/* <hr /> */}
+          <div className="login_form-group">
+            <input
+              type="email"
+              name="personEmail"
+              placeholder="email"
+              value={formData?.personEmail || ""}
+              onChange={handleInputChange}
+            />
+          </div>
 
-        <div className="login_content">
-          <div className="login_form">
-            <div className="login_form-group-name-surname">
-              {/* <label htmlFor="username">Name - Surname</label> */}
-              <input
-                className="register_name"
-                type="text"
-                name="username"
-                required
-
-                placeholder="name and surname"
-                onChange={(e) =>
-                  this.setState({
-                    formData: {
-                      ...this.state.formData,
-                      personName: e.target.value.split(" ")[0],
-                      personSurname: e.target.value.split(" ")[1],
-                    },
-                  })
-                }
-
-              />
-
-            </div>
-
-            <div
-              className="login_form-group"
-              validationState={
-                formSubmitted ? (errors.email ? "error" : "success") : null
-              }
-            >
-              {/* <label htmlFor="email">Email</label> */}
-              <input
-                type="email"
-                name="personEmail"
-                placeholder="email"
-                onChange={this.handleInputChange}
-              />
-              <span style={{ color: "red" }}>{errors.email}</span>
-            </div>
-
-            <div
-              className="login_form-group"
-              validationState={
-                formSubmitted ? (errors.password ? "error" : "success") : null
-              }
-            >
-              {/* <label htmlFor="password">Password</label> */}
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                onChange={this.handleInputChange}
-              />
-              <span style={{ color: "red" }}>{errors.password}</span>
-            </div>
+          <div className="login_form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={formData?.password || ""}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
+      </div>
 
-        <div className="login_footer">
-          <button
-            type="submit"
-            onClick={this.handleUserRegistration}
-            className="login_btn"
-          >
-            Register
-          </button>
-        </div>
-        <div className="gdpr">
+      <div className="login_footer">
+        <button
+          type="submit"
+          // onClick={handleUserRegistration}
+          className="login_btn"
+        >
+          Register
+        </button>
+      </div>
+      <div className="gdpr">
         <label class="container">
-          <input type="checkbox"/>
-          <span class="checkmark">To read <a href="#">Terms&conditions</a>..</span>
+          <input
+            type="checkbox"
+            name="gdprConsent"
+            onChange={(e) => {
+              setFormData({
+                ...formData,
+                [e.target.name]: e.target.checked,
+              });
+            }}
+            value={formData["gdprConsent"]}
+          />
+          <span class="checkmark">
+            <Link to="/gdpr-consent">Terms&conditions</Link>..
+          </span>
         </label>
-        
-        </div>
-      </form>
-    );
-  }
+      </div>
+    </form>
+  );
 }
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = {
-  signup,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default RegisterPage;

@@ -17,7 +17,7 @@ export function userLoginDetailsReducer(state = initialState, action) {
       return {
         ...state,
         userLogin: action.payload,
-        user: true,
+
         loading: false,
       };
     case USER_LOGIN_REJECTED:
