@@ -23,6 +23,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userType: {
+    type: String,
+    required: [
+      true,
+      "Please, enter user type either Institutional or Individual",
+    ],
+  },
+  isAdmin: {
+    default: false,
+    type: Boolean,
+  },
 });
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);

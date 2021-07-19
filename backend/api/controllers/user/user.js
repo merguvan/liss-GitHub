@@ -2,11 +2,13 @@ const userSchema = require("../../models/user/user");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
   const {
+    isAdmin,
     gdprConsent,
     personEmail,
     personName,
     personSurname,
     password,
+    userType,
   } = req.body;
 
   if (gdprConsent) {
@@ -26,6 +28,8 @@ module.exports.registerUser = async (req, res, next) => {
             personName,
             personSurname,
             password,
+            userType,
+            isAdmin,
           });
 
           if (user) {
@@ -37,6 +41,8 @@ module.exports.registerUser = async (req, res, next) => {
                 surname: user.personSurname,
                 email: user.personEmail,
                 token: generateToken(user._id),
+                isAdmin: user.isAdmin,
+                userType: user.userType,
               },
             });
           }
