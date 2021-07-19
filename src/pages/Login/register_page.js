@@ -1,36 +1,50 @@
-import React, { useState, useEffecct } from "react";
+import React, { useState, useEffecct, useEffect } from "react";
 import { ButtonGroup, ToggleButton, Alert } from "react-bootstrap";
 
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/userRegistration";
 import { Link } from "react-router-dom";
 
-const radios = [
-  // { name: "Admin", value: "1" },
-  { name: "Institutional", value: "2" },
-  { name: "Individual", value: "3" },
-];
-
-function RegisterPage(props) {
+function RegisterPage({ containerRef, history, location }) {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [gdprConsent, setGdprConsent] = useState(false);
   const [radioValue, setRadioValue] = useState(1);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [toggleCheckbox, setTogglecheckBox] = useState(false);
   const dispatch = useDispatch();
+  const { userLogin: userInfo, error: storeError } = useSelector(
+    (state) => state.userLogin
+  );
+
+  const redirect = location?.search ? location.search.split("=")[1] : "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      console.log(history);
+      history?.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
   const handleInputChange = (event) => {
+    if (event.target.name === "userType") {
+      console.log(event.target.value);
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value,
+      });
+    }
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
-    console.log(formData);
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (formData?.gdprConsent) {
-      dispatch(signup(formData));
+    if (gdprConsent) {
+      dispatch(signup({ ...formData, gdprConsent }));
       setFormData({});
     } else {
       setError("Please, accept GdprConsent");
@@ -41,7 +55,7 @@ function RegisterPage(props) {
   return (
     <form
       className="login_base-container"
-      ref={props.containerRef}
+      ref={containerRef}
       onSubmit={handleRegister}
     >
       {error.length > 0 && Object.keys(formData).length === 0 && (
@@ -49,23 +63,26 @@ function RegisterPage(props) {
       )}
       <div className="login_header">Register</div>
       <ButtonGroup>
-        {radios.map((radio, idx) => (
-          <ToggleButton
-            className="radioBtn"
-            key={idx}
-            id={`radio-${idx}`}
-            type="radio"
-            name={radio.name}
-            onChange={(e) => {
-              setFormData({
-                ...formData,
-                userType: e.target.name,
-              });
-            }}
-          >
-            {radio.name}
-          </ToggleButton>
-        ))}
+        <ToggleButton
+          className="radioBtn"
+          type="radio"
+          name="userType"
+          onChange={handleInputChange}
+          checked={formData["userType"] === "Institutional" && true}
+          value="Institutional"
+        >
+          Institutional
+        </ToggleButton>
+        <ToggleButton
+          className="radioBtn"
+          type="radio"
+          name="userType"
+          onChange={handleInputChange}
+          checked={formData["userType"] === "Individual" && true}
+          value="Individual"
+        >
+          Individual
+        </ToggleButton>
       </ButtonGroup>
       {/* <hr /> */}
 
@@ -128,13 +145,9 @@ function RegisterPage(props) {
           <input
             type="checkbox"
             name="gdprConsent"
-            onChange={(e) => {
-              setFormData({
-                ...formData,
-                [e.target.name]: e.target.checked,
-              });
+            onClick={(e) => {
+              setGdprConsent(!gdprConsent);
             }}
-            value={formData["gdprConsent"]}
           />
           <span class="checkmark">
             <Link to="/gdpr-consent">Terms&conditions</Link>..

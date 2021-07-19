@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
 
   changeState() {
     const { isLogginActive } = this.state;
-    console.log(isLogginActive);
+
     if (isLogginActive) {
       this.rightSide.classList.remove("right");
       this.rightSide.classList.add("left");
@@ -65,7 +65,11 @@ class LoginPage extends React.Component {
               />
             )}
             {!isLogginActive && (
-              <Register containerRef={(ref) => (this.current = ref)} />
+              <Register
+                containerRef={(ref) => (this.current = ref)}
+                history={history}
+                location={location}
+              />
             )}
           </div>
           <RightSide
