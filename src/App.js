@@ -1,11 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import liss from "./liss.png";
-import { Nav, Navbar } from "react-bootstrap";
 
 import { Route, Switch } from "react-router-dom";
 
-import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import PersonalInfoPage from "./components/personal/PersonalInfoPage";
 import AcademicInfo from "./components/academic/AcademicInfoPage";
@@ -22,10 +19,11 @@ import LoginPage from "./pages/Login/LoginPage";
 import Header from "./components/Header/Header";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import GdprConsent from "./pages/GdprConsent";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (true) {
+  if (userInfo) {
     return (
       <div className="app">
         <Header />
@@ -43,6 +41,7 @@ function App(props) {
           <Route path="/capacity/:id" component={CapacityInfo} />
           <Route path="/references/:id" component={ReferencesInfo} />
           <Route path="/remarks/:id/" component={RemarksInfo} />
+          <Route path="/gdpr-consent" component={GdprConsent} />
         </Switch>
       </div>
     );
@@ -50,6 +49,7 @@ function App(props) {
     return (
       <div className="app">
         <Header />
+        {/* <Route path="/gdpr-consent" exact component={GdprConsent} /> */}
         <Switch>
           <Route path="/" component={LoginPage} />
         </Switch>
