@@ -22,16 +22,22 @@ const {
 } = require("../controllers/user/achievements");
 
 const {
-  getAcademicsInfo,
-  updateAcademicsInfo,
-  addAcademicsInfo,
-} = require("../controllers/user/academics");
+  getAcademicInfo,
+  updateAcademicInfo,
+  addAcademicInfo,
+} = require("../controllers/user/academic");
 
 const {
   getUserReferenceInfo,
   updateUserReferenceInfo,
   addUserReferenceInfo,
 } = require("../controllers/user/reference");
+
+const {
+  getAffiliationsInfo,
+  updateAffiliationsInfo,
+  addAffiliationsInfo,
+} = require("../controllers/user/affiliations");
 
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
@@ -60,10 +66,10 @@ router
   .patch(checkAuth, updateAchievementsInfo);
 
 router
-  .route("/academics")
-  .get(checkAuth, getAcademicsInfo)
-  .post(checkAuth, addAcademicsInfo)
-  .patch(checkAuth, updateAcademicsInfo);
+  .route("/academic")
+  .get(checkAuth, getAcademicInfo)
+  .post(checkAuth, addAcademicInfo)
+  .patch(checkAuth, updateAcademicInfo);
 router
   .route("/reference")
   .get(checkAuth, getUserReferenceInfo)
@@ -74,5 +80,11 @@ router
   .route("/:id")
   .get(checkAuth, getSingleUser)
   .delete(checkAuth, deleteSingleUSer);
+
+router
+  .route("/affiliations")
+  .get(checkAuth, getAffiliationsInfo)
+  .post(checkAuth, addAffiliationsInfo)
+  .patch(checkAuth, updateAffiliationsInfo);
 
 module.exports = router;

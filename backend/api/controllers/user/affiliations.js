@@ -1,14 +1,14 @@
-const Academic = require("../../models/user/academic");
+const Affiliations = require("../../models/user/affiliations");
 
-module.exports.addAcademicInfo = async (req, res, next) => {
+module.exports.addAffiliationsInfo = async (req, res, next) => {
   try {
-    const academic = await Academic(req.body);
+    const affiliations = await Affiliations(req.body);
 
-    await academic.save();
+    await affiliations.save();
 
     return res.status(200).json({
       message: "User has been added",
-      academic,
+      affiliations,
     });
   } catch (error) {
     res.status(404);
@@ -17,9 +17,9 @@ module.exports.addAcademicInfo = async (req, res, next) => {
     next(systemError);
   }
 };
-module.exports.updateAcademicInfo = async (req, res, next) => {
+module.exports.updateAffiliationsInfo = async (req, res, next) => {
   try {
-    await Academic.findOneAndUpdate({ user: req.user._id }, req.body);
+    await Affiliations.findOneAndUpdate({ user: req.user._id }, req.body);
 
     return res.status(200).json({
       message: "it has been updated",
@@ -30,14 +30,14 @@ module.exports.updateAcademicInfo = async (req, res, next) => {
     next(systemError);
   }
 };
-module.exports.getAcademicInfo = async (req, res, next) => {
+module.exports.getAffiliationsInfo = async (req, res, next) => {
   try {
-    const academic = await Academic.find({
+    const affiliations = await Affiliations.find({
       user: req.user._id,
     });
 
     return res.status(200).json({
-      academic,
+      affiliations,
     });
   } catch (error) {
     res.status(404);
