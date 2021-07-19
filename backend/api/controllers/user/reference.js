@@ -34,14 +34,17 @@ module.exports.getUserReferenceInfo = async (req, res, next) => {
   try {
     const userReference = await ReferenceSchema.find({
       user: req.user._id,
+      
     });
 
     return res.status(200).json({
       userReference,
+      
     });
   } catch (error) {
     res.status(404);
     const systemError = new Error("Something went wrong");
     next(systemError);
   }
+  
 };
