@@ -22,7 +22,7 @@ import { useState } from "react";
 import GdprConsent from "./pages/GdprConsent";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
-
+  console.log(userInfo);
   if (true) {
     return (
       <div className="app">
