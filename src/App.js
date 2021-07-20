@@ -23,7 +23,7 @@ import GdprConsent from "./pages/GdprConsent";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   console.log(userInfo);
-  if (true) {
+  if (userInfo && userInfo.isConfirmed) {
     return (
       <div className="app">
         <Header />

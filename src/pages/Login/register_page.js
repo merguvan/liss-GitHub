@@ -10,9 +10,9 @@ function RegisterPage({ containerRef, history, location }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [gdprConsent, setGdprConsent] = useState(false);
-  const [radioValue, setRadioValue] = useState(1);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [toggleCheckbox, setTogglecheckBox] = useState(false);
+  // const [radioValue, setRadioValue] = useState(1);
+  // const [formSubmitted, setFormSubmitted] = useState(false);
+  // const [toggleCheckbox, setTogglecheckBox] = useState(false);
   const dispatch = useDispatch();
   const { userLogin: userInfo, error: storeError } = useSelector(
     (state) => state.userLogin
@@ -45,21 +45,30 @@ function RegisterPage({ containerRef, history, location }) {
     if (gdprConsent) {
       dispatch(signup({ ...formData, gdprConsent }));
       setFormData({});
+      setGdprConsent(false);
     } else {
       setError("Please, accept GdprConsent");
       setFormData({});
     }
   };
 
+  console.log(formData);
+  console.log(Object.keys(formData).length === 0 && storeError?.length > 0);
+  console.log(storeError);
   return (
     <form
       className="login_base-container"
       ref={containerRef}
       onSubmit={handleRegister}
     >
-      {error.length > 0 && Object.keys(formData).length === 0 && (
+      {(error?.length > 0 && Object.keys(formData).length === 0 && (
         <Alert variant="danger">{error}</Alert>
-      )}
+      )) ||
+        (!userInfo?.isConfirmed && Object.keys(formData).length === 0 && (
+          <Alert variant="danger">
+            {userInfo?.message || (storeError?.length > 0 && storeError)}
+          </Alert>
+        ))}
       <div className="login_header">Register</div>
       <ButtonGroup>
         <ToggleButton
@@ -144,6 +153,7 @@ function RegisterPage({ containerRef, history, location }) {
           <input
             type="checkbox"
             name="gdprConsent"
+            checked={gdprConsent}
             onClick={(e) => {
               setGdprConsent(!gdprConsent);
             }}

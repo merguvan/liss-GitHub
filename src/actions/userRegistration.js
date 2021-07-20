@@ -1,5 +1,8 @@
 import axios from "axios";
-import { USER_LOGIN_FULFILLED } from "../actionTypes/userLoginDetails";
+import {
+  USER_LOGIN_FULFILLED,
+  USER_LOGIN_REJECTED,
+} from "../actionTypes/userLoginDetails";
 import {
   USER_REGISTRATION_PENDING,
   USER_REGISTRATION_REJECTED,
@@ -25,14 +28,24 @@ export const signup = (data) => async (dispatch) => {
 
     dispatch({
       type: USER_LOGIN_FULFILLED,
-      payload: res.user,
+      payload: res,
     });
     localStorage.setItem("userInfo", JSON.stringify(res));
   } catch (error) {
-    console.log(error);
+    const {
+      response: {
+        data: { message },
+      },
+    } = error;
+
+    dispatch({
+      type: USER_LOGIN_REJECTED,
+      payload: message,
+    });
+
     dispatch({
       type: USER_REGISTRATION_REJECTED,
-      payload: error,
+      payload: message,
     });
   }
 };
