@@ -22,7 +22,6 @@ function RegisterPage({ containerRef, history, location }) {
 
   useEffect(() => {
     if (userInfo) {
-      console.log(history);
       history?.push(redirect);
     }
   }, [history, userInfo, redirect]);

@@ -36,6 +36,7 @@ module.exports.registerUser = async (req, res, next) => {
             return res.status(200).json({
               message: "User has been registered",
               user: {
+                message: "You need to confirm your mail to login",
                 _id: user._id,
                 name: user.personName,
                 surname: user.personSurname,
