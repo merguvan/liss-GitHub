@@ -2,11 +2,13 @@ const userSchema = require("../../models/user/user");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
   const {
+    isAdmin,
     gdprConsent,
     personEmail,
     personName,
     personSurname,
     password,
+    userType,
   } = req.body;
 
   if (gdprConsent) {
@@ -26,18 +28,21 @@ module.exports.registerUser = async (req, res, next) => {
             personName,
             personSurname,
             password,
+            userType,
+            isAdmin,
           });
 
           if (user) {
             return res.status(200).json({
-              message: "User has been registered",
-              user: {
-                _id: user._id,
-                name: user.personName,
-                surname: user.personSurname,
-                email: user.personEmail,
-                token: generateToken(user._id),
-              },
+              message: "You need to confirm your mail to login",
+              _id: user._id,
+              name: user.personName,
+              surname: user.personSurname,
+              email: user.personEmail,
+              token: generateToken(user._id),
+              isAdmin: user.isAdmin,
+              userType: user.userType,
+              isConfirmed: user.isConfirmed,
             });
           }
         } catch (error) {
@@ -48,8 +53,8 @@ module.exports.registerUser = async (req, res, next) => {
       }
     } catch (error) {
       res.status(404);
-      const systemError = new Error("Somethin went wrong");
-      next(systemError);
+
+      next(error);
     }
   } else {
     res.status(404);

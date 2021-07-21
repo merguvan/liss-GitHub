@@ -17,11 +17,29 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+    match: [
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+      "email is invalid",
+    ],
   },
   password: {
     type: String,
     required: true,
+  },
+  userType: {
+    type: String,
+    required: [
+      true,
+      "Please, enter user type either Institutional or Individual",
+    ],
+  },
+  isAdmin: {
+    default: false,
+    type: Boolean,
+  },
+  isConfirmed: {
+    type: Boolean,
+    default: false,
   },
 });
 userSchema.methods.matchPassword = async function (enteredPassword) {
