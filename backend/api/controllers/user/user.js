@@ -1,4 +1,5 @@
 const userSchema = require("../../models/user/user");
+const nodemailer = require("nodemailer");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
   const {
@@ -19,6 +20,7 @@ module.exports.registerUser = async (req, res, next) => {
 
       if (user) {
         res.status(404);
+        console.log(user);
         const error = new Error("This email already in use");
         next(error);
       } else {
@@ -33,18 +35,52 @@ module.exports.registerUser = async (req, res, next) => {
           });
 
           if (user) {
-            return res.status(200).json({
-              message: "You need to confirm your mail to login",
-              _id: user._id,
-              name: user.personName,
-              surname: user.personSurname,
-              email: user.personEmail,
-              token: generateToken(user._id),
-              isAdmin: user.isAdmin,
-              userType: user.userType,
-              isConfirmed: user.isConfirmed,
+            let transporter = nodemailer.createTransport({
+              host: "smtp.ethereal.email",
+              port: 587,
+              secure: false, // true for 465, false for other ports
+              auth: {
+                user: "neha.blick@ethereal.email",
+                pass: "EHEAjssJCt9trpQC4b",
+              },
+            });
+
+            const url = `http://localhost:3000/confirmation/${generateToken(
+              user._id
+            )}`;
+
+            // send mail with defined transport object
+            let info = await transporter.sendMail({
+              from: '"Liss Project " neha.blick@ethereal.email', // sender address
+              to: "erdldncr@gmail.com", // list of receivers
+              subject: "Email Verifcation", // Subject line
+              text: "Please,cclick link to verify your mail", // plain text body
+              html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`, // html body
+            });
+            transporter.sendMail(info, (error, data) => {
+              if (error) {
+                console.log(error);
+              }
+              console.log("Message sent: %s", info.messageId);
+
+              console.log(
+                "Preview URL: %s",
+                nodemailer.getTestMessageUrl(info)
+              );
             });
           }
+
+          return res.status(200).json({
+            message: "You need to confirm your mail to login",
+            _id: user._id,
+            name: user.personName,
+            surname: user.personSurname,
+            email: user.personEmail,
+            token: generateToken(user._id),
+            isAdmin: user.isAdmin,
+            userType: user.userType,
+            isConfirmed: user.isConfirmed,
+          });
         } catch (error) {
           res.status(404);
 
