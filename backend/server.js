@@ -24,6 +24,7 @@ app.use(express.static("public"));
 //register
 // /checkauth
 app.use("/user", userRouter);
+app.use("/confirmation", require("./api/routes/confirmation"));
 
 app.use(notFound);
 ///error status code=>404

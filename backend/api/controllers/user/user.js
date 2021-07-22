@@ -1,4 +1,5 @@
 const userSchema = require("../../models/user/user");
+const nodemailer = require("nodemailer");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
   const {
@@ -33,6 +34,33 @@ module.exports.registerUser = async (req, res, next) => {
           });
 
           if (user) {
+            let transporter = nodemailer.createTransport({
+              service: "hotmail",
+              // host: "smtp.ethereal.email",
+              // port: 587,
+              // secure: false, // true for 465, false for other ports
+              auth: {
+                user: "liss_project@outlook.com", // generated ethereal user
+                pass: "Liss.2021", // generated ethereal password
+              },
+            });
+
+            const url = `http://localhost:5000/confirmation/${generateToken(
+              user._id
+            )}`;
+            const options = {
+              from: '"Liss Project" liss_project@outlook.com', // sender address
+              to: user.personEmail, // list of receivers
+              subject: "Verify Your Email", // Subject line
+              text: "Please, click link to verify your email", // plain text body
+              html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+            };
+            transporter.sendMail(options, (err, info) => {
+              if (err) {
+                console.log(err);
+              }
+              console.log(info.response);
+            });
             return res.status(200).json({
               message: "You need to confirm your mail to login",
               _id: user._id,
@@ -75,6 +103,7 @@ module.exports.authorizeUser = async (req, res, next) => {
         surname: user[0].personSurname,
         email: user[0].personEmail,
         token: generateToken(user[0]._id),
+        isConfirmed: user[0].isConfirmed,
       });
     } else {
       res.status(404);
