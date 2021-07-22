@@ -20,7 +20,6 @@ module.exports.registerUser = async (req, res, next) => {
 
       if (user) {
         res.status(404);
-        console.log(user);
         const error = new Error("This email already in use");
         next(error);
       } else {
@@ -36,51 +35,44 @@ module.exports.registerUser = async (req, res, next) => {
 
           if (user) {
             let transporter = nodemailer.createTransport({
-              host: "smtp.ethereal.email",
-              port: 587,
-              secure: false, // true for 465, false for other ports
+              service: "hotmail",
+              // host: "smtp.ethereal.email",
+              // port: 587,
+              // secure: false, // true for 465, false for other ports
               auth: {
-                user: "neha.blick@ethereal.email",
-                pass: "EHEAjssJCt9trpQC4b",
+                user: "liss_project@outlook.com", // generated ethereal user
+                pass: "Liss.2021", // generated ethereal password
               },
             });
 
-            const url = `http://localhost:3000/confirmation/${generateToken(
+            const url = `http://localhost:5000/confirmation/${generateToken(
               user._id
             )}`;
-
-            // send mail with defined transport object
-            let info = await transporter.sendMail({
-              from: '"Liss Project " neha.blick@ethereal.email', // sender address
-              to: "erdldncr@gmail.com", // list of receivers
-              subject: "Email Verifcation", // Subject line
-              text: "Please,cclick link to verify your mail", // plain text body
-              html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`, // html body
-            });
-            transporter.sendMail(info, (error, data) => {
-              if (error) {
-                console.log(error);
+            const options = {
+              from: '"Liss Project" liss_project@outlook.com', // sender address
+              to: user.personEmail, // list of receivers
+              subject: "Verify Your Email", // Subject line
+              text: "Please, click link to verify your email", // plain text body
+              html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+            };
+            transporter.sendMail(options, (err, info) => {
+              if (err) {
+                console.log(err);
               }
-              console.log("Message sent: %s", info.messageId);
-
-              console.log(
-                "Preview URL: %s",
-                nodemailer.getTestMessageUrl(info)
-              );
+              console.log(info.response);
+            });
+            return res.status(200).json({
+              message: "You need to confirm your mail to login",
+              _id: user._id,
+              name: user.personName,
+              surname: user.personSurname,
+              email: user.personEmail,
+              token: generateToken(user._id),
+              isAdmin: user.isAdmin,
+              userType: user.userType,
+              isConfirmed: user.isConfirmed,
             });
           }
-
-          return res.status(200).json({
-            message: "You need to confirm your mail to login",
-            _id: user._id,
-            name: user.personName,
-            surname: user.personSurname,
-            email: user.personEmail,
-            token: generateToken(user._id),
-            isAdmin: user.isAdmin,
-            userType: user.userType,
-            isConfirmed: user.isConfirmed,
-          });
         } catch (error) {
           res.status(404);
 
@@ -111,6 +103,7 @@ module.exports.authorizeUser = async (req, res, next) => {
         surname: user[0].personSurname,
         email: user[0].personEmail,
         token: generateToken(user[0]._id),
+        isConfirmed: user[0].isConfirmed,
       });
     } else {
       res.status(404);
