@@ -11,7 +11,6 @@ module.exports.registerUser = async (req, res, next) => {
     password,
     userType,
   } = req.body;
-
   if (gdprConsent) {
     try {
       const user = await userSchema.findOne({
