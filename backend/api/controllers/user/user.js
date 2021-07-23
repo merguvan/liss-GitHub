@@ -35,13 +35,11 @@ module.exports.registerUser = async (req, res, next) => {
 
           if (user) {
             let transporter = nodemailer.createTransport({
-              service: "hotmail",
-              // host: "smtp.ethereal.email",
-              // port: 587,
-              // secure: false, // true for 465, false for other ports
+              service: "gmail",
+
               auth: {
-                user: "liss_project@outlook.com", // generated ethereal user
-                pass: "Liss.2021", // generated ethereal password
+                user: process.env.NODEMAILER_MAIL, // generated ethereal user
+                pass: process.env.NODEMAILER_PASSWORD, // generated ethereal password
               },
             });
 
@@ -49,7 +47,7 @@ module.exports.registerUser = async (req, res, next) => {
               user._id
             )}`;
             const options = {
-              from: '"Liss Project" liss_project@outlook.com', // sender address
+              from: '"Liss Project" dincererdal1903@gmail.com ', // sender address
               to: user.personEmail, // list of receivers
               subject: "Verify Your Email", // Subject line
               text: "Please, click link to verify your email", // plain text body
@@ -59,7 +57,7 @@ module.exports.registerUser = async (req, res, next) => {
               if (err) {
                 console.log(err);
               }
-              console.log(info.response);
+              console.log(info?.response);
             });
             return res.status(200).json({
               message: "You need to confirm your mail to login",
@@ -93,18 +91,25 @@ module.exports.registerUser = async (req, res, next) => {
 
 module.exports.authorizeUser = async (req, res, next) => {
   const { personEmail, password } = req.body;
+
   try {
     const user = await userSchema.find({ personEmail: personEmail });
 
     if (user.length > 0 && (await user[0].matchPassword(password))) {
-      return res.status(200).json({
-        _id: user[0]._id,
-        name: user[0].personName,
-        surname: user[0].personSurname,
-        email: user[0].personEmail,
-        token: generateToken(user[0]._id),
-        isConfirmed: user[0].isConfirmed,
-      });
+      if (user[0].isConfirmed) {
+        return res.status(200).json({
+          _id: user[0]._id,
+          name: user[0].personName,
+          surname: user[0].personSurname,
+          email: user[0].personEmail,
+          token: generateToken(user[0]._id),
+          isConfirmed: user[0].isConfirmed,
+        });
+      } else {
+        res.status(404);
+        const systemError = new Error("Please,verify your email");
+        next(systemError);
+      }
     } else {
       res.status(404);
       const systemError = new Error("Either password or email is wrong");
