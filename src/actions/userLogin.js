@@ -7,6 +7,7 @@ import {
 } from "../actionTypes/userLoginDetails";
 
 export const login = (data) => async (dispatch) => {
+  console.log(data);
   const { email, password } = data;
   try {
     dispatch({

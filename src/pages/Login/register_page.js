@@ -8,11 +8,9 @@ import { Link } from "react-router-dom";
 function RegisterPage({ containerRef, history, location }) {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const [gdprConsent, setGdprConsent] = useState(false);
-  // const [radioValue, setRadioValue] = useState(1);
-  // const [formSubmitted, setFormSubmitted] = useState(false);
-  // const [toggleCheckbox, setTogglecheckBox] = useState(false);
+
   const dispatch = useDispatch();
   const { userLogin: userInfo, error: storeError } = useSelector(
     (state) => state.userLogin
@@ -24,12 +22,18 @@ function RegisterPage({ containerRef, history, location }) {
     if (userInfo) {
       history?.push(redirect);
     }
-    setError("");
+    if (storeError) {
+      setError(storeError);
+    } else {
+      setError("");
+    }
+    if (Object.keys(formData).length > 0) {
+      setError("");
+    }
   }, [history, userInfo, redirect, formData]);
 
   const handleInputChange = (event) => {
     if (event.target.name === "userType") {
-      console.log(event.target.value);
       setFormData({
         ...formData,
         [event.target.name]: event.target.value,
@@ -48,7 +52,7 @@ function RegisterPage({ containerRef, history, location }) {
         Object.values(formData).every((value) => value.length > 0) &&
         Object.values(formData).length === 5
       ) {
-        if (formData?.password.length > 6) {
+        if (formData?.password.length >= 6) {
           dispatch(signup({ ...formData, gdprConsent }));
           setFormData({});
           setGdprConsent(false);

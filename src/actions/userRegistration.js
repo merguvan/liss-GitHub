@@ -9,7 +9,6 @@ import {
   USER_REGISTRATION_FULFILLED,
 } from "../actionTypes/userRegistration";
 export const signup = (data) => async (dispatch) => {
-  console.log(data);
   try {
     dispatch({
       type: USER_REGISTRATION_PENDING,
