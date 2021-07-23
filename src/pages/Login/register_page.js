@@ -24,7 +24,8 @@ function RegisterPage({ containerRef, history, location }) {
     if (userInfo) {
       history?.push(redirect);
     }
-  }, [history, userInfo, redirect]);
+    setError("");
+  }, [history, userInfo, redirect, formData]);
 
   const handleInputChange = (event) => {
     if (event.target.name === "userType") {
@@ -43,32 +44,39 @@ function RegisterPage({ containerRef, history, location }) {
   const handleRegister = (e) => {
     e.preventDefault();
     if (gdprConsent) {
-      dispatch(signup({ ...formData, gdprConsent }));
-      setFormData({});
-      setGdprConsent(false);
+      if (
+        Object.values(formData).every((value) => value.length > 0) &&
+        Object.values(formData).length === 5
+      ) {
+        if (formData?.password.length > 6) {
+          dispatch(signup({ ...formData, gdprConsent }));
+          setFormData({});
+          setGdprConsent(false);
+        } else {
+          setError("Please, your password should be longer than 6 characters");
+        }
+      } else {
+        setError("Please, fill all the blanks");
+      }
     } else {
       setError("Please, accept GdprConsent");
-      setFormData({});
     }
   };
 
-  console.log(formData);
-  console.log(Object.keys(formData).length === 0 && storeError?.length > 0);
-  console.log(storeError);
   return (
     <form
       className="login_base-container"
       ref={containerRef}
       onSubmit={handleRegister}
     >
-      {(error?.length > 0 && Object.keys(formData).length === 0 && (
-        <Alert variant="danger">{error}</Alert>
-      )) ||
-        (!userInfo?.isConfirmed && Object.keys(formData).length === 0 && (
-          <Alert variant="danger">
-            {userInfo?.message || (storeError?.length > 0 && storeError)}
-          </Alert>
-        ))}
+      {(error?.length > 0 && <Alert variant="danger">{error}</Alert>) ||
+        (userInfo &&
+          !userInfo?.isConfirmed &&
+          Object.keys(formData).length === 0 && (
+            <Alert variant="danger">
+              {userInfo?.message || (storeError?.length > 0 && storeError)}
+            </Alert>
+          ))}
       <div className="login_header">Register</div>
       <ButtonGroup>
         <ToggleButton

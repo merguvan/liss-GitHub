@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from "./validator";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { login } from "../../actions/userLogin";
+import { login, logout } from "../../actions/userLogin";
 import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 const loginImg =
@@ -29,6 +29,8 @@ export function Login({ history, location, containerRef }) {
       console.log(history);
       history?.push(redirect);
     }
+
+    dispatch(logout());
   }, [history, userInfo, redirect]);
 
   const handleInputChange = (event) => {
