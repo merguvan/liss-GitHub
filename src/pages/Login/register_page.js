@@ -106,9 +106,20 @@ function RegisterPage({ containerRef, history, location }) {
       </ButtonGroup>
       {/* <hr /> */}
 
-      <div className="login_content">
-        <div className="login_form">
-          {formData?.userType === "Institutional" && (
+      {formData?.userType && (
+        <div className="login_content">
+          <div className="login_form">
+            {formData?.userType === "Institutional" && (
+              <div className="login_form-group">
+                <input
+                  type="text"
+                  name="institutionName"
+                  placeholder="institution name"
+                  value={formData?.personName || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
+            )}
             <div className="login_form-group">
               <input
                 type="text"
@@ -118,47 +129,38 @@ function RegisterPage({ containerRef, history, location }) {
                 onChange={handleInputChange}
               />
             </div>
-          )}
-          <div className="login_form-group">
-            <input
-              type="text"
-              name="personName"
-              placeholder="name"
-              value={formData?.personName || ""}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="login_form-group">
-            <input
-              type="text"
-              name="personSurname"
-              placeholder="surname"
-              value={formData?.personSurname || ""}
-              onChange={handleInputChange}
-            />
-          </div>
+            <div className="login_form-group">
+              <input
+                type="text"
+                name="personSurname"
+                placeholder="surname"
+                value={formData?.personSurname || ""}
+                onChange={handleInputChange}
+              />
+            </div>
 
-          <div className="login_form-group">
-            <input
-              type="email"
-              name="personEmail"
-              placeholder="email"
-              value={formData?.personEmail || ""}
-              onChange={handleInputChange}
-            />
-          </div>
+            <div className="login_form-group">
+              <input
+                type="email"
+                name="personEmail"
+                placeholder="email"
+                value={formData?.personEmail || ""}
+                onChange={handleInputChange}
+              />
+            </div>
 
-          <div className="login_form-group">
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={formData?.password || ""}
-              onChange={handleInputChange}
-            />
+            <div className="login_form-group">
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={formData?.password || ""}
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="login_footer">
         <button type="submit" className="login_btn">
