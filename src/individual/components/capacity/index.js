@@ -9,7 +9,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import SelectLanguage from "../../commonModules/language/SelectLanguage";
+import SelectLanguage from "../../../commonModules/language/SelectLanguage";
 // import ReactLanguageSelect from './language/Lang'
 // import Lang from './language/Lang'
 

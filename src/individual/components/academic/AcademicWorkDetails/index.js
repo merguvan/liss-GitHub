@@ -10,7 +10,7 @@ import {
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
-import SelectLanguage from "../../../commonModules/language/SelectLanguage";
+import SelectLanguage from "../../../../commonModules/language/SelectLanguage";
 
 function AcademicWorkDetails(props) {
   const history = useHistory();

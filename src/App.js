@@ -3,23 +3,23 @@ import "./App.css";
 
 import { Route, Switch } from "react-router-dom";
 
-import MainPage from "./pages/MainPage";
-import PersonalInfoPage from "./components/personal/PersonalInfoPage";
-import AcademicInfo from "./components/academic/AcademicInfoPage";
-import WorkExperienceInfo from "./components/workexperience/WorkExperienceInfo";
-import EducationInfo from "./components/education/EducationInfo";
-import AffiliationsInfo from "./components/affiliations/AffiliationsInfo";
-import AchievementsInfo from "./components/achievements/AchievementsInfo";
-import CertificationsInfo from "./components/certifications/CertificationsInfo";
-import CapacityInfo from "./components/capacity/CapacityInfo";
-import ReferencesInfo from "./components/references/ReferencesInfo";
-import RemarksInfo from "./components/remarks/RemarksInfo";
-import ProjectsInfo from "./components/projects/ProjectsInfo";
-import LoginPage from "./pages/Login/LoginPage";
-import Header from "./components/Header/Header";
+import MainPage from "./individual/pages/MainPage";
+import PersonalInfoPage from "./individual/components/personal/PersonalInfoPage";
+import AcademicInfo from "./individual/components/academic/AcademicInfoPage";
+import WorkExperienceInfo from "./individual/components/workexperience/WorkExperienceInfo";
+import EducationInfo from "./individual/components/education/EducationInfo";
+import AffiliationsInfo from "./individual/components/affiliations/AffiliationsInfo";
+import AchievementsInfo from "./individual/components/achievements/AchievementsInfo";
+import CertificationsInfo from "./individual/components/certifications/CertificationsInfo";
+import CapacityInfo from "./individual/components/capacity/CapacityInfo";
+import ReferencesInfo from "./individual/components/references/ReferencesInfo";
+import RemarksInfo from "./individual/components/remarks/RemarksInfo";
+import ProjectsInfo from "./individual/components/projects/ProjectsInfo";
+import LoginPage from "./individual/pages/Login/LoginPage";
+import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import GdprConsent from "./pages/GdprConsent";
+import GdprConsent from "./individual/pages/GdprConsent";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   // userInfo?.isConfirmed
