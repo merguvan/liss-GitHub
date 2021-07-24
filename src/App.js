@@ -28,7 +28,7 @@ function App(props) {
       <div className="app">
         <Header />
         <Switch>
-          <Route path="/login" exact component={LoginPage} />
+          <Route path="/login_register" exact component={LoginPage} />
           <Route path="/" exact component={MainPage} />
           <Route path="/personalInfo/:id" component={PersonalInfoPage} />
           <Route path="/workexperience/:id" component={WorkExperienceInfo} />
