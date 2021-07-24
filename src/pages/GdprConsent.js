@@ -1,14 +1,17 @@
 import { Button, Modal } from "react-bootstrap";
 import React, { useState } from "react";
-function GdprConsent() {
-  const [lgShow, setLgShow] = useState(false);
+function GdprConsent({ history }) {
+  const [lgShow, setLgShow] = useState(true);
 
   return (
     <>
       <Modal
         size="lg"
         show={lgShow}
-        onHide={() => setLgShow(false)}
+        onHide={() => {
+          setLgShow(false);
+          history.push("/");
+        }}
         aria-labelledby="example-modal-sizes-title-lg"
       >
         <Modal.Header closeButton>

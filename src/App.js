@@ -22,8 +22,8 @@ import { useState } from "react";
 import GdprConsent from "./pages/GdprConsent";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
-
-  if (userInfo?.isConfirmed) {
+  // userInfo?.isConfirmed
+  if (true) {
     return (
       <div className="app">
         <Header />
@@ -49,7 +49,7 @@ function App(props) {
     return (
       <div className="app">
         <Header />
-        {/* <Route path="/gdpr-consent" exact component={GdprConsent} /> */}
+        <Route path="/gdpr-consent" exact component={GdprConsent} />
         <Switch>
           <Route path="/" component={LoginPage} />
         </Switch>

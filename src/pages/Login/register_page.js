@@ -108,8 +108,18 @@ function RegisterPage({ containerRef, history, location }) {
 
       <div className="login_content">
         <div className="login_form">
+          {formData?.userType === "Institutional" && (
+            <div className="login_form-group">
+              <input
+                type="text"
+                name="personName"
+                placeholder="name"
+                value={formData?.personName || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+          )}
           <div className="login_form-group">
-            {/* <label htmlFor="email">Email</label> */}
             <input
               type="text"
               name="personName"
@@ -119,7 +129,6 @@ function RegisterPage({ containerRef, history, location }) {
             />
           </div>
           <div className="login_form-group">
-            {/* <label htmlFor="email">Email</label> */}
             <input
               type="text"
               name="personSurname"
@@ -152,11 +161,7 @@ function RegisterPage({ containerRef, history, location }) {
       </div>
 
       <div className="login_footer">
-        <button
-          type="submit"
-          // onClick={handleUserRegistration}
-          className="login_btn"
-        >
+        <button type="submit" className="login_btn">
           Register
         </button>
       </div>
