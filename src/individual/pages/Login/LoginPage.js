@@ -3,7 +3,7 @@ import { Login } from "../Login/login_page";
 
 import Register from "../Login/register_page";
 
-import "../../App.css";
+import "../../../App.css";
 import "./login_style.css";
 
 class LoginPage extends React.Component {
