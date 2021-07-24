@@ -1,5 +1,5 @@
 const {
-  addUser,
+  registerUser,
   authorizeUser,
   getSingleUser,
   deleteSingleUSer,
@@ -22,45 +22,69 @@ const {
 } = require("../controllers/user/achievements");
 
 const {
-  getAcademicsInfo,
-  updateAcademicsInfo,
-  addAcademicsInfo,
-} = require("../controllers/user/academics");
+  getAcademicInfo,
+  updateAcademicInfo,
+  addAcademicInfo,
+} = require("../controllers/user/academic");
+
+const {
+  getUserReferenceInfo,
+  updateUserReferenceInfo,
+  addUserReferenceInfo,
+} = require("../controllers/user/reference");
+
+const {
+  getAffiliationsInfo,
+  updateAffiliationsInfo,
+  addAffiliationsInfo,
+} = require("../controllers/user/affiliations");
 
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
-router.route("/signup").post(addUser);
+// router.get('/')
+router.route("/signup").post(registerUser);
 
 router.route("/login").post(authorizeUser);
 
 router
-  .route("/personalinfo/:id")
+  .route("/personalinfo")
   .get(checkAuth, getUserPersonalInfo)
   .post(checkAuth, addUserPersonalInfo)
   .patch(checkAuth, updateUserPersonalInfo);
 
 router
-  .route("/addressinfo/:id")
+  .route("/addressinfo")
   .get(checkAuth, getAddressInfo)
   .post(checkAuth, addAddressInfo)
   .patch(checkAuth, updateAddressInfo);
 
 router
-  .route("/achievements/:id")
+  .route("/achievements")
   .get(checkAuth, getAchievementsInfo)
   .post(checkAuth, addAchievementsInfo)
   .patch(checkAuth, updateAchievementsInfo);
 
 router
-  .route("/academics/:id")
-  .get(checkAuth, getAcademicsInfo)
-  .post(checkAuth, addAcademicsInfo)
-  .patch(checkAuth, updateAcademicsInfo);
+  .route("/academic")
+  .get(checkAuth, getAcademicInfo)
+  .post(checkAuth, addAcademicInfo)
+  .patch(checkAuth, updateAcademicInfo);
+router
+  .route("/reference")
+  .get(checkAuth, getUserReferenceInfo)
+  .post(checkAuth, addUserReferenceInfo)
+  .patch(checkAuth, updateUserReferenceInfo);
 
 router
   .route("/:id")
   .get(checkAuth, getSingleUser)
   .delete(checkAuth, deleteSingleUSer);
+
+router
+  .route("/affiliations")
+  .get(checkAuth, getAffiliationsInfo)
+  .post(checkAuth, addAffiliationsInfo)
+  .patch(checkAuth, updateAffiliationsInfo);
 
 module.exports = router;

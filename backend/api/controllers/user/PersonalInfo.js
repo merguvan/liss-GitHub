@@ -19,11 +19,8 @@ module.exports.addUserPersonalInfo = async (req, res, next) => {
 };
 module.exports.updateUserPersonalInfo = async (req, res, next) => {
   try {
-    await PersonalInfoSchema.findOneAndUpdate(
-      { user: req.params.id },
-      req.body
-    );
-    console.log("hata");
+    await PersonalInfoSchema.findOneAndUpdate({ user: req.user._id }, req.body);
+
     return res.status(200).json({
       message: "it has been updated",
     });
@@ -36,7 +33,7 @@ module.exports.updateUserPersonalInfo = async (req, res, next) => {
 module.exports.getUserPersonalInfo = async (req, res, next) => {
   try {
     const userPersonalInfo = await PersonalInfoSchema.find({
-      user: req.params.id,
+      user: req.user._id,
     });
 
     return res.status(200).json({
