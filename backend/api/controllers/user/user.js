@@ -35,7 +35,6 @@ module.exports.registerUser = async (req, res, next) => {
           if (user) {
             let transporter = nodemailer.createTransport({
               service: "gmail",
-
               auth: {
                 user: process.env.NODEMAILER_MAIL, // generated ethereal user
                 pass: process.env.NODEMAILER_PASSWORD, // generated ethereal password

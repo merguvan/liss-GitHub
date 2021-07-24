@@ -11,11 +11,13 @@ router.get("/:token", checkAuth, async (req, res, next) => {
       { isConfirmed: true },
       { new: true }
     );
-    return res.status(200).json({
-      message: "User has been activated",
-      user,
-    });
-  } catch (error) {}
+
+    return res.status(200).redirect("http://localhost:3000/");
+  } catch (error) {
+    res.status(404);
+
+    next(error);
+  }
 });
 
 module.exports = router;
