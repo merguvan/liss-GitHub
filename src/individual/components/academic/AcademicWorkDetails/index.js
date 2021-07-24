@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Modal,
@@ -79,7 +79,7 @@ function AcademicWorkDetails(props) {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Academic Work Details</h2>
           <p className="modal-description">
-            Please enter details about your academic work in the past.
+            Please enter details about your academic work.
           </p>
         </Modal.Title>
         <CloseButton
@@ -205,7 +205,7 @@ function AcademicWorkDetails(props) {
       <Modal.Footer>
         <Link to="/">
           <Button type="submit" onClick={handleSubmit}>
-            {save ? "save" : "close"}
+            {save ? "Save" : "Close"}
           </Button>
         </Link>
       </Modal.Footer>

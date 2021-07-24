@@ -217,6 +217,7 @@ function PersonalInfo() {
                     placeholder=""
                     aria-describedby="basic-addon3"
                   >
+                    <option value="select">Select</option>
                     <option value="female">Female</option>
                     <option value="male">Male</option>
                     <option value="other">Prefer Not To Say</option>
@@ -295,7 +296,7 @@ function PersonalInfo() {
 
           <Link to="/personalInfo/2">
             <Button type="submit" onClick={handleClick}>
-              {save ? "save" : "close"}
+              {save ? "Next" : "Close"}
             </Button>
           </Link>
         </Row>

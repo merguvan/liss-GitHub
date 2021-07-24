@@ -15,7 +15,7 @@ import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 import { Link, useHistory } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 
-const Affiliations = (props) => { 
+const Affiliations = (props) => {
   const history = useHistory();
   const { affiliations: storeAffiliations } = useSelector(
     (state) => state.affiliationsReducer
@@ -36,7 +36,7 @@ const Affiliations = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   useEffect(() => {
     if (
       Object.values(storeAffiliations).join("") !==
@@ -47,6 +47,7 @@ const Affiliations = (props) => {
       setSave(false);
     }
   }, [storeAffiliations, affiliations]);
+
   const handleSubmit = () => {
     if (Object.values(affiliations).join("").length > 0) {
       console.log("calisti");
@@ -54,6 +55,7 @@ const Affiliations = (props) => {
       console.log("calismadi");
     }
   };
+  
   return (
     <Modal
       // {...props}
@@ -135,24 +137,24 @@ const Affiliations = (props) => {
                     aria-describedby="basic-addon3"
                   />
                   <Form.Check
-                      id="personWorkOngoing"
-                      name="personWorkOngoing"
-                      type="checkbox"
-                      value={affiliations["personWorkOngoing"]}
-                      onClick={() => {
-                        setOngoing(!ongoing);
-                        setAffiliations({
-                          ...affiliations,
-                          personWorkTo: "",
-                        });
-                      }}
-                      onChange={handleAffiliations}
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Still working there?"
-                      placeholder=""
-                      label="ongoing"
-                    />
+                    id="personWorkOngoing"
+                    name="personWorkOngoing"
+                    type="checkbox"
+                    value={affiliations["personWorkOngoing"]}
+                    onClick={() => {
+                      setOngoing(!ongoing);
+                      setAffiliations({
+                        ...affiliations,
+                        personWorkTo: "",
+                      });
+                    }}
+                    onChange={handleAffiliations}
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Still working there?"
+                    placeholder=""
+                    label="ongoing"
+                  />
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -174,13 +176,14 @@ const Affiliations = (props) => {
                       placeholder=""
                       aria-describedby="basic-addon3"
                     >
-                      <option>Member</option>
-                      <option>Associate</option>
-                      <option>Fellow</option>
-                      <option>Honour</option>
-                      <option>Emeritus</option>
-                      <option>Volunteer</option>
-                      <option>Other</option>
+                      <option value="select">Select</option>
+                      <option value="">Member</option>
+                      <option value="associate">Associate</option>
+                      <option value="fellow">Fellow</option>
+                      <option value="honour">Honour</option>
+                      <option value="emeritus">Emeritus</option>
+                      <option value="volunteer">Volunteer</option>
+                      <option value="other">Other</option>
                     </Form.Control>
                   </Form.Group>
                 </Col>
@@ -203,21 +206,19 @@ const Affiliations = (props) => {
                 <Col xs={12} md={12}>
                   <Form.Label>Country</Form.Label>
 
-                  
-                    <CountrySelect
+                  <CountrySelect
                     id="personAffiliationCountry"
                     name="personAffiliationCountry"
                     className="country"
                     value={affiliations["personAffiliationCountry"]}
                     onChange={handleAffiliations}
-                  
                     noMatchesText
                     data-toggle="tooltip"
                     data-placement="top"
                     placeholder=""
                     aria-describedby="basic-addon3"
                     title="In which country is the institution you are affiliated located?"
-                  /> 
+                  />
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -226,11 +227,11 @@ const Affiliations = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+          <Button onClick={handleSubmit}> {save ? "Save" : "Close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default  Affiliations;
+export default Affiliations;

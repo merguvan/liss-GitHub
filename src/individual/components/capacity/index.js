@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Container,
@@ -12,17 +12,37 @@ import {
 import SelectLanguage from "../../../commonModules/language/SelectLanguage";
 // import ReactLanguageSelect from './language/Lang'
 // import Lang from './language/Lang'
-
+import { useDispatch, useSelector } from "react-redux";
 import { addCapacityDetails } from "../../actions/capacityAction";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Capacity = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { addCapacity: storeCapacity } = useSelector(
+    (state) => state.capacityReducer
+  );
   const [lang1, setLang1] = useState(true);
   const [lang2, setLang2] = useState(true);
 
-  const [capacityDetails, setCapacityDetails] = useState({});
+  const [save, setSave] = useState(false);
+  const [capacity, setCapacityDetails] = useState(
+    storeCapacity || {}
+  );
+
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    if (
+      Object.values(storeCapacity).join("") !==
+      Object.values(capacity).join("")
+    ) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [storeCapacity, capacity]);
 
   const showLanguageList = (e) => {
     if (e.target.name === "lang1") {
@@ -34,19 +54,31 @@ const Capacity = (props) => {
       setLang2(true);
     }
   };
+
+  const handleClick = () => {
+    dispatch(addCapacityDetails(capacity));
+  };
+
   const handleCapacityDetails = (e) => {
     setCapacityDetails({
-      ...capacityDetails,
+      ...capacity,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = () => {};
-  console.log(capacityDetails);
+  const handleSubmit = () => {
+    if (Object.values(capacity).join("").length > 0) {
+      console.log("calisti");
+    } else {
+      console.log("calismadi");
+    }
+  };
+
   return (
     <Modal
       onClick={showLanguageList}
-      {...props}
+      // {...props}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -61,6 +93,7 @@ const Capacity = (props) => {
         </Modal.Title>
         <CloseButton
           onClick={() => {
+            setShow(!show);
             history.push("/");
           }}
         />
@@ -77,7 +110,7 @@ const Capacity = (props) => {
                     id="personAvailableFrom"
                     name="personAvailableFrom"
                     type="date"
-                    value={capacityDetails["personAvailableFrom"]}
+                    value={capacity["personAvailableFrom"]}
                     onChange={handleCapacityDetails}
                     data-toggle="tooltip"
                     data-placement="top"
@@ -93,7 +126,7 @@ const Capacity = (props) => {
                     id="personAvailableTo"
                     name="personAvailableTo"
                     type="date"
-                    value={capacityDetails["personAvailableTo"]}
+                    value={capacity["personAvailableTo"]}
                     onChange={handleCapacityDetails}
                     data-toggle="tooltip"
                     data-placement="top"
@@ -111,7 +144,7 @@ const Capacity = (props) => {
                     type="date"
                     as="select"
                     onChange={handleCapacityDetails}
-                    value={capacityDetails["personInstitutionType1"]}
+                    value={capacity["personInstitutionType1"]}
                     data-toggle="tooltip"
                     data-placement="top"
                     title="What level/cycle can you offer this course?"
@@ -135,7 +168,7 @@ const Capacity = (props) => {
                     id="personCourseName"
                     name="personCourseName"
                     type="text"
-                    value={capacityDetails["personCourseName"]}
+                    value={capacity["personCourseName"]}
                     onChange={handleCapacityDetails}
                     data-toggle="tooltip"
                     data-placement="top"
@@ -161,7 +194,7 @@ const Capacity = (props) => {
                       id="personCourseExperience"
                       name="personCourseExperience"
                       type="number"
-                      value={capacityDetails["personCourseExperience"]}
+                      value={capacity["personCourseExperience"]}
                       onChange={handleCapacityDetails}
                       data-toggle="tooltip"
                       data-placement="top"
@@ -184,7 +217,7 @@ const Capacity = (props) => {
                   <Form.Control
                     id="personCourseLevel"
                     name="personCourseLevel"
-                    value={capacityDetails["personCourseLevel"]}
+                    value={capacity["personCourseLevel"]}
                     onChange={handleCapacityDetails}
                     data-toggle="tooltip"
                     data-placement="top"
@@ -208,24 +241,11 @@ const Capacity = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Link to="/">
-          <Button onClick={handleSubmit}>
-            {" "}
-            {Object.keys(capacityDetails).length > 0 ? "save" : "close"}{" "}
-          </Button>
+          <Button onClick={handleSubmit}> {save ? "Save" : "Close"} </Button>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    capacityDetails: state.capacityReducer.capacityDetails,
-  };
-};
-
-const mapDispatchToProps = {
-  addCapacityDetails,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Capacity);
+export default Capacity;
