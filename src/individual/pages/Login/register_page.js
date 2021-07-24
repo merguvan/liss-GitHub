@@ -1,4 +1,4 @@
-import React, { useState, useEffecct, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ButtonGroup, ToggleButton, Alert } from "react-bootstrap";
 
 import { connect, useDispatch, useSelector } from "react-redux";
@@ -57,13 +57,13 @@ function RegisterPage({ containerRef, history, location }) {
           setFormData({});
           setGdprConsent(false);
         } else {
-          setError("Please, your password should be longer than 6 characters");
+          setError("Your password should be longer than 6 characters");
         }
       } else {
-        setError("Please, fill all the blanks");
+        setError("Please fill in the form completely");
       }
     } else {
-      setError("Please, accept GdprConsent");
+      setError("Please accept our terms & conditions");
     }
   };
 
