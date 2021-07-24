@@ -13,7 +13,7 @@ import SelectLanguage from "../../../commonModules/language/SelectLanguage";
 // import ReactLanguageSelect from './language/Lang'
 // import Lang from './language/Lang'
 import { useDispatch, useSelector } from "react-redux";
-import { addCapacityDetails } from "../../actions/capacityAction";
+import { addCapacity } from "../../actions/capacityAction";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -56,7 +56,7 @@ const Capacity = (props) => {
   };
 
   const handleClick = () => {
-    dispatch(addCapacityDetails(capacity));
+    dispatch(addCapacity(capacity));
   };
 
   const handleCapacityDetails = (e) => {
