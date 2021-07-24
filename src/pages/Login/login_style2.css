@@ -61,6 +61,15 @@
   width: fit-content;
   height: 80px;
 }
+#register_surname {
+  width: 20px;
+  float:right;
+  }
+  #register_name{
+    width: 20px;
+    float:left;
+    clear:both;
+  }
 /* 
 .login_form-group label {
   color:white;
