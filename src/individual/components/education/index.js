@@ -370,7 +370,7 @@ const Education = (props) => {
       </Modal.Body>
       <Modal.Footer>
       <Link to="/">
-        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+        <Button onClick={handleSubmit}> {save ? "Save" : "Close"} </Button>
       </Link>
       </Modal.Footer>
     </Modal>
