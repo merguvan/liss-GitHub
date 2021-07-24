@@ -114,7 +114,7 @@ function RegisterPage({ containerRef, history, location }) {
                 <input
                   type="text"
                   name="institutionName"
-                  placeholder="institution name"
+                  placeholder="institutional name"
                   value={formData?.personName || ""}
                   onChange={handleInputChange}
                 />
