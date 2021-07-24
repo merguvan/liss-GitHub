@@ -39,7 +39,6 @@ const ReferenceSchema = new mongoose.Schema({
     trim: true,
     match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
   },
-
   personRefereePhoneNumber: {
     type: String,
     trim:true,
@@ -50,11 +49,9 @@ const ReferenceSchema = new mongoose.Schema({
     //min:{ "$gte" : new Date(ISODate().getDate() - 1000 * 3600 * 24 * 60) },//alternative
     required: [true, "Please, enter the date signed"],
   },
-   personReferenceLetter: String,
-   personRefLetter: {
-     type: String,
-    // required: [true, "Please, upload your reference letter"],
-   },
-});
+  // personReferenceLetter: {
+  //   type: String,
+  // }
+  });
 
 module.exports = mongoose.model("Reference", ReferenceSchema);
