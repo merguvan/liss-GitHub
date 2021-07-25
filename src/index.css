@@ -13,16 +13,16 @@
 
   transition: 0.3s;
 }
-.modal-title{
+.modal-title {
   padding-left: 20px;
-  }
-.modal-description{
-    font-weight: 200 !important;
-    font-family: 'Roboto', sans-serif !important;
-    /* padding: 0 20px; */
-    font-style: italic;
-    font-size: 0.9rem ;
-  }
+}
+.modal-description {
+  font-weight: 200 !important;
+  font-family: "Roboto", sans-serif !important;
+  /* padding: 0 20px; */
+  font-style: italic;
+  font-size: 0.9rem;
+}
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -99,10 +99,21 @@ jm .country,
   /* border: 1px solid black; */
   text-align: center;
 }
-.hidden{
+.hidden {
   display: none !important;
 }
-
+.profile-page-content-container {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-page-update-content {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
 @media (max-width: 676px) {
   .person-summary-container {
     flex-direction: column;

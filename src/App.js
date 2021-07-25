@@ -19,11 +19,13 @@ import LoginPage from "./individual/pages/Login/LoginPage";
 import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
+import Profile from "./individual/pages/Profile";
 import PeopleInstitutional from "./institutional/components/people/PeopleInstitutional";
+
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   // userInfo?.isConfirmed
-  if (true) {
+  if (userInfo?.isConfirmed) {
     return (
       <div className="app">
         <Header />
@@ -42,6 +44,7 @@ function App(props) {
           <Route path="/references/:id" component={ReferencesInfo} />
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
+          <Route path="/profile" component={Profile} />
           <Route path="/peopleInstitutional/:id" component={PeopleInstitutional}/>
         </Switch>
       </div>
