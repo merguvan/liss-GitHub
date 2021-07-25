@@ -1,0 +1,86 @@
+
+{
+  "type": "object",
+  "properties": {
+    "institutionNameInEnglish": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Please enter institution name"
+    },
+    "institutionAbbreviation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Please enter institution abbreviation"
+    },
+    "institutionNameInNative": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Please enter institution name in native language"
+    },
+    "AbbreviationInNative": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Please enter institution abbreviation in native language"
+    },
+   
+    "website": {
+      "type": "string",
+      "description": "Please enter institution website address"
+    },
+    "institutionType": {
+      "type": "string",
+      "enum": [
+        "DE",
+        "IT",
+        "JP",
+        "US",
+        "RU",
+        "Other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DE",
+        "IT",
+        "JP",
+        "US",
+        "RU",
+        "Other"
+      ]
+    },
+    "personalData": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "integer",
+          "description": "Please enter your age."
+        },
+        "height": {
+          "type": "number"
+        },
+        "drivingSkill": {
+          "type": "number",
+          "maximum": 10,
+          "minimum": 1,
+          "default": 7
+        }
+      },
+      "required": [
+        "age",
+        "height"
+      ]
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string",
+      "maxLength": 5
+    }
+  },
+  "required": [
+    "occupation",
+    "nationality"
+  ]
+}

@@ -7,9 +7,9 @@ import {
   Col,
   Form,
 } from "react-bootstrap";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
+// import { addAcademicWorkDetails } from "../../../actions/academicWorkDetails";
 import SelectLanguage from "../../../../commonModules/language/SelectLanguage";
 
 function AcademicWorkDetails(props) {
