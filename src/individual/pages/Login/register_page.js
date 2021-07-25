@@ -120,7 +120,7 @@ function RegisterPage({ containerRef, history, location }) {
                 />
               </div>
             )}
-            <div className="login_form-group">
+            <div className="login_form-group-name-surname">
               <input
                 type="text"
                 name="personName"
@@ -128,8 +128,6 @@ function RegisterPage({ containerRef, history, location }) {
                 value={formData?.personName || ""}
                 onChange={handleInputChange}
               />
-            </div>
-            <div className="login_form-group">
               <input
                 type="text"
                 name="personSurname"
