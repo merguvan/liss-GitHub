@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Form, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUserProfile } from "../actions/userRegistration";
 
 const Profile = ({ location, history }) => {
   const { userLogin } = useSelector((state) => state.userLogin);
@@ -15,7 +16,7 @@ const Profile = ({ location, history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      console.log("upddatedd");
+      dispatch(updateUserProfile({ name, email, password }));
     } else {
       console.log("passwords donn't match");
     }

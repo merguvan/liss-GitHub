@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = void 0;
+exports.updateUserProfile = exports.signup = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -72,3 +72,59 @@ var signup = function signup(data) {
 };
 
 exports.signup = signup;
+
+var updateUserProfile = function updateUserProfile(data) {
+  return function _callee2(dispatch, getState) {
+    var config, _ref2, res, message;
+
+    return regeneratorRuntime.async(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            dispatch({
+              type: _userRegistration.USER_PROFILE_UPDATE_PENDING
+            });
+            config = {
+              headers: {
+                "Content-Type": "application/json"
+              },
+              authorization: getState().userLogin.userLogin.token
+            };
+            _context2.next = 5;
+            return regeneratorRuntime.awrap(_axios["default"].post("http://localhost:5000/user/profile", config, data));
+
+          case 5:
+            _ref2 = _context2.sent;
+            res = _ref2.data;
+            dispatch({
+              type: _userRegistration.USER_PROFILE_UPDATE_FULFILLED,
+              payload: res
+            });
+            dispatch({
+              type: _userLoginDetails.USER_LOGIN_FULFILLED,
+              payload: res
+            });
+            localStorage.setItem("userInfo", JSON.stringify(res));
+            _context2.next = 16;
+            break;
+
+          case 12:
+            _context2.prev = 12;
+            _context2.t0 = _context2["catch"](0);
+            message = _context2.t0.response.data.message;
+            dispatch({
+              type: _userRegistration.USER_PROFILE_UPDATE_REJECTED,
+              payload: message
+            });
+
+          case 16:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, null, null, [[0, 12]]);
+  };
+};
+
+exports.updateUserProfile = updateUserProfile;
