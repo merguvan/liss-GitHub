@@ -25,7 +25,7 @@ import PeopleInstitutional from "./institutional/components/people/PeopleInstitu
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   // userInfo?.isConfirmed
-  if (userInfo?.isConfirmed) {
+  if (true) {
     return (
       <div className="app">
         <Header />
