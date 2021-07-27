@@ -61,13 +61,15 @@ export const updateUserProfile = (data) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        authorization: "Bearer " + getState().userLogin.userLogin.token,
       },
-      authorization: getState().userLogin.userLogin.token,
     };
-    const { data: res } = await axios.post(
+
+    const { data: res } = await axios.put(
       "http://localhost:5000/user/profile",
-      config,
-      data
+
+      data,
+      config
     );
 
     dispatch({

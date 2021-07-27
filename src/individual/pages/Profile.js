@@ -10,15 +10,23 @@ const Profile = ({ location, history }) => {
   const [email, setEmail] = useState(userLogin.email);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      dispatch(updateUserProfile({ name, email, password }));
+      dispatch(
+        updateUserProfile({
+          personName: name,
+          personEmail: email,
+          newPassword: password,
+          currentPassword,
+        })
+      );
     } else {
-      console.log("passwords donn't match");
+      console.log("passwords don't match");
     }
   };
   return (
@@ -46,9 +54,18 @@ const Profile = ({ location, history }) => {
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Current Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter current  password"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>New Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Enter password"
@@ -58,7 +75,7 @@ const Profile = ({ location, history }) => {
           </Form.Group>
 
           <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Confirm New Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirm password"

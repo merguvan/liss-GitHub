@@ -38,6 +38,10 @@ const {
   updateAffiliationsInfo,
   addAffiliationsInfo,
 } = require("../controllers/user/affiliations");
+const {
+  updateUserProfile,
+  deleteUserProfile,
+} = require("../controllers/user/profile");
 
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
@@ -87,4 +91,8 @@ router
   .post(checkAuth, addAffiliationsInfo)
   .patch(checkAuth, updateAffiliationsInfo);
 
+router
+  .route("/profile")
+  .put(checkAuth, updateUserProfile)
+  .delete(checkAuth, deleteUserProfile);
 module.exports = router;
