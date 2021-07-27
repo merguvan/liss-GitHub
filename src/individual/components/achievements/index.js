@@ -12,17 +12,14 @@ import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 
-const Achievements = (props) => {
-  const history = useHistory();
+const Achievements = ({ history }) => {
   const dispatch = useDispatch();
   const { achievements: storeAchievement } = useSelector(
     (state) => state.achievementsReducer
   );
   const [save, setSave] = useState(false);
   const [value, setValue] = useState(null);
-  const [achievements, setAchievement] = useState(
-    storeAchievement || {}
-  );
+  const [achievements, setAchievement] = useState(storeAchievement || {});
   const [show, setShow] = useState(true);
 
   const handleAchievements = (e) => {
@@ -161,6 +158,5 @@ const Achievements = (props) => {
     </Modal>
   );
 };
-
 
 export default Achievements;

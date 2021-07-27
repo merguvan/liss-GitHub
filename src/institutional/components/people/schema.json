@@ -4,7 +4,7 @@
   "properties": {
     "institutionNameInEnglish": {
       "type": "string",
-      "minLength": 3,
+      "minLength": 5,
       "description": "Please enter institution name"
     },
     "institutionAbbreviation": {
@@ -48,39 +48,8 @@
         "RU",
         "Other"
       ]
-    },
-    "personalData": {
-      "type": "object",
-      "properties": {
-        "age": {
-          "type": "integer",
-          "description": "Please enter your age."
-        },
-        "height": {
-          "type": "number"
-        },
-        "drivingSkill": {
-          "type": "number",
-          "maximum": 10,
-          "minimum": 1,
-          "default": 7
-        }
-      },
-      "required": [
-        "age",
-        "height"
-      ]
-    },
-    "occupation": {
-      "type": "string"
-    },
-    "postalCode": {
-      "type": "string",
-      "maxLength": 5
     }
-  },
-  "required": [
-    "occupation",
-    "nationality"
-  ]
+  }
+    
+ 
 }
