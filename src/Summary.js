@@ -37,12 +37,6 @@ function Summary({ title, url, children }) {
     </Card>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    personalInfo: state.personalInfoReducer.personalInfo,
 
-    addressInfo: state.personalInfoReducer.addressInfo,
-  };
-};
 const mapDispatchToProps = {};
-export default connect(mapStateToProps, mapDispatchToProps)(Summary);
+export default connect(null, mapDispatchToProps)(Summary);
