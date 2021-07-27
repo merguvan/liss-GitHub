@@ -3,7 +3,7 @@
   "elements": [
     {
       "type": "Label",
-      "text": "institution Information"
+      "text": "Institution Information"
     },
     {
       "type": "HorizontalLayout",
@@ -37,7 +37,8 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/website"
+          "scope": "#/properties/website",
+          "label":"Institution Website"
         }
       ]
     },
@@ -46,7 +47,7 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/institutionType"
+          "scope": "#/properties/institutionAddressType"
         },
         {
           "type": "Control",

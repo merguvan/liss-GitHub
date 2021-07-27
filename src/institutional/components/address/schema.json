@@ -27,15 +27,11 @@
       "type": "string",
       "description": "Please enter institution website address"
     },
-    "institutionType": {
+    "institutionAddressType": {
       "type": "string",
+      "maxLength":50,
       "enum": [
-        "DE",
-        "IT",
-        "JP",
-        "US",
-        "RU",
-        "Other"
+        "Main Campus", "Campus", "Campus Building", "Other"
       ]
     },
     "status": {

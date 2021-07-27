@@ -62,7 +62,7 @@ const renderers = [
   // { tester: ratingControlTester, renderer: RatingControl },
 ];
 
-const PeopleInstitutional = ({ history }) => {
+const InstitutionAddress = ({ history }) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
@@ -98,7 +98,7 @@ const PeopleInstitutional = ({ history }) => {
       >
         <Grid item sm={12}>
           <Typography variant={"h3"} className={classes.title}>
-            Institution Information
+            Institution Address Information
           </Typography>
           <div className={classes.demoform}>
             <JsonForms
@@ -128,4 +128,4 @@ const PeopleInstitutional = ({ history }) => {
   );
 };
 
-export default PeopleInstitutional;
+export default InstitutionAddress;
