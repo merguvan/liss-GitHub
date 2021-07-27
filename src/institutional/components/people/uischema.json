@@ -33,13 +33,8 @@
       ]
     },
     {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/website"
-        }
-      ]
+      "type": "Control",
+      "scope": "#/properties/website"
     },
     {
       "type": "HorizontalLayout",

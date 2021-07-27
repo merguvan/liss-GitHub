@@ -50,17 +50,6 @@ jm .country,
   z-index: 1000;
 }
 
-.person-summary {
-  width: 60%;
-  margin: auto;
-}
-.person-summary-container {
-  display: flex;
-  justify-content: space-around;
-  /* border: 1px solid black; */
-  width: 100%;
-  max-width: 100%;
-}
 .person-image-container {
   padding: 0;
   text-align: center;
@@ -113,9 +102,4 @@ jm .country,
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-}
-@media (max-width: 676px) {
-  .person-summary-container {
-    flex-direction: column;
-  }
 }

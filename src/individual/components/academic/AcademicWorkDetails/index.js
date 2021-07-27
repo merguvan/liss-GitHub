@@ -39,7 +39,6 @@ function AcademicWorkDetails(props) {
       ...academicWork,
       [e.target.name]: e.target.value,
     });
-    console.log(academicWork);
   };
 
   useEffect(() => {
@@ -59,10 +58,6 @@ function AcademicWorkDetails(props) {
     } else {
       console.log("fill all the values");
     }
-    // e.preventDefault();
-
-    // props.addAcademicWorkDetails(academicWork);
-    // history.push("/");
   };
 
   // const handleChange = () => {}
@@ -93,7 +88,9 @@ function AcademicWorkDetails(props) {
         <Container>
           <Form>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label class="font-weight-bold">Full APA7 Citation</Form.Label>
+              <Form.Label class="font-weight-bold">
+                Full APA7 Citation
+              </Form.Label>
               <Form.Control
                 id="personPublicationAPA"
                 name="personPublicationAPA"
@@ -129,7 +126,9 @@ function AcademicWorkDetails(props) {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
+                  <label htmlFor="basic-url" class="font-weight-bold">
+                    Language
+                  </label>
                   <SelectLanguage
                     displayLanguageList={displayLanguageList}
                     onClick={showLanguageList}

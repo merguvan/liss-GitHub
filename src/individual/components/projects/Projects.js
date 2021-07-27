@@ -3,25 +3,12 @@ import { Card, Collapse } from "react-bootstrap";
 import { MdEdit } from "react-icons/md";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Summary from "./../../../Summary";
 function Projects(props) {
   return (
-    <Card className="person-summary">
-      <Card.Header>
-        <h5>
-          Projects
-          <span>
-            <Link to="projects/1">
-              <MdEdit />
-            </Link>
-          </span>
-        </h5>
-      </Card.Header>
-      <Collapse in={false}>
-        <div className="person-summary-container">
-          <h1>Projects</h1>
-        </div>
-      </Collapse>
-    </Card>
+    <Summary title="Projects">
+      <p>Murat Abi</p>
+    </Summary>
   );
 }
 

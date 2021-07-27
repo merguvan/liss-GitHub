@@ -16,10 +16,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { person } from "@jsonforms/examples";
 import { Link } from "react-router-dom";
 
-// const schema = person.schema;
-// const uischema = person.uischema;
-// const initialData = person.data;
-
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -48,35 +44,25 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-// const initialData = {
-//   name: 'Send email to Adrian',
-//   description: 'Confirm if you have passed the subject\nHereby ...',
-//   done: true,
-//   recurrence: 'Daily',
-//   rating: 3,
-// };
+const initialData = {};
 
-const renderers = [
-  ...materialRenderers,
-  //register custom renderers
-  // { tester: ratingControlTester, renderer: RatingControl },
-];
+const renderers = [...materialRenderers];
 
 const PeopleInstitutional = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initialData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
     if (
       Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
+      Object.values(initialData).join("")
     ) {
       setSave(true);
     } else {
       setSave(false);
     }
-  }, [jsonformsData, setJsonformsData]);
+  }, [jsonformsData]);
 
   const handleSubmit = (e) => {
     if (Object.values(setJsonformsData).join("").length > 0) {
@@ -85,8 +71,6 @@ const PeopleInstitutional = ({ history }) => {
       console.log("fill all the values");
     }
   };
-
-  console.log(jsonformsData);
 
   return (
     <Fragment>

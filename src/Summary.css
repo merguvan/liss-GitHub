@@ -1,0 +1,31 @@
+.person-summary {
+  width: 60%;
+  margin: 1px auto;
+}
+.person-summary-header {
+  display: flex;
+  justify-content: space-between;
+}
+.person-summary-body {
+}
+.person-summary-body-title {
+  display: flex;
+  justify-content: space-between;
+}
+.person-summary-body-icon-container {
+}
+.person-summary-body-icon-container span {
+  /* padding-bottom: 8px; */
+  margin-left: 5px;
+  font-size: larger;
+}
+.person-summary-body-icon-container span:last-child {
+  color: red;
+}
+.person-summary-container {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid black; */
+  width: 100%;
+  max-width: 100%;
+}
