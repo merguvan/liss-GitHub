@@ -1,0 +1,67 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Institution Information"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instName",
+          "label": "Name of the institution"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instAbbreviation",
+          "label":"Institution abbreviation in English"
+        }
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instNameNative",
+          "label":"Institution name in Native"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instAbbreviationNative",
+          "label":"Institution abbreviation in Native"
+
+        }
+        
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instWebsite",
+          "label":"Website of the institution"
+        }
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instType",
+          "label":"Institution Type"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instStatus",
+          "label":"Institution Status"
+        }
+        
+      ]
+    }
+  ]
+}
