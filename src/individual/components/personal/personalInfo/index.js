@@ -54,7 +54,7 @@ function PersonalInfo() {
   const handlePersonalInfo = (e) => {
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   };
-  console.log(personalInfo);
+
   return (
     <Modal
       show={show}
@@ -63,7 +63,10 @@ function PersonalInfo() {
       centered
     >
       <Modal.Header>
-        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
+        <Modal.Title
+          className="modal-title"
+          data-testId="contained-modal-title-vcenter"
+        >
           <h2>Personal Information - 1</h2>
           <p className="modal-description">
             Please enter your personal information.
@@ -84,7 +87,10 @@ function PersonalInfo() {
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold"> Title</Form.Label>
+                  <Form.Label data-testId="title" className="font-weight-bold">
+                    {" "}
+                    Title
+                  </Form.Label>
                   <Form.Control
                     id="personTitle"
                     name="personTitle"
@@ -106,7 +112,12 @@ function PersonalInfo() {
               </Col>
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">First Name</Form.Label>
+                  <Form.Label
+                    data-testId="firstName"
+                    className="font-weight-bold"
+                  >
+                    First Name
+                  </Form.Label>
                   <Form.Control
                     id="personName"
                     name="personName"
@@ -128,7 +139,9 @@ function PersonalInfo() {
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">Middle Name </Form.Label>
+                  <Form.Label className="font-weight-bold">
+                    Middle Name{" "}
+                  </Form.Label>
                   <Form.Control
                     id="personMiddle"
                     name="personMiddle"
@@ -146,7 +159,7 @@ function PersonalInfo() {
 
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">Surname </Form.Label>
+                  <Form.Label className="font-weight-bold">Surname </Form.Label>
                   <Form.Control
                     id="personSurname"
                     name="personSurname"
@@ -167,7 +180,7 @@ function PersonalInfo() {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
-                <Form.Label class="font-weight-bold">User Name </Form.Label>
+                <Form.Label className="font-weight-bold">User Name </Form.Label>
                 <Form.Control
                   id="personUserName"
                   name="personUserName"
@@ -183,7 +196,9 @@ function PersonalInfo() {
               </Col>
 
               <Col xs={12} md={6} lg={6}>
-                <Form.Label class="font-weight-bold">Display Name </Form.Label>
+                <Form.Label className="font-weight-bold">
+                  Display Name{" "}
+                </Form.Label>
                 <Form.Control
                   id="personDisplayName"
                   name="personDisplayName"
@@ -204,7 +219,7 @@ function PersonalInfo() {
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">Gender</Form.Label>
+                  <Form.Label className="font-weight-bold">Gender</Form.Label>
                   <Form.Control
                     id="personGender"
                     name="personGender"
@@ -227,7 +242,9 @@ function PersonalInfo() {
 
               <Col xs={12} md={6} lg={6}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">Martial Status</Form.Label>
+                  <Form.Label className="font-weight-bold">
+                    Martial Status
+                  </Form.Label>
                   <Form.Control
                     id="personMaritalStatus"
                     name="personMaritalStatus"
@@ -255,7 +272,9 @@ function PersonalInfo() {
             <Form.Row>
               <Col xs={12} md={4} lg={4}>
                 <Form.Group>
-                  <Form.Label class="font-weight-bold">Date of Birth </Form.Label>
+                  <Form.Label className="font-weight-bold">
+                    Date of Birth{" "}
+                  </Form.Label>
                   <Form.Control
                     id="personDOB"
                     name="personDOB"
