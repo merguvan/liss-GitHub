@@ -25,7 +25,7 @@ import PeopleInstitutional from "./institutional/components/people/PeopleInstitu
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   // userInfo?.isConfirmed
-  if (true) {
+  if (userInfo?.isConfirmed) {
     return (
       <div className="app">
         <Header />
@@ -45,7 +45,7 @@ function App(props) {
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
-          <Route path="/" component={PeopleInstitutional} />
+          {/* <Route path="/" component={PeopleInstitutional} /> */}
         </Switch>
       </div>
     );
