@@ -48,14 +48,19 @@ function RegisterPage({ containerRef, history, location }) {
   const handleRegister = (e) => {
     e.preventDefault();
     if (gdprConsent) {
+      console.log(formData);
       if (
         Object.values(formData).every((value) => value.length > 0) &&
-        Object.values(formData).length === 5
+        Object.values(formData).length === 7
       ) {
         if (formData?.password.length >= 6) {
+          if(formData.password===formData.password_confirmation){
           dispatch(signup({ ...formData, gdprConsent }));
           setFormData({});
           setGdprConsent(false);
+          } else {
+            setError("Confirmation password is incorrect");
+          }
         } else {
           setError("Your password should be longer than 6 characters");
         }
@@ -66,7 +71,6 @@ function RegisterPage({ containerRef, history, location }) {
       setError("Please accept our terms & conditions");
     }
   };
-
   return (
     <form
       className="login_base-container"
@@ -77,7 +81,7 @@ function RegisterPage({ containerRef, history, location }) {
         (userInfo &&
           !userInfo?.isConfirmed &&
           Object.keys(formData).length === 0 && (
-            <Alert variant="danger">
+            <Alert className="alert" variant="danger">
               {userInfo?.message || (storeError?.length > 0 && storeError)}
             </Alert>
           ))}
@@ -115,7 +119,7 @@ function RegisterPage({ containerRef, history, location }) {
                   type="text"
                   name="institutionName"
                   placeholder="institutional name"
-                  value={formData?.personName || ""}
+                  value={formData?.institutionName || ""}
                   onChange={handleInputChange}
                 />
               </div>
@@ -156,6 +160,17 @@ function RegisterPage({ containerRef, history, location }) {
                 onChange={handleInputChange}
               />
             </div>
+            {formData.password && (
+            <div className="login_form-group">
+              <input
+                type="password"
+                value={formData["password_confirmation"] || ""}
+                name="password_confirmation"
+                placeholder="confirm your password"
+                onChange={handleInputChange}
+              />
+            </div>
+          )}
           </div>
         </div>
       )}
