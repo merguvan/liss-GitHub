@@ -16,6 +16,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { person } from "@jsonforms/examples";
 import { Link } from "react-router-dom";
 
+// const schema = person.schema;
+// const uischema = person.uischema;
+// const initialData = person.data;
+
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -44,25 +48,35 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-const initialData = {};
+// const initialData = {
+//   name: 'Send email to Adrian',
+//   description: 'Confirm if you have passed the subject\nHereby ...',
+//   done: true,
+//   recurrence: 'Daily',
+//   rating: 3,
+// };
 
-const renderers = [...materialRenderers];
+const renderers = [
+  ...materialRenderers,
+  //register custom renderers
+  // { tester: ratingControlTester, renderer: RatingControl },
+];
 
-const PeopleInstitutional = ({ history }) => {
+const InstitutionInfo = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState(initialData);
+  const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
 
   useEffect(() => {
     if (
       Object.values(jsonformsData).join("") !==
-      Object.values(initialData).join("")
+      Object.values(setJsonformsData).join("")
     ) {
       setSave(true);
     } else {
       setSave(false);
     }
-  }, [jsonformsData]);
+  }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
     if (Object.values(setJsonformsData).join("").length > 0) {
@@ -71,6 +85,8 @@ const PeopleInstitutional = ({ history }) => {
       console.log("fill all the values");
     }
   };
+
+  console.log(jsonformsData);
 
   return (
     <Fragment>
@@ -82,7 +98,7 @@ const PeopleInstitutional = ({ history }) => {
       >
         <Grid item sm={12}>
           <Typography variant={"h3"} className={classes.title}>
-            Institution Information
+            Institution Basic Information
           </Typography>
           <div className={classes.demoform}>
             <JsonForms
@@ -112,4 +128,4 @@ const PeopleInstitutional = ({ history }) => {
   );
 };
 
-export default PeopleInstitutional;
+export default InstitutionInfo;
