@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   USER_LOGIN_FULFILLED,
   USER_LOGIN_REJECTED,
+  USER_LOGOUT,
 } from "../actionTypes/userLoginDetails";
 import {
   USER_REGISTRATION_PENDING,
@@ -10,6 +11,9 @@ import {
   USER_PROFILE_UPDATE_FULFILLED,
   USER_PROFILE_UPDATE_REJECTED,
   USER_PROFILE_UPDATE_PENDING,
+  USER_PROFILE_DELETE_PENDING,
+  USER_PROFILE_DELETE_FULFILLED,
+  USER_PROFILE_DELETE_REJECTED,
 } from "../actionTypes/userRegistration";
 export const signup = (data) => async (dispatch) => {
   try {
@@ -88,6 +92,46 @@ export const updateUserProfile = (data) => async (dispatch, getState) => {
   }) {
     dispatch({
       type: USER_PROFILE_UPDATE_REJECTED,
+      payload: message,
+    });
+  }
+};
+export const deleteUserProfile = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_PROFILE_DELETE_PENDING,
+    });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + getState().userLogin.userLogin.token,
+      },
+    };
+
+    const { data: res } = await axios.delete(
+      "http://localhost:5000/user/profile",
+
+      getState().userLogin.userLogin._id,
+      config
+    );
+
+    dispatch({
+      type: USER_PROFILE_DELETE_FULFILLED,
+      payload: res,
+    });
+    dispatch({
+      type: USER_LOGOUT,
+      payload: res,
+    });
+    localStorage.removeItem("userInfo");
+  } catch ({
+    response: {
+      data: { message },
+    },
+  }) {
+    dispatch({
+      type: USER_PROFILE_DELETE_REJECTED,
       payload: message,
     });
   }
