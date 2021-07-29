@@ -54,16 +54,17 @@ function Summary(props) {
         </h5>
       </Card.Header>
       <Card.Body className="person-summary-body">
-        <div className="person-summary-body-title">
+        {/* <div className="person-summary-body-title">
           <div id="person-summary-body-title">
             {props.children[0]}
-            {/* <h6>
+            <h6>
+              Coment Out(
               {props?.SummaryInfo[2] +
                 " " +
                 props?.SummaryInfo[3] +
                 " " +
-                props?.SummaryInfo[4]}
-            </h6> */}
+                props?.SummaryInfo[4]})
+            </h6>
           </div>
           <div className="person-summary-body-icon-container">
             <span>
@@ -77,22 +78,9 @@ function Summary(props) {
           </div>
         </div>
         <div className="person-summary-body-context-container">
-          <em>
-            {sample_person.Personal_Info.personGender}
-            {sample_person.Personal_Info.personMaritalStatus},
-            b.{sample_person.Personal_Info.personCityOB},
-            {sample_person.Personal_Info.personCountryOB},
-            {sample_person.Personal_Info.personDOB}<br/>
-            
-            Home Adress: {sample_person.Personal_Info.personHomeAddress}<br/>
-            Email: {sample_person.Personal_Info.personEmail}<br/>
-            Citizen of {sample_person.Personal_Info.personCountryOB}<br/>
-            {sample_person.Personal_Info.personEuWorkPermit&&("Can officially work in EU")}<br/>
-            {sample_person.Personal_Info.medicalDeclarationUpload&&("Uploaded Medical Declaration and DBS")}<br/>
-
-            </em>
-          {props.children.slice(1)}
-        </div>
+          {props.children}
+        </div> */}
+        {props.children}
       </Card.Body>
     </Card>
   );

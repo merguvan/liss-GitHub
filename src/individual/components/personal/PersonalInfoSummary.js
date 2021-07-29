@@ -48,8 +48,6 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
             {sample_person.Personal_Info.personTitle +
               " " +
               sample_person.Personal_Info.personName +
-              ", " +
-              "b." +
               " " +
               sample_person.Personal_Info.personSurname}
           </em>
@@ -61,7 +59,7 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
           {sample_person.Personal_Info.personCountryOB},
           {sample_person.Personal_Info.personDOB}
           <br />
-          Home Adress: {sample_person.Personal_Info.person}
+          Home Adress: {sample_person.Personal_Info.personHomeAddress}
           <br />
           Email: {sample_person.Personal_Info.personEmail}
           <br />
