@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AcademicWork from "../components/academic/AcademicWork";
 import PersonalInfoSummary from "../components/personal/PersonalInfoSummary";
-import WorkExperience from "../components/workexperience/WorkExperience";
+import WorkExperienceSummary from "../components/workexperience/WorkExperienceSummary";
 import Education from "../components/education/Education";
 import Affiliations from "../components/affiliations/Affiliations";
 import Achievements from "../components/achievements/Achievements";
@@ -16,7 +16,7 @@ export default function MainPage() {
   return (
     <div className="mainPage">
       <PersonalInfoSummary />
-      <WorkExperience />
+      <WorkExperienceSummary />
       <Education />
       <Affiliations />
       <Achievements />
