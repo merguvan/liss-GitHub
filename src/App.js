@@ -25,7 +25,7 @@ import InstitutionInfo from "./institutional/components/information/InstitutionI
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
   // userInfo?.isConfirmed
-  if (true) {
+  if (userInfo?.isConfirmed) {
     return (
       <div className="app">
         <Header />
@@ -45,7 +45,7 @@ function App(props) {
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
-          <Route path="/institutioninfo/:id" component={InstitutionInfo}/>
+          <Route path="/institutioninfo/:id" component={InstitutionInfo} />
         </Switch>
       </div>
     );

@@ -3,23 +3,17 @@ import { Card, Collapse } from "react-bootstrap";
 import { MdEdit } from "react-icons/md";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./WorkExperience.css";
+import Summary from "../../../Summary";
 function WorkExperience(props) {
   return (
-    <Card className="person-summary">
-      <Card.Header>
-        <h5>
-          Work Experience
-          <span>
-            <Link to="workexperience/1">
-              <MdEdit />
-            </Link>
-          </span>
-        </h5>
-      </Card.Header>
-      <Collapse in={true}>
-        <div className="person-summary-container"></div>
-      </Collapse>
-    </Card>
+    <Summary headerTitle="Work Experience" url="/">
+      <h6>Nigerian Tulip International Colleges, 2014-2020</h6>
+      <div className="workexperience-summary-content-container">
+        <span>Erdal Dincer</span>
+        <h2>Haymana, Turkey</h2>
+      </div>
+    </Summary>
   );
 }
 
