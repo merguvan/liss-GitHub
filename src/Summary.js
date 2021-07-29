@@ -70,11 +70,11 @@ function Summary({ title, url, children }) {
           <em>
             {sample_person.Personal_Info.personGender}
             {sample_person.Personal_Info.personMaritalStatus},
-            b.{sample_person.Personal_Info.personCityOB},s
+            b.{sample_person.Personal_Info.personCityOB},
             {sample_person.Personal_Info.personCountryOB},
             {sample_person.Personal_Info.personDOB}<br/>
             
-            Home Adress: {sample_person.Personal_Info.person}<br/>
+            Home Adress: {sample_person.Personal_Info.personHomeAddress}<br/>
             Email: {sample_person.Personal_Info.personEmail}<br/>
             Citizen of {sample_person.Personal_Info.personCountryOB}<br/>
             {sample_person.Personal_Info.personEuWorkPermit&&("Can officially work in EU")}<br/>
