@@ -23,7 +23,7 @@ const Profile = ({ location, history }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (data.newPassword) {
+    if (data.currentPassword) {
       if (data?.newPassword === data?.confirmNewPassword) {
         dispatch(updateUserProfile(data));
       } else {
@@ -66,7 +66,7 @@ const Profile = ({ location, history }) => {
               type="name"
               placeholder="Enter name"
               name="personName"
-              value={data["personName"] || ""}
+              value={data["personName"] || userLogin?.name || ""}
               onChange={handleData}
             ></Form.Control>
           </Form.Group>
@@ -77,7 +77,7 @@ const Profile = ({ location, history }) => {
               type="email"
               placeholder="Enter email"
               name="personEmail"
-              value={data["personEmail"] || ""}
+              value={data["personEmail"] || userLogin.email || ""}
               onChange={handleData}
             ></Form.Control>
           </Form.Group>
