@@ -67,7 +67,9 @@ function Summary(props) {
           </div>
           <div className="person-summary-body-icon-container">
             <span>
-              <FiEdit />
+              <Link to={props.url}>
+                <FiEdit />
+              </Link>
             </span>
             <span>
               <FiTrash />

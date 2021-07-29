@@ -42,7 +42,7 @@ const sample_person = {
 function PersonalInfoSummary({ personalInfo, addressInfo }) {
   return (
     <>
-      <Summary headerTitle="Personal Info deneme" url="/">
+      <Summary headerTitle="Personal Info deneme" url="/personalInfo/1">
         <h6>
           <em>
             {sample_person.Personal_Info.personTitle +
