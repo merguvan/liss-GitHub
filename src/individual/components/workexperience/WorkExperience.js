@@ -7,7 +7,7 @@ import "./WorkExperience.css";
 import Summary from "../../../Summary";
 function WorkExperience(props) {
   return (
-    <Summary headerTitle="Work Experience" url="/">
+    <Summary headerTitle="Work Experience" url="/workexperience/1">
       <h6>Nigerian Tulip International Colleges, 2014-2020</h6>
       <div className="workexperience-summary-content-container">
         <span>Erdal Dincer</span>
