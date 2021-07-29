@@ -5,11 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Summary from "./../../../Summary";
 function Projects(props) {
-  return (
-    <Summary title="Projects">
-      <p>Murat Abi</p>
-    </Summary>
-  );
+  return <>Projects Summary</>;
 }
 
 const mapStateToProps = (state) => {

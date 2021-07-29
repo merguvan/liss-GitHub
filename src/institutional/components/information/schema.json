@@ -1,0 +1,79 @@
+
+{
+  "type": "object",
+  "properties": {
+    "instName": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "Please enter institution name"
+    },
+    "instAbbreviation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 15,
+      "description": "Please enter institution abbreviation"
+    },
+    "instNameNative": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "Please enter institution name in native language"
+    },
+    "instAbbreviationNative": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 15,
+      "description": "Please enter institution abbreviation in native language"
+    },
+   
+    "instWebsite": {
+      "type": "string",
+      "description": "Please enter institution website address"
+    },
+    "instType": {
+      "type": "string",
+      "maxLength":50,
+      "enum": [
+        "University", "College", "School","Other"
+      ]
+    },
+    "instStatus": {
+      "type": "string",
+      "enum": [
+        "Private",
+        "State",
+        "Other"
+      ]
+    },
+    "personalData": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "integer",
+          "description": "Please enter your age."
+        },
+        "height": {
+          "type": "number"
+        },
+        "drivingSkill": {
+          "type": "number",
+          "maximum": 10,
+          "minimum": 1,
+          "default": 7
+        }
+      },
+      "required": [
+        "age",
+        "height"
+      ]
+    }
+  },
+  "required": [
+    "instName",
+    "instAbbreviation",
+    "instType",
+    "instStatus",
+    "instWebsite"
+  ]
+}
