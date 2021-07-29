@@ -75,6 +75,20 @@ function Summary(props) {
           </div>
         </div>
         <div className="person-summary-body-context-container">
+          <em>
+            {sample_person.Personal_Info.personGender}
+            {sample_person.Personal_Info.personMaritalStatus},
+            b.{sample_person.Personal_Info.personCityOB},
+            {sample_person.Personal_Info.personCountryOB},
+            {sample_person.Personal_Info.personDOB}<br/>
+            
+            Home Adress: {sample_person.Personal_Info.personHomeAddress}<br/>
+            Email: {sample_person.Personal_Info.personEmail}<br/>
+            Citizen of {sample_person.Personal_Info.personCountryOB}<br/>
+            {sample_person.Personal_Info.personEuWorkPermit&&("Can officially work in EU")}<br/>
+            {sample_person.Personal_Info.medicalDeclarationUpload&&("Uploaded Medical Declaration and DBS")}<br/>
+
+            </em>
           {props.children.slice(1)}
         </div>
       </Card.Body>
