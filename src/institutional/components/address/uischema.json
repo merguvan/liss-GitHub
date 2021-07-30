@@ -1,0 +1,70 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Institution Address Information"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instAddressType",
+          "label": "Institutional address type"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instFlatNo",
+          "label":"Flat/Apt No" 
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instBuildingNo",
+          "label":"Building No" 
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instDistrict",
+          "label":"District (if any)" 
+        }
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instStreet",
+          "label":"Street"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instCity",
+          "label":"City"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instPostCode",
+          "label":"Zip/Post Code"
+        }
+        
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/instState",
+          "label":"State (if any)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/instCountry",
+          "label":"Country"
+        }
+      ]
+    }
+  ]
+}
