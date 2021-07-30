@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
 import InstitutionInfo from "./institutional/components/information/InstitutionInfo";
+import InstitutionAddress from "./institutional/components/address/InstitutionAddress"
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
@@ -46,6 +47,7 @@ function App(props) {
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
           <Route path="/institutioninfo/:id" component={InstitutionInfo} />
+          <Route path="/institutionaddress/:id" component={InstitutionAddress} />
         </Switch>
       </div>
     );
