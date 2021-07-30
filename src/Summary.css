@@ -1,67 +1,44 @@
 .person-summary {
-  width: 60%;
+  width: 50%;
   margin: 1px auto;
+
+}
+
+.person-summary-body-icon-container span:last-child {
+  color: red;
+}
+h6 {
+  margin:0px !important;
+}
+
+.person-summary-body-icon-container{
+  max-width:80px;
+  float:right;
+  clear:both;
+  display:flex;
+  width:40px;
+  justify-content: space-between;
+}
+.person-summary-body-context-container_level_1 {
+  padding-left: 24px;
+  font-size:16px;
+}
+.person-summary-body-context-container_level_2 {
+  padding-left: 36px;
+  font-size:16px;
+}
+.person-summary-body-context-container_level_3{
+  padding-left: 48px;
+  font-size:12px;
+}
+.person-summary-body-context-container {
+  margin-top: 8px;
+  font-size: 14px;
+
 }
 .person-summary-header {
   display: flex;
   justify-content: space-between;
 }
-/*--TITLE--*/
-.person-summary-body-title {
-  display: flex;
-  justify-content: space-between;
-}
-.person-summary-body-title h6 {
-  margin: 0px;
-  padding: 0px;
-  width:200px;
-  float:left;
-
-}
-#person-summary-body-title {
-  display: flex;
-  align-items: flex-end;
-  padding-left: 32px;
-}
-/*----*/
-
-/*--Summary Container--*/
-.person-summary-body-context-container {
-  margin-top: 8px;
-  padding-left: 48px;
-  font-size: 14px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-/*--Summary Container 2--*/
-.person-summary-body-context-container_level_2 {
-  padding-left: 24px;
-  font-size:12px;
-}
-/*----*/
 
 
-/*--ICONS--*/
-.person-summary-body-icon-container{
-  max-width:80px;
-  float:right;
-  clear:both;
-}
-.person-summary-body-icon-container span {
-  /* padding-bottom: 8px; */
-  margin: 0px 0px 0px 5px;
-  font-size: larger;
-}
-.person-summary-body-icon-container span:last-child {
-  color: red;
-}
-/*----*/
-
-.person-summary-container {
-  display: flex;
-  justify-content: space-around;
-  /* border: 1px solid black; */
-  width: 100%;
-  max-width: 100%;
-}
