@@ -1,3 +1,9 @@
 .workexperience-summary-content-container {
   display: flex;
 }
+.work_experience_block{
+  margin-bottom:20px;
+}
+.work_experience_block:last-child{
+  margin-bottom:0px;
+}
