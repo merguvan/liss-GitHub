@@ -109,12 +109,7 @@ export const deleteUserProfile = () => async (dispatch, getState) => {
       },
     };
 
-    const { data: res } = await axios.delete(
-      "http://localhost:5000/user/profile",
-
-      getState().userLogin.userLogin._id,
-      config
-    );
+    const res = await axios.get("http://localhost:5000/user/profile", config);
 
     dispatch({
       type: USER_PROFILE_DELETE_FULFILLED,
@@ -125,14 +120,10 @@ export const deleteUserProfile = () => async (dispatch, getState) => {
       payload: res,
     });
     localStorage.removeItem("userInfo");
-  } catch ({
-    response: {
-      data: { message },
-    },
-  }) {
+  } catch (error) {
     dispatch({
       type: USER_PROFILE_DELETE_REJECTED,
-      payload: message,
+      payload: error || "hata",
     });
   }
 };

@@ -7,6 +7,7 @@ module.exports = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_KEY || "secret");
 
     req.user = await User.findById(decoded.id).select("-password");
+
     next();
   } catch (error) {
     return res.status(401).json({
