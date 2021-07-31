@@ -49,11 +49,8 @@ function RegisterPage({ containerRef, history, location }) {
     e.preventDefault();
     if (gdprConsent) {
       if (
-
-        Object.values(formData).every((value) => value.length > 0) &&
-        Object.values(formData).length === 6
-
-
+        Object.values(formData).every((value) => value) &&
+        Object.values(formData).length === 7
       ) {
         if (formData?.password.length >= 6) {
           if (formData.password === formData.password_confirmation) {
@@ -73,7 +70,7 @@ function RegisterPage({ containerRef, history, location }) {
       setError("Please accept our terms & conditions");
     }
   };
-
+  console.log(Object.values(formData).length);
   return (
     <form
       className="login_base-container"

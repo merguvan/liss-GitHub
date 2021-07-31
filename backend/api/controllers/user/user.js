@@ -2,7 +2,6 @@ const userSchema = require("../../models/user/user");
 const nodemailer = require("nodemailer");
 const generateToken = require("../../utils/generateToken");
 module.exports.registerUser = async (req, res, next) => {
-  console.log(req.body);
   const {
     isAdmin,
     gdprConsent,
