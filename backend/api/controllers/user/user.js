@@ -114,7 +114,6 @@ module.exports.authorizeUser = async (req, res, next) => {
       next(systemError);
     }
   } catch (error) {
-    console.log(error);
     res.status(404);
     const systemError = new Error("Either password or email is wrong");
     next(systemError);

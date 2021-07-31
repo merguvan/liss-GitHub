@@ -9,6 +9,7 @@ import {
 
 const Profile = ({ location, history }) => {
   const { userLogin } = useSelector((state) => state.userLogin);
+
   const [data, setData] = useState({});
   const [message, setMessage] = useState(null);
 

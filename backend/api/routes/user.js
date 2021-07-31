@@ -52,6 +52,11 @@ router.route("/signup").post(registerUser);
 router.route("/login").post(authorizeUser);
 
 router
+  .route("/profile")
+  .put(checkAuth, updateUserProfile)
+  .delete(checkAuth, deleteUserProfile);
+
+router
   .route("/personalinfo")
   .get(checkAuth, getUserPersonalInfo)
   .post(checkAuth, addUserPersonalInfo)
@@ -91,8 +96,4 @@ router
   .post(checkAuth, addAffiliationsInfo)
   .patch(checkAuth, updateAffiliationsInfo);
 
-router
-  .route("/profile")
-  .put(checkAuth, updateUserProfile)
-  .delete(checkAuth, deleteUserProfile);
 module.exports = router;
