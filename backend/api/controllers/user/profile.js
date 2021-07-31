@@ -23,6 +23,7 @@ module.exports.updateUserProfile = async (req, res, next) => {
             { ...req.body, password: hash },
             { new: true }
           );
+
           return res.status(200).json({
             _id: user._id,
             name: user.personName,
@@ -30,6 +31,7 @@ module.exports.updateUserProfile = async (req, res, next) => {
             email: user.personEmail,
             token: generateToken(user._id),
             isConfirmed: user.isConfirmed,
+            password: user.password,
           });
         });
       }
@@ -50,4 +52,18 @@ module.exports.updateUserProfile = async (req, res, next) => {
     });
   }
 };
-module.exports.deleteUserProfile = (req, res, next) => {};
+module.exports.deleteUserProfile = async (req, res, next) => {
+  console.log(req.user._id);
+  try {
+    const user = await userSchema.findOneAndDelete({ _id: req.user._id });
+
+    return res.status(200).json({
+      meesage: "User has been deleted",
+      user,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: error,
+    });
+  }
+};
