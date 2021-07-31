@@ -109,7 +109,10 @@ export const deleteUserProfile = () => async (dispatch, getState) => {
       },
     };
 
-    const res = await axios.get("http://localhost:5000/user/profile", config);
+    const res = await axios.delete(
+      "http://localhost:5000/user/profile",
+      config
+    );
 
     dispatch({
       type: USER_PROFILE_DELETE_FULFILLED,
