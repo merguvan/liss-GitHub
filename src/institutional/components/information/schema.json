@@ -45,28 +45,6 @@
         "State",
         "Other"
       ]
-    },
-    "personalData": {
-      "type": "object",
-      "properties": {
-        "age": {
-          "type": "integer",
-          "description": "Please enter your age."
-        },
-        "height": {
-          "type": "number"
-        },
-        "drivingSkill": {
-          "type": "number",
-          "maximum": 10,
-          "minimum": 1,
-          "default": 7
-        }
-      },
-      "required": [
-        "age",
-        "height"
-      ]
     }
   },
   "required": [

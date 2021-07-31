@@ -1,0 +1,68 @@
+
+{
+  "type": "object",
+  "properties": {
+    "instMediaPlatform": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "",
+      "enum": [
+        "Linkedin",
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "Snapchat"
+      ]
+    },
+    "instMediaPlatform2": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "",
+      "enum": [
+        "Linkedin",
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "Snapchat"
+      ]
+    },
+    "instMediaPlatform3": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "",
+      "enum": [
+        "Linkedin",
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "Snapchat",
+        "Website"
+      ]
+    },
+    "instUserName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Please type your user name or account name"
+    },
+    "instUserName2": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Please type your user name or account name"
+    },
+    "instUserName3": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Please type your user name or account name"
+    }
+  },
+  "required": [
+    "instUserName",
+    "instMediaPlatform"
+  ]
+}

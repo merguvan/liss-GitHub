@@ -22,6 +22,8 @@ import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
 import InstitutionInfo from "./institutional/components/information/InstitutionInfo";
 import InstitutionAddress from "./institutional/components/address/InstitutionAddress"
+import ContactAddress from "./institutional/components/contactAddress/ContactAddress"
+import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
@@ -48,6 +50,8 @@ function App(props) {
           <Route path="/profile" component={Profile} />
           <Route path="/institutioninfo/:id" component={InstitutionInfo} />
           <Route path="/institutionaddress/:id" component={InstitutionAddress} />
+          <Route path="/contactaddress/:id" component={ContactAddress} />
+          <Route path="/mediainfo/:id" component={MediaInfo} />
         </Switch>
       </div>
     );

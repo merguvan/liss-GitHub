@@ -1,0 +1,78 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Contact Address Information"
+    },
+    {
+      "type": "Control",
+      "label":"",
+      "scope": "#/properties/contactAddressSame",
+      "options": {
+        "format": "radio"
+      }
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactAddressType",
+          "label": "Contact address type"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactFlatNo",
+          "label":"Flat/Apt No" 
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactBuildingNo",
+          "label":"Building No" 
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactDistrict",
+          "label":"District (if any)" 
+        }
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactStreet",
+          "label":"Street"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactCity",
+          "label":"City"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactPostCode",
+          "label":"Zip/Post Code"
+        }
+        
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactState",
+          "label":"State (if any)"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactCountry",
+          "label":"Country"
+        }
+      ]
+    }
+  ]
+}
