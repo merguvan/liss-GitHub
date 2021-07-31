@@ -51,13 +51,13 @@ function RegisterPage({ containerRef, history, location }) {
       console.log(formData);
       if (
         Object.values(formData).every((value) => value.length > 0) &&
-        Object.values(formData).length === 7
+        Object.values(formData).length === 6
       ) {
         if (formData?.password.length >= 6) {
-          if(formData.password===formData.password_confirmation){
-          dispatch(signup({ ...formData, gdprConsent }));
-          setFormData({});
-          setGdprConsent(false);
+          if (formData.password === formData.password_confirmation) {
+            dispatch(signup({ ...formData, gdprConsent }));
+            setFormData({});
+            setGdprConsent(false);
           } else {
             setError("Confirmation password is incorrect");
           }
@@ -71,6 +71,7 @@ function RegisterPage({ containerRef, history, location }) {
       setError("Please accept our terms & conditions");
     }
   };
+  console.log(Object.values(formData).length);
   return (
     <form
       className="login_base-container"
@@ -161,16 +162,16 @@ function RegisterPage({ containerRef, history, location }) {
               />
             </div>
             {formData.password && (
-            <div className="login_form-group">
-              <input
-                type="password"
-                value={formData["password_confirmation"] || ""}
-                name="password_confirmation"
-                placeholder="confirm your password"
-                onChange={handleInputChange}
-              />
-            </div>
-          )}
+              <div className="login_form-group">
+                <input
+                  type="password"
+                  value={formData["password_confirmation"] || ""}
+                  name="password_confirmation"
+                  placeholder="confirm your password"
+                  onChange={handleInputChange}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}
