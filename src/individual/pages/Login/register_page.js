@@ -33,17 +33,15 @@ function RegisterPage({ containerRef, history, location }) {
   }, [history, userInfo, redirect, formData]);
 
   const handleInputChange = (event) => {
-    if (event.target.name === "userType") {
+    if(formData.userType&&(event.target.name==="Institutional"||event.target.name==="Individual")){
+      setFormData({ })
+    }else{
       setFormData({
-        ...formData,
-        [event.target.name]: event.target.value,
-      });
-    }
-    setFormData({
       ...formData,
       [event.target.name]: event.target.value,
-    });
-  };
+    })}
+    console.log(formData)
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -95,7 +93,7 @@ function RegisterPage({ containerRef, history, location }) {
           checked={formData["userType"] === "Institutional" && true}
           value="Institutional"
         >
-          Institutional
+          <span>Institutional</span>
         </ToggleButton>
         <ToggleButton
           className="radioBtn"
@@ -105,25 +103,76 @@ function RegisterPage({ containerRef, history, location }) {
           checked={formData["userType"] === "Individual" && true}
           value="Individual"
         >
-          Individual
+          <span>Individual</span>
         </ToggleButton>
       </ButtonGroup>
       {/* <hr /> */}
-
-      {formData?.userType && (
+<div>{(formData.userType==="Institutional")?
         <div className="login_content">
           <div className="login_form">
-            {formData?.userType === "Institutional" && (
-              <div className="login_form-group">
+            <div className="login_form-group">
                 <input
                   type="text"
-                  name="institutionName"
+                  name="i.institutionalName"
                   placeholder="institutional name"
-                  value={formData?.institutionName || ""}
+                  value={formData["i.institutionalName"] || ""}
                   onChange={handleInputChange}
                 />
               </div>
+            
+            <div className="login_form-group-name-surname">
+              <input
+                type="text"
+                name="i.personName"
+                placeholder="name"
+                value={formData["i.personName"] || ""}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                name="i.personSurname"
+                placeholder="surname"
+                value={formData["i.personSurname"]|| ""}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="login_form-group">
+              <input
+                type="email"
+                name="i.personEmail"
+                placeholder="email"
+                value={formData["i.personEmail"] || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="login_form-group">
+              <input
+                type="password"
+                name="i.password"
+                placeholder="password"
+                value={formData["i.password"] || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+            {formData["i.password"] && (
+              <div className="login_form-group">
+                <input
+                  type="password"
+                  value={formData["i.password_confirmation"] || ""}
+                  name="i.password_confirmation"
+                  placeholder="confirm your password"
+                  onChange={handleInputChange}
+                />
+              </div>
+            
             )}
+          </div>
+        </div>
+        :
+        <div className="login_content">
+          <div className="login_form">
             <div className="login_form-group-name-surname">
               <input
                 type="text"
@@ -170,17 +219,14 @@ function RegisterPage({ containerRef, history, location }) {
                   onChange={handleInputChange}
                 />
               </div>
+            
             )}
           </div>
         </div>
-      )}
+        }
+        </div>
 
-      <div className="login_footer">
-        <button type="submit" className="login_btn">
-          Register
-        </button>
-      </div>
-      <div className="gdpr">
+<div className="gdpr">
         <label class="container">
           <input
             type="checkbox"
@@ -198,6 +244,11 @@ function RegisterPage({ containerRef, history, location }) {
             <Link to="/gdpr-consent">Terms&conditions</Link>..
           </span>
         </label>
+      </div>
+      <div className="login_footer">
+        <button type="submit" className="login_btn">
+          Register
+        </button>
       </div>
     </form>
   );
