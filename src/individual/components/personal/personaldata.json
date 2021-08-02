@@ -21,6 +21,17 @@
         "personCity": "Paris",
         "personState": "",
         "personCountry": "France"
+      },
+      {
+        "personAddressType": "Home",
+        "personFlatNo": "21",
+        "personBuildingNo": "1A",
+        "personStreet": "St. Louis",
+        "personDistrict": "",
+        "postalCode": "1002 PY",
+        "personCity": "Paris",
+        "personState": "",
+        "personCountry": "France"
       }
     ],
     "personMaritalStatus": "Married",
@@ -28,10 +39,10 @@
       { "personPhoneType": "Mobile", "personPhoneNumber": "037847740" }
     ],
     "personEmail": [
-      { "email": "amazing@ideas.com", "personEmailType": "personal" },
-      { "email": "amazing@ideas.com", "personEmailType": "personal" },
-      { "email": "amazing@ideas.com", "personEmailType": "personal" },
-      { "email": "amazing@ideas.com", "personEmailType": "personal" }
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" }
     ],
     "personPhoto": "url",
     "personPlatform": [
@@ -39,10 +50,10 @@
       { "personPlatformType": "twitter", "personPlatformUserName": "ArazBey.com" }
     ],
     "personCvDoc": "pdf",
-    "personCitizenship": ["American", "Turkish"],
+    "personCitizenship": ["USA", "Turkey"],
     "personWorkPermit": ["EU", "USA", "TR"],
-    "personDbsDoc": "doc",
-    "personMedicalDoc": "doc"
+    "personDbsDoc": true,
+    "personMedicalDoc": true
   },
 
   "Project": [
