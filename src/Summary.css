@@ -3,7 +3,15 @@
   margin: 1px auto;
 
 }
-
+.person-summary-body p{
+  padding-left:16px;
+  margin-bottom:0;
+  text-indent:-16px;
+}
+/* .person-summary-body p:first-line{
+ text-indent:-10px;
+  background-color:red;
+} */
 .person-summary-body-icon-container span:last-child {
   color: red;
 }
@@ -26,10 +34,12 @@ h6 {
 .person-summary-body-context-container_level_2 {
   padding-left: 36px;
   font-size:16px;
+  width:90%;
 }
 .person-summary-body-context-container_level_3{
   padding-left: 48px;
   font-size:12px;
+  width:90%;
 }
 .person-summary-body-context-container {
   margin-top: 8px;
