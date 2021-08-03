@@ -12,7 +12,8 @@ import { addAchivements } from "../../actions/achievements";
 import { Link, useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 
-const Achievements = ({ history }) => {
+const Achievements = ({ props }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { achievements: storeAchievement } = useSelector(
     (state) => state.achievementsReducer
