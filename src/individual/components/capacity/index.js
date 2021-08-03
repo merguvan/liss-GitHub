@@ -20,7 +20,7 @@ import { connect } from "react-redux";
 const Capacity = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { addCapacity: storeCapacity } = useSelector(
+  const { capacity: storeCapacity } = useSelector(
     (state) => state.capacityReducer
   );
   const [lang1, setLang1] = useState(true);
