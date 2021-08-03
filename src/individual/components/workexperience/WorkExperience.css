@@ -7,3 +7,11 @@
 .work_experience_block:last-child{
   margin-bottom:0px;
 }
+#work_h6 {
+  max-width:90%;
+  display:inline-block;
+}
+.person-summary-body-icon-container {
+  font-size:16px;
+  margin-top:-4px;
+}

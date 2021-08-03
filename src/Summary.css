@@ -4,9 +4,10 @@
 
 }
 .person-summary-body p{
-  padding-left:16px;
+  padding-left:12px;
   margin-bottom:0;
-  text-indent:-16px;
+  text-indent:-12px;
+  line-height: 1.2;
 }
 /* .person-summary-body p:first-line{
  text-indent:-10px;
@@ -33,13 +34,14 @@ h6 {
 }
 .person-summary-body-context-container_level_2 {
   padding-left: 36px;
-  font-size:16px;
+  font-size:14px;
   width:90%;
 }
 .person-summary-body-context-container_level_3{
   padding-left: 48px;
   font-size:12px;
   width:90%;
+  font-style:italic;
 }
 .person-summary-body-context-container {
   margin-top: 8px;
@@ -51,4 +53,8 @@ h6 {
   justify-content: space-between;
 }
 
-
+@media only screen and (max-width:768px){
+  .person-summary{
+    width: 100%;
+  }
+}

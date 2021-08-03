@@ -1,31 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AcademicWork from "../components/academic/AcademicWork";
+import AcademicSummary from "../components/academic/AcademicSummary";
 import PersonalInfoSummary from "../components/personal/PersonalInfoSummary";
 import WorkExperienceSummary from "../components/workexperience/WorkExperienceSummary";
-import Education from "../components/education/Education";
-import Affiliations from "../components/affiliations/Affiliations";
-import Achievements from "../components/achievements/Achievements";
-import Certifications from "../components/certifications/Certifications";
-import Capacity from "../components/capacity/Capacity";
-import References from "../components/references/References";
-import Remarks from "../components/remarks/Remarks";
-import Projects from "../components/projects/Projects";
+import EducationSummary from "../components/education/EducationSummary";
+import AffiliationsSummary from "../components/affiliations/AffiliationsSummary";
+import AchievementsSummary from "../components/achievements/AchievementsSummary";
+import CertificationsSummary from "../components/certifications/CertificationsSummary";
+import CapacitySummary from "../components/capacity/CapacitySummary";
+import ReferencesSummary from "../components/references/ReferencesSummary";
+import RemarksSummary from "../components/remarks/RemarksSummary";
+import ProjectsSummary from "../components/projects/ProjectsSummary";
 
 export default function MainPage() {
   return (
     <div className="mainPage">
       <PersonalInfoSummary />
       <WorkExperienceSummary />
-      <Education />
-      <Affiliations />
-      <Achievements />
-      <Certifications />
-      <AcademicWork />
-      <Projects />
-      <Capacity />
-      <References />
-      <Remarks />
+      <EducationSummary />
+      <AffiliationsSummary />
+      <AchievementsSummary />
+      <CertificationsSummary />
+      <AcademicSummary />
+      <ProjectsSummary />
+      <CapacitySummary />
+      <ReferencesSummary />
+      <RemarksSummary />
       <Link to="/login_register">
         <button type="button">Login</button>
       </Link>

@@ -16,7 +16,7 @@ function Education(props) {
           </span>
         </h5>
       </Card.Header>
-      <Collapse in={true}>
+      <Collapse in={false}>
         <div className="person-summary-container"></div>
       </Collapse>
     </Card>

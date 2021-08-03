@@ -13,11 +13,12 @@ const we = {
   personWorkOngoing: false,
   personInstitutionType1: "University",
   personInstitutionType2: "State",
-  personInstitutionName: "BlaBla University",
+  personInstitutionName:
+    " BlaBla University BlaBla University BlaBla University",
   personInstitutionCity: "London",
   personInstitutionCountry: "England",
   personInstitutionWebsite: "www.blabla.com",
-  personInstitutionPosition: "Professor",
+  personInstitutionPosition: " Professor Professor Professor Professor Professor Professor Professor Professor",
   personInstitutionDepartment: "Bla Bla Dep.",
   personInstitutionPositionType1: "Academic",
   personInstitutionPositionType2: "Top Management",
@@ -61,28 +62,33 @@ function WorkExperience(props) {
           <div className="work_experience_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
-              <h6>
-                <em className="person-summary-body-context-container_level_1">
-                  {we.personInstitutionName +
-                    ", " +
-                    we.personInstitutionCountry}
-                </em>
-                <div className="person-summary-body-icon-container">
-                  <span>
-                    <Link to={"/"}>
-                      <FiEdit />
-                    </Link>
-                  </span>
-                  <span>
-                    <FiTrash />
-                  </span>
+              <h6 id="work_h6">
+                <div className="person-summary-body-context-container_level_1">
+                  <p>
+                    {we.personInstitutionName +
+                      ", " +
+                      we.personInstitutionCountry}
+                  </p>
                 </div>
               </h6>
-              <em className="person-summary-body-context-container_level_2">
-                {we.personInstitutionPosition}
-              </em>
+              <div className="person-summary-body-icon-container">
+                <span>
+                  <Link to={"/"}>
+                    <FiEdit />
+                  </Link>
+                </span>
+                <span>
+                  <FiTrash />
+                </span>
+              </div>
+              <div className="person-summary-body-context-container_level_2">
+                <p>{we.personInstitutionPosition}</p>
+              </div>
               <div className="person-summary-body-context-container_level_3">
-                <em> {we.personWorkFrom + " - " + we.personWorkTo}</em>
+                <div>
+                  {" "}
+                  <p>{we.personWorkFrom + " - " + we.personWorkTo}</p>
+                </div>
               </div>
             </div>
           </div>
