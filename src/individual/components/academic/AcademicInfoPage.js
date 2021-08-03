@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import AcademicWork from "./AcademicWorkDetails";
+import AcademicWork from "./index";
 
 export default function AcademicInfo() {
   const { id } = useParams();
