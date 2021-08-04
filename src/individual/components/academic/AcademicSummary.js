@@ -8,9 +8,9 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 // import "./Academic.css";
 
 
-function Academic(props) {
+function AcademicWork(props) {
   return (
-    <Summary headerTitle="Academic" url="/academic/1">
+    <Summary headerTitle="Academic" url="/academicInfo/1">
        <div className="academic_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
@@ -50,4 +50,4 @@ const mapStateToProps = (state) => {
   return {};
 };
 const mapDispatchToProps = {};
-export default connect(mapStateToProps, mapDispatchToProps)(Academic);
+export default connect(mapStateToProps, mapDispatchToProps)(AcademicWork);
