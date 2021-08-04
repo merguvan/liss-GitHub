@@ -10,7 +10,7 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 
 function Academic(props) {
   return (
-    <Summary headerTitle="Academic" url="/academic/1">
+    <Summary headerTitle="Academic" url="/academicInfo/1">
        <div className="academic_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
