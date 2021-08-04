@@ -43,7 +43,7 @@ const education = [
 ]
 function Education(props) {
   return (
-    <Summary headerTitle="Work Experience" url="/workexperience/1">
+    <Summary headerTitle="Education" url="/education/1">
     {education.map((i) => {
       return (
         <div className="work_experience_block">
