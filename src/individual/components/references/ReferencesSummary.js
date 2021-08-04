@@ -7,41 +7,70 @@ import Summary from "../../../Summary";
 import { FiEdit, FiTrash } from "react-icons/fi";
 // import "./References.css";
 
-
+const references = [
+  {
+    referenceId:"1",
+    personRefereeName:"Isaac Newton",
+    personTitle:"Sir",
+    personRefereeInstitution:"University of Amsterdam",
+    personRefereePosition:"Prof.",
+    personRefereeDate:"20-02-2020",
+    personRefereeEmail:"isaac@gmail.com",
+    personRefereePhoneNumber:"(012)34567890"
+  },
+  {
+    referenceId:"2",
+    personRefereeName:"Albert Einstein",
+    personTitle:"Mr.",
+    personRefereeInstitution:"Goethe University",
+    personRefereePosition:"Prof.",
+    personRefereeDate:"20-02-2020",
+    personRefereeEmail:"albert@gmail.com",
+    personRefereePhoneNumber:"(098)76543210"
+  },
+  {
+    referenceId:"3",
+    personRefereeName:"Stephen Hawking",
+    personTitle:"Mr.",
+    personRefereeInstitution:"Harvard University",
+    personRefereePosition:"Prof.Dr.",
+    personRefereeDate:"20-02-2020",
+    personRefereeEmail:"stephen@gmail.com",
+    personRefereePhoneNumber:"(024)68135790"
+  }
+]
 function References(props) {
   return (
     <Summary headerTitle="References" url="/references/1">
-       <div className="references_block">
-            <div className="person-summary-body-title"></div>
-            <div className="person-summary-body-context-container">
-              <h6 id="work_h6">
-                <div className="person-summary-body-context-container_level_1">
-                  <p>
-                    Hpaskjdpıasjkd
-                  </p>
-                </div>
-              </h6>
-              <div className="person-summary-body-icon-container">
-                <span>
-                  <Link to={"/"}>
-                    <FiEdit />
-                  </Link>
-                </span>
-                <span>
-                  <FiTrash />
-                </span>
+       {references.map((i) => {
+      return (
+        <div className="work_experience_block">
+          <div className="person-summary-body-title"></div>
+          <div className="person-summary-body-context-container">
+            <h6 id="work_h6">
+              <div className="person-summary-body-context-container_level_1">
+                <p>
+                  Reference {i.referenceId}
+                </p>
               </div>
-              <div className="person-summary-body-context-container_level_2">
-                <p>asdasdqwd</p>
-              </div>
-              <div className="person-summary-body-context-container_level_3">
-                <div>
-                  {" "}
-                  <p>asdasdsadasd</p>
-                </div>
-              </div>
+            </h6>
+            <div className="person-summary-body-icon-container">
+              <span>
+                <Link to={"/"}>
+                  <FiEdit />
+                </Link>
+              </span>
+              <span>
+                <FiTrash />
+              </span>
+            </div>
+            <div className="person-summary-body-context-container_level_2">
+              <p><em>{i.personRefereePosition} {i.personRefereeName}, {i.personRefereeInstitution}</em></p>
             </div>
           </div>
+        </div>
+      );
+    })}
     </Summary>
   );
 }

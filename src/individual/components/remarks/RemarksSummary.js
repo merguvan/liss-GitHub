@@ -7,7 +7,10 @@ import Summary from "../../../Summary";
 import { FiEdit, FiTrash } from "react-icons/fi";
 // import "./Remarks.css";
 
-
+const remarks = {
+  personReferenceLetter:true,
+  personRemarks:"Nothing to declare."
+}
 function Remarks(props) {
   return (
     <Summary headerTitle="Remarks" url="/remarks/1">
@@ -17,7 +20,7 @@ function Remarks(props) {
               <h6 id="work_h6">
                 <div className="person-summary-body-context-container_level_1">
                   <p>
-                    Hpaskjdpıasjkd
+                    {remarks.personRemarks}
                   </p>
                 </div>
               </h6>
@@ -30,15 +33,6 @@ function Remarks(props) {
                 <span>
                   <FiTrash />
                 </span>
-              </div>
-              <div className="person-summary-body-context-container_level_2">
-                <p>asdasdqwd</p>
-              </div>
-              <div className="person-summary-body-context-container_level_3">
-                <div>
-                  {" "}
-                  <p>asdasdsadasd</p>
-                </div>
               </div>
             </div>
           </div>
