@@ -19,8 +19,8 @@ const education = [
     personEduInstitutionCountry:"England",
     personEduInstitutionWebsite:"www.swu.com",
     personEduInstitutionProgram:"MSc Renewable Energy and Sustainable Technology",
-    personEduInstitutionDegree:"Master's",
-    personEduInstitutionDegreeTitle:"BSc",
+    personEduInstitutionDegree:"Doctoral",
+    personEduInstitutionDegreeTitle:"Applicability of ISO 9001 in Higher Education",
     personEduDiploma:true,
     personAffiliatedInstitution:""
   },
@@ -69,7 +69,10 @@ function Education(props) {
               </span>
             </div>
             <div className="person-summary-body-context-container_level_2">
-              <p>{i.personEduInstitutionDegree} in {i.personEduInstitutionProgram}</p>
+              <p>{i.personEduInstitutionDegree} Degree in {i.personEduInstitutionProgram}</p>
+              {i.personEduInstitutionDegree !== "Bachelor's" ? 
+              <em>"{i.personEduInstitutionDegreeTitle}"</em>
+              : ""}
             </div>
             <div className="person-summary-body-context-container_level_3">
               <div>

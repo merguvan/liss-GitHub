@@ -27,14 +27,13 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
   return (
     <>
       <Summary headerTitle="Personal Info" url="/personalInfo/1">
-        <h6>
-          <em className="person-summary-body-context-container_level_1">
-            {Personal_Info.personTitle +
-              " " +
-              Personal_Info.personName +
-              " " +
-              Personal_Info.personSurname}
-          </em>
+        <h6 className="person-summary-body-context-container_level_1">
+          {Personal_Info.personTitle +
+            " " +
+            Personal_Info.personName +
+            " " +
+            Personal_Info.personSurname}
+
           <div className="person-summary-body-icon-container">
             <span>
               <Link to={"/"}>
