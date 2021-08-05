@@ -56,29 +56,29 @@ function PersonalInfo() {
   };
 
   return (
-    <Modal
-      show={show}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header>
-        <Modal.Title
-          className="modal-title"
-          data-testId="contained-modal-title-vcenter"
-        >
-          <h2>Personal Information - 1</h2>
-          <p className="modal-description">
-            Please enter your personal information.
-          </p>
-        </Modal.Title>
-        <CloseButton
-          onClick={() => {
-            setShow(!show);
-            history.push("/");
-          }}
-        />
-      </Modal.Header>
+    // <Modal
+    //   show={show}
+    //   size="lg"
+    //   aria-labelledby="contained-modal-title-vcenter"
+    //   centered
+    // >
+    //   <Modal.Header>
+    //     <Modal.Title
+    //       className="modal-title"
+    //       data-testId="contained-modal-title-vcenter"
+    //     >
+    //       <h2>Personal Information - 1</h2>
+    //       <p className="modal-description">
+    //         Please enter your personal information.
+    //       </p>
+    //     </Modal.Title>
+    //     <CloseButton
+    //       onClick={() => {
+    //         setShow(!show);
+    //         history.push("/");
+    //       }}
+    //     />
+    //   </Modal.Header>
 
       <Container onClick={handleOptionsOn} className="container">
         <Form>
@@ -307,20 +307,20 @@ function PersonalInfo() {
           </Form.Group>
         </Form>
       </Container>
-      <Modal.Footer>
-        <Row className="button-container">
-          <Link to="/">
-            <Button>Back</Button>
-          </Link>
+      // <Modal.Footer>
+      //   <Row className="button-container">
+      //     <Link to="/">
+      //       <Button>Back</Button>
+      //     </Link>
 
-          <Link to="/personalInfo/2">
-            <Button type="submit" onClick={handleClick}>
-              {save ? "Next" : "Close"}
-            </Button>
-          </Link>
-        </Row>
-      </Modal.Footer>
-    </Modal>
+      //     <Link to="/personalInfo/2">
+      //       <Button type="submit" onClick={handleClick}>
+      //         {save ? "Next" : "Close"}
+      //       </Button>
+      //     </Link>
+      //   </Row>
+      // </Modal.Footer>
+    // </Modal>
   );
 }
 

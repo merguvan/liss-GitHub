@@ -13,6 +13,16 @@
 
   transition: 0.3s;
 }
+.modal-content{
+  min-height:700px;
+}
+.modal-footer {
+  position:absolute;
+  bottom:0;
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+}
 .modal-title {
   padding-left: 20px;
 }

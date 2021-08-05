@@ -9,9 +9,12 @@ import {
   Modal,
   Alert,
   Accordion,
+  Tabs,
+  Tab
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Countries from "./Countries";
+import PersonalInfo from "../personalInfo/index"
 import { addAddressInfo } from "../../../actions/addressInfo";
 import { Link, useHistory } from "react-router-dom";
 
@@ -95,10 +98,14 @@ function PersonAddressInfo() {
       {validation && <Alert variant="danger">{context}</Alert>}
       <Container onClick={handleOptionsOn} className="container">
         <Form>
+          <Tabs defaultActiveKey="personalInfo" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="personalInfo" title="Personal">
+          <PersonalInfo/>
+          </Tab>
+
+          <Tab eventKey="address" title="Address">
           <Form.Group>
             <br />
-            <h6>Address Group</h6>
-            <hr />
             <Form.Row>
               <Col xs={12} md={4} lg={4}>
                 <Form.Label class="font-weight-bold">Address Type</Form.Label>
@@ -243,8 +250,9 @@ function PersonAddressInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
-          <h6 class="font-weight-bold">Citizenship and Work-permit</h6>
-          <hr />
+          </Tab>
+          
+          <Tab eventKey="citizenshipAndWorkPermit" title="Work Permit">
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
@@ -280,7 +288,9 @@ function PersonAddressInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
-
+          </Tab>
+          
+          <Tab eventKey="phone" title="Phone">
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={4} lg={4}>
@@ -341,10 +351,9 @@ function PersonAddressInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
-
-          <br />
-          <h6 class="font-weight-bold">Contact</h6>
-          <hr />
+          </Tab>
+          
+          <Tab eventKey="email" title="Email">
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
@@ -384,7 +393,9 @@ function PersonAddressInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
-
+          </Tab>
+          
+          <Tab eventKey="socialMedia" title="Social Media">
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
@@ -429,9 +440,10 @@ function PersonAddressInfo() {
             </Form.Row>
           </Form.Group>
 
-          <br />
-          <h6 class="font-weight-bold">Attachments</h6>
-          <hr />
+          </Tab>
+
+          <Tab eventKey="attachments" title="Attachments">
+
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={6} lg={6}>
@@ -516,6 +528,10 @@ function PersonAddressInfo() {
               </Col>
             </Form.Row>
           </Form.Group>
+        
+          </Tab>
+          </Tabs>
+
         </Form>
       </Container>
 
@@ -531,6 +547,7 @@ function PersonAddressInfo() {
         </Row>
       </Modal.Footer>
     </Modal>
+  
   );
 }
 
