@@ -26,9 +26,8 @@ export default function Countries({
     if (e.target.name === "personCountryOB") {
       setCountries(Country.getAllCountries());
     } else {
-      let country = countries.find(
-        (country) => country.name === countryName
-      ).isoCode;
+      let country = countries.find((country) => country.name === countryName)
+        .isoCode;
 
       setCities(State.getStatesOfCountry(country));
     }
