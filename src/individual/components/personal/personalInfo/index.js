@@ -14,29 +14,29 @@ import { titles, maritalStatus } from "./data";
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { Link, useHistory } from "react-router-dom";
 
-function PersonalInfo() {
+function PersonalInfo({ addressInfo, setAddressInfo }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { personalInfo: storePersonalInfo } = useSelector(
-    (state) => state.personalInfoReducer
-  );
+  // const { personalInfo: storePersonalInfo } = useSelector(
+  //   (state) => state.personalInfoReducer
+  // );
   const [show, setShow] = useState(true);
 
   const [save, setSave] = useState(false);
   const [countriesOptionsOn, setCountriesOptionsOn] = useState(false);
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
-  const [personalInfo, setPersonalInfo] = useState(storePersonalInfo || {});
+  const [personalInfo, setPersonalInfo] = useState(addressInfo);
 
-  useEffect(() => {
-    if (
-      Object.values(storePersonalInfo).join("") !==
-      Object.values(personalInfo).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [storePersonalInfo, personalInfo]);
+  // useEffect(() => {
+  //   if (
+  //     Object.values(storePersonalInfo).join("") !==
+  //     Object.values(personalInfo).join("")
+  //   ) {
+  //     setSave(true);
+  //   } else {
+  //     setSave(false);
+  //   }
+  // }, [storePersonalInfo, personalInfo]);
 
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountryOB") {
@@ -48,13 +48,13 @@ function PersonalInfo() {
       setCountriesOptionsOn(false);
     }
   };
-  const handleClick = () => {
-    dispatch(addPersonalInfo(personalInfo));
-  };
+  // const handleClick = () => {
+  //   dispatch(addPersonalInfo(personalInfo));
+  // };
   const handlePersonalInfo = (e) => {
-    setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
+    setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
   };
-  console.log(personalInfo);
+
   return (
     <Container onClick={handleOptionsOn} className="container">
       <Form>
@@ -271,8 +271,8 @@ function PersonalInfo() {
                 handlePersonalInfo={handlePersonalInfo}
                 citiesOptionsOn={citiesOptionsOn}
                 countriesOptionsOn={countriesOptionsOn}
-                personalInfo={personalInfo}
-                setPersonalInfo={setPersonalInfo}
+                addressInfo={addressInfo}
+                setAddressInfo={setAddressInfo}
                 countryLabel="Country of Birth"
                 cityLabel="City of Birth"
                 countryToolTip="Your country of birth"
