@@ -9,6 +9,7 @@ import {
   Modal,
   Alert,
   Accordion,
+  InputGroup,
   Tabs,
   Tab,
 } from "react-bootstrap";
@@ -322,29 +323,18 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label>
+                    <div class="reproducible_group">
+                    <Form.Label >
                       {"Work Permit"}
-                      <Button
+                      <Button id="plus_btn"
                         onClick={() => setWorkPermits((prev) => prev + 1)}
                       >
-                        Plus
+                        +
                       </Button>{" "}
                     </Form.Label>
                     {workPermitsArray.map((el, idx) => (
-                      <>
-                        <Form.Control
-                          id={`personWorkPermit${el}`}
-                          name={`workPermit${el}`}
-                          type="text"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Please enter the country you can work in."
-                          placeholder=""
-                          aria-describedby="basic-addon3"
-                          value={workPermitValue[`workPermit${el}`]}
-                          onChange={handlePersonAddressInfo}
-                        />
-                        {el !== 1 && (
+                      <InputGroup>
+                      <InputGroup.Text> {el !== 1 && (
                           <Button
                             onClick={() => {
                               setWorkPermitsArray(
@@ -357,10 +347,23 @@ function PersonAddressInfo() {
                               });
                             }}
                           >
-                            Minus
+                            -
                           </Button>
-                        )}
-                      </>
+                        )}</InputGroup.Text>
+                        <Form.Control
+                          id={`personWorkPermit${el}`}
+                          name={`workPermit${el}`}
+                          type="text"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Please enter the country you can work in."
+                          placeholder=""
+                          aria-describedby="basic-addon3"
+                          value={workPermitValue[`workPermit${el}`]}
+                          onChange={handlePersonAddressInfo}
+                        />
+                        
+                      </InputGroup>
                     ))}
 
                     {/* <Form.Label class="font-weight-bold">Work-permit</Form.Label>
@@ -376,6 +379,7 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 /> */}
+                </div>
                   </Col>
                 </Form.Row>
               </Form.Group>
