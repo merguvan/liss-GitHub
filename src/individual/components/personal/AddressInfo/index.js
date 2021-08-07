@@ -47,9 +47,8 @@ function PersonAddressInfo() {
       )) ||
       {}
   );
+  const [buttonDisabilty, setButtonDisablity] = useState(true);
   useEffect(() => {
-    console.log(addressInfo, Object.keys(addressInfo).length);
-
     if (
       Object.values(storeAddressInfo).join("") !==
       Object.values(addressInfo).join("")
@@ -62,6 +61,9 @@ function PersonAddressInfo() {
   useEffect(() => {
     setWorkPermitsArray(Array.from({ length: workPermits }, (_, i) => i + 1));
   }, [workPermits]);
+  useEffect(() => {
+    checkButton();
+  }, [workPermitsArray.length]);
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountry") {
       setCountriesOptionsOn(true);
@@ -77,6 +79,7 @@ function PersonAddressInfo() {
     dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
+    checkButton();
     if (e.target.name.startsWith("workPermit")) {
       setWorkPermitValue({
         ...workPermitValue,
@@ -94,7 +97,7 @@ function PersonAddressInfo() {
 
   const handleFileUpload = (e) => {
     const fileSize = e.target.files[0].size / 1024 > 500;
-    console.log(fileSize);
+
     if (fileSize) {
       setAddressInfo({
         ...addressInfo,
@@ -105,8 +108,16 @@ function PersonAddressInfo() {
       setContext("Please, upload smaller file");
     }
   };
+  const checkButton = () => {
+    setButtonDisablity(
+      [...document.querySelectorAll(".workPermit")].some(
+        (el) => el?.value === ""
+      ) ||
+        document.querySelector(`#personWorkPermit${workPermitsArray.length}`)
+          ?.value === ""
+    );
+  };
 
-  console.log(workPermitValue);
   return (
     <Modal
       show={show}
@@ -325,7 +336,10 @@ function PersonAddressInfo() {
                     <Form.Label>
                       {"Work Permit"}
                       <Button
-                        onClick={() => setWorkPermits((prev) => prev + 1)}
+                        disabled={buttonDisabilty}
+                        onClick={() => {
+                          setWorkPermits((prev) => prev + 1);
+                        }}
                       >
                         Plus
                       </Button>{" "}
@@ -334,6 +348,7 @@ function PersonAddressInfo() {
                       <>
                         <Form.Control
                           id={`personWorkPermit${el}`}
+                          className="workPermit"
                           name={`workPermit${el}`}
                           type="text"
                           data-toggle="tooltip"
