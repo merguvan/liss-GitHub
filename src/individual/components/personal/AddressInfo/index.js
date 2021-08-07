@@ -48,9 +48,8 @@ function PersonAddressInfo() {
       )) ||
       {}
   );
+  const [buttonDisabilty, setButtonDisablity] = useState(true);
   useEffect(() => {
-    console.log(addressInfo, Object.keys(addressInfo).length);
-
     if (
       Object.values(storeAddressInfo).join("") !==
       Object.values(addressInfo).join("")
@@ -63,6 +62,9 @@ function PersonAddressInfo() {
   useEffect(() => {
     setWorkPermitsArray(Array.from({ length: workPermits }, (_, i) => i + 1));
   }, [workPermits]);
+  useEffect(() => {
+    checkButton();
+  }, [workPermitsArray.length]);
   const handleOptionsOn = (e) => {
     if (e.target.name === "personCountry") {
       setCountriesOptionsOn(true);
@@ -78,6 +80,7 @@ function PersonAddressInfo() {
     dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
+    checkButton();
     if (e.target.name.startsWith("workPermit")) {
       setWorkPermitValue({
         ...workPermitValue,
@@ -95,7 +98,7 @@ function PersonAddressInfo() {
 
   const handleFileUpload = (e) => {
     const fileSize = e.target.files[0].size / 1024 > 500;
-    console.log(fileSize);
+
     if (fileSize) {
       setAddressInfo({
         ...addressInfo,
@@ -106,8 +109,16 @@ function PersonAddressInfo() {
       setContext("Please, upload smaller file");
     }
   };
+  const checkButton = () => {
+    setButtonDisablity(
+      [...document.querySelectorAll(".workPermit")].some(
+        (el) => el?.value === ""
+      ) ||
+        document.querySelector(`#personWorkPermit${workPermitsArray.length}`)
+          ?.value === ""
+    );
+  };
 
-  console.log(workPermitValue);
   return (
     <Modal
       show={show}
@@ -323,18 +334,34 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
-                    <div class="reproducible_group">
-                    <Form.Label >
+<Col xs={12} md={6} lg={6}>
+                    <Form.Label>
                       {"Work Permit"}
-                      <Button id="plus_btn"
-                        onClick={() => setWorkPermits((prev) => prev + 1)}
+                      <Button
+                        disabled={buttonDisabilty}
+                        onClick={() => {
+                          setWorkPermits((prev) => prev + 1);
+                        }}
                       >
-                        +
+                        Plus
                       </Button>{" "}
                     </Form.Label>
                     {workPermitsArray.map((el, idx) => (
-                      <InputGroup>
-                      <InputGroup.Text> {el !== 1 && (
+                      <>
+                        <Form.Control
+                          id={`personWorkPermit${el}`}
+                          className="workPermit"
+                          name={`workPermit${el}`}
+                          type="text"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Please enter the country you can work in."
+                          placeholder=""
+                          aria-describedby="basic-addon3"
+                          value={workPermitValue[`workPermit${el}`]}
+                          onChange={handlePersonAddressInfo}
+                        />
+                        {el !== 1 && (
                           <Button
                             onClick={() => {
                               setWorkPermitsArray(
@@ -347,23 +374,10 @@ function PersonAddressInfo() {
                               });
                             }}
                           >
-                            -
+                            Minus
                           </Button>
-                        )}</InputGroup.Text>
-                        <Form.Control
-                          id={`personWorkPermit${el}`}
-                          name={`workPermit${el}`}
-                          type="text"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Please enter the country you can work in."
-                          placeholder=""
-                          aria-describedby="basic-addon3"
-                          value={workPermitValue[`workPermit${el}`]}
-                          onChange={handlePersonAddressInfo}
-                        />
-                        
-                      </InputGroup>
+                        )}
+                      </>
                     ))}
 
                     {/* <Form.Label class="font-weight-bold">Work-permit</Form.Label>
@@ -379,7 +393,6 @@ function PersonAddressInfo() {
                   placeholder=""
                   aria-describedby="basic-addon3"
                 /> */}
-                </div>
                   </Col>
                 </Form.Row>
               </Form.Group>
