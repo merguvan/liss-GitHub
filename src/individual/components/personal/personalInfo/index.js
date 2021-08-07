@@ -58,7 +58,6 @@ function PersonalInfo({ addressInfo, setAddressInfo }) {
   return (
     <Container onClick={handleOptionsOn} className="container">
       <Form>
-        <br />
         <Form.Group>
           <Form.Row>
             <Col xs={12} md={6} lg={6}>
