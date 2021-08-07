@@ -8,15 +8,15 @@ const url = "https://countriesnow.space/api/v0.1/countries/states";
 export default function Countries({
   countriesOptionsOn,
   citiesOptionsOn,
-  setPersonalInfo,
-  personalInfo,
+  setAddressInfo,
+  addressInfo,
 }) {
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [countryName, setCountryName] = useState(
-    personalInfo?.personCountryOB || ""
+    addressInfo?.personCountryOB || ""
   );
-  const [cityName, setCityName] = useState(personalInfo?.personCityOB || "");
+  const [cityName, setCityName] = useState(addressInfo?.personCityOB || "");
 
   useEffect(() => {
     setCountries(Country.getAllCountries());
@@ -48,7 +48,7 @@ export default function Countries({
     // console.log(countries);
   };
   const handleCountryClick = (e) => {
-    setPersonalInfo({ ...personalInfo, personCountryOB: e.target.innerText });
+    setAddressInfo({ ...addressInfo, personCountryOB: e.target.innerText });
 
     setCountryName(e.target.innerText);
 
@@ -62,7 +62,7 @@ export default function Countries({
   const handleCityClick = (e) => {
     setCityName(e.target.innerText);
     console.log(cityName);
-    setPersonalInfo({ ...personalInfo, personCityOB: e.target.innerText });
+    setAddressInfo({ ...addressInfo, personCityOB: e.target.innerText });
   };
 
   const handleCityChange = (e) => {

@@ -37,14 +37,19 @@ function PersonAddressInfo() {
   const [workPermitsArray, setWorkPermitsArray] = useState(
     Array.from({ length: workPermits }, (_, i) => i + 1)
   );
+
   const [workPermitValue, setWorkPermitValue] = useState(
-    Object.fromEntries(
-      addressInfo?.personWorkPermit
-        ?.split(";")
-        ?.map((value, idx) => [`workPermit${idx + 1}`, value])
-    ) || {}
+    (addressInfo?.personWorkPermit &&
+      Object.fromEntries(
+        addressInfo.personWorkPermit
+          ?.split(";")
+          ?.map((value, idx) => [`workPermit${idx + 1}`, value])
+      )) ||
+      {}
   );
   useEffect(() => {
+    console.log(addressInfo, Object.keys(addressInfo).length);
+
     if (
       Object.values(storeAddressInfo).join("") !==
       Object.values(addressInfo).join("")
@@ -69,13 +74,24 @@ function PersonAddressInfo() {
   };
 
   const handleClick = () => {
-    const workPermit = Object.values(workPermitValue).join(";");
-
-    dispatch(addAddressInfo({ ...addressInfo, personWorkPermit: workPermit }));
+    dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
-    setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
+    if (e.target.name.startsWith("workPermit")) {
+      setWorkPermitValue({
+        ...workPermitValue,
+        [e.target.name]: e.target.value,
+      });
+
+      setAddressInfo({
+        ...addressInfo,
+        personWorkPermit: Object.values(workPermitValue).join(";"),
+      });
+    } else {
+      setAddressInfo({ ...addressInfo, [e.target.name]: e.target.value });
+    }
   };
+
   const handleFileUpload = (e) => {
     const fileSize = e.target.files[0].size / 1024 > 500;
     console.log(fileSize);
@@ -90,6 +106,7 @@ function PersonAddressInfo() {
     }
   };
 
+  console.log(workPermitValue);
   return (
     <Modal
       show={show}
@@ -120,7 +137,10 @@ function PersonAddressInfo() {
             className="mb-3"
           >
             <Tab eventKey="personalInfo" title="Personal">
-              <PersonalInfo />
+              <PersonalInfo
+                addressInfo={addressInfo}
+                setAddressInfo={setAddressInfo}
+              />
             </Tab>
 
             <Tab eventKey="address" title="Address">
@@ -322,12 +342,7 @@ function PersonAddressInfo() {
                           placeholder=""
                           aria-describedby="basic-addon3"
                           value={workPermitValue[`workPermit${el}`]}
-                          onChange={(e) =>
-                            setWorkPermitValue({
-                              ...workPermitValue,
-                              [e.target.name]: e.target.value,
-                            })
-                          }
+                          onChange={handlePersonAddressInfo}
                         />
                         {el !== 1 && (
                           <Button
