@@ -9,6 +9,7 @@ import {
   Modal,
   Alert,
   Accordion,
+  InputGroup,
   Tabs,
   Tab,
 } from "react-bootstrap";
@@ -333,6 +334,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
+<Col xs={12} md={6} lg={6}>
                     <Form.Label>
                       {"Work Permit"}
                       <Button
