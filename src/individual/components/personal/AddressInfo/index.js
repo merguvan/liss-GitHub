@@ -118,7 +118,14 @@ function PersonAddressInfo() {
           ?.value === ""
     );
   };
-
+  const handleMinusClick = (event, el) => {
+    setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
+    setWorkPermits((prev) => prev - 1);
+    const tempObject = { ...workPermitValue };
+    delete tempObject[`workPermit${el}`];
+    setWorkPermitValue(tempObject);
+  };
+  console.log(workPermitValue);
   return (
     <Modal
       show={show}
@@ -334,7 +341,6 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
-<Col xs={12} md={6} lg={6}>
                     <Form.Label>
                       {"Work Permit"}
                       <Button
@@ -361,18 +367,9 @@ function PersonAddressInfo() {
                           value={workPermitValue[`workPermit${el}`]}
                           onChange={handlePersonAddressInfo}
                         />
-                        {el !== 1 && (
+                        {el !== 1 && el === workPermitsArray.length && (
                           <Button
-                            onClick={() => {
-                              setWorkPermitsArray(
-                                workPermitsArray.filter((minus) => minus !== el)
-                              );
-                              setWorkPermits((prev) => prev - 1);
-                              setWorkPermitValue({
-                                ...workPermitValue,
-                                [`workPermit${el}`]: "",
-                              });
-                            }}
+                            onClick={(event) => handleMinusClick(event, el)}
                           >
                             Minus
                           </Button>
