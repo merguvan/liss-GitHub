@@ -22,6 +22,7 @@ module.exports.registerUser = async (req, res, next) => {
         const error = new Error("This email already in use");
         next(error);
       } else {
+        console.log("deneme 1");
         try {
           const user = await userSchema.create({
             personEmail,
@@ -33,6 +34,7 @@ module.exports.registerUser = async (req, res, next) => {
           });
 
           if (user) {
+            console.log("deneme 2");
             let transporter = nodemailer.createTransport({
               service: "gmail",
               auth: {
@@ -51,10 +53,13 @@ module.exports.registerUser = async (req, res, next) => {
               text: "Please, click link to verify your email", // plain text body
               html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
             };
+            console.log(url);
             transporter.sendMail(options, (err, info) => {
               if (err) {
                 console.log(err);
+                console.log("object");
               }
+              console.log(info);
               console.log(info?.response);
             });
             return res.status(200).json({

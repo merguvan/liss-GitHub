@@ -54,7 +54,6 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
                 : ""}
             </p>
             <p>
-              {console.log(Personal_Info.personAddress)}
               {Personal_Info.personAddress[0].personAddressType} Adress:{" "}
               {[
                 Personal_Info.personAddress[0].personFlatNo,

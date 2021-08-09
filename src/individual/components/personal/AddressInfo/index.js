@@ -18,6 +18,7 @@ import Countries from "./Countries";
 import PersonalInfo from "../personalInfo/index";
 import { addAddressInfo } from "../../../actions/addressInfo";
 import { Link, useHistory } from "react-router-dom";
+import WorkPermit from "./WorkPermit";
 
 function PersonAddressInfo() {
   const history = useHistory();
@@ -125,7 +126,7 @@ function PersonAddressInfo() {
     delete tempObject[`workPermit${el}`];
     setWorkPermitValue(tempObject);
   };
-  console.log(workPermitValue);
+
   return (
     <Modal
       show={show}
@@ -167,7 +168,7 @@ function PersonAddressInfo() {
                 <br />
                 <Form.Row>
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Address Type
                     </Form.Label>
                     <Form.Control
@@ -190,7 +191,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Flat Number
                     </Form.Label>
                     <Form.Control
@@ -208,7 +209,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Building Number
                     </Form.Label>
                     <Form.Control
@@ -230,7 +231,9 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">District</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      District
+                    </Form.Label>
                     <Form.Control
                       id="personDistrict"
                       name="personDistrict"
@@ -246,7 +249,9 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">Zip Code</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      Zip Code
+                    </Form.Label>
                     <Form.Control
                       id="postalCode"
                       name="postalCode"
@@ -262,7 +267,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Street Name
                     </Form.Label>
                     <Form.Control
@@ -300,7 +305,9 @@ function PersonAddressInfo() {
                   </Col>
                   <Col xs={12} md={4} lg={4}>
                     <Form.Group>
-                      <Form.Label class="font-weight-bold">State</Form.Label>
+                      <Form.Label className="font-weight-bold">
+                        State
+                      </Form.Label>
                       <Form.Control
                         id="personState"
                         name="personState"
@@ -323,7 +330,7 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Citizenship
                     </Form.Label>
                     <Form.Control
@@ -339,7 +346,9 @@ function PersonAddressInfo() {
                       aria-describedby="basic-addon3"
                     />
                   </Col>
-
+                  {/* <WorkPermit
+                    handlePersonAddressInfo={handlePersonAddressInfo}
+                  /> */}
                   <Col xs={12} md={6} lg={6}>
                     <Form.Label>
                       {"Work Permit"}
@@ -376,20 +385,6 @@ function PersonAddressInfo() {
                         )}
                       </>
                     ))}
-
-                    {/* <Form.Label class="font-weight-bold">Work-permit</Form.Label>
-                <Form.Control
-                  id="personWorkPermit"
-                  name="personWorkPermit"
-                  type="text"
-                  value={addressInfo["personWorkPermit"]}
-                  onChange={handlePersonAddressInfo}
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Please enter the country you can work in."
-                  placeholder=""
-                  aria-describedby="basic-addon3"
-                /> */}
                   </Col>
                 </Form.Row>
               </Form.Group>
@@ -399,7 +394,9 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={4} lg={4}>
-                    <Form.Label class="font-weight-bold">Phone Type</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      Phone Type
+                    </Form.Label>
                     <Form.Control
                       id="personPhoneType"
                       name="personPhoneType"
@@ -421,7 +418,7 @@ function PersonAddressInfo() {
 
                   <Col xs={12} md={4} lg={4}>
                     <Form.Group>
-                      <Form.Label class="font-weight-bold">
+                      <Form.Label className="font-weight-bold">
                         Country Code
                       </Form.Label>
                       <Form.Control
@@ -441,7 +438,7 @@ function PersonAddressInfo() {
 
                   <Col xs={12} md={4} lg={4}>
                     <Form.Group>
-                      <Form.Label class="font-weight-bold">
+                      <Form.Label className="font-weight-bold">
                         Phone Number
                       </Form.Label>
                       <Form.Control
@@ -466,7 +463,9 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">Email Type</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      Email Type
+                    </Form.Label>
                     <Form.Control
                       id="personEmailType"
                       name="personEmailType"
@@ -486,7 +485,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">Email</Form.Label>
+                    <Form.Label className="font-weight-bold">Email</Form.Label>
                     <Form.Control
                       id="personEmail"
                       name="personEmail"
@@ -508,7 +507,7 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">
+                    <Form.Label className="font-weight-bold">
                       Social Media / Platforms
                     </Form.Label>
                     <Form.Control
@@ -533,7 +532,7 @@ function PersonAddressInfo() {
 
                   <Col xs={12} md={6} lg={6}>
                     <Form.Group>
-                      <Form.Label class="font-weight-bold">
+                      <Form.Label className="font-weight-bold">
                         (User) Name
                       </Form.Label>
                       <Form.Control
@@ -558,7 +557,9 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">CV Upload</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      CV Upload
+                    </Form.Label>
                     <Form.Control
                       id="personCvDoc"
                       name="personCvDoc"
@@ -572,7 +573,7 @@ function PersonAddressInfo() {
                   </Col>
 
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">Photo</Form.Label>
+                    <Form.Label className="font-weight-bold">Photo</Form.Label>
                     <Form.Control
                       id="personPhoto"
                       name="personPhoto"
@@ -595,7 +596,9 @@ function PersonAddressInfo() {
               <Form.Group>
                 <Form.Row>
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label class="font-weight-bold">DBS Upload</Form.Label>
+                    <Form.Label className="font-weight-bold">
+                      DBS Upload
+                    </Form.Label>
                     <Form.Control
                       id="personDbsDoc"
                       name="personDbsDoc"
@@ -617,7 +620,7 @@ function PersonAddressInfo() {
 
                   <Col xs={12} md={6} lg={6}>
                     <Form.Group>
-                      <Form.Label class="font-weight-bold">
+                      <Form.Label className="font-weight-bold">
                         Medical Declaration
                       </Form.Label>
                       <Form.Control
