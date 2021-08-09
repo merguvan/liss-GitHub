@@ -43,7 +43,7 @@ function Capacity(props) {
     >
       {capacity.map((i, index) => {
         return (
-          <div className="work_experience_block">
+          <div key={index} className="work_experience_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
               {index === 0 ? (
@@ -119,9 +119,11 @@ function Capacity(props) {
       {personTheses.length > 0 ? (
         <div className="person-summary-body-context-container_level_2">
           <p>
-            {personTheses.map((i, index) =>  
-            index > 0 ? ", " + i.personThesisLevel + " Level": i.personThesisLevel + " Level")
-            }
+            {personTheses.map((i, index) =>
+              index > 0
+                ? ", " + i.personThesisLevel + " Level"
+                : i.personThesisLevel + " Level"
+            )}
           </p>
         </div>
       ) : (
