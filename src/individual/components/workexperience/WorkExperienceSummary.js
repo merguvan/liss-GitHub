@@ -18,7 +18,8 @@ const we = {
   personInstitutionCity: "London",
   personInstitutionCountry: "England",
   personInstitutionWebsite: "www.blabla.com",
-  personInstitutionPosition: " Professor Professor Professor Professor Professor Professor Professor Professor",
+  personInstitutionPosition:
+    " Professor Professor Professor Professor Professor Professor Professor Professor",
   personInstitutionDepartment: "Bla Bla Dep.",
   personInstitutionPositionType1: "Academic",
   personInstitutionPositionType2: "Top Management",
@@ -57,9 +58,9 @@ const myArray = [we, we2, we3];
 function WorkExperience(props) {
   return (
     <Summary headerTitle="Work Experience" url="/workexperience/1">
-      {myArray.map((we) => {
+      {myArray.map((we, idx) => {
         return (
-          <div className="work_experience_block">
+          <div key={idx} className="work_experience_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
               <h6 id="work_h6">
