@@ -62,7 +62,7 @@ function PersonalInfo({ addressInfo, setAddressInfo }) {
           <Form.Row>
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
-                <Form.Label data-testId="title" className="font-weight-bold">
+                <Form.Label data-testid="title" className="font-weight-bold">
                   {" "}
                   Title
                 </Form.Label>
@@ -88,7 +88,7 @@ function PersonalInfo({ addressInfo, setAddressInfo }) {
             <Col xs={12} md={6} lg={6}>
               <Form.Group>
                 <Form.Label
-                  data-testId="firstName"
+                  data-testid="firstName"
                   className="font-weight-bold"
                 >
                   First Name
