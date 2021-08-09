@@ -29,9 +29,9 @@ const projects = [
 function Projects(props) {
   return (
     <Summary headerTitle="Projects" url="/projects/1">
-      {projects.map((i) => {
+      {projects.map((i, idx) => {
         return (
-          <div className="work_experience_block">
+          <div key={idx} className="work_experience_block">
             <div className="person-summary-body-title"></div>
             <div className="person-summary-body-context-container">
               <h6 id="work_h6">
@@ -58,7 +58,11 @@ function Projects(props) {
                 )}
                 {i.personProjectNumber !== "" ? (
                   <em>
-                    {i.personProjectGrantProvider !== "" ? <br></br> : <span></span>}
+                    {i.personProjectGrantProvider !== "" ? (
+                      <br></br>
+                    ) : (
+                      <span></span>
+                    )}
                     Project Number: {i.personProjectNumber}
                   </em>
                 ) : (
@@ -68,9 +72,16 @@ function Projects(props) {
               <div className="person-summary-body-context-container_level_3">
                 <div>
                   <p>
-                    {i.personProjectFrom !== "" ? i.personProjectFrom : <span></span>}
+                    {i.personProjectFrom !== "" ? (
+                      i.personProjectFrom
+                    ) : (
+                      <span></span>
+                    )}
                     {i.personProjectTo !== "" ? (
-                        " - " + i.personProjectTo) : <span></span>}
+                      " - " + i.personProjectTo
+                    ) : (
+                      <span></span>
+                    )}
                   </p>
                 </div>
               </div>
