@@ -1,44 +1,44 @@
 import React from "react";
-import { Card, Collapse } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiEdit, FiTrash } from "react-icons/fi";
+
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Summary.css";
 
-const sample_person = {
-  Personal_Info: {
-    personTitle: "Dr. ",
-    personName: "Araz ",
-    personSurname: "Bey ",
-    personEmail: "amazing@ideas.com",
-    personDOB: "21/09/1285 ",
-    personCityOB: "Paris ",
-    personCountryOB: "France ",
-    personGender: "Male ",
-    personMaritalStatus: "Married ",
-    personHomeAddress: "St. Louis II 75, 7887SC ",
-    personPhoneNumber: "037847740 ",
-    personNationality: "American ",
-    personEuWorkPermit: true,
-    medicalDeclarationUpload: true,
-  },
-  Project: {
-    project_1: {
-      projectName: "Preventing 'Global Warming' by Blocking the Sun",
-      projectGrantedBy: "Ecuador",
-      projectSth: "HERD-7893277-2-2019-EC-EPPKAS2-SP",
-      projectDate: "1958-1959",
-    },
-    project_2: {
-      projectName:
-        "Helping the World Economy to Grow by Finding Pirate Treasures",
-      projectGrantedBy: "Caribbean",
-      projectSth: "FOOL-7893277-WW2-2-2019-EC-EPPKAS2-SP",
-      projectDate: "1888-1890",
-    },
-  },
-};
+// const sample_person = {
+//   Personal_Info: {
+//     personTitle: "Dr. ",
+//     personName: "Araz ",
+//     personSurname: "Bey ",
+//     personEmail: "amazing@ideas.com",
+//     personDOB: "21/09/1285 ",
+//     personCityOB: "Paris ",
+//     personCountryOB: "France ",
+//     personGender: "Male ",
+//     personMaritalStatus: "Married ",
+//     personHomeAddress: "St. Louis II 75, 7887SC ",
+//     personPhoneNumber: "037847740 ",
+//     personNationality: "American ",
+//     personEuWorkPermit: true,
+//     medicalDeclarationUpload: true,
+//   },
+//   Project: {
+//     project_1: {
+//       projectName: "Preventing 'Global Warming' by Blocking the Sun",
+//       projectGrantedBy: "Ecuador",
+//       projectSth: "HERD-7893277-2-2019-EC-EPPKAS2-SP",
+//       projectDate: "1958-1959",
+//     },
+//     project_2: {
+//       projectName:
+//         "Helping the World Economy to Grow by Finding Pirate Treasures",
+//       projectGrantedBy: "Caribbean",
+//       projectSth: "FOOL-7893277-WW2-2-2019-EC-EPPKAS2-SP",
+//       projectDate: "1888-1890",
+//     },
+//   },
+// };
 
 function Summary(props) {
   return (

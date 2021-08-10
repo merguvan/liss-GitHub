@@ -45,7 +45,8 @@ function PersonAddressInfo() {
       Object.fromEntries(
         addressInfo.personWorkPermit
           ?.split(";")
-          ?.map((value, idx) => [`workPermit${idx + 1}`, value])
+          ?.
+    ((value, idx) => [`workPermit${idx + 1}`, value])
       )) ||
       {}
   );
@@ -364,8 +365,10 @@ function PersonAddressInfo() {
                       </Button>{" "}
                     </Form.Label>
                     {workPermitsArray.map((el, idx) => (
-                      <InputGroup className="mb-3">
+
+                      <InputGroup key={el} className="mb-3">
                         
+
                         <Form.Control
                           // id={`personWorkPermit${el}`}
                           className="workPermit"
@@ -388,7 +391,9 @@ function PersonAddressInfo() {
                             -
                           </Button>
                         )}
+
                       </InputGroup>
+
                     ))}
                   </Col>
                 </Form.Row>
