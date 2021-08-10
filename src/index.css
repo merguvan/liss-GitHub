@@ -19,13 +19,16 @@
 .input-group-text{
   padding:0 !important;
 }
-#plus_btn {
-  background-color: none;
-  border:none;
-  padding: 0px 7px;
-  font-size:24px;
-  line-height: normal;
+.wpn_btn {
+  padding: 0px 7px !important; 
+  font-size:24px !important;
+  line-height: normal !important;
 }
+
+
+/* .workPermit{
+  width:80% !important;
+} */
 .form-label {
   display:flex;
   justify-content: space-between;

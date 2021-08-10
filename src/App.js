@@ -24,11 +24,14 @@ import InstitutionInfo from "./institutional/components/information/InstitutionI
 import InstitutionAddress from "./institutional/components/address/InstitutionAddress";
 import ContactAddress from "./institutional/components/contactAddress/ContactAddress";
 import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
+import ContactPerson from "./institutional/components/contactPerson/contactPerson";
+import ContactPhone from "./institutional/components/contactPhone/contactPhone";
+import ContactMail from "./institutional/components/contactMail/contactMail";
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (userInfo?.isConfirmed) {
+  if (true) {
     return (
       <div className="app">
         <Header />
@@ -55,6 +58,9 @@ function App(props) {
           />
           <Route path="/contactaddress/:id" component={ContactAddress} />
           <Route path="/mediainfo/:id" component={MediaInfo} />
+          <Route path="/contactperson/:id" component={ContactPerson} />
+          <Route path="/contactphone/:id" component={ContactPhone} />
+          <Route path="/contactmail/:id" component={ContactMail} />
         </Switch>
       </div>
     );
