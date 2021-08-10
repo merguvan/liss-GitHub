@@ -34,7 +34,7 @@ function PersonAddressInfo() {
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
   const [addressInfo, setAddressInfo] = useState({ ...storeAddressInfo } || {});
   const [workPermits, setWorkPermits] = useState(
-    addressInfo?.personWorkPermit?.split(";").length || 1
+    (addressInfo && addressInfo?.personWorkPermit?.split(";").length) || 1
   );
   const [workPermitsArray, setWorkPermitsArray] = useState(
     Array.from({ length: workPermits }, (_, i) => i + 1)
@@ -43,10 +43,9 @@ function PersonAddressInfo() {
   const [workPermitValue, setWorkPermitValue] = useState(
     (addressInfo?.personWorkPermit &&
       Object.fromEntries(
-        addressInfo.personWorkPermit
+        addressInfo?.personWorkPermit
           ?.split(";")
-          ?.
-    ((value, idx) => [`workPermit${idx + 1}`, value])
+          ?.map((value, idx) => [`workPermit${idx + 1}`, value])
       )) ||
       {}
   );
@@ -120,16 +119,28 @@ function PersonAddressInfo() {
           ?.value === ""
     );
   };
+  //[1,2,3]=3
+  ///workPermit1,workPermit2,workPermit3
   const handleMinusClick = (event, el) => {
-
-    setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
     setWorkPermits((prev) => prev - 1);
-    const tempObject = { ...workPermitValue };
-    delete tempObject[`workPermit${el}`];
-    setWorkPermitValue(tempObject);
+    setWorkPermitsArray(
+      Array.from({ length: workPermits - 1 }, (_, i) => i + 1)
+    );
+    //[ridvan,erdal,yusup]
+    //
+    const values = Object.values(workPermitValue).filter(
+      (val, indx) => indx + 1 !== el
+    );
 
+    console.log(values);
+    setWorkPermitValue(
+      Object.fromEntries(
+        values.map((val, idx) => [`workPermit${workPermitsArray[idx]}`, val])
+      )
+    );
   };
-
+  console.log(workPermitsArray);
+  console.log(workPermitValue);
   return (
     <Modal
       show={show}
@@ -355,7 +366,8 @@ function PersonAddressInfo() {
                   <Col xs={12} md={6} lg={6}>
                     <Form.Label className="wp_input">
                       {"Work Permit"}
-                      <Button className="wp_btn"
+                      <Button
+                        className="wp_btn"
                         disabled={buttonDisabilty}
                         onClick={() => {
                           setWorkPermits((prev) => prev + 1);
@@ -364,15 +376,15 @@ function PersonAddressInfo() {
                         +
                       </Button>{" "}
                     </Form.Label>
-                    {workPermitsArray.map((el, idx) => (
-
+                    {workPermitsArray.map((
+                      el,
+                      idx //1,2,3
+                    ) => (
                       <InputGroup key={el} className="mb-3">
-                        
-
                         <Form.Control
-                          // id={`personWorkPermit${el}`}
-                          className="workPermit"
-                          name={`workPermit${el}`}
+                          id={`personWorkPermit${el}`}
+                          className="workPermit" //ridvan,erdal,yusup
+                          name={`workPermit${el}`} //workPermit1workPermit3
                           type="text"
                           data-toggle="tooltip"
                           data-placement="top"
@@ -391,9 +403,7 @@ function PersonAddressInfo() {
                             -
                           </Button>
                         )}
-
                       </InputGroup>
-
                     ))}
                   </Col>
                 </Form.Row>
