@@ -1,0 +1,24 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Contact Email"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactMailType",
+          "label": "Type"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactEmail",
+          "label":"Email"
+        }
+      ]
+    }
+  ]
+}

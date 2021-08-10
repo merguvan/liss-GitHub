@@ -26,6 +26,7 @@ import ContactAddress from "./institutional/components/contactAddress/ContactAdd
 import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
 import ContactPerson from "./institutional/components/contactPerson/contactPerson";
 import ContactPhone from "./institutional/components/contactPhone/contactPhone";
+import ContactMail from "./institutional/components/contactMail/contactMail";
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
@@ -59,6 +60,7 @@ function App(props) {
           <Route path="/mediainfo/:id" component={MediaInfo} />
           <Route path="/contactperson/:id" component={ContactPerson} />
           <Route path="/contactphone/:id" component={ContactPhone} />
+          <Route path="/contactmail/:id" component={ContactMail} />
         </Switch>
       </div>
     );
