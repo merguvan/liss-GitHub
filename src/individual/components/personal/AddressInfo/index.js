@@ -120,11 +120,13 @@ function PersonAddressInfo() {
     );
   };
   const handleMinusClick = (event, el) => {
+
     setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
     setWorkPermits((prev) => prev - 1);
     const tempObject = { ...workPermitValue };
     delete tempObject[`workPermit${el}`];
     setWorkPermitValue(tempObject);
+
   };
 
   return (
@@ -377,7 +379,7 @@ function PersonAddressInfo() {
                           value={workPermitValue[`workPermit${el}`]}
                           onChange={handlePersonAddressInfo}
                         />
-                        {el !== 1 && el === workPermitsArray.length && (
+                        {el !== 1 && (
                           <Button
                             variant="outline-secondary"
                             id="button-addon!"
