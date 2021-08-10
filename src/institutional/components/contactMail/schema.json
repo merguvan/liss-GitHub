@@ -1,0 +1,24 @@
+
+{
+  "type": "object",
+  "properties": {
+    "contactEmail": {
+      "type": "string",
+      "description": "Please enter your e-mail",
+      "minLength":1,
+      "maxLength":10
+      
+    },
+    "contactMailType": {
+      "type": "string",
+      "description": "Please select mail type",
+      "enum": [
+        "Personal","Institutional","Other"
+      ]
+    }
+  },
+  "required": [
+    "contactEmail",
+    "contactMailType"
+  ]
+}
