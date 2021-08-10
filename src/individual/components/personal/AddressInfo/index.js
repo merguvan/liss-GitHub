@@ -350,21 +350,22 @@ function PersonAddressInfo() {
                     handlePersonAddressInfo={handlePersonAddressInfo}
                   /> */}
                   <Col xs={12} md={6} lg={6}>
-                    <Form.Label>
+                    <Form.Label className="wp_input">
                       {"Work Permit"}
-                      <Button
+                      <Button className="wp_btn"
                         disabled={buttonDisabilty}
                         onClick={() => {
                           setWorkPermits((prev) => prev + 1);
                         }}
                       >
-                        Plus
+                        +
                       </Button>{" "}
                     </Form.Label>
                     {workPermitsArray.map((el, idx) => (
-                      <>
+                      <InputGroup className="mb-3">
+                        
                         <Form.Control
-                          id={`personWorkPermit${el}`}
+                          // id={`personWorkPermit${el}`}
                           className="workPermit"
                           name={`workPermit${el}`}
                           type="text"
@@ -372,18 +373,20 @@ function PersonAddressInfo() {
                           data-placement="top"
                           title="Please enter the country you can work in."
                           placeholder=""
-                          aria-describedby="basic-addon3"
+                          aria-describedby="basic-addon1"
                           value={workPermitValue[`workPermit${el}`]}
                           onChange={handlePersonAddressInfo}
                         />
                         {el !== 1 && el === workPermitsArray.length && (
                           <Button
+                            variant="outline-secondary"
+                            id="button-addon!"
                             onClick={(event) => handleMinusClick(event, el)}
                           >
-                            Minus
+                            -
                           </Button>
                         )}
-                      </>
+                      </InputGroup>
                     ))}
                   </Col>
                 </Form.Row>
