@@ -362,7 +362,7 @@ function PersonAddressInfo() {
                       </Button>{" "}
                     </Form.Label>
                     {workPermitsArray.map((el, idx) => (
-                      <>
+                      <div key={el}>
                         <Form.Control
                           id={`personWorkPermit${el}`}
                           className="workPermit"
@@ -383,7 +383,7 @@ function PersonAddressInfo() {
                             Minus
                           </Button>
                         )}
-                      </>
+                      </div>
                     ))}
                   </Col>
                 </Form.Row>

@@ -1,6 +1,5 @@
-import { Button } from "bootstrap";
 import React, { useEffect, useState } from "react";
-import { Col, Form } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const WorkPermit = ({ handlePersonAddressInfo }) => {
@@ -24,21 +23,20 @@ const WorkPermit = ({ handlePersonAddressInfo }) => {
       {}
   );
   const [buttonDisabilty, setButtonDisablity] = useState(true);
+
   useEffect(() => {
     setWorkPermitsArray(Array.from({ length: workPermits }, (_, i) => i + 1));
   }, [workPermits]);
   useEffect(() => {
-    checkButton();
-  }, [workPermitsArray.length]);
-  const checkButton = () => {
     setButtonDisablity(
-      [...document.querySelectorAll(".workPermit")].some(
+      [...document.querySelectorAll(".workPermit")]?.some(
         (el) => el?.value === ""
       ) ||
         document.querySelector(`#personWorkPermit${workPermitsArray.length}`)
           ?.value === ""
     );
-  };
+  }, [workPermitsArray]);
+  const checkButton = () => {};
   const handleMinusClick = (event, el) => {
     setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
     setWorkPermits((prev) => prev - 1);
@@ -49,7 +47,7 @@ const WorkPermit = ({ handlePersonAddressInfo }) => {
   return (
     <Col xs={12} md={6} lg={6}>
       <Form.Label>
-        {"Work Permit"}
+        Work Permit
         <Button
           disabled={buttonDisabilty}
           onClick={() => {
@@ -57,10 +55,10 @@ const WorkPermit = ({ handlePersonAddressInfo }) => {
           }}
         >
           Plus
-        </Button>{" "}
+        </Button>
       </Form.Label>
       {workPermitsArray.map((el, idx) => (
-        <>
+        <div key={el}>
           <Form.Control
             id={`personWorkPermit${el}`}
             className="workPermit"
@@ -79,7 +77,7 @@ const WorkPermit = ({ handlePersonAddressInfo }) => {
               Minus
             </Button>
           )}
-        </>
+        </div>
       ))}
     </Col>
   );
