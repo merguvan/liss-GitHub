@@ -24,6 +24,7 @@ import InstitutionInfo from "./institutional/components/information/InstitutionI
 import InstitutionAddress from "./institutional/components/address/InstitutionAddress";
 import ContactAddress from "./institutional/components/contactAddress/ContactAddress";
 import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
+import ContactPerson from "./institutional/components/contactPerson/contactPerson";
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
@@ -55,6 +56,7 @@ function App(props) {
           />
           <Route path="/contactaddress/:id" component={ContactAddress} />
           <Route path="/mediainfo/:id" component={MediaInfo} />
+          <Route path="/contactperson/:id" component={ContactPerson} />
         </Switch>
       </div>
     );
