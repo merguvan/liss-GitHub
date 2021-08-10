@@ -28,7 +28,7 @@ import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (userInfo?.isConfirmed) {
+  if (true) {
     return (
       <div className="app">
         <Header />
