@@ -1,0 +1,45 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Label",
+      "text": "Contact Person"
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactContactTitle",
+          "label": "Title"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/personGender",
+          "label":"Gender"
+        }
+      ]
+    },
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/contactContactName",
+          "label":"Name"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactContactMiddleNames",
+          "label":"Middle Name"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/contactContactSurname",
+          "label":"Surname"
+        }
+        
+      ]
+    }
+  ]
+}
