@@ -11,20 +11,8 @@ import {
 } from "../actionTypes/addressInfo";
 import axios from "axios";
 
-const {
-  token,
-  userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"))
-  ? JSON.parse(localStorage.getItem("user"))
-  : {
-
-      token: "asdasdad",
-      userInfo: {
-        _id: "dasdadsa",
-      },
-    };
-
-export const addAddressInfo = (data) => async (dispatch) => {
+export const addAddressInfo = (data) => async (dispatch, getState) => {
+  const { token, id } = getState().userLogin;
   try {
     dispatch({
       type: ADD_ADDRESS_INFO_PENDING,
@@ -50,6 +38,7 @@ export const addAddressInfo = (data) => async (dispatch) => {
   }
 };
 export const updateAddressInfo = (data) => async (dispatch, getState) => {
+  const { token, id } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ADDRESS_INFO_PENDING,
@@ -74,7 +63,8 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
     });
   }
 };
-export const getAddressInfo = (data) => async (dispatch) => {
+export const getAddressInfo = (data) => async (dispatch, getState) => {
+  const { token, id } = getState().userLogin;
   try {
     dispatch({
       type: GET_ADDRESS_INFO_PENDING,
