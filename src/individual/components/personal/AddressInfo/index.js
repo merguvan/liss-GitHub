@@ -78,38 +78,7 @@ function PersonAddressInfo() {
   };
 
   const handleClick = () => {
-    dispatch(
-      addAddressInfo({
-        personTitle: "Mr",
-        personAddressType: "private",
-        personBuildingNo: 10,
-        personCitizenship: "dasda",
-        personCity: "Badakhshan",
-        personCityOB: "Badakhshan",
-        personCountry: "Afghanistan",
-        personCountryOB: "Afghanistan",
-        personDOB: "2021-08-26",
-        personDisplayName: "asdasda",
-        personDistrict: "dsada",
-        personEmail: "dasdasdda@gmail.com",
-        personEmailType: "linkedin",
-        personFlatNo: 10,
-        personGender: "female",
-        personMaritalStatus: "Married",
-        personMiddle: "dincer",
-        personName: "erdal",
-        personPhoneCountryCode: "dasdasda",
-        personPhoneNumber: "08652",
-        personPhoneType: "landline",
-        personPlatformUserName: "ddasddasda",
-        personState: "dasddasda",
-        personStreet: "dasda",
-        personSurname: "adasd",
-        personUserName: "dasdasd",
-        personWorkPermit: "dasdasd;dasdas",
-        postalCode: "ddasda",
-      })
-    );
+    dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
     checkButton();

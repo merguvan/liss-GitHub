@@ -58,37 +58,37 @@ const AddressInfoSchema = new mongoose.Schema({
   personMedicalDoc: String,
   personTitle: {
     type: String,
-    required: [true, "Please, select your title"],
+    // required: [true, "Please, select your title"],
   },
   personName: {
     type: String,
-    required: [true, "Please, type your name"],
+    // required: [true, "Please, type your name"],
   },
   personSurname: {
     type: String,
-    required: [true, "Please, type your surName"],
+    // required: [true, "Please, type your surName"],
   },
   personMiddle: String,
   personDisplayName: String,
   personDOB: {
     type: Date,
-    required: [true, "Please, enter your date of birth"],
+    // required: [true, "Please, enter your date of birth"],
   },
   personCityOB: {
     type: String,
   },
   personCountryOB: {
     type: String,
-    required: [true, "Please, enter your city of Birth"],
+    // required: [true, "Please, enter your city of Birth"],
   },
   personGender: {
     type: String,
-    required: [true, "Please, enter your gender"],
+    // required: [true, "Please, enter your gender"],
   },
 
   personMaritalStatus: {
     type: String,
-    required: [true, "Please, enter your martrial Status"],
+    // required: [true, "Please, enter your martrial Status"],
   },
 
   personOrcidID: {

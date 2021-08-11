@@ -18,7 +18,7 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
     dispatch({
       type: ADD_ADDRESS_INFO_PENDING,
     });
-    console.log({ ...data, user: id });
+
     const { data: res } = await axios.post(
       `http://localhost:5000/user/addressinfo/`,
       { ...data, user: id },
@@ -33,13 +33,13 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
       payload: res,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: ADD_ADDRESS_INFO_REJECTED,
       payload: error,
     });
   }
 };
+
 export const updateAddressInfo = (data) => async (dispatch, getState) => {
   const { token, id } = getState().userLogin;
   try {
