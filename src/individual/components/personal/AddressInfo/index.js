@@ -78,6 +78,7 @@ function PersonAddressInfo() {
   };
 
   const handleClick = () => {
+    console.log(addressInfo);
     dispatch(addAddressInfo(addressInfo));
   };
   const handlePersonAddressInfo = (e) => {
@@ -119,8 +120,7 @@ function PersonAddressInfo() {
           ?.value === ""
     );
   };
-  //[1,2,3]=3
-  ///workPermit1,workPermit2,workPermit3
+  console.log(addressInfo);
   const handleMinusClick = (event, el) => {
     setWorkPermits((prev) => prev - 1);
     setWorkPermitsArray(
