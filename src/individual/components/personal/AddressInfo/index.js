@@ -80,6 +80,7 @@ function PersonAddressInfo() {
   const handleClick = () => {
     dispatch(
       addAddressInfo({
+        personTitle: "Mr",
         personAddressType: "private",
         personBuildingNo: 10,
         personCitizenship: "dasda",
