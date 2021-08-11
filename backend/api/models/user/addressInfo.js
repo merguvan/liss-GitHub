@@ -48,7 +48,7 @@ const AddressInfoSchema = new mongoose.Schema({
   personPlatformUserName: String,
   personCvDoc: {
     type: String,
-    required: [true, "Please, upload your cv"],
+    // required: [true, "Please, upload your cv"],
   },
   personCitizenship: String,
   personWorkPermit: String,
