@@ -78,8 +78,38 @@ function PersonAddressInfo() {
   };
 
   const handleClick = () => {
-    console.log(addressInfo);
-    dispatch(addAddressInfo(addressInfo));
+    dispatch(
+      addAddressInfo({
+        personTitle: "Mr",
+        personAddressType: "private",
+        personBuildingNo: 10,
+        personCitizenship: "dasda",
+        personCity: "Badakhshan",
+        personCityOB: "Badakhshan",
+        personCountry: "Afghanistan",
+        personCountryOB: "Afghanistan",
+        personDOB: "2021-08-26",
+        personDisplayName: "asdasda",
+        personDistrict: "dsada",
+        personEmail: "dasdasdda@gmail.com",
+        personEmailType: "linkedin",
+        personFlatNo: 10,
+        personGender: "female",
+        personMaritalStatus: "Married",
+        personMiddle: "dincer",
+        personName: "erdal",
+        personPhoneCountryCode: "dasdasda",
+        personPhoneNumber: "08652",
+        personPhoneType: "landline",
+        personPlatformUserName: "ddasddasda",
+        personState: "dasddasda",
+        personStreet: "dasda",
+        personSurname: "adasd",
+        personUserName: "dasdasd",
+        personWorkPermit: "dasdasd;dasdas",
+        postalCode: "ddasda",
+      })
+    );
   };
   const handlePersonAddressInfo = (e) => {
     checkButton();
@@ -120,27 +150,24 @@ function PersonAddressInfo() {
           ?.value === ""
     );
   };
-  console.log(addressInfo);
+
   const handleMinusClick = (event, el) => {
     setWorkPermits((prev) => prev - 1);
     setWorkPermitsArray(
       Array.from({ length: workPermits - 1 }, (_, i) => i + 1)
     );
-    //[ridvan,erdal,yusup]
-    //
+
     const values = Object.values(workPermitValue).filter(
       (val, indx) => indx + 1 !== el
     );
 
-    console.log(values);
     setWorkPermitValue(
       Object.fromEntries(
         values.map((val, idx) => [`workPermit${workPermitsArray[idx]}`, val])
       )
     );
   };
-  console.log(workPermitsArray);
-  console.log(workPermitValue);
+
   return (
     <Modal
       show={show}
@@ -211,7 +238,7 @@ function PersonAddressInfo() {
                     <Form.Control
                       id="personFlatNo"
                       name="personFlatNo"
-                      type="text"
+                      type="number"
                       value={addressInfo["personFlatNo"]}
                       onChange={handlePersonAddressInfo}
                       data-toggle="tooltip"
@@ -229,7 +256,7 @@ function PersonAddressInfo() {
                     <Form.Control
                       id="personBuildingNo"
                       name="personBuildingNo"
-                      type="text"
+                      type="number"
                       value={addressInfo["personBuildingNo"]}
                       onChange={handlePersonAddressInfo}
                       data-toggle="tooltip"

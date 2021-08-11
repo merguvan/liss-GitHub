@@ -12,14 +12,16 @@ import {
 import axios from "axios";
 
 export const addAddressInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token, _id: id } = getState().userLogin.userLogin;
+
   try {
     dispatch({
       type: ADD_ADDRESS_INFO_PENDING,
     });
+    console.log({ ...data, user: id });
     const { data: res } = await axios.post(
-      `http://localhost:5000/user/addressinfo/${id}`,
-      { data },
+      `http://localhost:5000/user/addressinfo/`,
+      { ...data, user: id },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -31,6 +33,7 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
       payload: res,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: ADD_ADDRESS_INFO_REJECTED,
       payload: error,
@@ -44,7 +47,7 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
       type: UPDATE_ADDRESS_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/addressinfo/${id}`,
+      `http://localhost:5000/user/addressinfo/`,
       { data },
       {
         headers: {
@@ -65,12 +68,13 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
 };
 export const getAddressInfo = (data) => async (dispatch, getState) => {
   const { token, id } = getState().userLogin;
+  console.log(id);
   try {
     dispatch({
       type: GET_ADDRESS_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/addressinfo/${id}`,
+      `http://localhost:5000/user/addressinfo/`,
       { data },
       {
         headers: {

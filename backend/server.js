@@ -19,10 +19,6 @@ app.use((req, res, next) => {
 });
 app.use(express.static("public"));
 
-///middleware
-//login
-//register
-// /checkauth
 app.use("/user", userRouter);
 app.use("/confirmation", require("./api/routes/confirmation"));
 
