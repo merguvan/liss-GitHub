@@ -106,7 +106,7 @@ const Affiliations = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  From{" "}
+                <Form.Label class="font-weight-bold">From</Form.Label>    
                   <Form.Control
                     id="personAffiliationFrom"
                     name="personAffiliationFrom"
@@ -122,7 +122,7 @@ const Affiliations = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  To
+                  <Form.Label class="font-weight-bold">To</Form.Label>
                   <Form.Control
                     id="personAffiliationTo"
                     name="personAffiliationTo"
@@ -204,8 +204,7 @@ const Affiliations = (props) => {
                 </Col>
 
                 <Col xs={12} md={12}>
-                  <Form.Label>Country</Form.Label>
-
+                  <Form.Label class="font-weight-bold">Country</Form.Label>
                   <CountrySelect
                     id="personAffiliationCountry"
                     name="personAffiliationCountry"
