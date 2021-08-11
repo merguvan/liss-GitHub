@@ -132,7 +132,7 @@ const Achievements = ({ props }) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  Date{" "}
+                  <Form.Label class="font-weight-bold">Date</Form.Label>
                   <Form.Control
                     id="personAchievementDate"
                     name="personAchievementDate"
