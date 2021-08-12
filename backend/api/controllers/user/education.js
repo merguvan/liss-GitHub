@@ -7,14 +7,13 @@ module.exports.addEducation = async (req, res, next) => {
     await education.save();
 
     return res.status(200).json({
-      message: "User has been added",
-      education,
+      message: "User education details has been added",
+  
     });
   } catch (error) {
     res.status(404);
     console.log(error);
-    const systemError = new Error("Something is wrong");
-    next(systemError);
+    next(error);
   }
 };
 module.exports.updateEducation = async (req, res, next) => {
@@ -37,12 +36,11 @@ module.exports.getEducation = async (req, res, next) => {
     });
 
     return res.status(200).json({
-        education,
-      });
-    } catch (error) {
-      res.status(404);
-      const systemError = new Error("Something went wrong");
-      next(systemError);
-    }
-  };
-  
+      education,
+    });
+  } catch (error) {
+    res.status(404);
+    const systemError = new Error("Something went wrong");
+    next(systemError);
+  }
+};

@@ -7,14 +7,12 @@ module.exports.addAffiliationsInfo = async (req, res, next) => {
     await affiliations.save();
 
     return res.status(200).json({
-      message: "User has been added",
-      affiliations,
+      message: "User affiliations has been added",
     });
   } catch (error) {
     res.status(404);
-    console.log(error);
-    const systemError = new Error("Something is wrong");
-    next(systemError);
+
+    next(error);
   }
 };
 module.exports.updateAffiliationsInfo = async (req, res, next) => {

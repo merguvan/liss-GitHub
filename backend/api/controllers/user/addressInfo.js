@@ -2,7 +2,7 @@ const AddressInfoSchema = require("../../models/user/addressInfo");
 
 module.exports.addAddressInfo = async (req, res, next) => {
   try {
-    const addressInfo = await AddressInfoSchema(req.body.data);
+    const addressInfo = await AddressInfoSchema(req.body);
 
     await addressInfo.save();
 
@@ -21,19 +21,6 @@ module.exports.updateAddressInfo = async (req, res, next) => {
 
     return res.status(200).json({
       message: "Address has been updated",
-    });
-  } catch (error) {
-    res.status(404);
-
-    next(error);
-  }
-};
-module.exports.getAddressInfo = async (req, res, next) => {
-  try {
-    const addressInfo = await AddressInfoSchema.find({ user: req.user._id });
-
-    return res.status(200).json({
-      addressInfo,
     });
   } catch (error) {
     res.status(404);

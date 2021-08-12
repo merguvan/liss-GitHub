@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const AcademicSchema = new mongoose.Schema({
-    academic: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "academic",
@@ -21,17 +21,16 @@ const AcademicSchema = new mongoose.Schema({
 
   personType: {
     type: Number,
-    required: [true, "Please, select type"],
+    // required: [true, "Please, select type"],
   },
 
   personAcademicDate: {
-    type: Date,
+    type: String,
   },
 
   personAcademicURL: {
     type: String,
   },
-
 });
 
 module.exports = mongoose.model("academic", AcademicSchema);

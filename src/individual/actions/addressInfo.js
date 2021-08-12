@@ -11,27 +11,17 @@ import {
 } from "../actionTypes/addressInfo";
 import axios from "axios";
 
-const {
-  token,
-  userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"))
-  ? JSON.parse(localStorage.getItem("user"))
-  : {
+export const addAddressInfo = (data) => async (dispatch, getState) => {
+  const { token, _id: id } = getState().userLogin.userLogin;
 
-      token: "asdasdad",
-      userInfo: {
-        _id: "dasdadsa",
-      },
-    };
-
-export const addAddressInfo = (data) => async (dispatch) => {
   try {
     dispatch({
       type: ADD_ADDRESS_INFO_PENDING,
     });
+
     const { data: res } = await axios.post(
-      `http://localhost:5000/user/addressinfo/${id}`,
-      { data },
+      `http://localhost:5000/user/addressinfo/`,
+      { ...data, user: id },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -42,20 +32,26 @@ export const addAddressInfo = (data) => async (dispatch) => {
       type: ADD_ADDRESS_INFO_FULFILLED,
       payload: res,
     });
-  } catch (error) {
+  } catch ({
+    response: {
+      data: { message },
+    },
+  }) {
     dispatch({
       type: ADD_ADDRESS_INFO_REJECTED,
-      payload: error,
+      payload: message,
     });
   }
 };
+
 export const updateAddressInfo = (data) => async (dispatch, getState) => {
+  const { token, id } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ADDRESS_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/addressinfo/${id}`,
+      `http://localhost:5000/user/addressinfo/`,
       { data },
       {
         headers: {
@@ -74,13 +70,15 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
     });
   }
 };
-export const getAddressInfo = (data) => async (dispatch) => {
+export const getAddressInfo = (data) => async (dispatch, getState) => {
+  const { token } = getState().userLogin;
+
   try {
     dispatch({
       type: GET_ADDRESS_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/addressinfo/${id}`,
+      `http://localhost:5000/user/addressinfo/`,
       { data },
       {
         headers: {

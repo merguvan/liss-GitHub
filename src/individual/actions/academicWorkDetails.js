@@ -16,8 +16,6 @@
 //   return { type: ADD_ACADEMIC_WORK_DETAILS, payload: data };
 // };
 
-
-
 import axios from "axios";
 import {
   ADD_ACADEMIC_INFO_PENDING,
@@ -33,13 +31,11 @@ const {
   : {
       token: "token",
       userInfo: {
-        _id: 12345
-    }};
+        _id: 12345,
+      },
+    };
 
 export const addAcademicInfo = (academicInfo) => async (dispatch) => {
-  console.log("token=>" + token);
-  console.log("id=>" + id);
-  console.log(academicInfo);
   try {
     dispatch({
       type: ADD_ACADEMIC_INFO_PENDING,

@@ -208,7 +208,7 @@ const Certifications = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={6}>
-                  From{" "}
+                  <Form.Label class="font-weight-bold">From</Form.Label>
                   <Form.Control
                     id="personCertificateFrom"
                     name="personCertificateFrom"
@@ -223,7 +223,7 @@ const Certifications = (props) => {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  To
+                  <Form.Label class="font-weight-bold">To</Form.Label>
                   <Form.Control
                     id="personCertificateTo"
                     name="personCertificateTo"

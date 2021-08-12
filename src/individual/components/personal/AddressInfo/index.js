@@ -34,7 +34,7 @@ function PersonAddressInfo() {
   const [citiesOptionsOn, setCitiesOptionsOn] = useState(false);
   const [addressInfo, setAddressInfo] = useState({ ...storeAddressInfo } || {});
   const [workPermits, setWorkPermits] = useState(
-    addressInfo?.personWorkPermit?.split(";").length || 1
+    (addressInfo && addressInfo?.personWorkPermit?.split(";").length) || 1
   );
   const [workPermitsArray, setWorkPermitsArray] = useState(
     Array.from({ length: workPermits }, (_, i) => i + 1)
@@ -43,7 +43,7 @@ function PersonAddressInfo() {
   const [workPermitValue, setWorkPermitValue] = useState(
     (addressInfo?.personWorkPermit &&
       Object.fromEntries(
-        addressInfo.personWorkPermit
+        addressInfo?.personWorkPermit
           ?.split(";")
           ?.map((value, idx) => [`workPermit${idx + 1}`, value])
       )) ||
@@ -119,12 +119,22 @@ function PersonAddressInfo() {
           ?.value === ""
     );
   };
+
   const handleMinusClick = (event, el) => {
-    setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
     setWorkPermits((prev) => prev - 1);
-    const tempObject = { ...workPermitValue };
-    delete tempObject[`workPermit${el}`];
-    setWorkPermitValue(tempObject);
+    setWorkPermitsArray(
+      Array.from({ length: workPermits - 1 }, (_, i) => i + 1)
+    );
+
+    const values = Object.values(workPermitValue).filter(
+      (val, indx) => indx + 1 !== el
+    );
+
+    setWorkPermitValue(
+      Object.fromEntries(
+        values.map((val, idx) => [`workPermit${workPermitsArray[idx]}`, val])
+      )
+    );
   };
 
   return (
@@ -197,7 +207,7 @@ function PersonAddressInfo() {
                     <Form.Control
                       id="personFlatNo"
                       name="personFlatNo"
-                      type="text"
+                      type="number"
                       value={addressInfo["personFlatNo"]}
                       onChange={handlePersonAddressInfo}
                       data-toggle="tooltip"
@@ -215,7 +225,7 @@ function PersonAddressInfo() {
                     <Form.Control
                       id="personBuildingNo"
                       name="personBuildingNo"
-                      type="text"
+                      type="number"
                       value={addressInfo["personBuildingNo"]}
                       onChange={handlePersonAddressInfo}
                       data-toggle="tooltip"
@@ -352,7 +362,8 @@ function PersonAddressInfo() {
                   <Col xs={12} md={6} lg={6}>
                     <Form.Label className="wp_input">
                       {"Work Permit"}
-                      <Button className="wp_btn"
+                      <Button
+                        className="wp_btn"
                         disabled={buttonDisabilty}
                         onClick={() => {
                           setWorkPermits((prev) => prev + 1);
@@ -361,13 +372,15 @@ function PersonAddressInfo() {
                         +
                       </Button>{" "}
                     </Form.Label>
-                    {workPermitsArray.map((el, idx) => (
-                      <InputGroup className="mb-3">
-                        
+                    {workPermitsArray.map((
+                      el,
+                      idx //1,2,3
+                    ) => (
+                      <InputGroup key={el} className="mb-3">
                         <Form.Control
-                          // id={`personWorkPermit${el}`}
-                          className="workPermit"
-                          name={`workPermit${el}`}
+                          id={`personWorkPermit${el}`}
+                          className="workPermit" //ridvan,erdal,yusup
+                          name={`workPermit${el}`} //workPermit1workPermit3
                           type="text"
                           data-toggle="tooltip"
                           data-placement="top"
@@ -377,7 +390,7 @@ function PersonAddressInfo() {
                           value={workPermitValue[`workPermit${el}`]}
                           onChange={handlePersonAddressInfo}
                         />
-                        {el !== 1 && el === workPermitsArray.length && (
+                        {el !== 1 && (
                           <Button
                             variant="outline-secondary"
                             id="button-addon!"

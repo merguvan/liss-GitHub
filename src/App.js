@@ -27,7 +27,11 @@ import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
 import ContactPerson from "./institutional/components/contactPerson/contactPerson";
 import ContactPhone from "./institutional/components/contactPhone/contactPhone";
 import ContactMail from "./institutional/components/contactMail/contactMail";
+
 import InstRemarks from "./institutional/components/remarks/instRemarks";
+
+import { useEffect } from "react";
+
 
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
@@ -36,6 +40,7 @@ function App(props) {
     return (
       <div className="app">
         <Header />
+
         <Switch>
           <Route path="/login_register" exact component={LoginPage} />
           <Route path="/" exact component={MainPage} />

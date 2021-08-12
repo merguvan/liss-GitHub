@@ -28,7 +28,7 @@ const projects = [
 ];
 function Projects(props) {
   return (
-    <Summary headerTitle="Projects" url="/projects/1">
+    <Summary headerTitle="Projects" value={Number("10")} url="/projects/1">
       {projects.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">
