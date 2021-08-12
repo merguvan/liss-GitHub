@@ -38,6 +38,13 @@ const {
   updateAffiliationsInfo,
   addAffiliationsInfo,
 } = require("../controllers/user/affiliations");
+
+const {
+  addEducation,
+  getEducation,
+  updateEducation,
+} = require("../controllers/user/education");
+
 const {
   updateUserProfile,
   deleteUserProfile,
@@ -84,16 +91,20 @@ router
   .get(checkAuth, getUserReferenceInfo)
   .post(checkAuth, addUserReferenceInfo)
   .patch(checkAuth, updateUserReferenceInfo);
-
 router
-  .route("/:id")
-  .get(checkAuth, getSingleUser)
-  .delete(checkAuth, deleteSingleUSer);
-
+  .route("/education")
+  .get(checkAuth, getEducation)
+  .post(checkAuth, addEducation)
+  .patch(checkAuth, updateEducation);
 router
   .route("/affiliations")
   .get(checkAuth, getAffiliationsInfo)
   .post(checkAuth, addAffiliationsInfo)
   .patch(checkAuth, updateAffiliationsInfo);
+
+router
+  .route("/:id")
+  .get(checkAuth, getSingleUser)
+  .delete(checkAuth, deleteSingleUSer);
 
 module.exports = router;
