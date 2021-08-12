@@ -32,10 +32,14 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
       type: ADD_ADDRESS_INFO_FULFILLED,
       payload: res,
     });
-  } catch (error) {
+  } catch ({
+    response: {
+      data: { message },
+    },
+  }) {
     dispatch({
       type: ADD_ADDRESS_INFO_REJECTED,
-      payload: error,
+      payload: message,
     });
   }
 };
@@ -67,8 +71,8 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
   }
 };
 export const getAddressInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
-  console.log(id);
+  const { token } = getState().userLogin;
+
   try {
     dispatch({
       type: GET_ADDRESS_INFO_PENDING,

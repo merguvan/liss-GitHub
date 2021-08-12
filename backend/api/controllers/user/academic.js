@@ -7,7 +7,7 @@ module.exports.addAcademicInfo = async (req, res, next) => {
     await academic.save();
 
     return res.status(200).json({
-      message: "User has been added",
+      message: "User academic has been added",
       academic,
     });
   } catch (error) {

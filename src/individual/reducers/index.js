@@ -14,6 +14,8 @@ import { remarksReducer } from "./remarksReducer";
 import { userLoginDetailsReducer } from "./userLoginDetailsReducer";
 import { userRegistrationDetailsReducer } from "./userRegistrationReducer";
 import { getScrollPositionReducer } from "./getScrollPositionReducer";
+
+const number = { namer: 1 };
 const reducer = combineReducers({
   personalInfoReducer,
   academicWorksDetailsReducer,
@@ -29,6 +31,7 @@ const reducer = combineReducers({
   userLogin: userLoginDetailsReducer,
   userRegistration: userRegistrationDetailsReducer,
   scrollPosition: getScrollPositionReducer,
+  number,
 });
 
 export default reducer;
