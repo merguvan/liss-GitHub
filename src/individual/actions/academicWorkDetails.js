@@ -1,64 +1,99 @@
-// import { ADD_ACADEMIC_WORK_DETAILS } from "../actionTypes";
-
-// const {
-//   token,
-//   userInfo: { _id: id },
-// } = JSON.parse(localStorage.getItem("user"))
-//   ? JSON.parse(localStorage.getItem("user"))
-//   : {
-//       token: "asdasdad",
-//       userInfo: {
-//         _id: "dasdadsa",
-//       },
-//     };
-
-// export const addAcademicWorkDetails = (data) => {
-//   return { type: ADD_ACADEMIC_WORK_DETAILS, payload: data };
-// };
-
-import axios from "axios";
 import {
-  ADD_ACADEMIC_INFO_PENDING,
-  ADD_ACADEMIC_INFO_REJECTED,
   ADD_ACADEMIC_INFO_FULFILLED,
-} from "../actionTypes/AcademicInfo";
+  ADD_ACADEMIC_INFO_REJECTED,
+  ADD_ACADEMIC_INFO_PENDING,
+  UPDATE_ACADEMIC_INFO_PENDING,
+  UPDATE_ACADEMIC_INFO_FULFILLED,
+  UPDATE_ACADEMIC_INFO_REJECTED,
+  GET_ACADEMIC_INFO_PENDING,
+  GET_ACADEMIC_INFO_FULFILLED,
+  GET_ACADEMIC_INFO_REJECTED,
+} from "../actionTypes/academicWorkDetails";
+import axios from "axios";
 
-const {
-  token,
-  userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"))
-  ? JSON.parse(localStorage.getItem("user"))
-  : {
-      token: "token",
-      userInfo: {
-        _id: 12345,
-      },
-    };
+export const addAcademicWorkDetails = (data) => async (dispatch, getState) => {
+  const { token, _id: id } = getState().userLogin.userLogin;
 
-export const addAcademicInfo = (academicInfo) => async (dispatch) => {
   try {
     dispatch({
       type: ADD_ACADEMIC_INFO_PENDING,
     });
-    const { data } = await axios.post(
-      `http://localhost:5000/user/academicInfo/${id}`,
-      { ...academicInfo, user: id },
+
+    const { data: res } = await axios.post(
+      `http://localhost:5000/user/academicWorkDetails`,
+      { ...data, user: id },
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(data);
     dispatch({
       type: ADD_ACADEMIC_INFO_FULFILLED,
-      payload: data.academicInfo,
+      payload: res,
+    });
+  } catch ({
+    response: {
+      data: { message },
+    },
+  }) {
+    dispatch({
+      type: ADD_ACADEMIC_INFO_REJECTED,
+      payload: message,
+    });
+  }
+};
+
+export const updateAcademicWorkDetails = (data) => async (dispatch, getState) => {
+  const { token, id } = getState().userLogin;
+  try {
+    dispatch({
+      type: UPDATE_ACADEMIC_INFO_PENDING,
+    });
+    const { data: res } = await axios.patch(
+      `http://localhost:5000/user/academicWorkDetails`,
+      { data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    dispatch({
+      type: UPDATE_ACADEMIC_INFO_FULFILLED,
+      payload: res,
     });
   } catch (error) {
     dispatch({
-      type: ADD_ACADEMIC_INFO_REJECTED,
+      type: UPDATE_ACADEMIC_INFO_REJECTED,
       payload: error,
     });
-    console.log(error);
+  }
+};
+export const getAcademicWorkDetails = (data) => async (dispatch, getState) => {
+  const { token } = getState().userLogin;
+
+  try {
+    dispatch({
+      type: GET_ACADEMIC_INFO_PENDING,
+    });
+    const { data: res } = await axios.patch(
+      `http://localhost:5000/user/academicWorkDetails`,
+      { data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    dispatch({
+      type: GET_ACADEMIC_INFO_FULFILLED,
+      payload: res,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_ACADEMIC_INFO_REJECTED,
+      payload: error,
+    });
   }
 };
