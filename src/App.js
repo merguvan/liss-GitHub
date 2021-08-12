@@ -32,7 +32,7 @@ import { useEffect } from "react";
 function App(props) {
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (true) {
+  if (userInfo?.isConfirmed) {
     return (
       <div className="app">
         <Header />

@@ -1,7 +1,6 @@
 const AddressInfoSchema = require("../../models/user/addressInfo");
 
 module.exports.addAddressInfo = async (req, res, next) => {
-  console.log(req.body);
   try {
     const addressInfo = await AddressInfoSchema(req.body);
 
@@ -12,7 +11,7 @@ module.exports.addAddressInfo = async (req, res, next) => {
     });
   } catch (error) {
     res.status(404);
-    console.log(error);
+
     next(error);
   }
 };

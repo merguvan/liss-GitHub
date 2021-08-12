@@ -32,10 +32,14 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
       type: ADD_ADDRESS_INFO_FULFILLED,
       payload: res,
     });
-  } catch (error) {
+  } catch ({
+    response: {
+      data: { message },
+    },
+  }) {
     dispatch({
       type: ADD_ADDRESS_INFO_REJECTED,
-      payload: error,
+      payload: message,
     });
   }
 };
