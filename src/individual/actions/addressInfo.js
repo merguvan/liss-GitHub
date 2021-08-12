@@ -71,8 +71,8 @@ export const updateAddressInfo = (data) => async (dispatch, getState) => {
   }
 };
 export const getAddressInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
-  console.log(id);
+  const { token } = getState().userLogin;
+
   try {
     dispatch({
       type: GET_ADDRESS_INFO_PENDING,
