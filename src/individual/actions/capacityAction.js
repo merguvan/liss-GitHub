@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   ADD_CAPACITY_INFO_PENDING,
   ADD_CAPACITY_INFO_REJECTED,
@@ -10,6 +9,7 @@ import {
   GET_CAPACITY_INFO_FULFILLED,
   GET_CAPACITY_INFO_REJECTED,
 } from "../actionTypes/capacity";
+import axios from "axios";
 
 const {
   token,
@@ -22,7 +22,7 @@ const {
         _id: 12345
     }};
 
-export const addCapacityInfo = (data) => async (dispatch, getState) => {
+export const addCapacity = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 
   try {
