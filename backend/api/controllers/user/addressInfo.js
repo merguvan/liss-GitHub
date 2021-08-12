@@ -28,16 +28,3 @@ module.exports.updateAddressInfo = async (req, res, next) => {
     next(error);
   }
 };
-module.exports.getAddressInfo = async (req, res, next) => {
-  try {
-    const addressInfo = await AddressInfoSchema.find({ user: req.user._id });
-
-    return res.status(200).json({
-      addressInfo,
-    });
-  } catch (error) {
-    res.status(404);
-
-    next(error);
-  }
-};
