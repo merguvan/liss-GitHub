@@ -1,28 +1,28 @@
 const mongoose = require("mongoose");
 
 const EducationSchema = new mongoose.Schema({
-    education: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "education",
   },
 
   personEduFrom: {
-    type: Date,
+    type: String,
   },
 
   personEduTo: {
-    type: Date,
+    type: String,
   },
 
   personType1: {
     type: Number,
-    required: [true, "Please, select Institutional Type-1"],
+    // required: [true, "Please, select Institutional Type-1"],
   },
 
   personType2: {
     type: Number,
-    required: [true, "Please, select Institutional Type-2"],
+    // required: [true, "Please, select Institutional Type-2"],
   },
 
   personEducationOther: {
@@ -43,7 +43,7 @@ const EducationSchema = new mongoose.Schema({
 
   personDegree: {
     type: Number,
-    required: [true, "Please, select Degree"],
+    // required: [true, "Please, select Degree"],
   },
 
   personEduTitleDegree: {
@@ -53,9 +53,8 @@ const EducationSchema = new mongoose.Schema({
   personEducationLetter: String,
   personCvDoc: {
     type: String,
-    required: [true, "Please, upload your reference letter"],
+    // required: [true, "Please, upload your reference letter"],
   },
- 
 });
 
 module.exports = mongoose.model("education", EducationSchema);
