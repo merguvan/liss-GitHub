@@ -8,7 +8,7 @@ const AddressInfoSchema = new mongoose.Schema({
   },
   personAddressType: {
     type: String,
-    required: [true, "Please, enter address"],
+    // required: [true, "Please, enter address"],
   },
   personFlatNo: {
     type: Number,
@@ -21,23 +21,23 @@ const AddressInfoSchema = new mongoose.Schema({
   postalCode: String,
   personCity: {
     type: String,
-    required: [true, "Please, enter your current city"],
+    // required: [true, "Please, enter your current city"],
   },
   personState: String,
   personCountry: {
     type: String,
-    required: [true, "Please, enter your current country"],
+    // required: [true, "Please, enter your current country"],
   },
   personPhoneType: String,
   personPhoneCountryCode: String,
   personPhoneNumber: {
     type: Number,
-    required: [true, "Please, enter your phone number "],
+    // required: [true, "Please, enter your phone number "],
   },
   personEmailType: String,
   personEmail: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
     match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
   },
