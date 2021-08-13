@@ -1,13 +1,13 @@
 const Remarks = require("../../models/user/remarks");
 
-module.exports.Remarks = async (req, res, next) => {
+module.exports.addRemarks = async (req, res, next) => {
   try {
-    const remarks = await Remarks(req.body.data);
+    const remarks = await Remarks(req.body);
 
     await remarks.save();
 
     return res.status(200).json({
-      message: " has been saved",
+      message: "user remarks has been saved",
     });
   } catch (error) {
     res.status(404);
@@ -33,7 +33,7 @@ module.exports.getRemarks = async (req, res, next) => {
     const remarks = await Remarks.find({ user: req.user._id });
 
     return res.status(200).json({
-        remarks,
+      remarks,
     });
   } catch (error) {
     res.status(404);
