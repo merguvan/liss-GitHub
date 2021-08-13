@@ -100,14 +100,37 @@ module.exports.authorizeUser = async (req, res, next) => {
 
     if (user.length > 0 && (await user[0].matchPassword(password))) {
       if (user[0].isConfirmed) {
-        return res.status(200).json({
-          _id: user[0]._id,
-          name: user[0].personName,
-          surname: user[0].personSurname,
-          email: user[0].personEmail,
-          token: generateToken(user[0]._id),
-          isConfirmed: user[0].isConfirmed,
-        });
+        try {
+          const userData = await userSchema.aggregate([
+            {
+              $lookup: {
+                from: "academics", //Book.collection.name
+                localField: "user",
+                foreignField: "user",
+                as: "academics",
+              },
+            },
+            {
+              $lookup: {
+                from: "achievements",
+                localField: "_id",
+                foreignField: "_id",
+                as: "achievements",
+              },
+            },
+          ]);
+          return res.status(200).json({
+            _id: user[0]._id,
+            name: user[0].personName,
+            surname: user[0].personSurname,
+            email: user[0].personEmail,
+            token: generateToken(user[0]._id),
+            isConfirmed: user[0].isConfirmed,
+            userData,
+          });
+        } catch (error) {
+          return res.status(404).json(error);
+        }
       } else {
         res.status(404);
         const systemError = new Error("Please,verify your email");
