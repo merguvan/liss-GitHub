@@ -49,11 +49,11 @@ const {
   updateUserProfile,
   deleteUserProfile,
 } = require("../controllers/user/profile");
-
+const { addRemarks } = require("../controllers/user/remarks");
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
 
-// router.get('/')
+router.get("/");
 router.route("/signup").post(registerUser);
 
 router.route("/login").post(authorizeUser);
@@ -71,7 +71,7 @@ router
 
 router
   .route("/addressinfo")
-  .get(checkAuth, getAddressInfo)
+  // .get(checkAuth, getAddressInfo)
   .post(checkAuth, addAddressInfo)
   .patch(checkAuth, updateAddressInfo);
 
@@ -101,7 +101,7 @@ router
   .get(checkAuth, getAffiliationsInfo)
   .post(checkAuth, addAffiliationsInfo)
   .patch(checkAuth, updateAffiliationsInfo);
-
+router.route("/remarks").post(checkAuth, addRemarks);
 router
   .route("/:id")
   .get(checkAuth, getSingleUser)
