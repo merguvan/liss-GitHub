@@ -1,6 +1,7 @@
 const userSchema = require("../../models/user/user");
 const nodemailer = require("nodemailer");
 const generateToken = require("../../utils/generateToken");
+const Academic = require("../../models/user/academic");
 module.exports.registerUser = async (req, res, next) => {
   const {
     isAdmin,
@@ -34,7 +35,6 @@ module.exports.registerUser = async (req, res, next) => {
           });
 
           if (user) {
-            console.log("deneme 2");
             let transporter = nodemailer.createTransport({
               service: "gmail",
               auth: {
@@ -101,24 +101,10 @@ module.exports.authorizeUser = async (req, res, next) => {
     if (user.length > 0 && (await user[0].matchPassword(password))) {
       if (user[0].isConfirmed) {
         try {
-          const userData = await userSchema.aggregate([
-            {
-              $lookup: {
-                from: "academics", //Book.collection.name
-                localField: "user",
-                foreignField: "user",
-                as: "academics",
-              },
-            },
-            {
-              $lookup: {
-                from: "achievements",
-                localField: "_id",
-                foreignField: "_id",
-                as: "achievements",
-              },
-            },
-          ]);
+          const academic = await Academic.find({
+            user: user[0]._id,
+          });
+
           return res.status(200).json({
             _id: user[0]._id,
             name: user[0].personName,
@@ -126,7 +112,7 @@ module.exports.authorizeUser = async (req, res, next) => {
             email: user[0].personEmail,
             token: generateToken(user[0]._id),
             isConfirmed: user[0].isConfirmed,
-            userData,
+            userData: [academic],
           });
         } catch (error) {
           return res.status(404).json(error);
