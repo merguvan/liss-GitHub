@@ -6,35 +6,33 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Summary from "../../../Summary";
 import data from "./personaldata.json";
-import { useSelector } from "react-redux";
 
-function PersonalInfoSummary(props) {
-  const { addressInfo } = useSelector(
-    (state) => state.userLogin.userLogin.userData
-  );
-  const personalFirstLine = [
-    addressInfo.personGender,
-    addressInfo.personMaritalStatus,
-  ]
-    .filter((i) => i !== "")
-    .join(", ");
-  const birthInfo = [
-    addressInfo.personCityOB,
-    addressInfo.personCountryOB,
-    addressInfo.personDOB,
-  ]
-    .filter((i) => i !== "")
-    .join(", ");
-  console.log(birthInfo.length);
+const birthInfo = [
+  data.Personal_Info.personCityOB,
+  data.Personal_Info.personCountryOB,
+  data.Personal_Info.personDOB,
+]
+  .filter((i) => i !== "")
+  .join(", ");
+
+const personalFirstLine = [
+  data.Personal_Info.personGender,
+  data.Personal_Info.personMaritalStatus,
+]
+  .filter((i) => i !== "")
+  .join(", ");
+
+function PersonalInfoSummary({ personalInfo, addressInfo }) {
+  const { Personal_Info } = data;
   return (
     <>
       <Summary value="100" headerTitle="Personal Info" url="/personalInfo/1">
         <h6 className="person-summary-body-context-container_level_1">
-          {addressInfo.personTitle +
+          {Personal_Info.personTitle +
             " " +
-            addressInfo.personName +
+            Personal_Info.personName +
             " " +
-            addressInfo.personSurname}
+            Personal_Info.personSurname}
 
           <div className="person-summary-body-icon-container">
             <span>
@@ -50,64 +48,64 @@ function PersonalInfoSummary(props) {
         <div className="person-summary-body-context-container_level_2">
           <div>
             <p>
-              {personalFirstLine?.length > 0 ? personalFirstLine : ""}
-              {birthInfo?.length > 0
+              {personalFirstLine.length > 0 ? personalFirstLine : ""}
+              {birthInfo.length > 0
                 ? (personalFirstLine !== "" ? ", " : " ") + "b. " + birthInfo
                 : ""}
             </p>
             <p>
-              {addressInfo.personAddressType} Adress:{" "}
+              {Personal_Info.personAddress[0].personAddressType} Adress:{" "}
               {[
-                addressInfo.personFlatNo,
-                addressInfo.personBuildingNo,
-                addressInfo.personStreet,
-                addressInfo.personDistrict,
-                addressInfo.postalCode,
-                addressInfo.personCity,
-                addressInfo.personState,
-                addressInfo.personCountry,
+                Personal_Info.personAddress[0].personFlatNo,
+                Personal_Info.personAddress[0].personBuildingNo,
+                Personal_Info.personAddress[0].personStreet,
+                Personal_Info.personAddress[0].personDistrict,
+                Personal_Info.personAddress[0].postalCode,
+                Personal_Info.personAddress[0].personCity,
+                Personal_Info.personAddress[0].personState,
+                Personal_Info.personAddress[0].personCountry,
               ]
                 .filter((i) => i !== "")
                 .join(", ")}
-              {addressInfo.personAddress?.length > 1 ? ", ..." : ""}
+              {Personal_Info.personAddress.length > 1 ? ", ..." : ""}
             </p>
             <p>
-              {Object.values(addressInfo.personEmail).length > 0 &&
-                (Object.values(addressInfo.personEmail).length > 1
-                  ? addressInfo.personEmail[0].personEmailType +
+              {Object.values(Personal_Info.personEmail).length > 0 &&
+                (Object.values(Personal_Info.personEmail).length > 1
+                  ? Personal_Info.personEmail[0].personEmailType +
                     " email: " +
-                    Object.values(addressInfo.personEmail)[0].email +
+                    Object.values(Personal_Info.personEmail)[0].email +
                     ", ..."
-                  : addressInfo.personEmail[0].personEmailType +
+                  : Personal_Info.personEmail[0].personEmailType +
                     " email: " +
-                    Object.values(addressInfo.personEmail)[0].email)}
+                    Object.values(Personal_Info.personEmail)[0].email)}
             </p>
             <p>
-              {addressInfo.personCitizenship?.length > 0 && (
+              {Personal_Info.personCitizenship.length > 0 && (
                 <>
-                  Citizen of {addressInfo.personCitizenship?.join(", ")}
+                  Citizen of {Personal_Info.personCitizenship.join(", ")}
                   <br />
                 </>
               )}
             </p>
             <p>
-              {addressInfo.personWorkPermit?.length > 0 && (
+              {Personal_Info.personWorkPermit.length > 0 && (
                 <>
                   Can officially work in{" "}
-                  {addressInfo.personWorkPermit.join(", ")}
+                  {Personal_Info.personWorkPermit.join(", ")}
                   <br />
                 </>
               )}
             </p>
             <p>
-              {addressInfo.personMedicalDoc && (
+              {Personal_Info.personMedicalDoc && (
                 <>
                   {"Uploaded Medical Declaration"}
                   <br />
                 </>
               )}
             </p>
-            <p>{addressInfo.personDbsDoc && "Uploaded DBS"}</p>
+            <p>{Personal_Info.personDbsDoc && "Uploaded DBS"}</p>
           </div>
         </div>
       </Summary>

@@ -40,7 +40,7 @@ function App(props) {
     history.push("/");
   }, [userInfo]);
 
-  if (userInfo?.isConfirmed) {
+  if (true) {
     return (
       <div className="app">
         <Header />
