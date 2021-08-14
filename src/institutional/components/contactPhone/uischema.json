@@ -10,17 +10,17 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneType",
+          "scope": "#/properties/contactPhoneType0",
           "label": "Type"
         },
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneCode",
+          "scope": "#/properties/contactPhoneCode0",
           "label":"Phone code"
         },
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneNo",
+          "scope": "#/properties/contactPhoneNo0",
           "label":"Phone No"
         }
       ]
@@ -30,17 +30,17 @@
       "elements": [
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneType2",
+          "scope": "#/properties/contactPhoneType1",
           "label": "Type"
         },
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneCode2",
+          "scope": "#/properties/contactPhoneCode1",
           "label":"Phone code"
         },
         {
           "type": "Control",
-          "scope": "#/properties/contactPhoneNo2",
+          "scope": "#/properties/contactPhoneNo1",
           "label":"Phone No"
         }
       ]
