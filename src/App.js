@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import MainPage from "./individual/pages/MainPage";
 import PersonalInfoPage from "./individual/components/personal/PersonalInfoPage";
@@ -32,11 +32,15 @@ import InstRemarks from "./institutional/components/remarks/instRemarks";
 
 import { useEffect } from "react";
 
-
 function App(props) {
+  const history = useHistory();
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (true) {
+  useEffect(() => {
+    history.push("/");
+  }, [userInfo]);
+
+  if (userInfo?.isConfirmed) {
     return (
       <div className="app">
         <Header />

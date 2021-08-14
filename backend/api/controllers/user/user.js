@@ -5,6 +5,10 @@ const Academic = require("../../models/user/academic");
 const Achievement = require("../../models/user/achievements");
 const Address = require("../../models/user/addressInfo");
 const Affiliation = require("../../models/user/affiliations");
+const Education = require("../../models/user/education");
+const Reference = require("../../models/user/reference");
+const Remarks = require("../../models/user/remarks");
+const WorkExperience = require("../../models/user/workexperience");
 module.exports.registerUser = async (req, res, next) => {
   const {
     isAdmin,
@@ -117,6 +121,19 @@ module.exports.authorizeUser = async (req, res, next) => {
           const affiliationInfo = await Affiliation.find({
             user: user[0]._id,
           });
+          const educationInfo = await Education.find({
+            user: user[0]._id,
+          });
+          const referenceInfo = await Reference.find({
+            user: user[0]._id,
+          });
+          const remarksInfo = await Remarks.find({
+            user: user[0]._id,
+          });
+          const workExperienceInfo = await WorkExperience.find({
+            user: user[0]._id,
+          });
+
           return res.status(200).json({
             _id: user[0]._id,
             name: user[0].personName,
@@ -129,6 +146,10 @@ module.exports.authorizeUser = async (req, res, next) => {
               achievementInfo: achievementInfo[0],
               addressInfo: addressInfo[0],
               affiliationInfo: affiliationInfo[0],
+              educationInfo: educationInfo[0],
+              referenceInfo: referenceInfo[0],
+              remarksInfo: remarksInfo[0],
+              workExperienceInfo: workExperienceInfo[0],
             },
           });
         } catch (error) {

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Summary from "../../../Summary";
 import { FiEdit, FiTrash } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import "./WorkExperience.css";
 
 const we = {
@@ -56,6 +57,10 @@ const we3 = {
 };
 const myArray = [we, we2, we3];
 function WorkExperience(props) {
+  const { workExperienceInfo } = useSelector(
+    (state) => state.userLogin.userLogin.userData
+  );
+
   return (
     <Summary headerTitle="Work Experience" url="/workexperience/1">
       {myArray.map((we, idx) => {
@@ -66,9 +71,9 @@ function WorkExperience(props) {
               <h6 id="work_h6">
                 <div className="person-summary-body-context-container_level_1">
                   <p>
-                    {we.personInstitutionName +
+                    {workExperienceInfo.personInstitutionName +
                       ", " +
-                      we.personInstitutionCountry}
+                      workExperienceInfo.personInstitutionCountry}
                   </p>
                 </div>
               </h6>
@@ -83,12 +88,16 @@ function WorkExperience(props) {
                 </span>
               </div>
               <div className="person-summary-body-context-container_level_2">
-                <p>{we.personInstitutionPosition}</p>
+                <p>{workExperienceInfo.personInstitutionPosition}</p>
               </div>
               <div className="person-summary-body-context-container_level_3">
                 <div>
                   {" "}
-                  <p>{we.personWorkFrom + " - " + we.personWorkTo}</p>
+                  <p>
+                    {workExperienceInfo.personWorkFrom +
+                      " - " +
+                      workExperienceInfo.personWorkTo}
+                  </p>
                 </div>
               </div>
             </div>

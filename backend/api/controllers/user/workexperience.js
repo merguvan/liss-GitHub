@@ -8,7 +8,6 @@ module.exports.addUserWorkexperienceInfo = async (req, res, next) => {
 
     return res.status(200).json({
       message: "Workexperience has been added",
-      userWorkexperience,
     });
   } catch (error) {
     res.status(404);
@@ -19,7 +18,10 @@ module.exports.addUserWorkexperienceInfo = async (req, res, next) => {
 };
 module.exports.updateUserWorkexperienceInfo = async (req, res, next) => {
   try {
-    await WorkexperienceSchema.findOneAndUpdate({ user: req.user._id }, req.body);
+    await WorkexperienceSchema.findOneAndUpdate(
+      { user: req.user._id },
+      req.body
+    );
 
     return res.status(200).json({
       message: "it has been updated",

@@ -49,6 +49,9 @@ const {
   updateUserProfile,
   deleteUserProfile,
 } = require("../controllers/user/profile");
+const {
+  addUserWorkexperienceInfo,
+} = require("../controllers/user/workexperience");
 const { addRemarks } = require("../controllers/user/remarks");
 const checkAuth = require("../middlewares/check-auth");
 const router = require("express").Router();
@@ -102,6 +105,7 @@ router
   .post(checkAuth, addAffiliationsInfo)
   .patch(checkAuth, updateAffiliationsInfo);
 router.route("/remarks").post(checkAuth, addRemarks);
+router.route("/workexperience").post(checkAuth, addUserWorkexperienceInfo);
 router
   .route("/:id")
   .get(checkAuth, getSingleUser)

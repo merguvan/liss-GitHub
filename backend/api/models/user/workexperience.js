@@ -7,43 +7,43 @@ const WorkexperienceSchema = new mongoose.Schema({
     ref: "user",
   },
   personWorkFrom: {
-    type: Date,
+    type: String,
     min: "1901-01-01",
-    required: [true, "Please, enter the date signed"],
+    // required: [true, "Please, enter the date signed"],
   },
   personWorkTo: {
-    type: Date,
+    type: String,
     max: Date.now,
-    required: [true, "Please, enter the date signed"],
+    // required: [true, "Please, enter the date signed"],
   },
   personWorkOngoing: {
     type: Boolean,
   },
   personInstitutionType1: {
     type: String,
-    required: [true, "Please, select your institution type 1"],
+    // required: [true, "Please, select your institution type 1"],
   },
   personInstitutionType2: {
     type: String,
-    required: [true, "Please, select your institution type 2"],
+    // required: [true, "Please, select your institution type 2"],
   },
   personInstitutionName: {
     type: String,
-    required: [true, "Please, type institutional name"],
+    // required: [true, "Please, type institutional name"],
     minlength: 2,
     maxlength: 150,
     trim: true,
   },
   personInstitutionCity: {
     type: String,
-    required: [true, "Please, select the city"],
+    // required: [true, "Please, select the city"],
     minlength: 2,
     maxlength: 50,
     trim: true,
   },
   personInstitutionCountry: {
     type: String,
-    required: [true, "Please, select the country"],
+    // required: [true, "Please, select the country"],
     minlength: 2,
     maxlength: 50,
     trim: true,
@@ -56,19 +56,19 @@ const WorkexperienceSchema = new mongoose.Schema({
   },
   personInstitutionPosition: {
     type: String,
-    required: [true, "Please, type your position"],
+    // required: [true, "Please, type your position"],
   },
   personInstitutionDepartment: {
     type: String,
-    required: [true, "Please, type your department/office"],
+    // required: [true, "Please, type your department/office"],
   },
   personInstitutionPositionType1: {
     type: String,
-    required: [true, "Please, select your position type 1 "],
+    // required: [true, "Please, select your position type 1 "],
   },
   personInstitutionPositionType2: {
     type: String,
-    required: [true, "Please, select your position type 2 "],
+    // required: [true, "Please, select your position type 2 "],
   },
 });
 

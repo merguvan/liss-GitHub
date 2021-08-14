@@ -1,52 +1,19 @@
 import React from "react";
-import { Card, Collapse } from "react-bootstrap";
-import { MdEdit } from "react-icons/md";
-import { connect } from "react-redux";
+
 import { Link } from "react-router-dom";
 import Summary from "../../../Summary";
 import { FiEdit, FiTrash } from "react-icons/fi";
 // import "./Education.css";
+import { useSelector } from "react-redux";
 
-const education = [
-  {
-    personEduFrom: "11-11-2002",
-    personEduTo: "22,12,2003",
-    personEduInstitutionType1: "State",
-    personEduInstitutionType2: "",
-    personEduInstitutionOther: "",
-    personEduInstitutionName: "University of South Wales",
-    personEduInstitutionCity: "Cardiff",
-    personEduInstitutionCountry: "England",
-    personEduInstitutionWebsite: "www.swu.com",
-    personEduInstitutionProgram:
-      "MSc Renewable Energy and Sustainable Technology",
-    personEduInstitutionDegree: "Doctoral",
-    personEduInstitutionDegreeTitle:
-      "Applicability of ISO 9001 in Higher Education",
-    personEduDiploma: true,
-    personAffiliatedInstitution: "",
-  },
-  {
-    personEduFrom: "19-04-1999",
-    personEduTo: "20,02,2002",
-    personEduInstitutionType1: "State",
-    personEduInstitutionType2: "",
-    personEduInstitutionOther: "",
-    personEduInstitutionName: "University of Utrecht",
-    personEduInstitutionCity: "Utrecht",
-    personEduInstitutionCountry: "The Netherlands",
-    personEduInstitutionWebsite: "www.uou.com",
-    personEduInstitutionProgram: "Molecular and Biophysical Life Sciences",
-    personEduInstitutionDegree: "Bachelor's",
-    personEduInstitutionDegreeTitle: "BSc",
-    personEduDiploma: true,
-    personAffiliatedInstitution: "",
-  },
-];
 function Education(props) {
+  const { educationInfo } = useSelector(
+    (state) => state.userLogin.userLogin.userData
+  );
+
   return (
     <Summary headerTitle="Education" url="/education/1">
-      {education.map((i, idx) => {
+      {[educationInfo].map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">
             <div className="person-summary-body-title"></div>
@@ -54,9 +21,9 @@ function Education(props) {
               <h6 id="work_h6">
                 <div className="person-summary-body-context-container_level_1">
                   <p>
-                    {i.personEduInstitutionName +
+                    {i?.personEduInstitutionName +
                       ", " +
-                      i.personEduInstitutionCountry}
+                      i?.personEduInstitutionCountry}
                   </p>
                 </div>
               </h6>
@@ -72,11 +39,11 @@ function Education(props) {
               </div>
               <div className="person-summary-body-context-container_level_2">
                 <p>
-                  {i.personEduInstitutionDegree} Degree in{" "}
-                  {i.personEduInstitutionProgram}
+                  {i?.personEduInstitutionDegree} Degree in{" "}
+                  {i?.personEduInstitutionProgram}
                 </p>
-                {i.personEduInstitutionDegree !== "Bachelor's" ? (
-                  <em>"{i.personEduInstitutionDegreeTitle}"</em>
+                {i?.personEduInstitutionDegree !== "Bachelor's" ? (
+                  <em>"{i?.personEduInstitutionDegreeTitle}"</em>
                 ) : (
                   ""
                 )}
@@ -84,7 +51,7 @@ function Education(props) {
               <div className="person-summary-body-context-container_level_3">
                 <div>
                   {" "}
-                  <p>{i.personEduFrom + " - " + i.personEduTo}</p>
+                  <p>{i?.personEduFrom + " - " + i?.personEduTo}</p>
                 </div>
               </div>
             </div>
@@ -95,8 +62,4 @@ function Education(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-const mapDispatchToProps = {};
-export default connect(mapStateToProps, mapDispatchToProps)(Education);
+export default Education;

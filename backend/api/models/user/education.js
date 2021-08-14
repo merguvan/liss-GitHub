@@ -15,43 +15,43 @@ const EducationSchema = new mongoose.Schema({
     type: String,
   },
 
-  personType1: {
+  personEduInstitutionType1: {
     type: Number,
     // required: [true, "Please, select Institutional Type-1"],
   },
 
-  personType2: {
+  personEduInstitutionType2: {
     type: Number,
     // required: [true, "Please, select Institutional Type-2"],
   },
 
-  personEducationOther: {
+  personEduInstitutionOther: {
     type: String,
   },
 
-  personEducationName: {
+  personEduInstitutionName: {
     type: String,
   },
 
-  personEducationCity: {
+  personEduInstitutionCity: {
     type: String,
   },
 
-  personEducationCountry: {
+  personEduInstitutionCountry: {
     type: String,
   },
 
-  personDegree: {
+  personEduInstitutionDegree: {
     type: Number,
     // required: [true, "Please, select Degree"],
   },
 
-  personEduTitleDegree: {
+  personEduInstitutionDegreeTitle: {
     type: String,
   },
 
   personEducationLetter: String,
-  personCvDoc: {
+  personEduDiploma: {
     type: String,
     // required: [true, "Please, upload your reference letter"],
   },
