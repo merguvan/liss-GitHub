@@ -2,6 +2,9 @@ const userSchema = require("../../models/user/user");
 const nodemailer = require("nodemailer");
 const generateToken = require("../../utils/generateToken");
 const Academic = require("../../models/user/academic");
+const Achievement = require("../../models/user/achievements");
+const Address = require("../../models/user/addressInfo");
+const Affiliation = require("../../models/user/affiliations");
 module.exports.registerUser = async (req, res, next) => {
   const {
     isAdmin,
@@ -101,10 +104,19 @@ module.exports.authorizeUser = async (req, res, next) => {
     if (user.length > 0 && (await user[0].matchPassword(password))) {
       if (user[0].isConfirmed) {
         try {
-          const academic = await Academic.find({
+          const academicInfo = await Academic.find({
+            user: user[0]._id,
+          });
+          const achievementInfo = await Achievement.find({
+            user: user[0]._id,
+          });
+          const addressInfo = await Address.find({
             user: user[0]._id,
           });
 
+          const affiliationInfo = await Affiliation.find({
+            user: user[0]._id,
+          });
           return res.status(200).json({
             _id: user[0]._id,
             name: user[0].personName,
@@ -112,7 +124,12 @@ module.exports.authorizeUser = async (req, res, next) => {
             email: user[0].personEmail,
             token: generateToken(user[0]._id),
             isConfirmed: user[0].isConfirmed,
-            userData: [academic],
+            userData: {
+              academicInfo: academicInfo[0],
+              achievementInfo: achievementInfo[0],
+              addressInfo: addressInfo[0],
+              affiliationInfo: affiliationInfo[0],
+            },
           });
         } catch (error) {
           return res.status(404).json(error);
