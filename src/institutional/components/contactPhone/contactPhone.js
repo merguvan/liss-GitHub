@@ -54,7 +54,7 @@ const schemaTemplate = [
     contactPhoneNo: {
       type: "number",
       description: "Please enter your phone number",
-      minLength: 1,
+      minLength: 2,
       maxLength: 10,
     },
 
