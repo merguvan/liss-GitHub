@@ -36,9 +36,9 @@ function App(props) {
   const history = useHistory();
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  useEffect(() => {
-    history.push("/");
-  }, [userInfo]);
+  // useEffect(() => {
+  //   history.push("/");
+  // }, [userInfo]);
 
   if (true) {
     return (
