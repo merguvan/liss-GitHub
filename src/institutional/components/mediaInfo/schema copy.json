@@ -1,0 +1,29 @@
+
+{
+  "type": "object",
+  "properties": {
+    "instMediaPlatform": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "description": "",
+      "enum": [
+        "Linkedin",
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "Snapchat"
+      ]
+    },
+    "instUserName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Please type your user name or account name"
+    }
+  },
+  "required": [
+    "instUserName",
+    "instMediaPlatform"
+  ]
+}

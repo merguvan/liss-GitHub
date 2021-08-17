@@ -4,10 +4,6 @@
     {
       "type": "Control",
       "scope": "#/properties/contactPhone"
-    },
-    {
-      "type": "Control",
-      "scope"
     }
   ]
 }
