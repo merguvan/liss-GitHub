@@ -3,7 +3,11 @@
   "elements": [
     {
       "type": "Control",
-      "scope": "#/properties/comments"
+      "scope": "#/properties/contactPhone"
+    },
+    {
+      "type": "Control",
+      "scope"
     }
   ]
 }

@@ -65,6 +65,9 @@ const ContactPhone = ({ history }) => {
       >
         <Grid item sm={12}>
           <Typography variant={"h3"} className={classes.title}>
+            Deneme
+          </Typography>
+          <Typography variant={"h3"} className={classes.title}>
             Contact Phone
           </Typography>
           <div className={classes.demoform}>
