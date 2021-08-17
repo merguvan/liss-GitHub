@@ -2,48 +2,8 @@
   "type": "VerticalLayout",
   "elements": [
     {
-      "type": "Label",
-      "text": "Contact Phone"
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneType0",
-          "label": "Type"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneCode0",
-          "label":"Phone code"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneNo0",
-          "label":"Phone No"
-        }
-      ]
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneType1",
-          "label": "Type"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneCode1",
-          "label":"Phone code"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/contactPhoneNo1",
-          "label":"Phone No"
-        }
-      ]
+      "type": "Control",
+      "scope": "#/properties/comments"
     }
   ]
 }

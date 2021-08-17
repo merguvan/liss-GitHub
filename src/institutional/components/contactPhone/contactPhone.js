@@ -3,8 +3,9 @@ import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import newSchema from "./schema.json";
-// import uischema from "./uischema.json";
+
+import uischema from "./uischema.json";
+import schema from "./schema.json";
 import {
   materialCells,
   materialRenderers,
@@ -43,166 +44,17 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const schemaTemplate = [
-  {
-    contactPhoneCode: {
-      type: "string",
-      description: "Country code",
-      enum: ["+880", "+32", "+226", "+359"],
-    },
-
-    contactPhoneNo: {
-      type: "number",
-      description: "Please enter your phone number",
-      minLength: 2,
-      maxLength: 10,
-    },
-
-    contactPhoneType: {
-      type: "string",
-      description: "Please select phone type",
-      enum: ["Personal", "Institutional", "Other"],
-    },
-  },
-  {
-    contactPhoneCode: {
-      type: "string",
-      description: "Country code",
-      enum: ["+880", "+32", "+226", "+359"],
-    },
-
-    contactPhoneNo: {
-      type: "number",
-      description: "Please enter your phone number",
-      minLength: 1,
-      maxLength: 10,
-    },
-
-    contactPhoneType: {
-      type: "string",
-      description: "Please select phone type",
-      enum: ["Personal", "Institutional", "Other"],
-    },
-  },
-  {
-    contactPhoneCode: {
-      type: "string",
-      description: "Country code",
-      enum: ["+880", "+32", "+226", "+359"],
-    },
-
-    contactPhoneNo: {
-      type: "number",
-      description: "Please enter your phone number",
-      minLength: 1,
-      maxLength: 10,
-    },
-
-    contactPhoneType: {
-      type: "string",
-      description: "Please select phone type",
-      enum: ["Personal", "Institutional", "Other"],
-    },
-  },
-];
-let uiSchemaTemplate = {
-  type: "VerticalLayout",
-  elements: [
-    {
-      type: "Label",
-      text: "Contact Phone",
-    },
-
-    {
-      type: "HorizontalLayout",
-      elements: [
-        {
-          type: "Control",
-          scope: "#/properties/contactPhoneType1",
-          label: "Type",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/contactPhoneCode1",
-          label: "Phone code",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/contactPhoneNo1",
-          label: "Phone No",
-        },
-      ],
-    },
-  ],
-};
 const ContactPhone = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
-  const [save, setSave] = useState(false);
-  const [uischema, setUiSchema] = useState({});
-  const [schema, setSchema] = useState({});
-
+  const [displayDataAsString, setDisplayDataAsString] = useState("");
+  const [jsonformsData, setJsonformsData] = useState({});
   useEffect(() => {
-    const myObjects = schemaTemplate.map((obj, index) =>
-      Object.fromEntries(
-        Object.keys(obj).map((el, idx) => [el + index, Object.values(obj)[idx]])
-      )
-    );
+    setDisplayDataAsString(JSON.stringify(jsonformsData, null, 2));
+  }, [jsonformsData]);
 
-    const tempObject = (object) => {
-      let emptyObject = {};
-      object.forEach((el) => {
-        emptyObject = { ...emptyObject, ...el };
-      });
-      return emptyObject;
-    };
-
-    const schema = {
-      type: "object",
-      properties: {
-        ...tempObject(myObjects),
-      },
-      required: ["contactPhoneCode0", "contactPhoneNo0", "contactPhoneType0"],
-    };
-    setSchema(schema);
-    const [first, ...rest] = uiSchemaTemplate.elements;
-    const tempUiObject = () => {
-      const arr = schemaTemplate.map((el, idx) => {
-        return {
-          type: "HorizontalLayout",
-          elements: [
-            {
-              type: "Control",
-              scope: "#/properties/contactPhoneType" + idx,
-              label: "Type",
-            },
-            {
-              type: "Control",
-              scope: "#/properties/contactPhoneCode" + idx,
-              label: "Phone code",
-            },
-            {
-              type: "Control",
-              scope: "#/properties/contactPhoneNo" + idx,
-              label: "Phone No",
-            },
-          ],
-        };
-      });
-      console.log(arr);
-      let emptyObject = [];
-      arr.forEach((el) => {
-        emptyObject = [...emptyObject, el];
-      });
-      return emptyObject;
-    };
-    console.log(uiSchemaTemplate);
-    uiSchemaTemplate.elements = [first, ...tempUiObject()];
-    console.log(uiSchemaTemplate);
-    setUiSchema(uiSchemaTemplate);
-    // console.log(uischema[0]);
-  }, []);
-
+  const handleSubmit = () => {
+    console.log(jsonformsData);
+  };
   return (
     <Fragment>
       <Grid
@@ -232,9 +84,9 @@ const ContactPhone = ({ history }) => {
               variant="contained"
               color="blue"
               type="submit"
-              // onClick={handleSubmit}
+              onClick={handleSubmit}
             >
-              {save ? "Save" : "Close"}
+              Submit
             </Button>
           </Link>
         </Grid>
