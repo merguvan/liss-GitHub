@@ -68,6 +68,7 @@ const Achievements = ({ props }) => {
           onClick={() => {
             setShow(!show);
             history.push("/");
+            window.scrollTo(0, 7960)
           }}
         />
       </Modal.Header>

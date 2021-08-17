@@ -9,16 +9,31 @@
           "contactPhoneCode": {
             "type": "string",
             "description": "Country code"
-            
           },
           "contactPhoneNo": {
-            "type": "number",
+            "type": "string",
             "maxLength": 5
           },
           "contactPhoneType": {
             "type": "string",
             "description": "Please select phone type",
-           " enum": ["Personal", "Institutional", "Other"]
+            "enum": ["Personal", "Institutional", "Other"]
+          }
+        }
+      }
+    },
+    "denemeler": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contactPhoneCode": {
+            "type": "string",
+            "description": "Country code"
+          },
+          "contactPhoneNo": {
+            "type": "string",
+            "maxLength": 5
           }
         }
       }

@@ -64,9 +64,7 @@ const ContactPhone = ({ history }) => {
         className={classes.container}
       >
         <Grid item sm={12}>
-          <Typography variant={"h3"} className={classes.title}>
-            Contact Phone
-          </Typography>
+
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}
