@@ -1,14 +1,6 @@
 {
   "type": "object",
   "properties": {
-    "Deneme": {
-      "type": "string",
-      "description": "denemesel faaliyet"
-    },
-    "Deneme2": {
-      "type": "string",
-      "description": "denemesel faaliyet2"
-    },
     "contactPhone": {
       "type": "array",
       "items": {
@@ -19,18 +11,21 @@
             "description": "Country code",
             "enum": ["+995", "+1", "+44", "+31"]
           },
-
           "contactPhoneNo": {
-            "type": "string",
-            "maxLength": 5
+            "type": "number",
+            "maxLength": 10
           },
-
           "contactPhoneType": {
             "type": "string",
             "description": "Please select phone type",
             "enum": ["Personal", "Institutional", "Other"]
           }
-        }
+        },
+        "required": [
+          "contactPhoneCode",
+          "contactPhoneNo",
+          "contactPhoneType"
+        ]
       }
     }
   }
