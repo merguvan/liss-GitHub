@@ -13,9 +13,6 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-
-import Countries from "../../../individual/components/personal/AddressInfo/Countries";
-
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -44,15 +41,17 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const MediaInfo = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  // const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
+  const [displayDataAsString, setDisplayDataAsString] = useState("");
+  const [jsonformsData, setJsonformsData] = useState({});
+  // useEffect(() => {
+  //   setDisplayDataAsString(JSON.stringify(jsonformsData, null, 2));
+  // }, [jsonformsData]);
 
   useEffect(() => {
     if (

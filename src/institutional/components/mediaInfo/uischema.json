@@ -2,54 +2,9 @@
   "type": "VerticalLayout",
   "elements": [
     {
-      "type": "Label",
-      "text": "Social Media Platforms"
-    },
-  
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/instMediaPlatform",
-          "label": "Select social media platform"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/instUserName",
-          "label":"Username/account name" 
-        }
-      ]
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/instMediaPlatform2",
-          "label": "Select social media platform"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/instUserName2",
-          "label":"Username/account name" 
-        }
-      ]
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/instMediaPlatform3",
-          "label": "Select social media platform"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/instUserName3",
-          "label":"Username/account name" 
-        }
-      ]
+      "type": "Control",
+      "scope": "#/properties/mediaInfo",
+      "description": "Media Platform"
     }
   ]
   

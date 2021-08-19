@@ -2,67 +2,37 @@
 {
   "type": "object",
   "properties": {
-    "instMediaPlatform": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 255,
-      "description": "",
-      "enum": [
-        "Linkedin",
-        "Facebook",
-        "Instagram",
-        "Twitter",
-        "Snapchat"
-      ]
-    },
-    "instMediaPlatform2": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 255,
-      "description": "",
-      "enum": [
-        "Linkedin",
-        "Facebook",
-        "Instagram",
-        "Twitter",
-        "Snapchat"
-      ]
-    },
-    "instMediaPlatform3": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 255,
-      "description": "",
-      "enum": [
-        "Linkedin",
-        "Facebook",
-        "Instagram",
-        "Twitter",
-        "Snapchat",
-        "Website"
-      ]
-    },
-    "instUserName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255,
-      "description": "Please type your user name or account name"
-    },
-    "instUserName2": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255,
-      "description": "Please type your user name or account name"
-    },
-    "instUserName3": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 255,
-      "description": "Please type your user name or account name"
+    "mediaInfo": {
+      "type": "array",
+      "items":{
+        "type":"object",
+        "properties":{
+          "Media Platform":{
+            "type":"string",
+            "description": "Media Platform",
+            "label":"Media Platformmmmm",
+            "enum": [
+              "Linkedin",
+              "Facebook",
+              "Instagram",
+              "Twitter",
+              "Snapchat"
+            ]
+          },
+          "User Name": {
+            "label":"User Name",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "description": "Please type your user name or account name"
+          }
+        },
+        "required": [
+          "Media Platform",
+          "User Name"
+        ]
+      }
     }
-  },
-  "required": [
-    "instUserName",
-    "instMediaPlatform"
-  ]
+    
+  }
 }

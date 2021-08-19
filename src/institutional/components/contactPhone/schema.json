@@ -8,16 +8,19 @@
         "properties": {
           "contactPhoneCode": {
             "type": "string",
-            "description": "Country code"
+
+            "description": "Country code",
+            "enum": ["+995", "+1", "+44", "+31"]
           },
           "contactPhoneNo": {
-            "type": "string",
-            "maxLength": 5
+            "type": "number",
+            "maxLength": 10
           },
           "contactPhoneType": {
             "type": "string",
             "description": "Please select phone type",
             "enum": ["Personal", "Institutional", "Other"]
+
           }
         }
       }
@@ -35,7 +38,12 @@
             "type": "string",
             "maxLength": 5
           }
-        }
+        },
+        "required": [
+          "contactPhoneCode",
+          "contactPhoneNo",
+          "contactPhoneType"
+        ]
       }
     }
   }
