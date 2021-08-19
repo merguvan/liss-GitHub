@@ -25,25 +25,19 @@
         {
           "type": "HorizontalLayout",
           "elements": [
- 
             {
-              "type": "Control",
-              "scope": "#/properties/nationalityOptions/properties/nationality"
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/nationalityOptions/properties/otherNationality",
-              "rule": {
-                "effect": "SHOW",
-                "condition": {
-                  "scope": "#/properties/nationalityOptions/properties/nationality",
-                  "schema": {
-                    "const": "Other"
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/Citizenship"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/WorkPermit"
                   }
-                }
+                ]
               }
-            }
-
           ]
         }
       ]
@@ -53,31 +47,20 @@
       "label": "Address",
       "elements": [
         {
-          "type": "HorizontalLayout",
-          "elements": [
+          "type":"HorizontalLayout",
+          "elements":[
             {
-              "type": "Control",
-              "scope": "#/properties/address/properties/street"
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/address/properties/streetNumber"
-            }
-          ]
-        },
-        {
-          "type": "HorizontalLayout",
-          "elements": [
-            {
-              "type": "Control",
-              "scope": "#/properties/address/properties/city"
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/address/properties/postalCode"
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/address"
+                  }
+                ]
             }
           ]
         }
+        
       ]
     },
     {
