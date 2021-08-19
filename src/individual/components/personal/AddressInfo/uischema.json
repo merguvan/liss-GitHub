@@ -1,0 +1,133 @@
+{
+  "type": "Categorization",
+  "elements": [
+    {
+      "type": "Category",
+      "label": "Personal",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/firstName"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/secondName"
+            },           
+            {
+              "type": "Control",
+              "scope": "#/properties/birthDate"
+            }
+          ]
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+ 
+            {
+              "type": "Control",
+              "scope": "#/properties/nationalityOptions/properties/nationality"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/nationalityOptions/properties/otherNationality",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/nationalityOptions/properties/nationality",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
+            }
+
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Address",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/address/properties/street"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/address/properties/streetNumber"
+            }
+          ]
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/address/properties/city"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/address/properties/postalCode"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Details",
+      "elements": [
+        {
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/comments"
+                  }
+                ]
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Attachments",
+      "elements": [
+
+        {
+          "type": "Control",
+          "scope": "#/properties/vegetarianOptions/properties/favoriteVegetable"
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/vegetarianOptions/properties/otherFavoriteVegetable",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/vegetarianOptions/properties/favoriteVegetable",
+              "schema": {
+                "const": "Other"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "options": {
+    "variant": "stepper",
+    "showNavButtons": true
+  }
+}

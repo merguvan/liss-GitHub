@@ -21,7 +21,9 @@ const achievements = [
     personAchievementDate: "20-09-2007",
   },
 ];
+
 function Achievements(props) {
+  window.scrollTo(0, 1960)
   return (
     <Summary headerTitle="Achievements" url="/Achievements/1">
       {achievements.map((i, idx) => {

@@ -8,6 +8,7 @@
         "properties": {
           "contactPhoneCode": {
             "type": "string",
+
             "description": "Country code",
             "enum": ["+995", "+1", "+44", "+31"]
           },
@@ -19,6 +20,23 @@
             "type": "string",
             "description": "Please select phone type",
             "enum": ["Personal", "Institutional", "Other"]
+
+          }
+        }
+      }
+    },
+    "denemeler": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contactPhoneCode": {
+            "type": "string",
+            "description": "Country code"
+          },
+          "contactPhoneNo": {
+            "type": "string",
+            "maxLength": 5
           }
         },
         "required": [

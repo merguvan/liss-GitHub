@@ -1,4 +1,5 @@
 {
 	"git.ignoreLimitWarning": true,
-	"compile-hero.disable-compile-files-on-did-save-code": true
+	"compile-hero.disable-compile-files-on-did-save-code": true,
+	"github-enterprise.uri": "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"
 }

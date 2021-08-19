@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Please enter your first name"
+    },
+    "secondName": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Please enter your second name"
+    },
+    
+    "birthDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Please enter your birth date."
+    },
+
+    "nationalityOptions": {
+      "type": "object",
+      "properties": {
+        "nationality": {
+          "type": "string",
+          "enum": [
+            "DE",
+            "IT",
+            "JP",
+            "US",
+            "RU",
+            "Other"
+          ]
+        },
+        "otherNationality": {
+          "type": "string"
+        }
+      }
+    },
+    "provideAddress": {
+      "type": "boolean"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "streetNumber": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string",
+          "maxLength": 5
+        }
+      }
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 5
+          },
+          "enum": {
+            "type": "string",
+            "enum": [
+              "foo",
+              "bar"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required":["firstName", "secondName"]
+}
