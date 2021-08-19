@@ -18,43 +18,79 @@
       "description": "Please enter your birth date."
     },
 
-    "nationalityOptions": {
-      "type": "object",
-      "properties": {
-        "nationality": {
-          "type": "string",
-          "enum": [
-            "DE",
-            "IT",
-            "JP",
-            "US",
-            "RU",
-            "Other"
-          ]
-        },
-        "otherNationality": {
-          "type": "string"
-        }
-      }
+    "Citizenship": {
+      "type":"array",
+      "items":{
+        "type": "object",
+        "properties": {
+          "yourCitizenships": {
+            "type": "string",
+            "enum": [
+              "DE",
+              "IT",
+              "JP",
+              "US",
+              "RU",
+              "Other"
+            ]
+          }
+        }}
     },
-    "provideAddress": {
-      "type": "boolean"
+    "WorkPermit": {
+      "type":"array",
+      "items":{
+        "type": "object",
+        "properties": {
+          "yourWorkPermits": {
+            "type": "string",
+            "enum": [
+              "DE",
+              "IT",
+              "JP",
+              "US",
+              "RU",
+              "Other"
+            ]
+          }
+        }}
     },
     "address": {
-      "type": "object",
-      "properties": {
-        "street": {
-          "type": "string"
-        },
-        "streetNumber": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "postalCode": {
-          "type": "string",
-          "maxLength": 5
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personAddressType":{
+            "type":"string",
+              "enum": [
+                "Private",
+                "Legal",
+                "Work"
+              ]
+          },
+          "personFlatNo":{
+            "type":"string"
+          },
+          "personBuildingNo":{
+            "type":"string"
+          },
+          "personStreet":{
+            "type":"string"
+          },
+          "personDistrict":{
+            "type":"string"
+          },
+          "postalCode":{
+            "type":"string"
+          },
+          "personCity":{
+            "type":"string"
+          },
+          "personState":{
+            "type":"string"
+          },
+          "personCountry":{
+            "type":"string"
+          }
         }
       }
     },
@@ -81,6 +117,5 @@
         }
       }
     }
-  },
-  "required":["firstName", "secondName"]
+  }
 }
