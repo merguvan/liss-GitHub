@@ -3,7 +3,7 @@
   "elements": [
     {
       "type": "Category",
-      "label": "Basic Information",
+      "label": "Personal",
       "elements": [
         {
           "type": "HorizontalLayout",
@@ -15,20 +15,35 @@
             {
               "type": "Control",
               "scope": "#/properties/secondName"
+            },           
+            {
+              "type": "Control",
+              "scope": "#/properties/birthDate"
             }
           ]
         },
         {
           "type": "HorizontalLayout",
           "elements": [
+ 
             {
               "type": "Control",
-              "scope": "#/properties/birthDate"
+              "scope": "#/properties/nationalityOptions/properties/nationality"
             },
             {
               "type": "Control",
-              "scope": "#/properties/nationality"
+              "scope": "#/properties/nationalityOptions/properties/otherNationality",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/nationalityOptions/properties/nationality",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
             }
+
           ]
         }
       ]
@@ -64,16 +79,33 @@
           ]
         }
       ]
- 
     },
     {
       "type": "Category",
-      "label": "Additional",
+      "label": "Details",
       "elements": [
         {
-          "type": "Control",
-          "scope": "#/properties/vegetarianOptions/properties/vegan"
-        },
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/comments"
+                  }
+                ]
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Attachments",
+      "elements": [
+
         {
           "type": "Control",
           "scope": "#/properties/vegetarianOptions/properties/favoriteVegetable"
