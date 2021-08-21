@@ -34,7 +34,8 @@
               "Other"
             ]
           }
-        }}
+        }
+      }
     },
     "WorkPermit": {
       "type":"array",
@@ -58,40 +59,38 @@
       "type": "array",
       "items": {
         "type": "object",
+        "title": "Users",
         "properties": {
-          "personAddressType":{
-            "type":"string",
-              "enum": [
-                "Private",
-                "Legal",
-                "Work"
-              ]
+          "firstname": {
+            "type": "string"
           },
-          "personFlatNo":{
-            "type":"string"
+          "lastname": {
+            "type": "string"
           },
-          "personBuildingNo":{
-            "type":"string"
+          "email": {
+            "type": "string",
+            "format": "email"
           },
-          "personStreet":{
-            "type":"string"
+          "age": {
+            "type": "number",
+            "minimum": 0
           },
-          "personDistrict":{
-            "type":"string"
+          "age1": {
+            "type": "number",
+            "minimum": 0
           },
-          "postalCode":{
-            "type":"string"
+          "age2": {
+            "type": "number",
+            "minimum": 0
           },
-          "personCity":{
-            "type":"string"
-          },
-          "personState":{
-            "type":"string"
-          },
-          "personCountry":{
-            "type":"string"
+          "age3": {
+            "type": "number",
+            "minimum": 0
           }
-        }
+        },
+        "required": [
+          "firstname"
+        ]
       }
     },
     "comments": {

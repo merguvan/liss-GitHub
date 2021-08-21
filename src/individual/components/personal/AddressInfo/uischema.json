@@ -50,13 +50,74 @@
           "type":"HorizontalLayout",
           "elements":[
             {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/address"
-                  }
-                ]
+              "type": "ListWithDetail",
+              "scope": "#/properties/address",
+              "options": {
+                "detail": {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "VerticalLayout",
+                      "elements": [
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/firstname",
+                          "label": "First Name"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/lastname",
+                          "label": "Last Name"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age1",
+                          "label": "Age"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age2",
+                          "label": "Age"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age3",
+                          "label": "Age"
+                        }
+                      ]
+                    },{
+                      "type": "VerticalLayout",
+                      "elements": [
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/firstname",
+                          "label": "First Name"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/lastname",
+                          "label": "Last Name"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age1",
+                          "label": "Age"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age2",
+                          "label": "Age"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/age3",
+                          "label": "Age"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
             }
           ]
         }
