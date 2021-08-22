@@ -1,21 +1,61 @@
 {
   "type": "object",
   "properties": {
-    "firstName": {
+    "personTitle": {
       "type": "string",
-      "minLength": 3,
+      "enum":[
+        "Mr", "Ms", "Dr.", "Assist.Prof.Dr.","Assoc.Prof.Dr.","Prof.Dr.","Other"
+      ]
+    },
+    "personName": {
+      "type": "string",
+      "minLength": 2,
       "description": "Please enter your first name"
     },
-    "secondName": {
+    "personMiddleNames": {
       "type": "string",
-      "minLength": 3,
       "description": "Please enter your second name"
     },
     
-    "birthDate": {
+    "personSurname": {
       "type": "string",
-      "format": "date",
-      "description": "Please enter your birth date."
+      "minLength": 2,
+      "description": "Please enter your second name"
+    },
+    "personDisplayName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your second name"
+    },
+    "personGender": {
+      "type": "string",
+      "enum":[
+        "Female",
+        "Male",
+        "Prefer not to say"
+      ]
+    },
+    "personOrcidID": {
+      "type": "string"
+    },
+    "personDOB": {
+      "type": "string",
+      "format":"date"
+    },
+    "personCityOB": {
+      "type": "string"
+    },
+    "personCountryOB": {
+      "type": "string"
+    },
+    "personMaritalStatus": {
+      "type": "string",
+      "enum": [
+        "Single",
+        "Married",
+        "Widowed",
+        "Prefer not to say"
+        ]
     },
 
     "Citizenship": {
@@ -23,15 +63,21 @@
       "items":{
         "type": "object",
         "properties": {
-          "yourCitizenships": {
+          "personCitizenship": {
             "type": "string",
+            "title":"Please add.",
             "enum": [
-              "DE",
-              "IT",
-              "JP",
-              "US",
-              "RU",
-              "Other"
+              "UK",
+              "USA",
+              "Canada",
+              "Germany",
+              "France",
+              "China",
+              "India",
+              "Turkey",
+              "Spain",
+              "The Netherlands",
+              "Belgium"
             ]
           }
         }
@@ -44,77 +90,148 @@
         "properties": {
           "yourWorkPermits": {
             "type": "string",
+            "title":"Please add.",
             "enum": [
-              "DE",
-              "IT",
-              "JP",
-              "US",
-              "RU",
-              "Other"
+              "UK",
+              "USA",
+              "Canada",
+              "Germany",
+              "France",
+              "China",
+              "India",
+              "Turkey",
+              "Spain",
+              "The Netherlands",
+              "Belgium"
             ]
           }
         }}
     },
     "address": {
       "type": "array",
+      "title":"Address (please click the address type on the numbered list)",
       "items": {
         "type": "object",
         "title": "Users",
         "properties": {
-          "firstname": {
+          "personAddressType": {
+            "type": "string",
+            "enum":[
+              "Private",
+              "Legal",
+              "Work"
+            ]
+          },
+          "personFlatNo": {
             "type": "string"
           },
-          "lastname": {
-            "type": "string"
-          },
-          "email": {
+          "personBuildingNo": {
             "type": "string",
             "format": "email"
           },
-          "age": {
-            "type": "number",
-            "minimum": 0
+          "personStreet": {
+            "type": "string"
           },
-          "age1": {
-            "type": "number",
-            "minimum": 0
+          "personDistrict": {
+            "type": "string"
           },
-          "age2": {
-            "type": "number",
-            "minimum": 0
+          "personPostalCode": {
+            "type": "string"
           },
-          "age3": {
-            "type": "number",
-            "minimum": 0
+          "personCity": {
+            "type": "string"
+          }, 
+          "personState": {
+            "type": "string"
+          },
+          "personCountry": {
+            "type": "string"
           }
-        },
-        "required": [
-          "firstname"
-        ]
+        }
       }
     },
-    "comments": {
+    "phone": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "date": {
+          "personPhoneType": {
+            "title":"Type",
             "type": "string",
-            "format": "date"
+              "enum": [
+                "Mobile",
+                "Home",
+                "Work"
+                ]
           },
-          "message": {
+          "personPhoneCountryCode": {
             "type": "string",
-            "maxLength": 5
-          },
-          "enum": {
-            "type": "string",
+            "title":"Country Code",
             "enum": [
-              "foo",
-              "bar"
-            ]
+              "+1",
+              "+31",
+              "+44"
+              ]
+          },
+          "personPhoneNumber":{
+            "type":"string",
+            "title":"Number"
+          }
+        }
+      }
+    },
+    "email": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personEmailType": {
+            "type": "string",
+            "title":"Type",
+              "enum": [
+                "Personal",
+                "Work"
+                ]
+          },
+          "personEmail": {
+            "type": "string",
+            "title":"Email",
+            "format":"email"
+          }
+        }
+      }
+    },
+    "onlinePlatforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personPlatformType": {
+            "type": "string",
+            "title":"Platform",
+              "enum": [
+                "Website",
+                "LinkedIn",
+                "Facebook",
+                "Twitter",
+                "WhatsApp",
+                "Instagram",
+                "GitHub",
+                "Other"
+                ]
+          },
+          "personPlatformUrl": {
+            "type": "string",
+            "format":"url",
+            "title": "Profile Link"
           }
         }
       }
     }
-  }
+  },
+
+  "required": [
+    "personName",
+    "personSurname"
+  ]
 }

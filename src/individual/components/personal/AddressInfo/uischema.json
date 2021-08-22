@@ -6,19 +6,77 @@
       "label": "Personal",
       "elements": [
         {
-          "type": "HorizontalLayout",
-          "elements": [
+          "type":"VerticalLayout",
+          "elements":[
             {
-              "type": "Control",
-              "scope": "#/properties/firstName"
+              "type": "HorizontalLayout",
+              "elements": [           
+              {
+                "type": "Control",
+                "scope": "#/properties/personTitle",
+                "label":"Title"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/personName",
+                "label":"First Name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/personMiddleNames",
+                "label":"Middle Names"
+              },           
+              {
+                "type": "Control",
+                "scope": "#/properties/personSurname",
+                "label":"Surname"
+              }
+            ]
             },
             {
-              "type": "Control",
-              "scope": "#/properties/secondName"
-            },           
+              "type": "HorizontalLayout",
+              "elements": [           
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personDisplayName",
+                  "label":"Display Name"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personGender",
+                  "label":"Gender"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personOrcidID",
+                  "label":"Orcid ID"
+                }
+              ]
+            },
             {
-              "type": "Control",
-              "scope": "#/properties/birthDate"
+              "type": "HorizontalLayout",
+              "elements": [           
+              {
+                "type": "Control",
+                "scope": "#/properties/personDOB",
+                "label":"Date of Birth"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/personCityOB",
+                "label":"City of Birth"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/personCountryOB",
+                "label":"Country of Birth"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/personMaritalStatus",
+                "label": "Marital Status"
+              }
+              ]
             }
           ]
         },
@@ -26,18 +84,19 @@
           "type": "HorizontalLayout",
           "elements": [
             {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/Citizenship"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/WorkPermit"
-                  }
-                ]
+              "type": "Control",
+              "scope": "#/properties/Citizenship",
+              "options": {
+                "elementLabelProp": "title"
               }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/WorkPermit",
+              "options": {
+                "elementLabelProp": "title"
+              }
+            }
           ]
         }
       ]
@@ -61,28 +120,28 @@
                       "elements": [
                         {
                           "type": "Control",
-                          "scope": "#/properties/firstname",
-                          "label": "First Name"
+                          "scope": "#/properties/personAddressType",
+                          "label": "Address Type"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/lastname",
-                          "label": "Last Name"
+                          "scope": "#/properties/personFlatNo",
+                          "label": "Flat/Apt. No"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/age1",
-                          "label": "Age"
+                          "scope": "#/properties/personBuildingNo",
+                          "label": "Building No"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/age2",
-                          "label": "Age"
+                          "scope": "#/properties/personStreet",
+                          "label": "Street"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/age3",
-                          "label": "Age"
+                          "scope": "#/properties/personDistrict",
+                          "label": "District"
                         }
                       ]
                     },{
@@ -90,28 +149,23 @@
                       "elements": [
                         {
                           "type": "Control",
-                          "scope": "#/properties/firstname",
-                          "label": "First Name"
+                          "scope": "#/properties/personPostalCode",
+                          "label": "Postal/Zip Code"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/lastname",
-                          "label": "Last Name"
+                          "scope": "#/properties/personCity",
+                          "label": "City"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/age1",
-                          "label": "Age"
+                          "scope": "#/properties/personState",
+                          "label": "State"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/age2",
-                          "label": "Age"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/age3",
-                          "label": "Age"
+                          "scope": "#/properties/personCountry",
+                          "label": "Country"
                         }
                       ]
                     }
@@ -136,36 +190,48 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/comments"
+                    "scope": "#/properties/phone",
+                    "options":{
+                      "elementLabelProp": "title"
+                    }
                   }
                 ]
             }
           ]
-        }
-        
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Attachments",
-      "elements": [
-
-        {
-          "type": "Control",
-          "scope": "#/properties/vegetarianOptions/properties/favoriteVegetable"
         },
         {
-          "type": "Control",
-          "scope": "#/properties/vegetarianOptions/properties/otherFavoriteVegetable",
-          "rule": {
-            "effect": "SHOW",
-            "condition": {
-              "scope": "#/properties/vegetarianOptions/properties/favoriteVegetable",
-              "schema": {
-                "const": "Other"
-              }
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/email",
+                    "options":{
+                      "elementLabelProp": "title"
+                    }
+                  }
+                ]
             }
-          }
+          ]
+        },
+        {
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/onlinePlatforms",
+                    "options":{
+                      "elementLabelProp": "title"
+                    }
+                  }
+                ]
+            }
+          ]
         }
       ]
     }
