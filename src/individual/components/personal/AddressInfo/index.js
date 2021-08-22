@@ -14,6 +14,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
 
+const initalData={
+      address:[{personAddressType:"Legal"}]
+}
+
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -49,10 +53,11 @@ const renderers = [
 
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initalData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
+    console.log(jsonformsData)
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
