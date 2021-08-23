@@ -62,6 +62,7 @@ const ContactPhone = ({ history }) => {
         justify={"center"}
         spacing={1}
         className={classes.container}
+        
       >
         <Grid item sm={12}>
           <Typography variant={"h3"} className={classes.title}>
