@@ -1,0 +1,19 @@
+{
+  "type":"VerticalLayout",
+  "elements":[
+    {
+      "type": "Control",
+      "scope": "#/properties/selectedPublications",
+      "options":{
+        "elementLabelProp": "title"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/selectedPublications1",
+      "options":{
+        "elementLabelProp": "title"
+      }
+    }
+  ]
+}

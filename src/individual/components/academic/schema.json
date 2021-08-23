@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "selectedPublications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personPublicationType": {
+            "title": "Type",
+            "type": "string",
+            "enum": ["Article", "Book", "Book Chapter", "Conference Paper", "Computer Program", "Report"]
+          },
+          "personPublicationDate": {
+            "format": "date",
+            "type":"string",
+            "title": "Date"
+          },
+          "personPublicationAPA": {
+            "type": "string",
+            "title": "APA"
+          },
+          "personPublicationDOI": {
+            "type": "string",
+            "title": "DOI"
+          },
+          "personPublicationURL": {
+            "type": "string",
+            "format":"url",
+            "title": "Web Link"
+          },
+          "personPublicationLanguage": {
+            "type": "string",
+            "title": "Language"
+          }
+        }
+      }
+    },
+    "selectedPublications1": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personPublicationType": {
+            "title": "Type",
+            "type": "string",
+            "enum": ["Article", "Book", "Book Chapter", "Conference Paper", "Computer Program", "Report"]
+          },
+          "personPublicationDate": {
+            "format": "date",
+            "type":"string",
+            "title": "Date"
+          },
+          "personPublicationAPA": {
+            "type": "string",
+            "title": "APA"
+          },
+          "personPublicationDOI": {
+            "type": "string",
+            "title": "DOI"
+          },
+          "personPublicationURL": {
+            "type": "string",
+            "format":"url",
+            "title": "Web Link"
+          },
+          "personPublicationLanguage": {
+            "type": "string",
+            "title": "Language"
+          }
+        }
+      }
+    }
+  }
+}

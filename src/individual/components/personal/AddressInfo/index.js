@@ -12,7 +12,7 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-
+import "./addressJSON.css"
 
 const initalData={
       address:[{personAddressType:"Legal"}]

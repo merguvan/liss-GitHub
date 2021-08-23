@@ -144,7 +144,8 @@
                           "label": "District"
                         }
                       ]
-                    },{
+                    },
+                    {
                       "type": "VerticalLayout",
                       "elements": [
                         {
