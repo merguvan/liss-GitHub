@@ -9,10 +9,10 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
-
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import "./addressJSON.css"
+import { AirlineSeatLegroomExtra } from "@material-ui/icons";
 
 const initalData={
       address:[{personAddressType:"Legal"}]
@@ -21,7 +21,7 @@ const initalData={
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    width: "100%",
+    minWidth: "900px",
   },
   title: {
     textAlign: "center",
@@ -79,7 +79,8 @@ const ContactPerson = ({ history }) => {
   console.log(jsonformsData);
 
   return (
-    <Fragment>
+    <div style={{"padding":"20px"}}>
+      <Fragment>
       <Grid
         container
         justify={"center"}
@@ -99,7 +100,9 @@ const ContactPerson = ({ history }) => {
             />
           </div>
         </Grid>
-        <Grid item sm={12} className={classes.resetButton}>
+        
+      </Grid>
+        <footer style={{"display":"flex", "justifyContent":"center"}}>
           <Link to="/">
             <Button
               variant="contained"
@@ -109,10 +112,10 @@ const ContactPerson = ({ history }) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link>
-        </Grid>
-      </Grid>
+          </Link> 
+        </footer>
     </Fragment>
+    </div>
   );
 };
 

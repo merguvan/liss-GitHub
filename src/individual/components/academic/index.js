@@ -12,6 +12,9 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import {
+  Modal
+} from "react-bootstrap";
 
 const initalData={
       address:[{personAddressType:"Legal"}]
@@ -20,7 +23,7 @@ const initalData={
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    width: "100%",
+    minWidth: "900px",
   },
   title: {
     textAlign: "center",
@@ -78,7 +81,8 @@ const ContactPerson = ({ history }) => {
   console.log(jsonformsData);
 
   return (
-    <Fragment>
+
+      <Fragment>
       <Grid
         container
         justify={"center"}
@@ -112,6 +116,7 @@ const ContactPerson = ({ history }) => {
         </Grid>
       </Grid>
     </Fragment>
+
   );
 };
 

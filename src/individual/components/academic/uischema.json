@@ -10,7 +10,7 @@
     },
     {
       "type": "Control",
-      "scope": "#/properties/selectedPublications1",
+      "scope": "#/properties/pastSupervisions",
       "options":{
         "elementLabelProp": "title"
       }
