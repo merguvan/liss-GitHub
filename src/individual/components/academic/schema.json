@@ -18,11 +18,7 @@
           },
           "personPublicationAPA": {
             "type": "string",
-            "title": "APA"
-          },
-          "personPublicationDOI": {
-            "type": "string",
-            "title": "DOI"
+            "title": "Full APA Reference"
           },
           "personPublicationURL": {
             "type": "string",
@@ -36,37 +32,19 @@
         }
       }
     },
-    "selectedPublications1": {
+    "pastSupervisions": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "personPublicationType": {
-            "title": "Type",
+          "personThesisLevel": {
+            "title": "Level",
             "type": "string",
-            "enum": ["Article", "Book", "Book Chapter", "Conference Paper", "Computer Program", "Report"]
+            "enum": ["Bachelor's", "Master's", "Doctoral"]
           },
-          "personPublicationDate": {
-            "format": "date",
-            "type":"string",
-            "title": "Date"
-          },
-          "personPublicationAPA": {
-            "type": "string",
-            "title": "APA"
-          },
-          "personPublicationDOI": {
-            "type": "string",
-            "title": "DOI"
-          },
-          "personPublicationURL": {
-            "type": "string",
-            "format":"url",
-            "title": "Web Link"
-          },
-          "personPublicationLanguage": {
-            "type": "string",
-            "title": "Language"
+          "personSupervisedThesisNumber": {
+            "type":"integer",
+            "title": "How many?"
           }
         }
       }

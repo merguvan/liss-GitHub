@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Redirect, useParams } from 'react-router-dom'
-import Affilications from './index'
+import Affiliations from './index'
 
 export default function AffiliationsInfo(props) {
     const {id}=useParams()//props.match.params
@@ -11,7 +11,7 @@ export default function AffiliationsInfo(props) {
         case 1:
        
              return(
-               <Affilications show={modalShow} setModalShow={setModalShow} />
+               <Affiliations show={modalShow} setModalShow={setModalShow} />
              )
       
        

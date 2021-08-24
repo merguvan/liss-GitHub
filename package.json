@@ -39,6 +39,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
+    "typeface-roboto-condensed": "^1.1.13",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
