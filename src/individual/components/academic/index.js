@@ -16,9 +16,7 @@ import {
   Modal
 } from "react-bootstrap";
 
-const initalData={
-      address:[{personAddressType:"Legal"}]
-}
+
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -48,14 +46,13 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
 const renderers = [
   ...materialRenderers,
 ];
 
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState(initalData);
+  const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
 
   useEffect(() => {
