@@ -1,0 +1,143 @@
+{
+  "type": "HorizontalLayout",
+  "elements": [
+    {
+      "type": "HorizontalLayout",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/workExperience",
+          "options": {
+            "detail": {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "VerticalLayout",
+
+                  "elements": [
+                    {
+                      "type":"Group",
+                      "elements":[
+                        {
+                          "type": "Control",
+                          "label": "From",
+                          "scope": "#/properties/personWorkFrom"
+                        },
+                        {
+                          "type": "HorizontalLayout",
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "label": "Ongoing",
+                              "scope": "#/properties/ongoing"
+                            },
+                            {
+                              "type": "Control",
+                              "label": "To",
+                              "scope": "#/properties/personWorkTo",
+                              "rule": {
+                                "effect": "ENABLE",
+                                "condition": {
+                                  "scope": "#/properties/ongoing",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Group",
+                      "label": "Position",
+                      "elements": [
+                        {
+                          "type": "HorizontalLayout",
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/personInstitutionPositionType1",
+                              "label": "Position 1"
+                            },
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/personInstitutionPositionType2",
+                              "label": "Position 2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personInstitutionPosition",
+                          "label": "Position"
+                        },
+                        {
+                          "type": "Control",
+                          "format": "url",
+                          "scope": "#/properties/personInstitutionDepartment",
+                          "label": "Department/Office"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Group",
+                      "label": "Institution",
+                      "elements": [
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personInstitutionType1",
+                          "label": "Type of Institution 1"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personInstitutionType2",
+                          "label": "Type of Institution 2"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personInstitutionName",
+                          "label": "Name of the Institution"
+                        },
+                        {
+                          "type": "Control",
+                          "format": "url",
+                          "scope": "#/properties/personInstitutionWebsite",
+                          "label": "Website"
+                        },
+                        {
+                          "type":"HorizontalLayout",
+                          "elements":[{
+                            "type": "Control",
+                            "scope": "#/properties/personCity",
+                            "label": "City"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/personState",
+                            "label": "State"
+                          }]
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personCountry",
+                          "label": "Country"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
