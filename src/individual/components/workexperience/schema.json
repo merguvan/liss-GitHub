@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "properties": {
+    "workExperience": {
+      "type": "array",
+      "title":"Work Experience",
+      "items": {
+        "type": "object",
+        "title": "Users",
+        "properties": {
+
+          "personWorkFrom": {
+          "type": "string",
+          "format": "date"
+          },
+          "empty":{
+            "type":"string"
+          },
+          "ongoing": {
+            "type": "boolean"
+          },
+          "personWorkTo": {
+            "type": "string",
+            "format": "date"
+          },
+          "personInstitutionType1": {
+            "type": "string",
+            "enum":[
+              "University",
+              "School",
+              "Other"
+            ]
+          },
+          "personInstitutionType2": {
+            "type": "string",
+            "enum":[
+              "State",
+              "Private"
+            ]
+          },
+          "personCity": {
+            "type": "string"
+          }, 
+          "personState": {
+            "type": "string"
+          },
+          "personCountry": {
+            "type": "string"
+          },
+          "personInstitutionPositionType1":{
+            "type":"string",
+            "enum":[
+              "Academic",
+              "Administrative",
+              "Instructor"
+            ]
+          },
+          "personInstitutionPositionType2":{
+            "type":"string",
+            "enum":[
+              "Top Management",
+              "Senior Management",
+              "Mid Management"
+            ]
+          },
+          "personInstitutionName":{
+            "type":"string"
+          },
+          "personInstitutionWebsite":{
+            "type":"string"
+          },
+          "personInstitutionPosition":{
+            "type":"string"
+          },
+          "personInstitutionDepartment":{
+            "type":"string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+  ]
+}

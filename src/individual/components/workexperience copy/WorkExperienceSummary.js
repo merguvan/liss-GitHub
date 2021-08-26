@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Summary from "../../../Summary";
 import { FiEdit, FiTrash } from "react-icons/fi";
-// import "./WorkExperience.css";
+import "./WorkExperience.css";
 
 const we = {
   personWorkFrom: "22-12-1990",
