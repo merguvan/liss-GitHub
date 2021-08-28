@@ -7,11 +7,12 @@
       "elements": [
         {
           "type": "Group",
+          "label":"Dates",
           "elements": [
             {
               "type": "Control",
               "label": "From",
-              "scope": "#/properties/personWorkFrom"
+              "scope": "#/properties/personEduFrom"
             },
             {
               "type": "HorizontalLayout",
@@ -19,16 +20,16 @@
                 {
                   "type": "Control",
                   "label": "Ongoing",
-                  "scope": "#/properties/ongoing"
+                  "scope": "#/properties/personEduOngoing"
                 },
                 {
                   "type": "Control",
                   "label": "To",
-                  "scope": "#/properties/personWorkTo",
+                  "scope": "#/properties/personEduTo",
                   "rule": {
                     "effect": "ENABLE",
                     "condition": {
-                      "scope": "#/properties/ongoing",
+                      "scope": "#/properties/personEduOngoing",
                       "schema": {
                         "const": true
                       }
@@ -41,34 +42,24 @@
         },
         {
           "type": "Group",
-          "label": "Position",
+          "label": "Educational Program",
           "elements": [
             {
-              "type": "HorizontalLayout",
-              "elements": [
+              "type": "Control",
+              "scope": "#/properties/personEduInstitutionProgram",
+              "label": "Program"
+            },
                 {
                   "type": "Control",
-                  "scope": "#/properties/personInstitutionPositionType1",
-                  "label": "Position 1"
+                  "scope": "#/properties/personEduInstitutionDegree",
+                  "label": "Degree"
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/personInstitutionPositionType2",
-                  "label": "Position 2"
+                  "scope": "#/properties/personEduInstitutionDegreeTitle",
+                  "label": "Degree Title"
                 }
-              ]
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/personInstitutionPosition",
-              "label": "Position"
-            },
-            {
-              "type": "Control",
-              "format": "url",
-              "scope": "#/properties/personInstitutionDepartment",
-              "label": "Department/Office"
-            }
+     
           ]
         }
       ]
@@ -78,27 +69,27 @@
       "elements": [
         {
           "type": "Group",
-          "label": "Institution",
+          "label": "Educational Institution",
           "elements": [
             {
               "type": "Control",
-              "scope": "#/properties/personInstitutionType1",
+              "scope": "#/properties/personEduInstitutionType1",
               "label": "Type of Institution 1"
             },
             {
               "type": "Control",
-              "scope": "#/properties/personInstitutionType2",
+              "scope": "#/properties/personEduInstitutionType2",
               "label": "Type of Institution 2"
             },
             {
               "type": "Control",
-              "scope": "#/properties/personInstitutionName",
+              "scope": "#/properties/personEduInstitutionName",
               "label": "Name of the Institution"
             },
             {
               "type": "Control",
               "format": "url",
-              "scope": "#/properties/personInstitutionWebsite",
+              "scope": "#/properties/personEduInstitutionWebsite",
               "label": "Website"
             },
             {
@@ -106,19 +97,19 @@
               "elements": [
                 {
                   "type": "Control",
-                  "scope": "#/properties/personCity",
+                  "scope": "#/properties/personEduInstitutionCity",
                   "label": "City"
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/personState",
+                  "scope": "#/properties/personEduInstitutionState",
                   "label": "State"
                 }
               ]
             },
             {
               "type": "Control",
-              "scope": "#/properties/personCountry",
+              "scope": "#/properties/personEduInstitutionCountry",
               "label": "Country"
             }
           ]

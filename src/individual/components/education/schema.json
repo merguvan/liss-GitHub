@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+      "personEduFrom": {
+        "type": "string",
+        "format": "date"
+      },
+      "personEduOngoing": {
+        "type": "boolean"
+      },
+      "personEduTo": {
+        "type": "string",
+        "format": "date"
+      },
+      "personEduInstitutionType1": {
+        "type": "string",
+        "enum": ["University", "School", "Other"]
+      },
+      "personEduInstitutionType2": {
+        "type": "string",
+        "enum": ["State", "Private"]
+      },
+      "personEduInstitutionCity": {
+        "type": "string"
+      },
+      "personEduInstitutionState": {
+        "type": "string"
+      },
+      "personEduInstitutionCountry": {
+        "type": "string"
+      },
+      "personEduInstitutionName": {
+        "type": "string"
+      },
+      "personEduInstitutionWebsite": {
+        "type": "string"
+      },
+      "personEduInstitutionDegree": {
+        "type": "string",
+          "enum": ["High School", "Bachelor's", "Master's", "Doctoral", "Assistant Professorship", "Associate Professors", "Professor"]
+      },
+      "personEduInstitutionProgram": {
+        "type": "string"
+      },
+      "personEduInstitutionDegreeTitle":{
+        "type":"string"
+      }
+  },
+  "required": []
+}
