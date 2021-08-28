@@ -1,164 +1,121 @@
-import React, { useEffect, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { JsonForms } from "@jsonforms/react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import schema from "./schema.json";
+import uischema from "./uischema.json";
 import {
-  Modal,
-  Container,
-  Button,
-  CloseButton,
-  Col,
-  Form,
-  FormControl,
-} from "react-bootstrap";
-import { addAchivements } from "../../actions/achievements";
-import { Link, useHistory } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+  materialCells,
+  materialRenderers,
+} from "@jsonforms/material-renderers";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link} from "react-router-dom";
 
-const Achievements = ({ props }) => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { achievements: storeAchievement } = useSelector(
-    (state) => state.achievementsReducer
-  );
+
+// const initalData={
+//       address:[{personAddressType:"Legal"}]
+// }
+
+const useStyles = makeStyles((_theme) => ({
+  container: {
+    padding: "1.5em",
+    minWidth: "900px",
+  },
+  title: {
+    textAlign: "center",
+    padding: "0.5em",
+  },
+  dataContent: {
+    display: "flex",
+    justifyContent: "center",
+    borderRadius: "0.25em",
+    backgroundColor: "#cecece",
+    marginBottom: "1rem",
+    padding: "1em",
+    height: "22rem",
+  },
+  resetButton: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  demoform: {
+    margin: "auto",
+    padding: "1rem",
+  },
+}));
+
+
+const renderers = [
+  ...materialRenderers,
+];
+
+const ContactPerson = ({ history }) => {
+  const classes = useStyles();
+  const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
-  const [value, setValue] = useState(null);
-  const [achievements, setAchievement] = useState(storeAchievement || {});
-  const [show, setShow] = useState(true);
-
-  const handleAchievements = (e) => {
-    setAchievement({
-      ...achievements,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   useEffect(() => {
+    console.log(jsonformsData)
     if (
-      Object.values(storeAchievement).join("") !==
-      Object.values(achievements).join("")
+      Object.values(jsonformsData).join("") !==
+      Object.values(setJsonformsData).join("")
     ) {
       setSave(true);
     } else {
       setSave(false);
     }
-  }, [storeAchievement, achievements]);
+  }, [jsonformsData, setJsonformsData]);
 
-  const handleSubmit = () => {
-    if (Object.values(achievements).join("").length > 0) {
-      console.log("calisti");
+  const handleSubmit = (e) => {
+    if (Object.values(setJsonformsData).join("").length > 0) {
+      console.log("data sent");
     } else {
-      console.log("calismadi");
+      console.log("fill all the values");
     }
   };
 
+  console.log(jsonformsData);
+
   return (
-    <Modal
-      show={show}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header>
-        {" "}
-        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2>Achievements</h2>
-          <p className="modal-description">
-            Please provide details about your academic achievements so far.
-          </p>
-        </Modal.Title>
-        <CloseButton
-          onClick={() => {
-            setShow(!show);
-            history.push("/");
-            window.scrollTo(0, 7960)
-          }}
-        />
-      </Modal.Header>
+    <div style={{"padding":"20px"}}>
+      <Fragment>
+      <Grid
+        container
+        justify={"center"}
+        spacing={1}
+        className={classes.container}
+      >
+        <Grid item sm={12}>
 
-      <Modal.Body className="show-grid">
-        <Container>
-          <Form>
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={12}>
-                  <Form.Label class="font-weight-bold">
-                    Name of the Achievement / Award / Token
-                  </Form.Label>
-                  <FormControl
-                    id="personAchievementName"
-                    name="personAchievementName"
-                    type="text"
-                    value={achievements["personAchievementName"]}
-                    onChange={handleAchievements}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Name of the achievement / award / token"
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
-              </Form.Row>
-            </Form.Group>
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={6}>
-                  <Form.Label class="font-weight-bold">Country</Form.Label>
-                  <FormControl
-                    id="personAchievementCountry"
-                    name="personAchievementCountry"
-                    type="number"
-                    value={achievements["personAchievementCountry"]}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Country where you received the award / token from"
-                    onChange={handleAchievements}
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
-
-                <Col xs={12} md={6}>
-                  <Form.Label class="font-weight-bold">Granted by</Form.Label>
-                  <FormControl
-                    id="personAchievementGrantedBy"
-                    name="personAchievementGrantedBy"
-                    type="text"
-                    value={achievements["personAchievementGrantedBy"]}
-                    onChange={handleAchievements}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="The organization that awarded you with the award / token"
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
-              </Form.Row>
-            </Form.Group>
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={6}>
-                  <Form.Label class="font-weight-bold">Date</Form.Label>
-                  <Form.Control
-                    id="personAchievementDate"
-                    name="personAchievementDate"
-                    type="date"
-                    value={achievements["personAchievementDate"]}
-                    onChange={handleAchievements}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Date you received the award / token"
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Form>
-        </Container>
-      </Modal.Body>
-      <Modal.Footer>
-        <Link to="/">
-          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-        </Link>
-      </Modal.Footer>
-    </Modal>
+          <div className={classes.demoform}>
+            <JsonForms
+              schema={schema}
+              uischema={uischema}
+              data={jsonformsData}
+              renderers={renderers}
+              cells={materialCells}
+              onChange={({ errors, data }) => setJsonformsData(data)}
+            />
+          </div>
+        </Grid>
+        
+      </Grid>
+        <footer style={{"display":"flex", "justifyContent":"center"}}>
+          <Link to="/">
+            <Button
+              variant="contained"
+              color="blue"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              {save ? "Save" : "Close"}
+            </Button>
+          </Link> 
+        </footer>
+    </Fragment>
+    </div>
   );
 };
 
-export default Achievements;
+export default ContactPerson;

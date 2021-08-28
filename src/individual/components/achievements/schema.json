@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+      "personAchievementGrantedBy": {
+        "type": "string"
+      },
+      "personAchievementDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "personAchievementCountry": {
+        "type": "string",
+        "enum": ["USA", "UK"]
+      },
+      "personAchievementName": {
+        "type": "string"
+      }
+  },
+  "required": []
+}
