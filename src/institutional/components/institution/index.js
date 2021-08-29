@@ -11,18 +11,17 @@ import {
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link} from "react-router-dom";
+import "./addressJSON.css"
+import { AirlineSeatLegroomExtra } from "@material-ui/icons";
 
-
-// const initalData={
-//       address:[{personAddressType:"Legal"}]
-// }
+const initalData={
+      address:[{personAddressType:"Legal"}]
+}
 
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    width: "80%",
-    margin: "auto",
-    maxWidth: "100%"
+    minWidth: "900px",
   },
   title: {
     textAlign: "center",
@@ -54,7 +53,7 @@ const renderers = [
 
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initalData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
