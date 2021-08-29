@@ -11,17 +11,8 @@ import {
 } from "../actionTypes/capacity";
 import axios from "axios";
 
-const {
-  token,
-  userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"))
-  ? JSON.parse(localStorage.getItem("user"))
-  : {
-      token: "token",
-      userInfo: {
-        _id: 12345
-    }};
-
+const id = "sadda";
+const token = "dasdad";
 export const addCapacity = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 
@@ -108,8 +99,6 @@ export const getCapacityInfo = (data) => async (dispatch, getState) => {
     });
   }
 };
-
-
 
 // import { ADD_CAPACITY_DETAILS } from "../actionTypes"
 
