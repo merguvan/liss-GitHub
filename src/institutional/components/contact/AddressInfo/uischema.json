@@ -3,99 +3,51 @@
   "elements": [
     {
       "type": "Category",
-      "label": "Personal",
+      "label": "Contact Person",
       "elements": [
         {
           "type":"VerticalLayout",
           "elements":[
             {
+              "type": "Control",
+              "scope": "#/properties/instName",
+              "label":"Institution"
+            },
+            {
               "type": "HorizontalLayout",
-              "elements": [           
+              "elements": [   
+                      
               {
                 "type": "Control",
-                "scope": "#/properties/personTitle",
+                "scope": "#/properties/contactTitle",
                 "label":"Title"
               },
               {
                 "type": "Control",
-                "scope": "#/properties/personName",
+                "scope": "#/properties/contactName",
                 "label":"First Name"
               },
               {
                 "type": "Control",
-                "scope": "#/properties/personMiddleNames",
+                "scope": "#/properties/contactMiddleNames",
                 "label":"Middle Names"
-              },           
-              {
-                "type": "Control",
-                "scope": "#/properties/personSurname",
-                "label":"Surname"
               }
             ]
             },
             {
               "type": "HorizontalLayout",
-              "elements": [           
+              "elements": [                     
                 {
                   "type": "Control",
-                  "scope": "#/properties/personDisplayName",
-                  "label":"Display Name"
+                  "scope": "#/properties/contactSurname",
+                  "label":"Surname"
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/personGender",
+                  "scope": "#/properties/contactGender",
                   "label":"Gender"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/personOrcidID",
-                  "label":"Orcid ID"
                 }
               ]
-            },
-            {
-              "type": "HorizontalLayout",
-              "elements": [           
-              {
-                "type": "Control",
-                "scope": "#/properties/personDOB",
-                "label":"Date of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personCityOB",
-                "label":"City of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personCountryOB",
-                "label":"Country of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personMaritalStatus",
-                "label": "Marital Status"
-              }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "HorizontalLayout",
-          "elements": [
-            {
-              "type": "Control",
-              "scope": "#/properties/Citizenship",
-              "options": {
-                "elementLabelProp": "title"
-              }
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/WorkPermit",
-              "options": {
-                "elementLabelProp": "title"
-              }
             }
           ]
         }
@@ -105,9 +57,11 @@
       "type": "Category",
       "label": "Address",
       "elements": [
+        
         {
-          "type":"HorizontalLayout",
+          "type":"VerticalLayout",
           "elements":[
+            
             {
               "type": "ListWithDetail",
               "scope": "#/properties/address",
@@ -116,31 +70,37 @@
                   "type": "HorizontalLayout",
                   "elements": [
                     {
+                      "type": "Control",
+                      "label": "Same as Institution",
+                      "scope": "#/properties/contactAddressSame"
+                    },
+                    {
                       "type": "VerticalLayout",
                       "elements": [
+                        
                         {
                           "type": "Control",
-                          "scope": "#/properties/personAddressType",
+                          "scope": "#/properties/contactAddressType",
                           "label": "Address Type"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personFlatNo",
+                          "scope": "#/properties/contactFlatNo",
                           "label": "Flat/Apt. No"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personBuildingNo",
+                          "scope": "#/properties/contactBuildingNo",
                           "label": "Building No"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personStreet",
+                          "scope": "#/properties/contactStreet",
                           "label": "Street"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personDistrict",
+                          "scope": "#/properties/contactDistrict",
                           "label": "District"
                         }
                       ]
@@ -150,22 +110,22 @@
                       "elements": [
                         {
                           "type": "Control",
-                          "scope": "#/properties/personPostalCode",
+                          "scope": "#/properties/contactPostalCode",
                           "label": "Postal/Zip Code"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personCity",
+                          "scope": "#/properties/contactCity",
                           "label": "City"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personState",
+                          "scope": "#/properties/contactState",
                           "label": "State"
                         },
                         {
                           "type": "Control",
-                          "scope": "#/properties/personCountry",
+                          "scope": "#/properties/contactCountry",
                           "label": "Country"
                         }
                       ]
@@ -200,6 +160,7 @@
             }
           ]
         },
+        
         {
           "type":"HorizontalLayout",
           "elements":[
@@ -209,23 +170,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/email",
-                    "options":{
-                      "elementLabelProp": "title"
-                    }
-                  }
-                ]
-            }
-          ]
-        },
-        {
-          "type":"HorizontalLayout",
-          "elements":[
-            {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/onlinePlatforms",
                     "options":{
                       "elementLabelProp": "title"
                     }

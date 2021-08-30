@@ -1,251 +1,120 @@
-import React, { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { JsonForms } from "@jsonforms/react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import schema from "./schema.json";
+import uischema from "./uischema.json";
 import {
-  Modal,
-  Container,
-  Button,
-  CloseButton,
-  Col,
-  Form,
-  InputGroup,
-  FormControl,
+  materialCells,
+  materialRenderers,
+} from "@jsonforms/material-renderers";
+
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import {
+  Modal
 } from "react-bootstrap";
-import SelectLanguage from "../../../commonModules/language/SelectLanguage";
-// import ReactLanguageSelect from './language/Lang'
-// import Lang from './language/Lang'
-import { useDispatch, useSelector } from "react-redux";
-import { addCapacity } from "../../actions/capacityAction";
-import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
 
-const Capacity = (props) => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { capacity: storeCapacity } = useSelector(
-    (state) => state.capacityReducer
-  );
-  const [lang1, setLang1] = useState(true);
-  const [lang2, setLang2] = useState(true);
 
+
+const useStyles = makeStyles((_theme) => ({
+  container: {
+    padding: "1.5em",
+    minWidth: "900px",
+  },
+  title: {
+    textAlign: "center",
+    padding: "0.5em",
+  },
+  dataContent: {
+    display: "flex",
+    justifyContent: "center",
+    borderRadius: "0.25em",
+    backgroundColor: "#cecece",
+    marginBottom: "1rem",
+    padding: "1em",
+    height: "22rem",
+  },
+  resetButton: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  demoform: {
+    margin: "auto",
+    padding: "1rem",
+  },
+}));
+
+const renderers = [
+  ...materialRenderers,
+];
+
+const ContactPerson = ({ history }) => {
+  const classes = useStyles();
+  const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
-  const [capacity, setCapacityDetails] = useState(
-    storeCapacity || {}
-  );
-
-  const [show, setShow] = useState(true);
 
   useEffect(() => {
+    console.log(jsonformsData)
     if (
-      Object.values(storeCapacity).join("") !==
-      Object.values(capacity).join("")
+      Object.values(jsonformsData).join("") !==
+      Object.values(setJsonformsData).join("")
     ) {
       setSave(true);
     } else {
       setSave(false);
     }
-  }, [storeCapacity, capacity]);
+  }, [jsonformsData, setJsonformsData]);
 
-  const showLanguageList = (e) => {
-    if (e.target.name === "lang1") {
-      setLang1(false);
-    } else if (e.target.name === "lang2") {
-      setLang2(false);
+  const handleSubmit = (e) => {
+    if (Object.values(setJsonformsData).join("").length > 0) {
+      console.log("data sent");
     } else {
-      setLang1(true);
-      setLang2(true);
+      console.log("fill all the values");
     }
   };
 
-  const handleClick = () => {
-    dispatch(addCapacity(capacity));
-  };
-
-  const handleCapacityDetails = (e) => {
-    setCapacityDetails({
-      ...capacity,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = () => {
-    if (Object.values(capacity).join("").length > 0) {
-      console.log("calisti");
-    } else {
-      console.log("calismadi");
-    }
-  };
+  console.log(jsonformsData);
 
   return (
-    <Modal
-      onClick={showLanguageList}
-      // {...props}
-      show={show}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header>
-        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2>Capacity</h2>
-          <p className="modal-description">
-            Please enter details about the courses you may teach and/or theses
-            you may supervise.
-          </p>
-        </Modal.Title>
-        <CloseButton
-          onClick={() => {
-            setShow(!show);
-            history.push("/");
-          }}
-        />
-      </Modal.Header>
 
-      <Modal.Body className="show-grid">
-        <Container>
-          <Form>
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={4}>
-                  <Form.Label class="font-weight-bold">From</Form.Label>
-                  <Form.Control
-                    id="personAvailableFrom"
-                    name="personAvailableFrom"
-                    type="date"
-                    value={capacity["personAvailableFrom"]}
-                    onChange={handleCapacityDetails}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="You can start teaching from ..."
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
+      <Fragment>
+      <Grid
+        container
+        justify={"center"}
+        spacing={1}
+        className={classes.container}
+      >
+        <Grid item sm={12}>
 
-                <Col xs={12} md={4}>
-                  <Form.Label class="font-weight-bold">To</Form.Label>
-                  <Form.Control
-                    id="personAvailableTo"
-                    name="personAvailableTo"
-                    type="date"
-                    value={capacity["personAvailableTo"]}
-                    onChange={handleCapacityDetails}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="You can start teaching until ..."
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
+          <div className={classes.demoform}>
+            <JsonForms
+              schema={schema}
+              uischema={uischema}
+              data={jsonformsData}
+              renderers={renderers}
+              cells={materialCells}
+              onChange={({ errors, data }) => setJsonformsData(data)}
+            />
+          </div>
+        </Grid>
+        <Grid item sm={12} className={classes.resetButton}>
+          <Link to="/individual">
+            <Button
+              variant="contained"
+              color="blue"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              {save ? "Save" : "Close"}
+            </Button>
+          </Link>
+        </Grid>
+      </Grid>
+    </Fragment>
 
-                <Col xs={12} md={4}>
-                  <Form.Label class="font-weight-bold">Level</Form.Label>
-                  <Form.Control
-                    id="personInstitutionType1"
-                    name="personInstitutionType1"
-                    type="date"
-                    as="select"
-                    onChange={handleCapacityDetails}
-                    value={capacity["personInstitutionType1"]}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="What level/cycle can you offer this course?"
-                    placeholder=""
-                  >
-                    <option value="select">Select</option>
-                    <option value="bachelor">Bachelor's</option>
-                    <option value="master">Master's</option>
-                    <option value="doctoral">Doctoral</option>
-                  </Form.Control>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={12}>
-                  <Form.Label class="font-weight-bold">Course Name</Form.Label>
-                  <FormControl
-                    class="form-control form-control-sm"
-                    id="personCourseName"
-                    name="personCourseName"
-                    type="text"
-                    value={capacity["personCourseName"]}
-                    onChange={handleCapacityDetails}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Course you would like to offer"
-                    placeholder=""
-                    aria-describedby="basic-addon3"
-                  />
-                </Col>
-              </Form.Row>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Row>
-                <Col xs={12} md={6}>
-                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
-                  <SelectLanguage name="lang1" displayLanguageList={lang1} />
-                </Col>
-
-                <Col xs={12} md={6}>
-                  <label htmlFor="basic-url" class="font-weight-bold">Experience</label>
-                  <InputGroup className="mb-3">
-                    <FormControl
-                      id="personCourseExperience"
-                      name="personCourseExperience"
-                      type="number"
-                      value={capacity["personCourseExperience"]}
-                      onChange={handleCapacityDetails}
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="How many years of experience do you have in teaching this subject?"
-                      placeholder=""
-                      aria-describedby="basic-addon3"
-                    />
-                  </InputGroup>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-
-            <Form.Group>
-              <br />
-              <h6 class="font-weight-bold"><b>SUPERVISION</b></h6>
-              <hr />
-              <Form.Row>
-                <Col xs={12} md={6}>
-                  <Form.Label class="font-weight-bold">Level</Form.Label>
-                  <Form.Control
-                    id="personCourseLevel"
-                    name="personCourseLevel"
-                    value={capacity["personCourseLevel"]}
-                    onChange={handleCapacityDetails}
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="At which level have you supervised theses?"
-                    as="select"
-                  >
-                    <option value="select">Select</option>
-                    <option value="bachelor">Bachelor's</option>
-                    <option value="master">Master's</option>
-                    <option value="doctoral">Doctoral</option>
-                  </Form.Control>
-                </Col>
-                <Col xs={12} md={6}>
-                  <label htmlFor="basic-url" class="font-weight-bold">Language</label>
-                  <SelectLanguage name="lang2" displayLanguageList={lang2} />
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Form>
-        </Container>
-      </Modal.Body>
-      <Modal.Footer>
-        <Link to="/">
-          <Button onClick={handleSubmit}> {save ? "Save" : "Close"} </Button>
-        </Link>
-      </Modal.Footer>
-    </Modal>
   );
 };
 
-export default Capacity;
+export default ContactPerson;
