@@ -15,7 +15,11 @@ export function Login({ history, location, containerRef }) {
   const redirect = location?.search ? location.search.split("=")[1] : "/";
   useEffect(() => {
     if (userInfo) {
-      history?.push(redirect);
+      history?.push(
+        `${
+          userInfo?.userType === "individual" ? "/individual" : "/institutional"
+        }`
+      );
     }
   }, [history, userInfo, redirect]);
 
