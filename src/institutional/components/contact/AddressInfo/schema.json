@@ -1,111 +1,39 @@
 {
   "type": "object",
   "properties": {
-    "personTitle": {
+    "instName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your first name"
+    },
+    "contactTitle": {
       "type": "string",
       "enum":[
         "Mr", "Ms", "Dr.", "Assist.Prof.Dr.","Assoc.Prof.Dr.","Prof.Dr.","Other"
       ]
     },
-    "personName": {
+    "contactName": {
       "type": "string",
       "minLength": 2,
       "description": "Please enter your first name"
     },
-    "personMiddleNames": {
+    "contactMiddleNames": {
       "type": "string",
       "description": "Please enter your second name"
     },
     
-    "personSurname": {
+    "contactSurname": {
       "type": "string",
       "minLength": 2,
       "description": "Please enter your second name"
     },
-    "personDisplayName": {
-      "type": "string",
-      "minLength": 2,
-      "description": "Please enter your second name"
-    },
-    "personGender": {
+    "contactGender": {
       "type": "string",
       "enum":[
         "Female",
         "Male",
         "Prefer not to say"
       ]
-    },
-    "personOrcidID": {
-      "type": "string"
-    },
-    "personDOB": {
-      "type": "string",
-      "format":"date"
-    },
-    "personCityOB": {
-      "type": "string"
-    },
-    "personCountryOB": {
-      "type": "string"
-    },
-    "personMaritalStatus": {
-      "type": "string",
-      "enum": [
-        "Single",
-        "Married",
-        "Widowed",
-        "Prefer not to say"
-        ]
-    },
-
-    "Citizenship": {
-      "type":"array",
-      "items":{
-        "type": "object",
-        "properties": {
-          "personCitizenship": {
-            "type": "string",
-            "title":"Please add.",
-            "enum": [
-              "UK",
-              "USA",
-              "Canada",
-              "Germany",
-              "France",
-              "China",
-              "India",
-              "Turkey",
-              "Spain",
-              "The Netherlands",
-              "Belgium"
-            ]
-          }
-        }
-      }
-    },
-    "WorkPermit": {
-      "type":"array",
-      "items":{
-        "type": "object",
-        "properties": {
-          "yourWorkPermits": {
-            "type": "string",
-            "title":"Please add.",
-            "enum": [
-              "UK",
-              "USA",
-              "Canada",
-              "Germany",
-              "France",
-              "China",
-              "India",
-              "Turkey",
-              "Spain",
-              "The Netherlands",
-              "Belgium"
-            ]
-          }
-        }}
     },
     "address": {
       "type": "array",
@@ -114,7 +42,7 @@
         "type": "object",
         "title": "Users",
         "properties": {
-          "personAddressType": {
+          "contactAddressType": {
             "type": "string",
             "enum":[
               "Private",
@@ -122,29 +50,32 @@
               "Work"
             ]
           },
-          "personFlatNo": {
+          "contactAddressSame": {
+            "type": "boolean"
+          },
+          "contactFlatNo": {
             "type": "string"
           },
-          "personBuildingNo": {
+          "contactBuildingNo": {
             "type": "string",
             "format": "email"
           },
-          "personStreet": {
+          "contactStreet": {
             "type": "string"
           },
-          "personDistrict": {
+          "contactDistrict": {
             "type": "string"
           },
-          "personPostalCode": {
+          "contactPostalCode": {
             "type": "string"
           },
-          "personCity": {
+          "contactCity": {
             "type": "string"
           }, 
-          "personState": {
+          "contactState": {
             "type": "string"
           },
-          "personCountry": {
+          "contactCountry": {
             "type": "string"
           }
         }
@@ -155,7 +86,7 @@
       "items": {
         "type": "object",
         "properties": {
-          "personPhoneType": {
+          "contactPhoneType": {
             "title":"Type",
             "type": "string",
               "enum": [
@@ -164,7 +95,7 @@
                 "Work"
                 ]
           },
-          "personPhoneCountryCode": {
+          "contactPhoneCode": {
             "type": "string",
             "title":"Country Code",
             "enum": [
@@ -173,7 +104,7 @@
               "+44"
               ]
           },
-          "personPhoneNumber":{
+          "contactPhoneNo":{
             "type":"string",
             "title":"Number"
           }
@@ -185,45 +116,10 @@
       "items": {
         "type": "object",
         "properties": {
-          "personEmailType": {
+          "contactEmail": {
             "type": "string",
-            "title":"Type",
-              "enum": [
-                "Personal",
-                "Work"
-                ]
-          },
-          "personEmail": {
-            "type": "string",
-            "title":"Email",
-            "format":"email"
-          }
-        }
-      }
-    },
-    "onlinePlatforms": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "personPlatformType": {
-            "type": "string",
-            "title":"Platform",
-              "enum": [
-                "Website",
-                "LinkedIn",
-                "Facebook",
-                "Twitter",
-                "WhatsApp",
-                "Instagram",
-                "GitHub",
-                "Other"
-                ]
-          },
-          "personPlatformUrl": {
-            "type": "string",
-            "format":"url",
-            "title": "Profile Link"
+            "format":"email",
+            "title": "Email"
           }
         }
       }

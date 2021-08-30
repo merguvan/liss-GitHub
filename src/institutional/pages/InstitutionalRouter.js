@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, useParams } from "react-router-dom";
 import ContactForm from "../components/contact/AddressInfo/index";
+import Institution from "../components/institution/AddressInfo/index";
 const InstitutionalRouter = (props) => {
   console.log(props.match.params.section);
   const { section } = useParams();
@@ -10,9 +11,7 @@ const InstitutionalRouter = (props) => {
       return <ContactForm />;
     case "address":
       return (
-        <>
-          <h1>Address Form</h1>
-        </>
+        <Institution/>
       );
     default:
       break;
