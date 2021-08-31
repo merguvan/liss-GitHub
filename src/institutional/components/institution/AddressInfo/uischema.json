@@ -1,244 +1,119 @@
 {
-  "type": "Categorization",
+  "type": "VerticalLayout",
   "elements": [
     {
-      "type": "Category",
-      "label": "Personal",
+      "type": "Group",
+      "label": "Institution",
       "elements": [
         {
-          "type":"VerticalLayout",
-          "elements":[
+          "type": "VerticalLayout",
+          "elements": [
             {
               "type": "HorizontalLayout",
-              "elements": [           
-              {
-                "type": "Control",
-                "scope": "#/properties/personTitle",
-                "label":"Title"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personName",
-                "label":"First Name"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personMiddleNames",
-                "label":"Middle Names"
-              },           
-              {
-                "type": "Control",
-                "scope": "#/properties/personSurname",
-                "label":"Surname"
-              }
-            ]
-            },
-            {
-              "type": "HorizontalLayout",
-              "elements": [           
+              "elements": [
                 {
                   "type": "Control",
-                  "scope": "#/properties/personDisplayName",
-                  "label":"Display Name"
+                  "scope": "#/properties/instStatus",
+                  "label": "Status"
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/personGender",
-                  "label":"Gender"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/personOrcidID",
-                  "label":"Orcid ID"
+                  "scope": "#/properties/instName",
+                  "label": "Name"
                 }
               ]
             },
             {
               "type": "HorizontalLayout",
-              "elements": [           
-              {
-                "type": "Control",
-                "scope": "#/properties/personDOB",
-                "label":"Date of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personCityOB",
-                "label":"City of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personCountryOB",
-                "label":"Country of Birth"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/personMaritalStatus",
-                "label": "Marital Status"
-              }
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instAbbreviation",
+                  "label": "Abbreviation"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instNameNative",
+                  "label": "Original Name"
+                }
               ]
-            }
-          ]
-        },
-        {
-          "type": "HorizontalLayout",
-          "elements": [
-            {
-              "type": "Control",
-              "scope": "#/properties/Citizenship",
-              "options": {
-                "elementLabelProp": "title"
-              }
-            },
-            {
-              "type": "Control",
-              "scope": "#/properties/WorkPermit",
-              "options": {
-                "elementLabelProp": "title"
-              }
             }
           ]
         }
       ]
     },
     {
-      "type": "Category",
+      "type": "Group",
       "label": "Address",
       "elements": [
         {
-          "type":"HorizontalLayout",
-          "elements":[
+          "type": "VerticalLayout",
+          "elements": [
             {
-              "type": "ListWithDetail",
-              "scope": "#/properties/address",
-              "options": {
-                "detail": {
-                  "type": "HorizontalLayout",
-                  "elements": [
-                    {
-                      "type": "VerticalLayout",
-                      "elements": [
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personAddressType",
-                          "label": "Address Type"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personFlatNo",
-                          "label": "Flat/Apt. No"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personBuildingNo",
-                          "label": "Building No"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personStreet",
-                          "label": "Street"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personDistrict",
-                          "label": "District"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "VerticalLayout",
-                      "elements": [
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personPostalCode",
-                          "label": "Postal/Zip Code"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personCity",
-                          "label": "City"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personState",
-                          "label": "State"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/personCountry",
-                          "label": "Country"
-                        }
-                      ]
-                    }
-                  ]
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusNumber",
+                  "label": "Building No"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusStreet",
+                  "label": "Street"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusDistrict",
+                  "label": "District"
+                } 
+              ]
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusPostalCode",
+                  "label": "Postal/Zip Code"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusCity",
+                  "label": "City"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusState",
+                  "label": "State"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusCountry",
+                  "label": "Country"
                 }
-              }
+              ]
             }
           ]
         }
-        
       ]
     },
     {
-      "type": "Category",
-      "label": "Details",
-      "elements": [
+      "type":"HorizontalLayout",
+      "elements":[
         {
-          "type":"HorizontalLayout",
-          "elements":[
-            {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/phone",
-                    "options":{
-                      "elementLabelProp": "title"
-                    }
-                  }
-                ]
-            }
-          ]
-        },
-        {
-          "type":"HorizontalLayout",
-          "elements":[
-            {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/email",
-                    "options":{
-                      "elementLabelProp": "title"
-                    }
-                  }
-                ]
-            }
-          ]
-        },
-        {
-          "type":"HorizontalLayout",
-          "elements":[
-            {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/onlinePlatforms",
-                    "options":{
-                      "elementLabelProp": "title"
-                    }
-                  }
-                ]
-            }
-          ]
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/onlinePlatforms",
+                "options":{
+                  "elementLabelProp": "title"
+                }
+              }
+            ]
         }
       ]
     }
-  ],
-  "options": {
-    "variant": "stepper",
-    "showNavButtons": true
-  }
+  ]
 }
