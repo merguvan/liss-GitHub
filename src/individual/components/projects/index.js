@@ -315,7 +315,7 @@ const Projects = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/">
+        <Link to="/individual">
           <Button onClick={handleSubmit}>
             {" "}
             {Object.keys(projects).length > 0 ? "save" : "close"}{" "}

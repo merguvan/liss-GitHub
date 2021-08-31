@@ -30,7 +30,7 @@
                     "condition": {
                       "scope": "#/properties/ongoing",
                       "schema": {
-                        "const": true
+                        "const": false
                       }
                     }
                   }

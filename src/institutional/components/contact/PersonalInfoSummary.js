@@ -28,7 +28,7 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
     <>
       <Summary
         value="100"
-        headerTitle="Personal Info"
+        headerTitle="Contact"
         url="institutional/contact"
       >
         <h6 className="person-summary-body-context-container_level_1">
