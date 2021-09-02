@@ -89,7 +89,7 @@ const Remarks = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-      <Link to="/individual">
+      <Link to="/">
         <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
       </Link>
       </Modal.Footer>

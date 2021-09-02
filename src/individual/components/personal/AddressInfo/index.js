@@ -103,7 +103,7 @@ const ContactPerson = ({ history }) => {
         
       </Grid>
         <footer style={{"display":"flex", "justifyContent":"center"}}>
-          <Link to="/">
+          <Link to="/individual">
             <Button
               variant="contained"
               color="blue"

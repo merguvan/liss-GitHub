@@ -1,0 +1,119 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "label": "Institution",
+      "elements": [
+        {
+          "type": "VerticalLayout",
+          "elements": [
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instStatus",
+                  "label": "Status"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instName",
+                  "label": "Name"
+                }
+              ]
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instAbbreviation",
+                  "label": "Abbreviation"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instNameNative",
+                  "label": "Original Name"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "label": "Address",
+      "elements": [
+        {
+          "type": "VerticalLayout",
+          "elements": [
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusNumber",
+                  "label": "Building No"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusStreet",
+                  "label": "Street"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusDistrict",
+                  "label": "District"
+                } 
+              ]
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusPostalCode",
+                  "label": "Postal/Zip Code"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusCity",
+                  "label": "City"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusState",
+                  "label": "State"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instCampusCountry",
+                  "label": "Country"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type":"HorizontalLayout",
+      "elements":[
+        {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/onlinePlatforms",
+                "options":{
+                  "elementLabelProp": "title"
+                }
+              }
+            ]
+        }
+      ]
+    }
+  ]
+}

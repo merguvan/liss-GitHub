@@ -9,15 +9,19 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
-
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import "./addressJSON.css"
+import { AirlineSeatLegroomExtra } from "@material-ui/icons";
 
+const initalData={
+      address:[{personAddressType:"Legal"}]
+}
 
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    width: "100%",
+    minWidth: "900px",
   },
   title: {
     textAlign: "center",
@@ -47,12 +51,13 @@ const renderers = [
   ...materialRenderers,
 ];
 
-const InstRemarks = ({ history }) => {
+const ContactPerson = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initalData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
+    console.log(jsonformsData)
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -74,7 +79,8 @@ const InstRemarks = ({ history }) => {
   console.log(jsonformsData);
 
   return (
-    <Fragment>
+    <div style={{"padding":"20px"}}>
+      <Fragment>
       <Grid
         container
         justify={"center"}
@@ -82,9 +88,7 @@ const InstRemarks = ({ history }) => {
         className={classes.container}
       >
         <Grid item sm={12}>
-          <Typography variant={"h3"} className={classes.title}>
-          Remarks
-          </Typography>
+
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}
@@ -96,8 +100,10 @@ const InstRemarks = ({ history }) => {
             />
           </div>
         </Grid>
-        <Grid item sm={12} className={classes.resetButton}>
-          <Link to="/">
+        
+      </Grid>
+        <footer style={{"display":"flex", "justifyContent":"center"}}>
+          <Link to="/institutional">
             <Button
               variant="contained"
               color="blue"
@@ -106,26 +112,11 @@ const InstRemarks = ({ history }) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link>
-        </Grid>
-      </Grid>
+          </Link> 
+        </footer>
     </Fragment>
+    </div>
   );
 };
 
-export default InstRemarks;
-
-// {
-//   "type": "object",
-//   "properties": {
-//     "instRemarks": {
-//       "type": "string",
-//       "description": "Please type additinal information",
-//       "maxLength":3000
-      
-//     }
-//   },
-//   "required": [
-   
-//   ]
-// }
+export default ContactPerson;

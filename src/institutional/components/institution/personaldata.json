@@ -1,0 +1,74 @@
+{
+  "Personal_Info": {
+    "personOrcidID": "",
+    "personTitle": "Dr.",
+    "personName": "Araz",
+    "personSurname": "Bey",
+    "personMiddleNames": "",
+    "personDisplayName": "",
+    "personDOB": "21/09/1285",
+    "personCityOB": "Paris",
+    "personCountryOB": "France",
+    "personGender": "Male",
+    "personAddress": [
+      {
+        "personAddressType": "Home",
+        "personFlatNo": "21",
+        "personBuildingNo": "1A",
+        "personStreet": "St. Louis",
+        "personDistrict": "",
+        "postalCode": "1002 PY",
+        "personCity": "Paris",
+        "personState": "",
+        "personCountry": "France"
+      },
+      {
+        "personAddressType": "Home",
+        "personFlatNo": "21",
+        "personBuildingNo": "1A",
+        "personStreet": "St. Louis",
+        "personDistrict": "",
+        "postalCode": "1002 PY",
+        "personCity": "Paris",
+        "personState": "",
+        "personCountry": "France"
+      }
+    ],
+    "personMaritalStatus": "Married",
+    "personPhone": [
+      { "personPhoneType": "Mobile", "personPhoneNumber": "037847740" }
+    ],
+    "personEmail": [
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" },
+      { "email": "amazing@ideas.com", "personEmailType": "Personal" }
+    ],
+    "personPhoto": "url",
+    "personPlatform": [
+      { "personPlatformType": "Website", "personPlatformUserName": "ArazBey" },
+      { "personPlatformType": "twitter", "personPlatformUserName": "ArazBey.com" }
+    ],
+    "personCvDoc": "pdf",
+    "personCitizenship": ["USA", "Turkey"],
+    "personWorkPermit": ["EU", "USA", "TR"],
+    "personDbsDoc": true,
+    "personMedicalDoc": true
+  },
+
+  "Project": [
+    {
+      "projectName": "Preventing 'Global Warming' by Blocking the Sun",
+      "projectGrantedBy": "Ecuador",
+      "projectSth": "HERD-7893277-2-2019-EC-EPPKAS2-SP",
+      "projectDate": "1958-1959"
+    },
+    {
+      "projectName":
+        "Helping the World Economy to Grow by Finding Pirate Treasures",
+      "projectGrantedBy": "Caribbean",
+      "projectSth": "FOOL-7893277-WW2-2-2019-EC-EPPKAS2-SP",
+      "projectDate": "1888-1890"
+    }
+  ]
+}

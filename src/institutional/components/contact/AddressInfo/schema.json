@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "properties": {
+    "instName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your first name"
+    },
+    "contactTitle": {
+      "type": "string",
+      "enum":[
+        "Mr", "Ms", "Dr.", "Assist.Prof.Dr.","Assoc.Prof.Dr.","Prof.Dr.","Other"
+      ]
+    },
+    "contactName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your first name"
+    },
+    "contactMiddleNames": {
+      "type": "string",
+      "description": "Please enter your second name"
+    },
+    
+    "contactSurname": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your second name"
+    },
+    "contactGender": {
+      "type": "string",
+      "enum":[
+        "Female",
+        "Male",
+        "Prefer not to say"
+      ]
+    },
+    "address": {
+      "type": "array",
+      "title":"Address (please click the address type on the numbered list)",
+      "items": {
+        "type": "object",
+        "title": "Users",
+        "properties": {
+          "contactAddressType": {
+            "type": "string",
+            "enum":[
+              "Private",
+              "Legal",
+              "Work"
+            ]
+          },
+          "contactAddressSame": {
+            "type": "boolean"
+          },
+          "contactFlatNo": {
+            "type": "string"
+          },
+          "contactBuildingNo": {
+            "type": "string",
+            "format": "email"
+          },
+          "contactStreet": {
+            "type": "string"
+          },
+          "contactDistrict": {
+            "type": "string"
+          },
+          "contactPostalCode": {
+            "type": "string"
+          },
+          "contactCity": {
+            "type": "string"
+          }, 
+          "contactState": {
+            "type": "string"
+          },
+          "contactCountry": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "phone": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contactPhoneType": {
+            "title":"Type",
+            "type": "string",
+              "enum": [
+                "Mobile",
+                "Home",
+                "Work"
+                ]
+          },
+          "contactPhoneCode": {
+            "type": "string",
+            "title":"Country Code",
+            "enum": [
+              "+1",
+              "+31",
+              "+44"
+              ]
+          },
+          "contactPhoneNo":{
+            "type":"string",
+            "title":"Number"
+          }
+        }
+      }
+    },
+    "email": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contactEmail": {
+            "type": "string",
+            "format":"email",
+            "title": "Email"
+          }
+        }
+      }
+    }
+  },
+
+  "required": [
+    "personName",
+    "personSurname"
+  ]
+}

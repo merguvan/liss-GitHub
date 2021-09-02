@@ -100,7 +100,7 @@ const ContactPerson = ({ history }) => {
           </div>
         </Grid>
         <Grid item sm={12} className={classes.resetButton}>
-          <Link to="/">
+          <Link to="/individual">
             <Button
               variant="contained"
               color="blue"

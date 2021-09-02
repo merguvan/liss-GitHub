@@ -9,21 +9,19 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
-
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import {
-  Modal
-} from "react-bootstrap";
+import { Link} from "react-router-dom";
+import "./addressJSON.css"
+import { AirlineSeatLegroomExtra } from "@material-ui/icons";
 
-
+const initalData={
+      address:[{personAddressType:"Legal"}]
+}
 
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    width: "80%",
-    margin: "auto",
-    maxWidth: "100%"
+    minWidth: "900px",
   },
   title: {
     textAlign: "center",
@@ -48,13 +46,14 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
+
 const renderers = [
   ...materialRenderers,
 ];
 
-const Affiliations = ({ history }) => {
+const ContactPerson = ({ history }) => {
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initalData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
@@ -101,8 +100,10 @@ const Affiliations = ({ history }) => {
             />
           </div>
         </Grid>
+        
+      </Grid>
         <footer style={{"display":"flex", "justifyContent":"center"}}>
-          <Link to="/individual">
+          <Link to="/institutional">
             <Button
               variant="contained"
               color="blue"
@@ -111,12 +112,11 @@ const Affiliations = ({ history }) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link>
+          </Link> 
         </footer>
-      </Grid>
     </Fragment>
     </div>
   );
 };
 
-export default Affiliations;
+export default ContactPerson;

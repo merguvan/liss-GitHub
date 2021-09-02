@@ -1,0 +1,71 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "label": "Affiliation",
+      "elements": [
+        {
+          "type": "Control",
+          "label": "Institution",
+          "scope": "/properties/personAffiliationInstitution"
+        },
+        {
+          "type": "Group",
+          "label":"Dates",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "From",
+              "scope": "#/properties/personAffiliationFrom"
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "label": "Ongoing",
+                  "scope": "#/properties/personAffiliationOngoing"
+                },
+                {
+                  "type": "Control",
+                  "label": "To",
+                  "scope": "#/properties/personAffiliationTo",
+                  "rule": {
+                    "effect": "ENABLE",
+                    "condition": {
+                      "scope": "#/properties/personAffiliationOngoing",
+                      "schema": {
+                        "const": true
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "Type",
+              "scope": "/properties/personAffiliationType"
+            },
+            {
+              "type": "Control",
+              "label": "Other?",
+              "scope": "/properties/personAffiliationOther?"
+            }
+          ]
+        },
+        {
+          "type": "Control",
+          "label": "Country",
+          "scope": "/properties/personAffiliationCountry"
+        }
+      ]
+    }
+  ]
+}
