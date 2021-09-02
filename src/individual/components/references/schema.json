@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+      "personRefereeName": {
+        "type": "string"
+      },
+      "personTitle": {
+        "type": "string",
+        "enum":[
+          "Mr", "Ms", "Dr.", "Assist.Prof.Dr.","Assoc.Prof.Dr.","Prof.Dr.", "Other"
+        ]
+      },
+      "personRefereeInstitution": {
+        "type": "string"
+      },
+      "personRefereePosition": {
+        "type": "string"
+      },
+      "personRefereeDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "personRefereeEmail": {
+        "type": "string",
+        "format": "email"
+      },"personRefereePhoneNumber": {
+        "type": "string"
+      },
+      "etiket":{
+        "type":"string"
+      }
+  },
+  "required": []
+}

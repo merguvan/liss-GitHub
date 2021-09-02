@@ -7,50 +7,15 @@
       "elements": [
         {
           "type": "Control",
-          "label": "Institution",
+          "label": "The institution you are affiliated to",
           "scope": "/properties/personAffiliationInstitution"
-        },
-        {
-          "type": "Group",
-          "label":"Dates",
-          "elements": [
-            {
-              "type": "Control",
-              "label": "From",
-              "scope": "#/properties/personAffiliationFrom"
-            },
-            {
-              "type": "HorizontalLayout",
-              "elements": [
-                {
-                  "type": "Control",
-                  "label": "Ongoing",
-                  "scope": "#/properties/personAffiliationOngoing"
-                },
-                {
-                  "type": "Control",
-                  "label": "To",
-                  "scope": "#/properties/personAffiliationTo",
-                  "rule": {
-                    "effect": "ENABLE",
-                    "condition": {
-                      "scope": "#/properties/personAffiliationOngoing",
-                      "schema": {
-                        "const": true
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          ]
         },
         {
           "type": "HorizontalLayout",
           "elements": [
             {
               "type": "Control",
-              "label": "Type",
+              "label": "Type of the institution",
               "scope": "/properties/personAffiliationType"
             },
             {
@@ -64,6 +29,35 @@
           "type": "Control",
           "label": "Country",
           "scope": "/properties/personAffiliationCountry"
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "From",
+              "scope": "#/properties/personAffiliationFrom"
+            },
+            {
+              "type": "Control",
+              "label": "To",
+              "scope": "#/properties/personAffiliationTo",
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/personAffiliationOngoing",
+                  "schema": {
+                    "const": false
+                  }
+                }
+              }
+            },
+            {
+              "type": "Control",
+              "label": "Ongoing",
+              "scope": "#/properties/personAffiliationOngoing"
+            }
+          ]
         }
       ]
     }

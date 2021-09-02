@@ -3,7 +3,10 @@
   "elements": [
     {
       "type": "Control",
-      "scope": "#/properties/project"
+      "scope": "#/properties/project",
+      "options":{
+        "elementLabelProp": "title"
+        }
     } 
   ]
 }

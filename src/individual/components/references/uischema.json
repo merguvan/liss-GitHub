@@ -1,0 +1,68 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "label": "Reference",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "Title",
+              "scope": "/properties/personTitle"
+            },
+            {
+              "type": "Control",
+              "label": "Referee Name",
+              "scope": "/properties/personRefereeName"
+            }
+          ]
+        },
+        {
+          "type": "Control",
+          "label": "Your Institution",
+          "scope": "/properties/personRefereeInstitution"
+        },
+        {
+          "type": "Control",
+          "label": "Your Position",
+          "scope": "/properties/personRefereePosition"
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "Date",
+              "scope": "#/properties/personRefereeDate"
+            },
+            {
+              "type": "Control",
+              "label": "Email",
+              "scope": "#/properties/personRefereeEmail"
+            },
+            {
+              "type": "Control",
+              "label": "Phone",
+              "scope": "#/properties/personRefereePhoneNumber"
+            }
+          ]
+        },
+        {
+          "type":"Control",
+          "label":"Please upload your reference in the 'Attachments' section",
+          "scope":"#/properties/etiket",
+          "rule":{
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
