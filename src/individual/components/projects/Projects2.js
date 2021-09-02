@@ -45,18 +45,35 @@ const initialData = {
   project: [
     {
       project: {
-        personGrantCurrency: "",
-        personInstGrantAmount: "",
-        personProjectGrantAmount: "",
-        personProjectGrantProvider: "",
-        personProjectName: "",
-        personProjectNumber: "",
-        personProjectRole: "",
+        personGrantCurrency: "USD",
+        personInstGrantAmount: 0.1,
+        personProjectGrantAmount: "10",
+        personProjectAcronym:"Project Acronym",
+        personProjectGrantProvider: "Project Grant Provider",
+        personProjectName: "project name",
+        personProjectNumber: 10,
+        personProjectRole: "Project Manager",
         personProjectsOtherCurrency: "",
+        personProjectFrom:"2021-09-17",
+        personProjectTo:"2021-09-17",
+        personProjectsOtherCurrency:"TL",
+        personProjectWebsite:"www.liss.com.uk"
       },
     },
   ],
 };
+const initialuischema={
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/project/items",
+      "options":{
+        "elementLabelProp": "title"
+        }
+    } 
+  ]
+}
 const Projects = (props) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState(initialData);
@@ -72,13 +89,10 @@ const Projects = (props) => {
   };
 
   const handleSubmit = () => {
-    if (Object.values(projects).length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+   
+   
   };
-  console.log(jsonformsData);
+
   return (
     <Fragment>
       <Grid
@@ -91,7 +105,7 @@ const Projects = (props) => {
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}
-              uischema={uischema}
+              uischema={Object(jsonformsData.project[0])?uischema:initialuischema}
               data={jsonformsData}
               renderers={renderers}
               cells={materialCells}
@@ -100,7 +114,7 @@ const Projects = (props) => {
           </div>
         </Grid>
         <Grid item sm={12} className={classes.resetButton}>
-          <Link to="/individual">
+        
             <Button
               variant="contained"
               color="blue"
@@ -109,7 +123,7 @@ const Projects = (props) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link>
+     
         </Grid>
       </Grid>
     </Fragment>
