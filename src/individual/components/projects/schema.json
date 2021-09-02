@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "object",
+            "properties":{
+              "personProjectName":{
+                "type":"string"
+              },
+              "personProjectNumber": {
+                "type": "string"
+              },
+              "personProjectGrantProvider":{
+                "type": "string"
+              },
+              "personGrantCurrency":{
+                "type": "string"
+              },
+              "personProjectsOtherCurrency":{
+                "type": "string"
+              },
+              "personProjectGrantAmount":{
+                "type": "string"
+              },
+              "personInstGrantAmount":{
+                "type": "string"
+              },
+              "personProjectRole":{
+                "type": "string"
+              }
+            }
+          }
+          
+        }
+      }
+      
+    }
+      
+  }
+}
