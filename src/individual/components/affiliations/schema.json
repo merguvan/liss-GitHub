@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+      "personAffiliationInstitution": {
+        "type": "string"
+      },
+      "personAffiliationFrom": {
+        "type": "string",
+        "format": "date"
+      },
+      "personAffiliationOngoing": {
+        "type": "boolean"
+      },
+      "personAffiliationTo": {
+        "type": "string",
+        "format": "date"
+      },
+      "personAffiliationType": {
+        "type": "string",
+        "enum": ["Select", "Member", "Associate", "Fellow", "Honour", "Emeritus", "Volunteer", "Other"]
+      },
+      "personAffiliationOther?": {
+        "type": "string"
+      },
+      "personAffiliationCountry": {
+        "type": "string"
+      }
+  },
+  "required": []
+}

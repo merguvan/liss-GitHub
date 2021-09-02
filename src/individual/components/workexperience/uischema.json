@@ -7,6 +7,7 @@
       "elements": [
         {
           "type": "Group",
+          "label":"Dates", 
           "elements": [
             {
               "type": "Control",
@@ -30,7 +31,7 @@
                     "condition": {
                       "scope": "#/properties/ongoing",
                       "schema": {
-                        "const": true
+                        "const": false
                       }
                     }
                   }

@@ -1,0 +1,126 @@
+{
+  "type": "HorizontalLayout",
+  "elements": [
+    {
+      "type": "VerticalLayout",
+
+      "elements": [
+        {
+          "type": "Group",
+          "label": "Certificate",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "Awarded By",
+              "scope": "#/properties/personCertificationInstitutionName"
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "label": "Country",
+                  "scope": "#/properties/personCertificationInstitutionCountry"
+                },
+                {
+                  "type": "Control",
+                  "label": "City",
+                  "scope": "#/properties/personCertificationInstitutionCity"
+                }
+              ]
+            },
+            {
+              "type": "Control",
+              "label": "Web Site",
+              "scope": "#/properties/personCertificationInstitutionWebsite"
+            }
+          ]
+        },
+        {
+          "type": "Group",
+         
+          "elements": [
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateNumber",
+                  "label": "Certificate Number"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateType",
+                  "label": "Certificate Type"
+                }
+              ]
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personCertificateTopic",
+              "label": "Topic(if any)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Group",
+          
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/personCertificationInstitutionType",
+              "label": "Type of Institution"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personCertificationInstitutionStatus",
+              "label": "Status"
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateFrom",
+                  "label": "From",
+                  "format": "date"
+                },
+                {
+                  "type": "Control",
+                  "format": "date",
+                  "scope": "#/properties/personCertificateTo",
+                  "label": "To"
+                }
+              ]
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateHours",
+                  "label": "Hours"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateDays",
+                  "label": "Days"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/personCertificateGrade",
+                  "label": "Grade(if any)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

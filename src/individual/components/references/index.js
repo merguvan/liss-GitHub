@@ -1,198 +1,122 @@
-import React, { useEffect, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { JsonForms } from "@jsonforms/react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import schema from "./schema.json";
+import uischema from "./uischema.json";
 import {
-  Modal,
-  Container,
-  Button,
-  CloseButton,
-  Col,
-  Form,
-  InputGroup,
-  FormControl,
+  materialCells,
+  materialRenderers,
+} from "@jsonforms/material-renderers";
+
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import {
+  Modal
 } from "react-bootstrap";
-import { addReferenceAction } from "../../actions/reference";
-import { Link, useHistory } from "react-router-dom";
-import { connect, useSelector, useDispatch } from "react-redux";
 
-const References = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { addReference: storeAddReference } = useSelector(
-    (state) => state.referenceReducer
-  );
 
+
+const useStyles = makeStyles((_theme) => ({
+  container: {
+    padding: "1.5em",
+    width: "80%",
+    margin: "auto",
+    maxWidth: "100%"
+  },
+  title: {
+    textAlign: "center",
+    padding: "0.5em",
+  },
+  dataContent: {
+    display: "flex",
+    justifyContent: "center",
+    borderRadius: "0.25em",
+    backgroundColor: "#cecece",
+    marginBottom: "1rem",
+    padding: "1em",
+    height: "22rem",
+  },
+  resetButton: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  demoform: {
+    margin: "auto",
+    padding: "1rem",
+  },
+}));
+
+const renderers = [
+  ...materialRenderers,
+];
+
+const Affiliations = ({ history }) => {
+  const classes = useStyles();
+  const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
-  const [value, setValue] = useState(null);
-  const [show, setShow] = useState(true);
-
-  const [addReference, setAddReference] = useState(storeAddReference || {});
-  const handleAddReference = (e) => {
-    setAddReference({
-      ...addReference,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // const handleSubmit = () => {
-  //   dispatch(addReferenceAction(addReference));
-  // };
 
   useEffect(() => {
+    console.log(jsonformsData)
     if (
-      Object.values(storeAddReference).join("") !==
-      Object.values(addReference).join("")
+      Object.values(jsonformsData).join("") !==
+      Object.values(setJsonformsData).join("")
     ) {
       setSave(true);
     } else {
       setSave(false);
     }
-  }, [storeAddReference, addReference]);
+  }, [jsonformsData, setJsonformsData]);
 
-  const handleSubmit = () => {
-    if (Object.values(addReference).join("").length > 0) {
-      console.log("calisti");
+  const handleSubmit = (e) => {
+    if (Object.values(setJsonformsData).join("").length > 0) {
+      console.log("data sent");
     } else {
-      console.log("calismadi");
+      console.log("fill all the values");
     }
   };
 
+  console.log(jsonformsData);
+
   return (
-    <Modal
-      show={true}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header>
-        <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
-          <h2>References</h2>
-          <p className="modal-description">
-            Please upload your reference letters here.
-          </p>
-        </Modal.Title>
-        <CloseButton
-          onClick={() => {
-            setShow(!show);
-            history.push("/");
-          }}
-        />
-      </Modal.Header>
+    <div style={{"padding":"20px"}}>
+      <Fragment>
+      <Grid
+        container
+        justify={"center"}
+        spacing={1}
+        className={classes.container}
+      >
+        <Grid item sm={12}>
 
-      <Modal.Body className="show-grid">
-        <Container>
-          <Form.Group>
-            <Form.Row>
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Title</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="personTitle"
-                  onChange={handleAddReference}
-                  value={addReference["personTitle"]}
-                >
-                  <option value="select">Select</option>
-                  <option value="ms">Ms</option>
-                  <option value="mr">Mr</option>
-                  <option value="prof">Prof.Dr.</option>
-                  <option value="assocprof">Assoc.Prof.Dr</option>
-                  <option value="assistprof">Assist.Prof.Dr</option>
-                  <option value="dr">Dr</option>
-                </Form.Control>
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Full Name</Form.Label>
-                <FormControl
-                  name="personRefereeName"
-                  onChange={handleAddReference}
-                  id=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Position</Form.Label>
-                <FormControl
-                  name="personRefereePosition"
-                  onChange={handleAddReference}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-            </Form.Row>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Row>
-              <Col xs={12} md={12}>
-                <label htmlFor="basic-url" class="font-weight-bold">Institution</label>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    name="personRefereeInstitution"
-                    onChange={handleAddReference}
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
-                  />
-                </InputGroup>
-              </Col>
-            </Form.Row>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Row>
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Email</Form.Label>
-                <FormControl
-                  name="personRefereeEmail"
-                  onChange={handleAddReference}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Phone Number</Form.Label>
-                <FormControl
-                  name="personRefereePhoneNumber"
-                  onChange={handleAddReference}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Date Signed</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="personRefDateSigned"
-                  onChange={handleAddReference}
-                  value={addReference["personRefDateSigned"]}
-                />
-              </Col>
-            </Form.Row>
-          </Form.Group>
-
-          <Form.Row>
-            <Form.Group>
-              <Form.Label class="font-weight-bold">Reference Letter</Form.Label>
-              <Form.Control
-                type="file"
-                name="personReferenceLetter"
-                // files={addressInfo['personPhoto']}
-                onChange={(e) => {
-                  //setAddressInfo({ ...addressInfo, [e.target.name]: e.target.files[0] });
-                }}
-              />
-            </Form.Group>
-          </Form.Row>
-        </Container>
-      </Modal.Body>
-      <Modal.Footer>
-        <Link to="/">
-          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-        </Link>
-      </Modal.Footer>
-    </Modal>
+          <div className={classes.demoform}>
+            <JsonForms
+              schema={schema}
+              uischema={uischema}
+              data={jsonformsData}
+              renderers={renderers}
+              cells={materialCells}
+              onChange={({ errors, data }) => setJsonformsData(data)}
+            />
+          </div>
+        </Grid>
+        <footer style={{"display":"flex", "justifyContent":"center"}}>
+          <Link to="/individual">
+            <Button
+              variant="contained"
+              color="blue"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              {save ? "Save" : "Close"}
+            </Button>
+          </Link>
+        </footer>
+      </Grid>
+    </Fragment>
+    </div>
   );
 };
 
-export default References;
+export default Affiliations;

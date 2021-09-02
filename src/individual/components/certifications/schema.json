@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "properties": {
+      "personCertificationInstitutionName": {
+        "type": "string"
+      },
+      "personCertificationInstitutionCountry": {
+        "type": "string"
+      },
+      "personCertificationInstitutionCity": {
+        "type": "string"
+      },
+      "personCertificationInstitutionWebsite": {
+        "type": "string",
+        "format":"url"
+      },
+      "personCertificationInstitutionType": {
+        "type": "string",
+        "enum": ["University", "School", "NGO", "Private Company", "Governmental Office", "International Organization", "Other"]
+      },
+      "personCertificationInstitutionStatus": {
+        "type": "string",
+        "enum": ["Private","State"]
+      },
+      "personCertificateFrom": {
+        "type": "string",
+        "format":"date"
+      },
+      "personCertificateTo": {
+        "type": "string",
+        "format":"date"
+      },
+      "personCertificateHours": {
+        "type": "string"
+      },
+      "personCertificateDays": {
+        "type": "string"
+      },
+      "personCertificateGrade": {
+        "type": "string"
+      },
+      "personCertificateNumber": {
+        "type": "string"
+      },
+      "personCertificateType": {
+        "type": "string"
+      },
+      "personCertificateTopic": {
+        "type": "string"
+      }
+  },
+  "required": []
+}

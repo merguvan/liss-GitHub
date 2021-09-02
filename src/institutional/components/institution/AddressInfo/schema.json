@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "instStatus": {
+      "type": "string",
+      "enum":[
+        "State", "Private"
+      ]
+    },
+    "instName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your first name"
+    },
+    "instAbbreviation": {
+      "type": "string",
+      "description": "Please enter your second name"
+    },
+    "instNameNative": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Please enter your second name"
+    },
+    "instCampusNumber": {
+      "type": "string",
+      "format": "email"
+    },
+    "instCampusStreet": {
+      "type": "string"
+    },
+    "instCampusDistrict": {
+      "type": "string"
+    },
+    "instCampusPostalCode": {
+      "type": "string"
+    },
+    "instCampusCity": {
+      "type": "string"
+    }, 
+    "instCampusState": {
+      "type": "string"
+    },
+    "instCampusCountry": {
+      "type": "string"
+    },
+    "onlinePlatforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "instMediaPlatform": {
+            "type": "string",
+            "title":"Platform",
+              "enum": [
+                "Website",
+                "LinkedIn",
+                "Facebook",
+                "Twitter",
+                "WhatsApp",
+                "Instagram",
+                "GitHub",
+                "Other"
+                ]
+          },
+          "instUserName": {
+            "type": "string",
+            "format":"url",
+            "title": "Profile Link"
+          }
+        }
+      }
+    }
+  },
+
+  "required": [
+    "personName",
+    "personSurname"
+  ]
+}

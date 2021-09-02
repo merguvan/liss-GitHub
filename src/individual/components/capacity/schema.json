@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "properties": {
+    "coursesToOffer": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personCourseName": {
+            "type": "string",
+            "title": "Name"
+          },
+          "personCourseLanguage": {
+            "type": "string",
+            "title": "Language",
+            "enum": ["English", "Spanish", "German", "Dutch", "Turkish", "Kurdish"]
+          },
+          "personCourseLevel": {
+            "title": "Level",
+            "type": "string",
+            "enum": ["Bachelor's", "Master's", "Doctoral"]
+          },
+          "personCourseExperience": {
+            "type": "integer",
+            "title": "Experience (in years)"
+          },
+          "personAvailableFrom": {
+            "format": "date",
+            "type":"string",
+            "title": "Available From"
+          },
+          "personAvailableTo": {
+            "format": "date",
+            "type":"string",
+            "title": "Available To"
+          }
+        }
+      }
+    },
+    "supervision": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personThesisLevel": {
+            "title": "Level",
+            "type": "string",
+            "enum": ["Bachelor's", "Master's", "Doctoral"]
+          },
+          "personSupervisedThesisLanguage": {
+            "type":"string",
+            "title": "Language of the Thesis"
+          }
+        }
+      }
+    }
+  }
+}

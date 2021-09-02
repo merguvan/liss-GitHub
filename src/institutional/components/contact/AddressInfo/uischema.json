@@ -1,0 +1,188 @@
+{
+  "type": "Categorization",
+  "elements": [
+    {
+      "type": "Category",
+      "label": "Contact Person",
+      "elements": [
+        {
+          "type":"VerticalLayout",
+          "elements":[
+            {
+              "type": "Control",
+              "scope": "#/properties/instName",
+              "label":"Institution"
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [   
+                      
+              {
+                "type": "Control",
+                "scope": "#/properties/contactTitle",
+                "label":"Title"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/contactName",
+                "label":"First Name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/contactMiddleNames",
+                "label":"Middle Names"
+              }
+            ]
+            },
+            {
+              "type": "HorizontalLayout",
+              "elements": [                     
+                {
+                  "type": "Control",
+                  "scope": "#/properties/contactSurname",
+                  "label":"Surname"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/contactGender",
+                  "label":"Gender"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Address",
+      "elements": [
+        
+        {
+          "type":"VerticalLayout",
+          "elements":[
+            
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/address",
+              "options": {
+                "detail": {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "label": "Same as Institution",
+                      "scope": "#/properties/contactAddressSame"
+                    },
+                    {
+                      "type": "VerticalLayout",
+                      "elements": [
+                        
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactAddressType",
+                          "label": "Address Type"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactFlatNo",
+                          "label": "Flat/Apt. No"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactBuildingNo",
+                          "label": "Building No"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactStreet",
+                          "label": "Street"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactDistrict",
+                          "label": "District"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VerticalLayout",
+                      "elements": [
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactPostalCode",
+                          "label": "Postal/Zip Code"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactCity",
+                          "label": "City"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactState",
+                          "label": "State"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/contactCountry",
+                          "label": "Country"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Details",
+      "elements": [
+        {
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/phone",
+                    "options":{
+                      "elementLabelProp": "title"
+                    }
+                  }
+                ]
+            }
+          ]
+        },
+        
+        {
+          "type":"HorizontalLayout",
+          "elements":[
+            {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/email",
+                    "options":{
+                      "elementLabelProp": "title"
+                    }
+                  }
+                ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "variant": "stepper",
+    "showNavButtons": true
+  }
+}

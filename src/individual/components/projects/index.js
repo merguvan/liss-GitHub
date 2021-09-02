@@ -117,7 +117,9 @@ const Projects = (props) => {
             <Form.Group>
               <Form.Row>
                 <Col xs={12} md={12}>
-                  <Form.Label class="font-weight-bold">Grant Provider</Form.Label>
+                  <Form.Label class="font-weight-bold">
+                    Grant Provider
+                  </Form.Label>
                   <Form.Control
                     id="personProjectGrantProvider"
                     name="personProjectGrantProvider"
@@ -166,7 +168,9 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={6}>
-                  <Form.Label class="font-weight-bold">*If others (please specify)</Form.Label>
+                  <Form.Label class="font-weight-bold">
+                    *If others (please specify)
+                  </Form.Label>
                   <Form.Control
                     id="personProjectsOtherCurrency"
                     name="personProjectsOtherCurrency"
@@ -202,7 +206,9 @@ const Projects = (props) => {
                 </Col>
 
                 <Col xs={12} md={4}>
-                  <Form.Label class="font-weight-bold">Amount Involed</Form.Label>
+                  <Form.Label class="font-weight-bold">
+                    Amount Involed
+                  </Form.Label>
                   <Form.Control
                     id="personInstGrantAmount"
                     name="personInstGrantAmount"
@@ -315,7 +321,7 @@ const Projects = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/">
+        <Link to="/individual">
           <Button onClick={handleSubmit}>
             {" "}
             {Object.keys(projects).length > 0 ? "save" : "close"}{" "}

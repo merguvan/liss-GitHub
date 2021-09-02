@@ -20,6 +20,7 @@ import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
+
 import InstitutionInfo from "./institutional/components/information/InstitutionInfo";
 import InstitutionAddress from "./institutional/components/address/InstitutionAddress";
 import ContactAddress from "./institutional/components/contactAddress/ContactAddress";
@@ -28,6 +29,9 @@ import ContactPerson from "./institutional/components/contactPerson/contactPerso
 import ContactPhone from "./institutional/components/contactPhone/contactPhone";
 import ContactMail from "./institutional/components/contactMail/contactMail";
 import InstRemarks from "./institutional/components/remarks/instRemarks";
+
+import InstitutionalMainPage from "./institutional/pages/MainPage";
+import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
 
 import { useEffect } from "react";
 
@@ -46,7 +50,16 @@ function App(props) {
 
         <Switch>
           <Route path="/login_register" exact component={LoginPage} />
-          <Route path="/" exact component={MainPage} />
+          <Route path="/individual" exact component={MainPage} />
+          <Route
+            path="/institutional"
+            exact
+            component={InstitutionalMainPage}
+          />
+          <Route
+            path="/institutional/:section"
+            component={InstitutionalRouter}
+          />
           <Route path="/personalInfo/:id" component={PersonalInfoPage} />
           <Route path="/workexperience/:id" component={WorkExperienceInfo} />
           <Route path="/education/:id" component={EducationInfo} />
@@ -60,17 +73,6 @@ function App(props) {
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
-          <Route path="/institutioninfo/:id" component={InstitutionInfo} />
-          <Route
-            path="/institutionaddress/:id"
-            component={InstitutionAddress}
-          />
-          <Route path="/contactaddress/:id" component={ContactAddress} />
-          <Route path="/mediainfo/:id" component={MediaInfo} />
-          <Route path="/contactperson/:id" component={ContactPerson} />
-          <Route path="/contactphone/:id" component={ContactPhone} />
-          <Route path="/contactmail/:id" component={ContactMail} />
-          <Route path="/instremarks" component={InstRemarks} />
         </Switch>
       </div>
     );

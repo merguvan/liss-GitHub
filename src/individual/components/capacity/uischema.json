@@ -1,0 +1,19 @@
+{
+  "type":"VerticalLayout",
+  "elements":[
+    {
+      "type": "Control",
+      "scope": "#/properties/coursesToOffer",
+      "options":{
+        "elementLabelProp": "title"
+      }
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/supervision",
+      "options":{
+        "elementLabelProp": "title"
+      }
+    }
+  ]
+}

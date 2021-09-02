@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "object",
+            "properties":{
+              "personProjectName":{
+                "type":"string",
+                "title":"Project Name"
+              },
+              "personProjectNumber": {
+                "type": "string",
+                "title":"Project Number"
+              },
+              "personProjectAcronym":{
+                "type":"string",
+                "title":"Acronym"
+              },
+              "personProjectRole":{
+                "type": "string",
+                "title":"Your Role in the Project",
+                "enum":[
+                 "Project Manager", "Institutional Coordinator", "Technical Staff", "Administrative Staff", "Accountant", "Other"
+                ]
+              },
+              "personProjectWebsite":{
+                "type":"string",
+                "format":"url",
+                "title":"Project Website"
+              },
+              "personProjectFrom":{
+                "type":"string",
+                "format":"date",
+                "title":"Start Date"
+              },
+              "personProjectTo":{
+                "type":"string",
+                "format":"date",
+                "title":"(Estimated) End Date"
+              },
+              "personProjectGrantProvider":{
+                "type": "string",
+                "title":"Grant Provider"
+              },
+              "personGrantCurrency":{
+                "type": "string",
+                "title":"Grant Currency",
+                "enum":[
+                  "EUR",
+                  "USD",
+                  "GBP",
+                  "Other"
+                ]
+              },
+              "personProjectsOtherCurrency":{
+                "type": "string",
+                "title":"Other Currency (if any)"
+              },
+              "personProjectGrantAmount":{
+                "type": "number",
+                "title":"Total Project Grant Amount"
+              },
+              "personInstGrantAmount":{
+                "type": "number",
+                "title":"Institutional Grant Amount"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

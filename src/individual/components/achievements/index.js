@@ -20,7 +20,9 @@ import { Link} from "react-router-dom";
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
-    minWidth: "900px",
+    width: "80%",
+    margin: "auto",
+    maxWidth: "100%"
   },
   title: {
     textAlign: "center",
@@ -102,7 +104,7 @@ const ContactPerson = ({ history }) => {
         
       </Grid>
         <footer style={{"display":"flex", "justifyContent":"center"}}>
-          <Link to="/">
+          <Link to="/individual">
             <Button
               variant="contained"
               color="blue"
