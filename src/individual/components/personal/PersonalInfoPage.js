@@ -9,8 +9,6 @@ export default function PersonalInfo(props) {
   switch (+id) {
     case 1:
       return <AddressInfo />;
-
-
     default:
       <Redirect to="/" />;
   }

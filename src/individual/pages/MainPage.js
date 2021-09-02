@@ -11,6 +11,8 @@ import CapacitySummary from "../components/capacity/CapacitySummary";
 import ReferencesSummary from "../components/references/ReferencesSummary";
 import RemarksSummary from "../components/remarks/RemarksSummary";
 import ProjectsSummary from "../components/projects/ProjectsSummary";
+// import InstSummary from "../../institutional/components/instSummary/instSummary";
+
 
 export default function MainPage() {
   return (
@@ -26,6 +28,7 @@ export default function MainPage() {
       <CapacitySummary />
       <ReferencesSummary />
       <RemarksSummary />
+      {/* <InstSummary/> */}
       <Link to="/login_register">
         <button type="button">Login</button>
       </Link>

@@ -20,9 +20,19 @@ import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
-/////institutional part
+
+import InstitutionInfo from "./institutional/components/information/InstitutionInfo";
+import InstitutionAddress from "./institutional/components/address/InstitutionAddress";
+import ContactAddress from "./institutional/components/contactAddress/ContactAddress";
+import MediaInfo from "./institutional/components/mediaInfo/MediaInfo";
+import ContactPerson from "./institutional/components/contactPerson/contactPerson";
+import ContactPhone from "./institutional/components/contactPhone/contactPhone";
+import ContactMail from "./institutional/components/contactMail/contactMail";
+import InstRemarks from "./institutional/components/remarks/instRemarks";
+
 import InstitutionalMainPage from "./institutional/pages/MainPage";
 import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
+
 import { useEffect } from "react";
 
 function App(props) {
