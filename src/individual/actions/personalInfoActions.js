@@ -11,8 +11,9 @@ import {
 } from "../actionTypes/personalInfo";
 import axios from "axios";
 
-const id = "sadda";
-const token = "dasdad";
+
+const token = "asdasda";
+const id = 1234;
 
 export const addPersonalInfo = (data) => async (dispatch, getState) => {
   try {
