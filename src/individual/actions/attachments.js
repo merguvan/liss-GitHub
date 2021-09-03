@@ -1,26 +1,26 @@
 import {
-  ADD_ATTACHMENT_INFO_FULFILLED,
-  ADD_ATTACHMENT_INFO_REJECTED,
-  ADD_ATTACHMENT_INFO_PENDING,
-  UPDATE_ATTACHMENT_INFO_PENDING,
-  UPDATE_ATTACHMENT_INFO_FULFILLED,
-  UPDATE_ATTACHMENT_INFO_REJECTED,
-  GET_ATTACHMENT_INFO_PENDING,
-  GET_ATTACHMENT_INFO_FULFILLED,
-  GET_ATTACHMENT_INFO_REJECTED,
-} from "../actionTypes/attachments";
+  ADD_REFERENCE_INFO_FULFILLED,
+  ADD_REFERENCE_INFO_REJECTED,
+  ADD_REFERENCE_INFO_PENDING,
+  UPDATE_REFERENCE_INFO_PENDING,
+  UPDATE_REFERENCE_INFO_FULFILLED,
+  UPDATE_REFERENCE_INFO_REJECTED,
+  GET_REFERENCE_INFO_PENDING,
+  GET_REFERENCE_INFO_FULFILLED,
+  GET_REFERENCE_INFO_REJECTED,
+} from "../actionTypes/reference";
 import axios from "axios";
 
-export const addAttachmentInfo = (data) => async (dispatch, getState) => {
+export const addReferenceInfo = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 
   try {
     dispatch({
-      type: ADD_ATTACHMENT_INFO_PENDING,
+      type: ADD_REFERENCE_INFO_PENDING,
     });
 
     const { data: res } = await axios.post(
-      `http://localhost:5000/user/attachmentinfo/`,
+      `http://localhost:5000/user/referenceinfo/`,
       { ...data, user: id },
       {
         headers: {
@@ -29,7 +29,7 @@ export const addAttachmentInfo = (data) => async (dispatch, getState) => {
       }
     );
     dispatch({
-      type: ADD_ATTACHMENT_INFO_FULFILLED,
+      type: ADD_REFERENCE_INFO_FULFILLED,
       payload: res,
     });
   } catch ({
@@ -38,20 +38,20 @@ export const addAttachmentInfo = (data) => async (dispatch, getState) => {
     },
   }) {
     dispatch({
-      type: ADD_ATTACHMENT_INFO_REJECTED,
+      type: ADD_REFERENCE_INFO_REJECTED,
       payload: message,
     });
   }
 };
 
-export const updateAttachmentInfo = (data) => async (dispatch, getState) => {
+export const updateReferenceInfo = (data) => async (dispatch, getState) => {
   const { token, id } = getState().userLogin;
   try {
     dispatch({
-      type: UPDATE_ATTACHMENT_INFO_PENDING,
+      type: UPDATE_REFERENCE_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/attachmentinfo/`,
+      `http://localhost:5000/user/referenceinfo/`,
       { data },
       {
         headers: {
@@ -60,25 +60,25 @@ export const updateAttachmentInfo = (data) => async (dispatch, getState) => {
       }
     );
     dispatch({
-      type: UPDATE_ATTACHMENT_INFO_FULFILLED,
+      type: UPDATE_REFERENCE_INFO_FULFILLED,
       payload: res,
     });
   } catch (error) {
     dispatch({
-      type: UPDATE_ATTACHMENT_INFO_REJECTED,
+      type: UPDATE_REFERENCE_INFO_REJECTED,
       payload: error,
     });
   }
 };
-export const getAttachmentInfo = (data) => async (dispatch, getState) => {
+export const getReferenceInfo = (data) => async (dispatch, getState) => {
   const { token } = getState().userLogin;
 
   try {
     dispatch({
-      type: GET_ATTACHMENT_INFO_PENDING,
+      type: GET_REFERENCE_INFO_PENDING,
     });
     const { data: res } = await axios.patch(
-      `http://localhost:5000/user/attachmentinfo/`,
+      `http://localhost:5000/user/referenceinfo/`,
       { data },
       {
         headers: {
@@ -87,12 +87,12 @@ export const getAttachmentInfo = (data) => async (dispatch, getState) => {
       }
     );
     dispatch({
-      type: GET_ATTACHMENT_INFO_FULFILLED,
+      type: GET_REFERENCE_INFO_FULFILLED,
       payload: res,
     });
   } catch (error) {
     dispatch({
-      type: GET_ATTACHMENT_INFO_REJECTED,
+      type: GET_REFERENCE_INFO_REJECTED,
       payload: error,
     });
   }
