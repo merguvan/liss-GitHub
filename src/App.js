@@ -3,7 +3,6 @@ import "./App.css";
 
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
-import IndividualMainPage from "./individual/pages/MainPage";
 import PersonalInfoPage from "./individual/components/personal/PersonalInfoPage";
 import AcademicInfo from "./individual/components/academic/AcademicInfoPage";
 import WorkExperienceInfo from "./individual/components/workexperience/WorkExperienceInfo";
@@ -20,7 +19,8 @@ import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
-
+import IndividualMainPage from "./individual/pages/IndividualMainPage";
+import IndividualRouter from "./individual/pages/IndividualRouter";
 import InstitutionalMainPage from "./institutional/pages/MainPage";
 import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
 import { useEffect } from "react";
@@ -29,33 +29,34 @@ function App(props) {
   const history = useHistory();
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  // if (userInfo) {
-  //   const { userType } = userInfo;
-  //   if (userType === "individual") {
-  //     <Route path="/individual" exact component={IndividualMainPage} />;
-  //   }
-  //   if (userType === "institutional") {
-  //     return (
-  //       <div className="app">
-  //         <Header />
-  //         <Switch>
-  //           <Route
-  //             path="/institutional"
-  //             exact
-  //             component={InstitutionalMainPage}
-  //           />
-  //           <Route
-  //             path="/institutional/:section"
-  //             component={InstitutionalRouter}
-  //           />
-  //         </Switch>
-  //       </div>
-  //     );
-  //   }
-  //   if (userType === "admin") {
-  //   }
-  // } else {
-  // }
+  if (userInfo) {
+    const { userType } = userInfo;
+    if (userType === "individual") {
+      <Route path="/individual" exact component={IndividualMainPage} />;
+      <Route path="/individual/:section" component={IndividualRouter} />;
+    }
+    if (userType === "institutional") {
+      return (
+        <div className="app">
+          <Header />
+          <Switch>
+            <Route
+              path="/institutional"
+              exact
+              component={InstitutionalMainPage}
+            />
+            <Route
+              path="/institutional/:section"
+              component={InstitutionalRouter}
+            />
+          </Switch>
+        </div>
+      );
+    }
+    if (userType === "admin") {
+    }
+  } else {
+  }
 
   if (true) {
     return (
