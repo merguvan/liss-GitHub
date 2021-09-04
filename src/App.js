@@ -29,34 +29,34 @@ function App(props) {
   const history = useHistory();
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  if (userInfo) {
-    const { userType } = userInfo;
-    if (userType === "individual") {
-      <Route path="/individual" exact component={IndividualMainPage} />;
-      <Route path="/individual/:section" component={IndividualRouter} />;
-    }
-    if (userType === "institutional") {
-      return (
-        <div className="app">
-          <Header />
-          <Switch>
-            <Route
-              path="/institutional"
-              exact
-              component={InstitutionalMainPage}
-            />
-            <Route
-              path="/institutional/:section"
-              component={InstitutionalRouter}
-            />
-          </Switch>
-        </div>
-      );
-    }
-    if (userType === "admin") {
-    }
-  } else {
-  }
+  // if (userInfo) {
+  //   const { userType } = userInfo;
+  //   if (userType === "individual") {
+  //     <Route path="/individual" exact component={IndividualMainPage} />;
+  //     <Route path="/individual/:section" component={IndividualRouter} />;
+  //   }
+  //   if (userType === "institutional") {
+  //     return (
+  //       <div className="app">
+  //         <Header />
+  //         <Switch>
+  //           <Route
+  //             path="/institutional"
+  //             exact
+  //             component={InstitutionalMainPage}
+  //           />
+  //           <Route
+  //             path="/institutional/:section"
+  //             component={InstitutionalRouter}
+  //           />
+  //         </Switch>
+  //       </div>
+  //     );
+  //   }
+  //   if (userType === "admin") {
+  //   }
+  // } else {
+  // }
 
   if (true) {
     return (
