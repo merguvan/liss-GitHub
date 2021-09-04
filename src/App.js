@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
-import MainPage from "./individual/pages/MainPage";
+import IndividualMainPage from "./individual/pages/MainPage";
 import PersonalInfoPage from "./individual/components/personal/PersonalInfoPage";
 import AcademicInfo from "./individual/components/academic/AcademicInfoPage";
 import WorkExperienceInfo from "./individual/components/workexperience/WorkExperienceInfo";
@@ -29,9 +29,33 @@ function App(props) {
   const history = useHistory();
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
-  // useEffect(() => {
-  //   history.push("/");
-  // }, [userInfo]);
+  // if (userInfo) {
+  //   const { userType } = userInfo;
+  //   if (userType === "individual") {
+  //     <Route path="/individual" exact component={IndividualMainPage} />;
+  //   }
+  //   if (userType === "institutional") {
+  //     return (
+  //       <div className="app">
+  //         <Header />
+  //         <Switch>
+  //           <Route
+  //             path="/institutional"
+  //             exact
+  //             component={InstitutionalMainPage}
+  //           />
+  //           <Route
+  //             path="/institutional/:section"
+  //             component={InstitutionalRouter}
+  //           />
+  //         </Switch>
+  //       </div>
+  //     );
+  //   }
+  //   if (userType === "admin") {
+  //   }
+  // } else {
+  // }
 
   if (true) {
     return (
@@ -40,7 +64,7 @@ function App(props) {
 
         <Switch>
           <Route path="/login_register" exact component={LoginPage} />
-          <Route path="/individual" exact component={MainPage} />
+          <Route path="/individual" exact component={IndividualMainPage} />
           <Route
             path="/institutional"
             exact
