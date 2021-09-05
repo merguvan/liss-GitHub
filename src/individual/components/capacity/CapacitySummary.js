@@ -106,7 +106,7 @@ function Capacity(props) {
           <p>Supervision Possibilities</p>
         </div>
       </h6>
-      <div className="person-summary-body-icon-container">
+      <div className="person-summary-body-icon-container person-summary-body-context-container_level_2">
         <span>
           <Link to={"/"}>
             <FiEdit />

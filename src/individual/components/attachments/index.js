@@ -36,16 +36,16 @@ const Attachments = () => {
   //   dispatch(addReferenceAction(addReference));
   // };
 
-  useEffect(() => {
-    if (
-      Object.values(storeAddAttachment).join("") !==
-      Object.values(addAttachment).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [storeAddAttachment, addAttachment]);
+  // useEffect(() => {
+  //   if (
+  //     Object.values(storeAddAttachment).join("") !==
+  //     Object.values(addAttachment).join("")
+  //   ) {
+  //     setSave(true);
+  //   } else {
+  //     setSave(false);
+  //   }
+  // }, [storeAddAttachment, addAttachment]);
 
   const handleSubmit = () => {
     if (Object.values(addAttachment).join("").length > 0) {
@@ -66,7 +66,7 @@ const Attachments = () => {
         <Modal.Title className="modal-title" id="contained-modal-title-vcenter">
           <h2>Attachments</h2>
           <p className="modal-description">
-            Please upload your reference letters here.
+            Please upload your attachments here.
           </p>
         </Modal.Title>
         <CloseButton
@@ -81,42 +81,23 @@ const Attachments = () => {
         <Container>
           <Form.Group>
             <Form.Row>
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Title</Form.Label>
+              <Col xs={12} md={12}>
+                <Form.Label class="font-weight-bold">Type</Form.Label>
                 <Form.Control
                   as="select"
-                  name="personTitle"
+                  name="personAttachmentType"
                   onChange={handleAddAttachment}
-                  value={addAttachment["personTitle"]}
+                  value={addAttachment["personAttachmentType"]}
                 >
                   <option value="select">Select</option>
-                  <option value="ms">Ms</option>
-                  <option value="mr">Mr</option>
-                  <option value="prof">Prof.Dr.</option>
-                  <option value="assocprof">Assoc.Prof.Dr</option>
-                  <option value="assistprof">Assist.Prof.Dr</option>
-                  <option value="dr">Dr</option>
+                  <option value="cv">CV</option>
+                  <option value="dbs">DBS</option>
+                  <option value="md">Medical Declaration</option>
+                  <option value="photo">Photo</option>
+                  <option value="diploma">Diploma</option>
+                  <option value="cert">Certificate</option>
+                  <option value="ref">Reference Letter</option>
                 </Form.Control>
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Full Name</Form.Label>
-                <FormControl
-                  name="personRefereeName"
-                  onChange={handleAddAttachment}
-                  id=""
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Position</Form.Label>
-                <FormControl
-                  name="personRefereePosition"
-                  onChange={handleAddAttachment}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
               </Col>
             </Form.Row>
           </Form.Group>
@@ -124,10 +105,10 @@ const Attachments = () => {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={12}>
-                <label htmlFor="basic-url" class="font-weight-bold">Institution</label>
+                <label htmlFor="basic-url" class="font-weight-bold">Description</label>
                 <InputGroup className="mb-3">
                   <FormControl
-                    name="personRefereeInstitution"
+                    name="personAttachmentDescription"
                     onChange={handleAddAttachment}
                     id="basic-url"
                     aria-describedby="basic-addon3"
@@ -137,46 +118,13 @@ const Attachments = () => {
             </Form.Row>
           </Form.Group>
 
-          <Form.Group>
-            <Form.Row>
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Email</Form.Label>
-                <FormControl
-                  name="personRefereeEmail"
-                  onChange={handleAddAttachment}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Phone Number</Form.Label>
-                <FormControl
-                  name="personRefereePhoneNumber"
-                  onChange={handleAddAttachment}
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                />
-              </Col>
-
-              <Col xs={12} md={4}>
-                <Form.Label class="font-weight-bold">Date Signed</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="personRefDateSigned"
-                  onChange={handleAddAttachment}
-                  value={addAttachment["personRefDateSigned"]}
-                />
-              </Col>
-            </Form.Row>
-          </Form.Group>
-
+          
           <Form.Row>
             <Form.Group>
-              <Form.Label class="font-weight-bold">Attachment Letter</Form.Label>
+              <Form.Label class="font-weight-bold">Attachment</Form.Label>
               <Form.Control
                 type="file"
-                name="personAttachmentLetter"
+                name="personAttachment"
                 // files={addressInfo['personPhoto']}
                 onChange={(e) => {
                   //setAddressInfo({ ...addressInfo, [e.target.name]: e.target.files[0] });
@@ -196,3 +144,14 @@ const Attachments = () => {
 };
 
 export default Attachments;
+// import React from 'react'
+
+// function index() {
+//   return (
+//     <div>
+//       Hello
+//     </div>
+//   )
+// }
+
+// export default index

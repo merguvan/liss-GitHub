@@ -9,35 +9,21 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 
 const references = [
   {
-    referenceId: "1",
-    personRefereeName: "Isaac Newton",
-    personTitle: "Sir",
-    personRefereeInstitution: "University of Amsterdam",
-    personRefereePosition: "Prof.",
-    personRefereeDate: "20-02-2020",
-    personRefereeEmail: "isaac@gmail.com",
-    personRefereePhoneNumber: "(012)34567890",
+    personAttachmentType: "CV",
+    personAttachmentDescription: "CV 2020",
   },
   {
-    referenceId: "2",
-    personRefereeName: "Albert Einstein",
-    personTitle: "Mr.",
-    personRefereeInstitution: "Goethe University",
-    personRefereePosition: "Prof.",
-    personRefereeDate: "20-02-2020",
-    personRefereeEmail: "albert@gmail.com",
-    personRefereePhoneNumber: "(098)76543210",
+    personAttachmentType: "Photo",
+    personAttachmentDescription: "Photo of me 2020",
   },
   {
-    referenceId: "3",
-    personRefereeName: "Stephen Hawking",
-    personTitle: "Mr.",
-    personRefereeInstitution: "Harvard University",
-    personRefereePosition: "Prof.Dr.",
-    personRefereeDate: "20-02-2020",
-    personRefereeEmail: "stephen@gmail.com",
-    personRefereePhoneNumber: "(024)68135790",
+    personAttachmentType: "Diploma",
+    personAttachmentDescription: "University Diploma",
   },
+  {
+    personAttachmentType: "Medical Declaration",
+    personAttachmentDescription: "This one cost me a lot",
+  }
 ];
 function Attachments(props) {
   return (
@@ -49,7 +35,7 @@ function Attachments(props) {
             <div className="person-summary-body-context-container">
               <h6 id="work_h6">
                 <div className="person-summary-body-context-container_level_1">
-                  <p>Attachments {i.referenceId}</p>
+                  <p>{i.personAttachmentType}</p>
                 </div>
               </h6>
               <div className="person-summary-body-icon-container">
@@ -65,12 +51,11 @@ function Attachments(props) {
               <div className="person-summary-body-context-container_level_2">
                 <p>
                   <em>
-                    {i.personRefereePosition} {i.personRefereeName},{" "}
-                    {i.personRefereeInstitution}
+                    {i.personAttachmentDescription}
                   </em>
                 </p>
               </div>
-            </div>
+            </div> <hr/>
           </div>
         );
       })}

@@ -6,8 +6,8 @@ import RemarksSummary from "../components/remarks/RemarksSummary";
 export default function MainPage() {
   return (
     <div className="mainPage">
-      <ContactSummary />
       <InstitutionSummary />
+      <ContactSummary />
       <RemarksSummary />
       <Link to="/login_register">
         <button type="button">Login</button>

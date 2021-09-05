@@ -20,6 +20,9 @@ h6 {
   margin:0px !important;
 }
 
+hr {
+  margin: 8px !important;
+}
 .person-summary-body-icon-container{
   max-width:80px;
   float:right;
@@ -32,6 +35,7 @@ h6 {
   padding-left: 24px;
   font-size:16px;
 }
+
 .person-summary-body-context-container_level_2 {
   padding-left: 36px;
   font-size:14px;

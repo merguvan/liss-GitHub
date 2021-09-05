@@ -11,6 +11,7 @@ import CapacitySummary from "../components/capacity/CapacitySummary";
 import ReferencesSummary from "../components/references/ReferencesSummary";
 import RemarksSummary from "../components/remarks/RemarksSummary";
 import ProjectsSummary from "../components/projects/ProjectsSummary";
+import AttachmentsSummary from "../components/attachments/AttachmentsSummary";
 // import InstSummary from "../../institutional/components/instSummary/instSummary";
 
 
@@ -27,6 +28,7 @@ export default function MainPage() {
       <ProjectsSummary />
       <CapacitySummary />
       <ReferencesSummary />
+      <AttachmentsSummary/>
       <RemarksSummary />
       {/* <InstSummary/> */}
       <Link to="/login_register">
