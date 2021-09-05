@@ -72,7 +72,7 @@ const Attachments = () => {
         <CloseButton
           onClick={() => {
             setShow(!show);
-            history.push("/");
+            history.push("/individual");
           }}
         />
       </Modal.Header>

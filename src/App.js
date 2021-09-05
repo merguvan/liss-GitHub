@@ -18,6 +18,7 @@ import LoginPage from "./individual/pages/Login/LoginPage";
 import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
+import AttachmentsInfo from "./individual/components/attachments/AttachmentsInfo"
 import Profile from "./individual/pages/Profile";
 import IndividualMainPage from "./individual/pages/IndividualMainPage";
 import IndividualRouter from "./individual/pages/IndividualRouter";
@@ -85,6 +86,7 @@ function App(props) {
           <Route path="/projects/:id" component={ProjectsInfo} />
           <Route path="/capacity/:id" component={CapacityInfo} />
           <Route path="/references/:id" component={ReferencesInfo} />
+          <Route path="/attachments/:id" component={AttachmentsInfo} />
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
