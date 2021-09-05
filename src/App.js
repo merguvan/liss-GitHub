@@ -20,7 +20,7 @@ import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
 import Profile from "./individual/pages/Profile";
-import AttachmentsInfo from "./individual/components/attachments/AttachmentsInfo"
+
 import InstitutionalMainPage from "./institutional/pages/MainPage";
 import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
 import { useEffect } from "react";
@@ -41,8 +41,15 @@ function App(props) {
         <Switch>
           <Route path="/login_register" exact component={LoginPage} />
           <Route path="/individual" exact component={MainPage} />
-          <Route path="/institutional" exact component={InstitutionalMainPage} />
-          <Route path="/institutional/:section" component={InstitutionalRouter} />
+          <Route
+            path="/institutional"
+            exact
+            component={InstitutionalMainPage}
+          />
+          <Route
+            path="/institutional/:section"
+            component={InstitutionalRouter}
+          />
           <Route path="/personalInfo/:id" component={PersonalInfoPage} />
           <Route path="/workexperience/:id" component={WorkExperienceInfo} />
           <Route path="/education/:id" component={EducationInfo} />
@@ -54,7 +61,6 @@ function App(props) {
           <Route path="/capacity/:id" component={CapacityInfo} />
           <Route path="/references/:id" component={ReferencesInfo} />
           <Route path="/remarks/:id/" component={RemarksInfo} />
-          <Route path="/attachments/:id/" component={AttachmentsInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
           <Route path="/profile" component={Profile} />
         </Switch>
