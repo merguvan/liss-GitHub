@@ -1,6 +1,9 @@
 {
   "type": "object",
   "properties": {
+    "deneme":{
+      "type":"string"
+    },
     "instName": {
       "type": "string",
       "minLength": 2,
@@ -37,7 +40,7 @@
     },
     "address": {
       "type": "array",
-      "title":"Address (please click the address type on the numbered list)",
+      "title":"Address",
       "items": {
         "type": "object",
         "title": "Users",

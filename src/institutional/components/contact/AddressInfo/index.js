@@ -15,7 +15,7 @@ import "./addressJSON.css"
 import { AirlineSeatLegroomExtra } from "@material-ui/icons";
 
 const initalData={
-      address:[{personAddressType:"Legal"}]
+      address:[{contactAddressType:"Legal"}]
 }
 
 const useStyles = makeStyles((_theme) => ({

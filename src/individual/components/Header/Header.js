@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
-import logo from "../../../logo.png";
+import logo from "../../../deneme1.png";
 import { logout } from "../../actions/userLogin";
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Header = () => {
               <img
                 src={logo}
                 height="50px"
-                className="d-inline-block align-top"
+                className="companyLogo"
                 alt="React Bootstrap logo"
               />
             </Navbar.Brand>
