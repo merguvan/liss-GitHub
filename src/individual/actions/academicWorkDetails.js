@@ -8,18 +8,18 @@ import {
   GET_ACADEMIC_INFO_PENDING,
   GET_ACADEMIC_INFO_FULFILLED,
   GET_ACADEMIC_INFO_REJECTED,
-} from "../actionTypes/academicWorkDetails";
+} from "../actionTypes/academicInfo";
 import axios from "axios";
 
 export const addAcademicWorkDetails = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
-
+  console.log(data);
   try {
     dispatch({
       type: ADD_ACADEMIC_INFO_PENDING,
     });
 
-    const { data: res } = await axios.post(
+    const res = await axios.post(
       `http://localhost:5000/user/academicWorkDetails`,
       { ...data, user: id },
       {
@@ -44,7 +44,10 @@ export const addAcademicWorkDetails = (data) => async (dispatch, getState) => {
   }
 };
 
-export const updateAcademicWorkDetails = (data) => async (dispatch, getState) => {
+export const updateAcademicWorkDetails = (data) => async (
+  dispatch,
+  getState
+) => {
   const { token, id } = getState().userLogin;
   try {
     dispatch({

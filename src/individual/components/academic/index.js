@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
 import schema from "./schema.json";
 import uischema from "./uischema.json";
 import {
@@ -11,12 +11,8 @@ import {
 } from "@jsonforms/material-renderers";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import {
-  Modal
-} from "react-bootstrap";
-
-
+import { useDispatch } from "react-redux";
+import { addAcademicWorkDetails } from "../../actions/academicWorkDetails";
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -46,17 +42,16 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const ContactPerson = ({ history }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData)
+    console.log(jsonformsData);
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -68,18 +63,12 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    console.log(jsonformsData, "handleSubmit");
+    dispatch(addAcademicWorkDetails(jsonformsData));
   };
 
-  console.log(jsonformsData);
-
   return (
-
-      <Fragment>
+    <Fragment>
       <Grid
         container
         justify={"center"}
@@ -87,7 +76,6 @@ const ContactPerson = ({ history }) => {
         className={classes.container}
       >
         <Grid item sm={12}>
-
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}
@@ -100,20 +88,17 @@ const ContactPerson = ({ history }) => {
           </div>
         </Grid>
         <Grid item sm={12} className={classes.resetButton}>
-          <Link to="/individual">
-            <Button
-              variant="contained"
-              color="blue"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              {save ? "Save" : "Close"}
-            </Button>
-          </Link>
+          <Button
+            variant="contained"
+            color="blue"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            {save ? "Save" : "Close"}
+          </Button>
         </Grid>
       </Grid>
     </Fragment>
-
   );
 };
 

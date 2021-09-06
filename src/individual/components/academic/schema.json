@@ -22,7 +22,6 @@
           },
           "personPublicationURL": {
             "type": "string",
-            "format":"url",
             "title": "Web Link"
           },
           "personPublicationLanguage": {
