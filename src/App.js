@@ -18,7 +18,7 @@ import LoginPage from "./individual/pages/Login/LoginPage";
 import Header from "./individual/components/Header/Header";
 import { useSelector } from "react-redux";
 import GdprConsent from "./individual/pages/GdprConsent";
-import AttachmentsInfo from "./individual/components/attachments/AttachmentsInfo"
+import AttachmentsInfo from "./individual/components/attachments/AttachmentsInfo";
 import Profile from "./individual/pages/Profile";
 import IndividualMainPage from "./individual/pages/IndividualMainPage";
 import IndividualRouter from "./individual/pages/IndividualRouter";
