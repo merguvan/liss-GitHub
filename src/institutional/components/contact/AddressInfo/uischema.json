@@ -61,7 +61,18 @@
         {
           "type":"VerticalLayout",
           "elements":[
-            
+            {
+              "type":"Control",
+              "label":"Please click the 'Legal' type below to start entering the address. Click '+' for more.",
+              "scope":"#/properties/deneme",
+              "rule":{
+                "effect": "DISABLE",
+                "condition": {
+                  "scope": "#",
+                  "schema": {}
+                }
+              }
+            },
             {
               "type": "ListWithDetail",
               "scope": "#/properties/address",
