@@ -47,7 +47,7 @@ const certifications = [
 
 function Certifications(props) {
   return (
-    <Summary headerTitle="Certifications" url="/certifications/1">
+    <Summary headerTitle="Certifications" url="/individual/certifications">
       {certifications.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">

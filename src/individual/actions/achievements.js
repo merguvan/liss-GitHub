@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const addAchivements = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
-
+  console.log(data, "=>data");
   try {
     dispatch({
       type: ADD_ACHIEVEMENTS_INFO_PENDING,

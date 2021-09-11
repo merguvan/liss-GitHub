@@ -23,9 +23,9 @@ const achievements = [
 ];
 
 function Achievements(props) {
-  window.scrollTo(0, 1960)
+  window.scrollTo(0, 1960);
   return (
-    <Summary headerTitle="Achievements" url="/Achievements/1">
+    <Summary headerTitle="Achievements" url="/individual/achievements">
       {achievements.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">

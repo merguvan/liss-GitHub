@@ -10,13 +10,15 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link} from "react-router-dom";
-import "./addressJSON.css"
+import { Link } from "react-router-dom";
+import "./addressJSON.css";
 import { AirlineSeatLegroomExtra } from "@material-ui/icons";
+import { addPersonalInfo } from "../../../actions/personalInfoActions";
+import { useDispatch } from "react-redux";
 
-const initalData={
-      address:[{personAddressType:"Legal"}]
-}
+const initalData = {
+  address: [{ personAddressType: "Legal" }],
+};
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -46,18 +48,16 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const ContactPerson = ({ history }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState(initalData);
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData)
+    console.log(jsonformsData);
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -69,40 +69,32 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    dispatch(addPersonalInfo(jsonformsData));
   };
 
-  console.log(jsonformsData);
-
   return (
-    <div style={{"padding":"20px"}}>
+    <div style={{ padding: "20px" }}>
       <Fragment>
-      <Grid
-        container
-        justify={"center"}
-        spacing={1}
-        className={classes.container}
-      >
-        <Grid item sm={12}>
-
-          <div className={classes.demoform}>
-            <JsonForms
-              schema={schema}
-              uischema={uischema}
-              data={jsonformsData}
-              renderers={renderers}
-              cells={materialCells}
-              onChange={({ errors, data }) => setJsonformsData(data)}
-            />
-          </div>
+        <Grid
+          container
+          justify={"center"}
+          spacing={1}
+          className={classes.container}
+        >
+          <Grid item sm={12}>
+            <div className={classes.demoform}>
+              <JsonForms
+                schema={schema}
+                uischema={uischema}
+                data={jsonformsData}
+                renderers={renderers}
+                cells={materialCells}
+                onChange={({ errors, data }) => setJsonformsData(data)}
+              />
+            </div>
+          </Grid>
         </Grid>
-        
-      </Grid>
-        <footer style={{"display":"flex", "justifyContent":"center"}}>
+        <footer style={{ display: "flex", justifyContent: "center" }}>
           <Link to="/individual">
             <Button
               variant="contained"
@@ -112,9 +104,9 @@ const ContactPerson = ({ history }) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link> 
+          </Link>
         </footer>
-    </Fragment>
+      </Fragment>
     </div>
   );
 };

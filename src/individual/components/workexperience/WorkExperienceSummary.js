@@ -57,7 +57,7 @@ const we3 = {
 const myArray = [we, we2, we3];
 function WorkExperience(props) {
   return (
-    <Summary headerTitle="Work Experience" url="/workexperience/1">
+    <Summary headerTitle="Work Experience" url="/individual/workexperience">
       {myArray.map((we, idx) => {
         return (
           <div key={idx} className="work_experience_block">

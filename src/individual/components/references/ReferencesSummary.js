@@ -41,7 +41,7 @@ const references = [
 ];
 function References(props) {
   return (
-    <Summary headerTitle="References" url="/references/1">
+    <Summary headerTitle="References" url="/individual/references">
       {references.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">

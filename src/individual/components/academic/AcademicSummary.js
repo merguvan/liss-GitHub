@@ -21,7 +21,7 @@ const academic = [
 ];
 function AcademicWork(props) {
   return (
-    <Summary headerTitle="Academic" url="/academicInfo/1">
+    <Summary headerTitle="Academic" url="/individual/academicInfo">
       {academic.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">
