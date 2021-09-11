@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const addAttachmentInfo = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
-
+  console.log(data, "attaccchments");
   try {
     dispatch({
       type: ADD_ATTACHMENT_INFO_PENDING,

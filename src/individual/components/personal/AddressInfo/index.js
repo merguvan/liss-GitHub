@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
 import schema from "./schema.json";
 import uischema from "./uischema.json";
 import {
@@ -12,7 +12,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import "./addressJSON.css";
-import { AirlineSeatLegroomExtra } from "@material-ui/icons";
+
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";
 
