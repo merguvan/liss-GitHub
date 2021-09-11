@@ -39,7 +39,7 @@ function Capacity(props) {
   return (
     <Summary
       headerTitle="Teaching / Thesis Supervision Possibilities"
-      url="/capacity/1"
+      url="/individual/capacity"
     >
       {capacity.map((i, index) => {
         return (

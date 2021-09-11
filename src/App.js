@@ -76,20 +76,24 @@ function App(props) {
             path="/institutional/:section"
             component={InstitutionalRouter}
           />
-          <Route path="/personalInfo/:id" component={PersonalInfoPage} />
-          <Route path="/workexperience/:id" component={WorkExperienceInfo} />
+          <Route path="/individual/:section" component={IndividualRouter} />
+          {/* <Route
+            path="/individual/personalInfo/:id"
+            component={PersonalInfoPage}
+          /> */}
+          {/* <Route path="/workexperience/:id" component={WorkExperienceInfo} />
           <Route path="/education/:id" component={EducationInfo} />
           <Route path="/affiliations/:id" component={AffiliationsInfo} />
           <Route path="/achievements/:id" component={AchievementsInfo} />
           <Route path="/certifications/:id" component={CertificationsInfo} />
-          <Route path="/academicInfo/:id" component={AcademicInfo} />
-          <Route path="/projects/:id" component={ProjectsInfo} />
+          {/* <Route path="/academicInfo/:id" component={AcademicInfo} /> */}
+          {/* <Route path="/projects/:id" component={ProjectsInfo} />
           <Route path="/capacity/:id" component={CapacityInfo} />
           <Route path="/references/:id" component={ReferencesInfo} />
           <Route path="/attachments/:id" component={AttachmentsInfo} />
           <Route path="/remarks/:id/" component={RemarksInfo} />
           <Route path="/gdpr-consent" component={GdprConsent} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" component={Profile} /> */}
         </Switch>
       </div>
     );

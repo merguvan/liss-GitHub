@@ -26,7 +26,11 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
   const { Personal_Info } = data;
   return (
     <>
-      <Summary value="100" headerTitle="Personal Info" url="/personalInfo/1">
+      <Summary
+        value="100"
+        headerTitle="Personal Info"
+        url="/individual/personalInfo"
+      >
         <h6 className="person-summary-body-context-container_level_1">
           {Personal_Info.personTitle +
             " " +

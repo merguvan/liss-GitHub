@@ -26,7 +26,7 @@ const affiliations = [
 
 function Affiliations(props) {
   return (
-    <Summary headerTitle="Affiliations" url="/affiliations/1">
+    <Summary headerTitle="Affiliations" url="/individual/affiliations">
       {affiliations.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">

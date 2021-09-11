@@ -23,11 +23,11 @@ const references = [
   {
     personAttachmentType: "Medical Declaration",
     personAttachmentDescription: "This one cost me a lot",
-  }
+  },
 ];
 function Attachments(props) {
   return (
-    <Summary headerTitle="Attachments" url="/attachments/1">
+    <Summary headerTitle="Attachments" url="/individual/attachments">
       {references.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">
@@ -50,12 +50,11 @@ function Attachments(props) {
               </div>
               <div className="person-summary-body-context-container_level_2">
                 <p>
-                  <em>
-                    {i.personAttachmentDescription}
-                  </em>
+                  <em>{i.personAttachmentDescription}</em>
                 </p>
               </div>
-            </div> <hr/>
+            </div>{" "}
+            <hr />
           </div>
         );
       })}

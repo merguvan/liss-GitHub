@@ -1,24 +1,32 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import PersonalInfoPage from "../components/personal/PersonalInfoPage";
+import PersonalInfoPage from "../components/personal/AddressInfo/index";
 import IndividualMainPage from "../../individual/pages/IndividualMainPage";
-import WorkExperienceInfo from "../../individual/components/workexperience/WorkExperienceInfo";
-import AcademicInfo from "../../individual/components/academic/AcademicInfoPage";
-import EducationInfo from "../../individual/components/education/EducationInfo";
-import AffiliationsInfo from "../../individual/components/affiliations/AffiliationsInfo";
-import AchievementsInfo from "../../individual/components/achievements/AchievementsInfo";
-import CertificationsInfo from "../../individual/components/certifications/CertificationsInfo";
-import CapacityInfo from "../../individual/components/capacity/CapacityInfo";
-import ReferencesInfo from "../../individual/components/references/ReferencesInfo";
+import WorkExperienceInfo from "../../individual/components/workexperience/index";
+import AcademicInfo from "../../individual/components/academic/index";
+import EducationInfo from "../../individual/components/education/index";
+import AffiliationsInfo from "../../individual/components/affiliations/index";
+import AchievementsInfo from "../../individual/components/achievements/index";
+import CertificationsInfo from "../../individual/components/certifications/index";
+import CapacityInfo from "../../individual/components/capacity/index";
+import ReferencesInfo from "../../individual/components/references/index";
 import RemarksInfo from "../../individual/components/remarks/RemarksInfo";
-import ProjectsInfo from "../../individual/components/projects/ProjectsInfo";
+import ProjectsInfo from "../../individual/components/projects/index";
+import AttachmentsInfo from "../components/attachments/index";
 const InstitutionalRouter = () => {
   const { section } = useParams();
+  console.log(section);
   switch (section) {
     case "personalInfo":
-      return <PersonalInfoPage />;
+      return (
+        <>
+          <PersonalInfoPage />
+        </>
+      );
       break;
-
+    case "academicInfo":
+      return <AcademicInfo />;
+      break;
     case "workexperience":
       return <WorkExperienceInfo />;
       break;
@@ -43,6 +51,12 @@ const InstitutionalRouter = () => {
       break;
     case "projects":
       return <ProjectsInfo />;
+      break;
+    case "references":
+      return <ReferencesInfo />;
+      break;
+    case "attachments":
+      return <AttachmentsInfo />;
       break;
     default:
       return <IndividualMainPage />;

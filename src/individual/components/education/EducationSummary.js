@@ -45,7 +45,7 @@ const education = [
 ];
 function Education(props) {
   return (
-    <Summary headerTitle="Education" url="/education/1">
+    <Summary headerTitle="Education" url="/individual/education">
       {education.map((i, idx) => {
         return (
           <div key={idx} className="work_experience_block">
