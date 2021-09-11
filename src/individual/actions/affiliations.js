@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const addAffiliationsInfo = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
-
+  console.log(data, "=>affiliations");
   try {
     dispatch({
       type: ADD_AFFILIATIONS_INFO_PENDING,

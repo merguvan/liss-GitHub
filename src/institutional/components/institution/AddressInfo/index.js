@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
 import schema from "./schema.json";
 import uischema from "./uischema.json";
 import {
@@ -10,13 +10,12 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link} from "react-router-dom";
-import "./addressJSON.css"
-import { AirlineSeatLegroomExtra } from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import "./addressJSON.css";
 
-const initalData={
-      address:[{personAddressType:"Legal"}]
-}
+const initalData = {
+  address: [{ personAddressType: "Legal" }],
+};
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -46,10 +45,7 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
@@ -57,7 +53,7 @@ const ContactPerson = ({ history }) => {
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData)
+    console.log(jsonformsData);
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -79,30 +75,28 @@ const ContactPerson = ({ history }) => {
   console.log(jsonformsData);
 
   return (
-    <div style={{"padding":"20px"}}>
+    <div style={{ padding: "20px" }}>
       <Fragment>
-      <Grid
-        container
-        justify={"center"}
-        spacing={1}
-        className={classes.container}
-      >
-        <Grid item sm={12}>
-
-          <div className={classes.demoform}>
-            <JsonForms
-              schema={schema}
-              uischema={uischema}
-              data={jsonformsData}
-              renderers={renderers}
-              cells={materialCells}
-              onChange={({ errors, data }) => setJsonformsData(data)}
-            />
-          </div>
+        <Grid
+          container
+          justify={"center"}
+          spacing={1}
+          className={classes.container}
+        >
+          <Grid item sm={12}>
+            <div className={classes.demoform}>
+              <JsonForms
+                schema={schema}
+                uischema={uischema}
+                data={jsonformsData}
+                renderers={renderers}
+                cells={materialCells}
+                onChange={({ errors, data }) => setJsonformsData(data)}
+              />
+            </div>
+          </Grid>
         </Grid>
-        
-      </Grid>
-        <footer style={{"display":"flex", "justifyContent":"center"}}>
+        <footer style={{ display: "flex", justifyContent: "center" }}>
           <Link to="/institutional">
             <Button
               variant="contained"
@@ -112,9 +106,9 @@ const ContactPerson = ({ history }) => {
             >
               {save ? "Save" : "Close"}
             </Button>
-          </Link> 
+          </Link>
         </footer>
-    </Fragment>
+      </Fragment>
     </div>
   );
 };

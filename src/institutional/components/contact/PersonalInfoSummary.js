@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, Collapse } from "react-bootstrap";
-import { MdEdit } from "react-icons/md";
+
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -26,11 +25,7 @@ function PersonalInfoSummary({ personalInfo, addressInfo }) {
   const { Personal_Info } = data;
   return (
     <>
-      <Summary
-        value="100"
-        headerTitle="Contact"
-        url="institutional/contact"
-      >
+      <Summary value="100" headerTitle="Contact" url="institutional/contact">
         <h6 className="person-summary-body-context-container_level_1">
           {Personal_Info.personTitle +
             " " +
