@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const addAddressInfo = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
-
+  console.log(data, "=>address");
   try {
     dispatch({
       type: ADD_ADDRESS_INFO_PENDING,
