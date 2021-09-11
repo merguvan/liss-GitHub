@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
 import schema from "./schema.json";
 import uischema from "./uischema.json";
 import {
@@ -12,18 +12,16 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import {
-  Modal
-} from "react-bootstrap";
 
-
+import { addAffiliationsInfo } from "../../actions/affiliations";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
     width: "80%",
     margin: "auto",
-    maxWidth: "100%"
+    maxWidth: "100%",
   },
   title: {
     textAlign: "center",
@@ -48,17 +46,15 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const Affiliations = ({ history }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData)
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -70,51 +66,45 @@ const Affiliations = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    dispatch(addAffiliationsInfo(jsonformsData));
+    console.log(jsonformsData);
   };
 
-  console.log(jsonformsData);
-
   return (
-    <div style={{"padding":"20px"}}>
+    <div style={{ padding: "20px" }}>
       <Fragment>
-      <Grid
-        container
-        justify={"center"}
-        spacing={1}
-        className={classes.container}
-      >
-        <Grid item sm={12}>
-
-          <div className={classes.demoform}>
-            <JsonForms
-              schema={schema}
-              uischema={uischema}
-              data={jsonformsData}
-              renderers={renderers}
-              cells={materialCells}
-              onChange={({ errors, data }) => setJsonformsData(data)}
-            />
-          </div>
+        <Grid
+          container
+          justify={"center"}
+          spacing={1}
+          className={classes.container}
+        >
+          <Grid item sm={12}>
+            <div className={classes.demoform}>
+              <JsonForms
+                schema={schema}
+                uischema={uischema}
+                data={jsonformsData}
+                renderers={renderers}
+                cells={materialCells}
+                onChange={({ errors, data }) => setJsonformsData(data)}
+              />
+            </div>
+          </Grid>
+          <footer style={{ display: "flex", justifyContent: "center" }}>
+            <Link to="/individual">
+              <Button
+                variant="contained"
+                color="blue"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                {save ? "Save" : "Close"}
+              </Button>
+            </Link>
+          </footer>
         </Grid>
-        <footer style={{"display":"flex", "justifyContent":"center"}}>
-          <Link to="/individual">
-            <Button
-              variant="contained"
-              color="blue"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              {save ? "Save" : "Close"}
-            </Button>
-          </Link>
-        </footer>
-      </Grid>
-    </Fragment>
+      </Fragment>
     </div>
   );
 };
