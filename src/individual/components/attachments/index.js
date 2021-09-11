@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Container,
@@ -8,12 +8,19 @@ import {
   Form,
   InputGroup,
   FormControl,
+  ListGroup,
 } from "react-bootstrap";
-import { addAttachmentAction } from "../../actions/attachments";
+
 import { Link, useHistory } from "react-router-dom";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addAttachmentInfo } from "../../actions/attachments";
+import { List } from "@material-ui/core";
+import { DeleteTwoTone } from "@material-ui/icons";
+import { AiFillDelete } from "react-icons/ai";
 
 const Attachments = () => {
+  const [attachmentType, setAddAttachmentType] = useState("");
+  const [description, setDescription] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
   const { addAttachment: storeAddAttachment } = useSelector(
@@ -24,37 +31,23 @@ const Attachments = () => {
   const [value, setValue] = useState(null);
   const [show, setShow] = useState(true);
 
-  const [addAttachment, setAddAttachment] = useState(storeAddAttachment || {});
+  const [attachments, setAttachments] = useState(storeAddAttachment || []);
   const handleAddAttachment = (e) => {
-    setAddAttachment({
-      ...addAttachment,
-      [e.target.name]: e.target.value,
-    });
+    setAttachments([
+      ...attachments,
+      { attachmentType, file: e.target.files[0], description },
+    ]);
+    setDescription("");
+    setAddAttachmentType("");
   };
-
-  // const handleSubmit = () => {
-  //   dispatch(addReferenceAction(addReference));
-  // };
-
-  // useEffect(() => {
-  //   if (
-  //     Object.values(storeAddAttachment).join("") !==
-  //     Object.values(addAttachment).join("")
-  //   ) {
-  //     setSave(true);
-  //   } else {
-  //     setSave(false);
-  //   }
-  // }, [storeAddAttachment, addAttachment]);
 
   const handleSubmit = () => {
-    if (Object.values(addAttachment).join("").length > 0) {
-      console.log("calisti");
-    } else {
-      console.log("calismadi");
+    dispatch(addAttachmentInfo(attachments));
+    if (2 == 3) {
+      history.push("/individual");
     }
   };
-
+  console.log(attachments);
   return (
     <Modal
       show={true}
@@ -86,8 +79,8 @@ const Attachments = () => {
                 <Form.Control
                   as="select"
                   name="personAttachmentType"
-                  onChange={handleAddAttachment}
-                  value={addAttachment["personAttachmentType"]}
+                  onChange={(e) => setAddAttachmentType(e.target.value)}
+                  value={attachmentType}
                 >
                   <option value="select">Select</option>
                   <option value="cv">CV</option>
@@ -105,53 +98,58 @@ const Attachments = () => {
           <Form.Group>
             <Form.Row>
               <Col xs={12} md={12}>
-                <label htmlFor="basic-url" class="font-weight-bold">Description</label>
+                <label htmlFor="basic-url" class="font-weight-bold">
+                  Description
+                </label>
                 <InputGroup className="mb-3">
                   <FormControl
                     name="personAttachmentDescription"
-                    onChange={handleAddAttachment}
+                    onChange={(e) => setDescription(e.target.value)}
                     id="basic-url"
                     aria-describedby="basic-addon3"
+                    value={description}
                   />
                 </InputGroup>
               </Col>
             </Form.Row>
           </Form.Group>
 
-          
           <Form.Row>
             <Form.Group>
               <Form.Label class="font-weight-bold">Attachment</Form.Label>
               <Form.Control
                 type="file"
                 name="personAttachment"
-                // files={addressInfo['personPhoto']}
-                onChange={(e) => {
-                  //setAddressInfo({ ...addressInfo, [e.target.name]: e.target.files[0] });
-                }}
+                onChange={(e) => handleAddAttachment(e)}
+                multiple
               />
             </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <ListGroup>
+              {attachments.map(({ attachmentType, file, description }, idx) => (
+                <ListGroup.Item>
+                  <span>{attachmentType}</span>
+                  <span>{file.name}</span>
+                  <span>{description}</span>
+                  <AiFillDelete
+                    onClick={() =>
+                      setAttachments(
+                        attachments.filter((el, index) => index !== idx)
+                      )
+                    }
+                  />
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
           </Form.Row>
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/individual">
-          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-        </Link>
+        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
 export default Attachments;
-// import React from 'react'
-
-// function index() {
-//   return (
-//     <div>
-//       Hello
-//     </div>
-//   )
-// }
-
-// export default index
