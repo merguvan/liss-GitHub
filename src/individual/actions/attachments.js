@@ -72,7 +72,7 @@ export const updateAttachmentInfo = (data) => async (dispatch, getState) => {
 };
 export const getAttachmentInfo = (data) => async (dispatch, getState) => {
   const { token } = getState().userLogin;
-
+  console.log(data, "attachments");
   try {
     dispatch({
       type: GET_ATTACHMENT_INFO_PENDING,
