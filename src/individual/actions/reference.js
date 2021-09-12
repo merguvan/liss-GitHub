@@ -45,7 +45,7 @@ export const addReferenceInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateReferenceInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_REFERENCE_INFO_PENDING,

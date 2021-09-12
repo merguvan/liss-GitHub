@@ -51,7 +51,7 @@ export const updateCertificationsDetails = (data) => async (
   dispatch,
   getState
 ) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_CERTIFICATIONS_INFO_PENDING,

@@ -11,8 +11,6 @@ import {
 } from "../actionTypes/capacity";
 import axios from "axios";
 
-const id = "sadda";
-const token = "dasdad";
 export const addCapacity = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 

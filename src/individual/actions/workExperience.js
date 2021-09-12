@@ -10,17 +10,6 @@ import {
   GET_WORKEXPERIENCE_REJECTED,
 } from "../actionTypes/workExperience";
 import axios from "axios";
-const {
-  token,
-  userInfo: { _id: id },
-} = JSON.parse(localStorage.getItem("user"))
-  ? JSON.parse(localStorage.getItem("user"))
-  : {
-      token: "asdasdad",
-      userInfo: {
-        _id: "dasdadsa",
-      },
-    };
 
 export const addWorkExperience = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
@@ -56,7 +45,7 @@ export const addWorkExperience = (data) => async (dispatch, getState) => {
 };
 
 export const updateWorkExperience = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_WORKEXPERIENCE_PENDING,
@@ -108,4 +97,3 @@ export const getWorkExperience = (data) => async (dispatch, getState) => {
     });
   }
 };
-
