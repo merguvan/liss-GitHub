@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
@@ -14,7 +14,13 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar id="navbar" bg="primary" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        id="navbar"
+        bg="primary"
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>

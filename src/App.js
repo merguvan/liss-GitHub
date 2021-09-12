@@ -14,7 +14,9 @@ import InstitutionalMainPage from "./institutional/pages/MainPage";
 import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
 
 function App(props) {
+  // eslint-disable-next-line
   const history = useHistory();
+  // eslint-disable-next-line
   const userInfo = useSelector((state) => state.userLogin?.userLogin);
 
   // if (userInfo) {

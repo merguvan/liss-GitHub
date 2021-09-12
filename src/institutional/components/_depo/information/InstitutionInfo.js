@@ -86,8 +86,6 @@ const InstitutionInfo = ({ history }) => {
     }
   };
 
-  console.log(jsonformsData);
-
   return (
     <Fragment>
       <Grid

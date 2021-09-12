@@ -13,7 +13,6 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -42,10 +41,7 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
@@ -70,8 +66,6 @@ const ContactPerson = ({ history }) => {
       console.log("fill all the values");
     }
   };
-
-  console.log(jsonformsData);
 
   return (
     <Fragment>

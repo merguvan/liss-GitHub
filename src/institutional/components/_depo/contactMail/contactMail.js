@@ -13,7 +13,6 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -42,10 +41,7 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const ContactMail = ({ history }) => {
   const classes = useStyles();
@@ -71,8 +67,6 @@ const ContactMail = ({ history }) => {
     }
   };
 
-  console.log(jsonformsData);
-
   return (
     <Fragment>
       <Grid
@@ -83,7 +77,7 @@ const ContactMail = ({ history }) => {
       >
         <Grid item sm={12}>
           <Typography variant={"h3"} className={classes.title}>
-          Contact Email
+            Contact Email
           </Typography>
           <div className={classes.demoform}>
             <JsonForms

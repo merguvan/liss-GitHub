@@ -51,9 +51,7 @@ const ContactPhone = ({ history }) => {
     setDisplayDataAsString(JSON.stringify(jsonformsData, null, 2));
   }, [jsonformsData]);
 
-  const handleSubmit = () => {
-    console.log(jsonformsData);
-  };
+  const handleSubmit = () => {};
   return (
     <Fragment>
       <Grid
@@ -61,10 +59,8 @@ const ContactPhone = ({ history }) => {
         justify={"center"}
         spacing={1}
         className={classes.container}
-        
       >
         <Grid item sm={12}>
-
           <div className={classes.demoform}>
             <JsonForms
               schema={schema}

@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { login } from "../../actions/userLogin";
 import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-const loginImg =
-  "https://freepikpsd.com/media/2019/10/user-login-png-transparent-6-Transparent-Images.png";
 
 export function Login({ history, location, containerRef }) {
   const [formData, setFormData] = useState({});

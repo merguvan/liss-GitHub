@@ -15,7 +15,7 @@ import ProjectsInfo from "../../individual/components/projects/index";
 import AttachmentsInfo from "../components/attachments/index";
 const InstitutionalRouter = () => {
   const { section } = useParams();
-  console.log(section);
+
   switch (section) {
     case "personalInfo":
       return (
@@ -23,44 +23,42 @@ const InstitutionalRouter = () => {
           <PersonalInfoPage />
         </>
       );
-      break;
+
     case "academicInfo":
       return <AcademicInfo />;
-      break;
+
     case "workexperience":
       return <WorkExperienceInfo />;
-      break;
+
     case "education":
       return <EducationInfo />;
-      break;
 
     case "affiliations":
       return <AffiliationsInfo />;
-      break;
+
     case "achievements":
       return <AchievementsInfo />;
-      break;
+
     case "certifications":
       return <CertificationsInfo />;
-      break;
+
     case "capacity":
       return <CapacityInfo />;
-      break;
+
     case "remarks":
       return <RemarksInfo />;
-      break;
+
     case "projects":
       return <ProjectsInfo />;
-      break;
+
     case "references":
       return <ReferencesInfo />;
-      break;
+
     case "attachments":
       return <AttachmentsInfo />;
-      break;
+
     default:
       return <IndividualMainPage />;
-      break;
   }
 };
 

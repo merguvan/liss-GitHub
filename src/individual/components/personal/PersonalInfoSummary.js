@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, Collapse } from "react-bootstrap";
-import { MdEdit } from "react-icons/md";
+
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";

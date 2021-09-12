@@ -48,7 +48,7 @@ export const updateAcademicWorkDetails = (data) => async (
   dispatch,
   getState
 ) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ACADEMIC_INFO_PENDING,
