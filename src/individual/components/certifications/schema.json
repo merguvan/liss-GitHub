@@ -18,9 +18,15 @@
         "type": "string",
         "enum": ["University", "School", "NGO", "Private Company", "Governmental Office", "International Organization", "Other"]
       },
+      "personCertificationOtherInstitutionType": {
+        "type": "string"
+      },
       "personCertificationInstitutionStatus": {
         "type": "string",
-        "enum": ["Private","State"]
+        "enum": ["Private","State","Other"]
+      },
+      "personCertificationOtherInstitutionStatus": {
+        "type": "string"
       },
       "personCertificateFrom": {
         "type": "string",

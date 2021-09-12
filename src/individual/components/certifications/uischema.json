@@ -7,7 +7,7 @@
       "elements": [
         {
           "type": "Group",
-          "label": "Certificate",
+          "label": "",
           "elements": [
             {
               "type": "Control",
@@ -33,13 +33,7 @@
               "type": "Control",
               "label": "Web Site",
               "scope": "#/properties/personCertificationInstitutionWebsite"
-            }
-          ]
-        },
-        {
-          "type": "Group",
-         
-          "elements": [
+            },
             {
               "type": "HorizontalLayout",
               "elements": [
@@ -58,7 +52,7 @@
             {
               "type": "Control",
               "scope": "#/properties/personCertificateTopic",
-              "label": "Topic(if any)"
+              "label": "Topic (if any)"
             }
           ]
         }
@@ -78,8 +72,36 @@
             },
             {
               "type": "Control",
+              "scope": "#/properties/personCertificationOtherInstitutionType",
+              "label": "Other Institution Type",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/personCertificationInstitutionType",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
+            },
+            {
+              "type": "Control",
               "scope": "#/properties/personCertificationInstitutionStatus",
               "label": "Status"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personCertificationOtherInstitutionStatus",
+              "label": "Other Status",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/personCertificationInstitutionStatus",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
             },
             {
               "type": "HorizontalLayout",

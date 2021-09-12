@@ -48,13 +48,10 @@
           "contactAddressType": {
             "type": "string",
             "enum":[
-              "Private",
+              "Work",
               "Legal",
-              "Work"
+              "Private"
             ]
-          },
-          "contactAddressSame": {
-            "type": "boolean"
           },
           "contactFlatNo": {
             "type": "string"

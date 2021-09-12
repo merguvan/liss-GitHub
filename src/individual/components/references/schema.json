@@ -10,6 +10,9 @@
           "Mr", "Ms", "Dr.", "Assist.Prof.Dr.","Assoc.Prof.Dr.","Prof.Dr.", "Other"
         ]
       },
+      "personOtherTitle":{
+        "type":"string"
+      },
       "personRefereeInstitution": {
         "type": "string"
       },

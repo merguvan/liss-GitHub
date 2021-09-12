@@ -20,9 +20,19 @@
             },
             {
               "type": "Control",
-              "label": "Other?",
-              "scope": "/properties/personAffiliationOther?"
+              "scope": "#/properties/personAffiliationOther",
+              "label": "Other Institution Type",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/personAffiliationType",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
             }
+            
           ]
         },
         {
@@ -43,11 +53,11 @@
               "label": "To",
               "scope": "#/properties/personAffiliationTo",
               "rule": {
-                "effect": "ENABLE",
+                "effect": "DISABLE",
                 "condition": {
                   "scope": "#/properties/personAffiliationOngoing",
                   "schema": {
-                    "const": false
+                    "const": true
                   }
                 }
               }

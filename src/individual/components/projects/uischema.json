@@ -1,12 +1,107 @@
 {
-  "type": "VerticalLayout",
+  "type": "HorizontalLayout",
   "elements": [
     {
-      "type": "Control",
-      "scope": "#/properties/project/items",
-      "options":{
-        "elementLabelProp": "title"
+      "type": "VerticalLayout",
+
+      "elements": [
+        {
+          "type": "Group",
+          "label": "Project Details",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectAcronym",
+              "label": "Acronym"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectNumber",
+              "label": "Project Number"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectName",
+              "label": "Project Name"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectRole",
+              "label": "Your Role in the Project"
+            },
+            {
+              "type": "Control",
+              "format":"url",
+              "scope": "#/properties/personProjectWebsite",
+              "label": "Project Website"
+            }
+          ]
+        },
+        {
+          "type": "Group",
+          "label":"Dates",
+          "elements": [
+            {
+              "type":"HorizontalLayout",
+              "elements":[{
+                "type": "Control",
+                "label": "Start Date",
+                "scope": "#/properties/personProjectFrom"
+              },
+              {
+                "type": "Control",
+                "label": "(Estimated) End Date",
+                "scope": "#/properties/personProjectTo"
+              }]
+            }
+          ]
         }
-    } 
+      ]
+    },
+    {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Group",
+          "label": "Grant",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectGrantProvider",
+              "label": "Grant Provider"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personGrantCurrency",
+              "label": "Grant Currency"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectsOtherCurrency",
+              "label": "Other Currency",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/personGrantCurrency",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personProjectGrantAmount",
+              "label": "Grant Amount"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/personInstGrantAmount",
+              "label": "Institutional Grant Amount"
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

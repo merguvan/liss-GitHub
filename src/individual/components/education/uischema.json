@@ -27,7 +27,7 @@
                   "label": "To",
                   "scope": "#/properties/personEduTo",
                   "rule": {
-                    "effect": "ENABLE",
+                    "effect": "DISABLE",
                     "condition": {
                       "scope": "#/properties/personEduOngoing",
                       "schema": {
@@ -56,10 +56,23 @@
                 },
                 {
                   "type": "Control",
+                  "scope": "#/properties/personEduInstitutionOtherDegree",
+                  "label": "Other Degree",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/personEduInstitutionDegree",
+                      "schema": {
+                        "const": "Other"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "Control",
                   "scope": "#/properties/personEduInstitutionDegreeTitle",
-                  "label": "Degree Title"
+                  "label": "Degree Title (as indicated on your diploma)"
                 }
-     
           ]
         }
       ]

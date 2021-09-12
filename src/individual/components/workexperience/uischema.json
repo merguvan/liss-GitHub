@@ -27,11 +27,11 @@
                   "label": "To",
                   "scope": "#/properties/personWorkTo",
                   "rule": {
-                    "effect": "ENABLE",
+                    "effect": "DISABLE",
                     "condition": {
                       "scope": "#/properties/ongoing",
                       "schema": {
-                        "const": false
+                        "const": true
                       }
                     }
                   }
