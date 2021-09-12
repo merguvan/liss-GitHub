@@ -6,6 +6,8 @@ import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addRemarksInfo } from "../../actions/remarks";
 const Remarks = (props) => {
   const history = useHistory();
   const { remarks: storeRemarks } = useSelector(
@@ -13,7 +15,7 @@ const Remarks = (props) => {
   );
   const [save, setSave] = useState(false);
   const [remarks, setRemarks] = useState(storeRemarks || {});
-
+  const dispatch = useDispatch();
   //const [remarks, setRemarks] = useState({});
   const [show, setShow] = useState(true);
 
@@ -35,11 +37,7 @@ const Remarks = (props) => {
   }, [storeRemarks, remarks]);
 
   const handleSubmit = () => {
-    if (Object.values(remarks).join("").length > 0) {
-      console.log("calisti");
-    } else {
-      console.log("calismadi");
-    }
+    dispatch(addRemarksInfo(remarks));
   };
   return (
     <Modal

@@ -8,10 +8,13 @@ import {
   GET_CERTIFICATIONS_INFO_PENDING,
   GET_CERTIFICATIONS_INFO_FULFILLED,
   GET_CERTIFICATIONS_INFO_REJECTED,
-} from "../actionTypes/certificationsDetails";
+} from "../actionTypes/certifications";
 import axios from "axios";
 
-export const addCertificationsDetails = (data) => async (dispatch, getState) => {
+export const addCertificationsDetails = (data) => async (
+  dispatch,
+  getState
+) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 
   try {
@@ -44,8 +47,11 @@ export const addCertificationsDetails = (data) => async (dispatch, getState) => 
   }
 };
 
-export const updateCertificationsDetails = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+export const updateCertificationsDetails = (data) => async (
+  dispatch,
+  getState
+) => {
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_CERTIFICATIONS_INFO_PENDING,
@@ -70,7 +76,10 @@ export const updateCertificationsDetails = (data) => async (dispatch, getState) 
     });
   }
 };
-export const getCertificationsDetails = (data) => async (dispatch, getState) => {
+export const getCertificationsDetails = (data) => async (
+  dispatch,
+  getState
+) => {
   const { token } = getState().userLogin;
 
   try {

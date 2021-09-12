@@ -11,8 +11,6 @@ import {
 } from "../actionTypes/capacity";
 import axios from "axios";
 
-const id = "sadda";
-const token = "dasdad";
 export const addCapacity = (data) => async (dispatch, getState) => {
   const { token, _id: id } = getState().userLogin.userLogin;
 
@@ -47,7 +45,7 @@ export const addCapacity = (data) => async (dispatch, getState) => {
 };
 
 export const updateCapacityInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_CAPACITY_INFO_PENDING,

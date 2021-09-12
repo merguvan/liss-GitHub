@@ -12,6 +12,8 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addReferenceInfo } from "../../actions/reference";
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -49,7 +51,7 @@ const Affiliations = ({ history }) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (
       Object.values(jsonformsData).join("") !==
@@ -62,11 +64,7 @@ const Affiliations = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    dispatch(addReferenceInfo(jsonformsData));
   };
 
   return (

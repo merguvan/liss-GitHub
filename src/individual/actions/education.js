@@ -45,7 +45,7 @@ export const addEducationInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateEducationInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_EDUCATION_INFO_PENDING,

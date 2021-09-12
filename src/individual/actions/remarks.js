@@ -45,7 +45,7 @@ export const addRemarksInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateRemarksInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_REMARKS_INFO_PENDING,

@@ -11,7 +11,6 @@ import {
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import "./addressJSON.css";
 
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";

@@ -45,7 +45,7 @@ export const addAddressInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateAddressInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ADDRESS_INFO_PENDING,
