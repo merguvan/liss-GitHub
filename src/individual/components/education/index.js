@@ -11,6 +11,8 @@ import {
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addEducationInfo } from "../../actions/education";
 
 // const initalData={
 //       address:[{personAddressType:"Legal"}]
@@ -47,6 +49,7 @@ const useStyles = makeStyles((_theme) => ({
 const renderers = [...materialRenderers];
 
 const ContactPerson = ({ history }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
@@ -63,11 +66,7 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    dispatch(addEducationInfo(jsonformsData));
   };
 
   return (
