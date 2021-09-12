@@ -51,7 +51,6 @@ const ContactPerson = ({ history }) => {
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData);
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")

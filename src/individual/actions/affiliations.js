@@ -45,7 +45,7 @@ export const addAffiliationsInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateAffiliationsInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token} = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_AFFILIATIONS_INFO_PENDING,

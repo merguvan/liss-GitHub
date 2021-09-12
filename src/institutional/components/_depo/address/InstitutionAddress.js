@@ -13,7 +13,6 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-
 import Countries from "../../../individual/components/personal/AddressInfo/Countries";
 
 const useStyles = makeStyles((_theme) => ({
@@ -44,10 +43,7 @@ const useStyles = makeStyles((_theme) => ({
   },
 }));
 
-
-const renderers = [
-  ...materialRenderers,
-];
+const renderers = [...materialRenderers];
 
 const InstitutionAddress = ({ history }) => {
   const classes = useStyles();
@@ -75,8 +71,6 @@ const InstitutionAddress = ({ history }) => {
       console.log("fill all the values");
     }
   };
-
-  console.log(jsonformsData);
 
   return (
     <Fragment>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
-import CountrySelect from "react-bootstrap-country-select";
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 
@@ -13,12 +12,9 @@ const Remarks = (props) => {
     (state) => state.remarksReducer
   );
   const [save, setSave] = useState(false);
-  const [remarks, setRemarks] = useState(
-    storeRemarks || {}
-  );
+  const [remarks, setRemarks] = useState(storeRemarks || {});
 
-
-//const [remarks, setRemarks] = useState({});
+  //const [remarks, setRemarks] = useState({});
   const [show, setShow] = useState(true);
 
   const handleRemarks = (e) => {
@@ -30,8 +26,7 @@ const Remarks = (props) => {
 
   useEffect(() => {
     if (
-      Object.values(storeRemarks).join("") !==
-      Object.values(remarks).join("")
+      Object.values(storeRemarks).join("") !== Object.values(remarks).join("")
     ) {
       setSave(true);
     } else {
@@ -89,9 +84,9 @@ const Remarks = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-      <Link to="/individual">
-        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-      </Link>
+        <Link to="/individual">
+          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+        </Link>
       </Modal.Footer>
     </Modal>
   );

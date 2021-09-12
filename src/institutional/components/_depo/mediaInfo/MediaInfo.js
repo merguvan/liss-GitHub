@@ -72,8 +72,6 @@ const MediaInfo = ({ history }) => {
     }
   };
 
-  console.log(jsonformsData);
-
   return (
     <Fragment>
       <Grid

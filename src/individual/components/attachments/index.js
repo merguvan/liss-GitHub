@@ -11,28 +11,27 @@ import {
   ListGroup,
 } from "react-bootstrap";
 
-import { Link, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { addAttachmentInfo } from "../../actions/attachments";
-import { List } from "@material-ui/core";
-import { DeleteTwoTone } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import { AiFillDelete } from "react-icons/ai";
 
 const Attachments = () => {
   const [attachmentType, setAddAttachmentType] = useState("");
   const [description, setDescription] = useState("");
   const history = useHistory();
-  const dispatch = useDispatch();
+
   const { addAttachment: storeAddAttachment } = useSelector(
     (state) => state.attachmentReducer
   );
 
-  const [save, setSave] = useState(false);
-  const [value, setValue] = useState(null);
+  const save = false;
+
   const [show, setShow] = useState(true);
 
   const [attachments, setAttachments] = useState(storeAddAttachment || []);
   const handleAddAttachment = (e) => {
+    console.log(e, "erdsl");
     setAttachments([
       ...attachments,
       { attachmentType, file: e.target.files[0], description },
@@ -42,12 +41,12 @@ const Attachments = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(addAttachmentInfo(attachments));
+    // dispatch(addAttachmentInfo(attachments));
     if (2 == 3) {
       history.push("/individual");
     }
   };
-  console.log(attachments);
+
   return (
     <Modal
       show={true}
@@ -117,11 +116,12 @@ const Attachments = () => {
           <Form.Row>
             <Form.Group>
               <Form.Label class="font-weight-bold">Attachment</Form.Label>
+
               <Form.Control
+                disabled={!(attachmentType && description)}
                 type="file"
                 name="personAttachment"
                 onChange={(e) => handleAddAttachment(e)}
-                multiple
               />
             </Form.Group>
           </Form.Row>

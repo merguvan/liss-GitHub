@@ -53,7 +53,6 @@ const ContactPerson = ({ history }) => {
   const [save, setSave] = useState(false);
 
   useEffect(() => {
-    console.log(jsonformsData);
     if (
       Object.values(jsonformsData).join("") !==
       Object.values(setJsonformsData).join("")
@@ -71,8 +70,6 @@ const ContactPerson = ({ history }) => {
       console.log("fill all the values");
     }
   };
-
-  console.log(jsonformsData);
 
   return (
     <div style={{ padding: "20px" }}>

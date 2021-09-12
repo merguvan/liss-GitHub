@@ -67,7 +67,6 @@ const Affiliations = ({ history }) => {
 
   const handleSubmit = (e) => {
     dispatch(addAffiliationsInfo(jsonformsData));
-    console.log(jsonformsData);
   };
 
   return (

@@ -45,7 +45,7 @@ export const addAchivements = (data) => async (dispatch, getState) => {
 };
 
 export const updateAchivements = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ACHIEVEMENTS_INFO_PENDING,

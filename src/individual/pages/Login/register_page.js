@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ButtonGroup, ToggleButton, Alert } from "react-bootstrap";
 
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/userRegistration";
 import { Link } from "react-router-dom";
 
@@ -30,18 +30,23 @@ function RegisterPage({ containerRef, history, location }) {
     if (Object.keys(formData).length > 0) {
       setError("");
     }
-  }, [history, userInfo, redirect, formData]);
+  }, [history, userInfo, redirect, formData, setError, storeError]);
 
   const handleInputChange = (event) => {
-    if(formData.userType&&(event.target.name==="Institutional"||event.target.name==="Individual")){
-      setFormData({ })
-    }else{
+    if (
+      formData.userType &&
+      (event.target.name === "Institutional" ||
+        event.target.name === "Individual")
+    ) {
+      setFormData({});
+    } else {
       setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    })}
-    console.log(formData)
-  }
+        ...formData,
+        [event.target.name]: event.target.value,
+      });
+    }
+    console.log(formData);
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -107,10 +112,11 @@ function RegisterPage({ containerRef, history, location }) {
         </ToggleButton>
       </ButtonGroup>
       {/* <hr /> */}
-<div>{(formData.userType==="Institutional")?
-        <div className="login_content">
-          <div className="login_form">
-            <div className="login_form-group">
+      <div>
+        {formData.userType === "Institutional" ? (
+          <div className="login_content">
+            <div className="login_form">
+              <div className="login_form-group">
                 <input
                   type="text"
                   name="i.institutionalName"
@@ -119,114 +125,112 @@ function RegisterPage({ containerRef, history, location }) {
                   onChange={handleInputChange}
                 />
               </div>
-            
-            <div className="login_form-group-name-surname">
-              <input
-                type="text"
-                name="i.personName"
-                placeholder="name"
-                value={formData["i.personName"] || ""}
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                name="i.personSurname"
-                placeholder="surname"
-                value={formData["i.personSurname"]|| ""}
-                onChange={handleInputChange}
-              />
-            </div>
 
-            <div className="login_form-group">
-              <input
-                type="email"
-                name="i.personEmail"
-                placeholder="email"
-                value={formData["i.personEmail"] || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="login_form-group">
-              <input
-                type="password"
-                name="i.password"
-                placeholder="password"
-                value={formData["i.password"] || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            {formData["i.password"] && (
-              <div className="login_form-group">
+              <div className="login_form-group-name-surname">
                 <input
-                  type="password"
-                  value={formData["i.password_confirmation"] || ""}
-                  name="i.password_confirmation"
-                  placeholder="confirm your password"
+                  type="text"
+                  name="i.personName"
+                  placeholder="name"
+                  value={formData["i.personName"] || ""}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="i.personSurname"
+                  placeholder="surname"
+                  value={formData["i.personSurname"] || ""}
                   onChange={handleInputChange}
                 />
               </div>
-            
-            )}
-          </div>
-        </div>
-        :
-        <div className="login_content">
-          <div className="login_form">
-            <div className="login_form-group-name-surname">
-              <input
-                type="text"
-                name="personName"
-                placeholder="name"
-                value={formData?.personName || ""}
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                name="personSurname"
-                placeholder="surname"
-                value={formData?.personSurname || ""}
-                onChange={handleInputChange}
-              />
-            </div>
 
-            <div className="login_form-group">
-              <input
-                type="email"
-                name="personEmail"
-                placeholder="email"
-                value={formData?.personEmail || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="login_form-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={formData?.password || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            {formData.password && (
               <div className="login_form-group">
                 <input
-                  type="password"
-                  value={formData["password_confirmation"] || ""}
-                  name="password_confirmation"
-                  placeholder="confirm your password"
+                  type="email"
+                  name="i.personEmail"
+                  placeholder="email"
+                  value={formData["i.personEmail"] || ""}
                   onChange={handleInputChange}
                 />
               </div>
-            
-            )}
-          </div>
-        </div>
-        }
-        </div>
 
-<div className="gdpr">
+              <div className="login_form-group">
+                <input
+                  type="password"
+                  name="i.password"
+                  placeholder="password"
+                  value={formData["i.password"] || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
+              {formData["i.password"] && (
+                <div className="login_form-group">
+                  <input
+                    type="password"
+                    value={formData["i.password_confirmation"] || ""}
+                    name="i.password_confirmation"
+                    placeholder="confirm your password"
+                    onChange={handleInputChange}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="login_content">
+            <div className="login_form">
+              <div className="login_form-group-name-surname">
+                <input
+                  type="text"
+                  name="personName"
+                  placeholder="name"
+                  value={formData?.personName || ""}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="personSurname"
+                  placeholder="surname"
+                  value={formData?.personSurname || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="login_form-group">
+                <input
+                  type="email"
+                  name="personEmail"
+                  placeholder="email"
+                  value={formData?.personEmail || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="login_form-group">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  value={formData?.password || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
+              {formData.password && (
+                <div className="login_form-group">
+                  <input
+                    type="password"
+                    value={formData["password_confirmation"] || ""}
+                    name="password_confirmation"
+                    placeholder="confirm your password"
+                    onChange={handleInputChange}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="gdpr">
         <label class="container">
           <input
             type="checkbox"

@@ -45,7 +45,7 @@ export const addAttachmentInfo = (data) => async (dispatch, getState) => {
 };
 
 export const updateAttachmentInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_ATTACHMENT_INFO_PENDING,
