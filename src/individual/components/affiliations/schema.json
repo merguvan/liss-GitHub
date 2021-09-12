@@ -19,7 +19,7 @@
         "type": "string",
         "enum": ["Select", "Member", "Associate", "Fellow", "Honour", "Emeritus", "Volunteer", "Other"]
       },
-      "personAffiliationOther?": {
+      "personAffiliationOther": {
         "type": "string"
       },
       "personAffiliationCountry": {

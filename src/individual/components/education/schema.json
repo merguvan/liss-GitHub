@@ -37,7 +37,10 @@
       },
       "personEduInstitutionDegree": {
         "type": "string",
-          "enum": ["High School", "Bachelor's", "Master's", "Doctoral", "Assistant Professorship", "Associate Professors", "Professor"]
+          "enum": ["High School", "Bachelor's", "Master's", "Doctoral", "Assistant Professorship", "Associate Professors", "Professor", "Other"]
+      },
+      "personEduInstitutionOtherDegree":{
+        "type":"string"
       },
       "personEduInstitutionProgram": {
         "type": "string"

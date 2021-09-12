@@ -81,11 +81,6 @@
                   "type": "HorizontalLayout",
                   "elements": [
                     {
-                      "type": "Control",
-                      "label": "Same as Institution",
-                      "scope": "#/properties/contactAddressSame"
-                    },
-                    {
                       "type": "VerticalLayout",
                       "elements": [
                         

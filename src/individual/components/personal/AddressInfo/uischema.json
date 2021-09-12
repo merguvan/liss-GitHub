@@ -18,6 +18,20 @@
               },
               {
                 "type": "Control",
+                "scope": "#/properties/personOtherTitle",
+                "label":"Other Title",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/personTitle",
+                    "schema": {
+                      "const": "Other"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
                 "scope": "#/properties/personName",
                 "label":"First Name"
               },
@@ -122,6 +136,20 @@
                           "type": "Control",
                           "scope": "#/properties/personAddressType",
                           "label": "Address Type"
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/personOtherAddressType",
+                          "label": "Other Address Type",
+                          "rule": {
+                            "effect": "SHOW",
+                            "condition": {
+                              "scope": "#/properties/personAddressType",
+                              "schema": {
+                                "const": "Other"
+                              }
+                            }
+                          }
                         },
                         {
                           "type": "Control",

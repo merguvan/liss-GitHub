@@ -13,12 +13,25 @@
               "label": "Title",
               "scope": "/properties/personTitle"
             },
-            {
-              "type": "Control",
-              "label": "Referee Name",
-              "scope": "/properties/personRefereeName"
+            {"type": "Control",
+              "label": "Other Title",
+              "scope": "/properties/personOtherTitle",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/personTitle",
+                  "schema": {
+                    "const": "Other"
+                  }
+                }
+              }
             }
           ]
+        },
+        {
+          "type": "Control",
+          "label": "Your Name",
+          "scope": "/properties/personRefereeName"
         },
         {
           "type": "Control",
