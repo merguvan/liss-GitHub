@@ -47,7 +47,7 @@ export const addCapacity = (data) => async (dispatch, getState) => {
 };
 
 export const updateCapacityInfo = (data) => async (dispatch, getState) => {
-  const { token, id } = getState().userLogin;
+  const { token } = getState().userLogin;
   try {
     dispatch({
       type: UPDATE_CAPACITY_INFO_PENDING,

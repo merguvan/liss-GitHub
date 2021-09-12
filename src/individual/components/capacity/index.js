@@ -12,6 +12,8 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import { addCapacity } from "../../actions/capacityAction";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -47,7 +49,7 @@ const ContactPerson = ({ history }) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
   const [save, setSave] = useState(false);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (
       Object.values(jsonformsData).join("") !==
@@ -60,11 +62,7 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    if (Object.values(setJsonformsData).join("").length > 0) {
-      console.log("data sent");
-    } else {
-      console.log("fill all the values");
-    }
+    dispatch(addCapacity(jsonformsData));
   };
 
   return (
