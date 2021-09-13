@@ -10,7 +10,7 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { addAchivements } from "../../actions/achievements";
 import { useDispatch } from "react-redux";
 
@@ -50,7 +50,8 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const ContactPerson = ({ history }) => {
+const ContactPerson = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
@@ -68,9 +69,12 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    dispatch(addAchivements(jsonformsData));
+    if ([...jsonformsData].length > 0) {
+      dispatch(addAchivements(jsonformsData));
+    } else {
+      history.push("/individual");
+    }
   };
-
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
