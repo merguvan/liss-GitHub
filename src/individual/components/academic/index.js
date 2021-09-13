@@ -13,6 +13,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { addAcademicWorkDetails } from "../../actions/academicWorkDetails";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((_theme) => ({
   container: {
@@ -44,7 +45,8 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const ContactPerson = ({ history }) => {
+const ContactPerson = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
@@ -62,8 +64,11 @@ const ContactPerson = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    console.log(jsonformsData, "handleSubmit");
-    dispatch(addAcademicWorkDetails(jsonformsData));
+    if ([...jsonformsData].length > 0) {
+      dispatch(addAcademicWorkDetails(jsonformsData));
+    } else {
+      history.push("/individual");
+    }
   };
 
   return (
