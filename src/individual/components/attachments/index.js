@@ -12,26 +12,24 @@ import {
 } from "react-bootstrap";
 
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AiFillDelete } from "react-icons/ai";
+import { addAttachmentInfo } from "../../actions/attachments";
 
 const Attachments = () => {
   const [attachmentType, setAddAttachmentType] = useState("");
   const [description, setDescription] = useState("");
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const { addAttachment: storeAddAttachment } = useSelector(
     (state) => state.attachmentReducer
   );
-
-  const save = false;
 
   const [show, setShow] = useState(true);
 
   const [attachments, setAttachments] = useState(storeAddAttachment || []);
   const handleAddAttachment = (e) => {
-    console.log(e, "erdsl");
     setAttachments([
       ...attachments,
       { attachmentType, file: e.target.files[0], description },
@@ -41,8 +39,9 @@ const Attachments = () => {
   };
 
   const handleSubmit = () => {
-    // dispatch(addAttachmentInfo(attachments));
-    if (2 == 3) {
+    if (attachments.length > 0) {
+      dispatch(addAttachmentInfo(attachments));
+    } else {
       history.push("/individual");
     }
   };
@@ -146,7 +145,10 @@ const Attachments = () => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
+        <Button onClick={handleSubmit}>
+          {" "}
+          {attachments.length > 0 ? "save" : "close"}{" "}
+        </Button>
       </Modal.Footer>
     </Modal>
   );
