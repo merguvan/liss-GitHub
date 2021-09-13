@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -45,11 +45,10 @@ const useStyles = makeStyles((_theme) => ({
 const renderers = [...materialRenderers];
 
 const Certifications = () => {
-  const history=useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
- 
 
   const handleSubmit = (e) => {
     if ([...jsonformsData].length > 0) {
@@ -91,7 +90,7 @@ const Certifications = () => {
               type="submit"
               onClick={handleSubmit}
             >
-              {[...jsonformsData].length > 0) ? "Save" : "Close"}
+              {[...jsonformsData].length > 0 ? "Save" : "Close"}
             </Button>
           </Link>
         </footer>
