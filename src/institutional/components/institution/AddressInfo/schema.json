@@ -4,8 +4,11 @@
     "instStatus": {
       "type": "string",
       "enum":[
-        "State", "Private"
+        "State", "Private", "Other"
       ]
+    },
+    "otherInstStatus":{
+      "type":"string"
     },
     "instName": {
       "type": "string",

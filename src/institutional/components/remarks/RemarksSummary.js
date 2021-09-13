@@ -12,7 +12,7 @@ const remarks = {
 };
 function Remarks(props) {
   return (
-    <Summary headerTitle="Remarks" url="/remarks/1">
+    <Summary headerTitle="Remarks" url="/institutional/remarks">
       <div className="remarks_block">
         <div className="person-summary-body-title"></div>
         <div className="person-summary-body-context-container">

@@ -24,6 +24,20 @@
               },
               {
                 "type": "Control",
+                "scope": "#/properties/otherContactTitle",
+                "label":"Other Title",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/contactTitle",
+                    "schema": {
+                      "const": "Other"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
                 "scope": "#/properties/contactName",
                 "label":"First Name"
               },

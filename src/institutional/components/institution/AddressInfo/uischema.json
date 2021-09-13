@@ -18,9 +18,24 @@
                 },
                 {
                   "type": "Control",
-                  "scope": "#/properties/instName",
-                  "label": "Name"
+                  "scope": "#/properties/otherInstStatus",
+                  "label": "Other Status",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/instStatus",
+                      "schema": {
+                        "const": "Other"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/instAbbreviation",
+                  "label": "Abbreviation"
                 }
+                
               ]
             },
             {
@@ -28,8 +43,8 @@
               "elements": [
                 {
                   "type": "Control",
-                  "scope": "#/properties/instAbbreviation",
-                  "label": "Abbreviation"
+                  "scope": "#/properties/instName",
+                  "label": "Name"
                 },
                 {
                   "type": "Control",
