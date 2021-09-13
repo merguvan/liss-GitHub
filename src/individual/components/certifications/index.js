@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -10,7 +10,7 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { addCertificationsDetails } from "../../actions/certificationsDetails";
 import { useDispatch } from "react-redux";
 
@@ -44,27 +44,19 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const Certifications = ({ history }) => {
+const Certifications = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
-  const [save, setSave] = useState(false);
-
-  useEffect(() => {
-    if (
-      Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    dispatch(addCertificationsDetails(jsonformsData));
+    if ([...jsonformsData].length > 0) {
+      dispatch(addCertificationsDetails(jsonformsData));
+    } else {
+      history.push("/individual");
+    }
   };
-
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
@@ -98,7 +90,7 @@ const Certifications = ({ history }) => {
               type="submit"
               onClick={handleSubmit}
             >
-              {save ? "Save" : "Close"}
+              {[...jsonformsData].length > 0 ? "Save" : "Close"}
             </Button>
           </Link>
         </footer>

@@ -11,7 +11,7 @@ import {
 } from "@jsonforms/material-renderers";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { addAffiliationsInfo } from "../../actions/affiliations";
 import { useDispatch } from "react-redux";
@@ -48,7 +48,8 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const Affiliations = ({ history }) => {
+const Affiliations = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
@@ -66,7 +67,11 @@ const Affiliations = ({ history }) => {
   }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    dispatch(addAffiliationsInfo(jsonformsData));
+    if ([...jsonformsData].length > 0) {
+      dispatch(addAffiliationsInfo(jsonformsData));
+    } else {
+      history.push("/individual");
+    }
   };
 
   return (

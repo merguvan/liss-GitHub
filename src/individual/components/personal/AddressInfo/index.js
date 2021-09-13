@@ -10,7 +10,7 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";
@@ -49,25 +49,24 @@ const useStyles = makeStyles((_theme) => ({
 
 const renderers = [...materialRenderers];
 
-const ContactPerson = ({ history }) => {
+const ContactPerson = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState(initalData);
-  const [save, setSave] = useState(false);
-
-  useEffect(() => {
-    if (
-      Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [jsonformsData, setJsonformsData]);
 
   const handleSubmit = (e) => {
-    dispatch(addPersonalInfo(jsonformsData));
+    console.log(jsonformsData);
+    if (
+      (Object.keys(jsonformsData).length === 1 &&
+        Object.keys(jsonformsData.address[0]).length > 1) ||
+      Object.keys(jsonformsData).length > 1
+    ) {
+      console.log("object");
+      dispatch(addPersonalInfo(jsonformsData));
+    } else {
+      history.push("/individual");
+    }
   };
 
   return (
@@ -93,16 +92,18 @@ const ContactPerson = ({ history }) => {
           </Grid>
         </Grid>
         <footer style={{ display: "flex", justifyContent: "center" }}>
-          <Link to="/individual">
-            <Button
-              variant="contained"
-              color="blue"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              {save ? "Save" : "Close"}
-            </Button>
-          </Link>
+          <Button
+            variant="contained"
+            color="blue"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            {(Object.keys(jsonformsData).length === 1 &&
+              Object.keys(jsonformsData.address[0]).length > 1) ||
+            Object.keys(jsonformsData).length > 1
+              ? "Save"
+              : "Close"}
+          </Button>
         </footer>
       </Fragment>
     </div>
