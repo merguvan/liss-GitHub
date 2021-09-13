@@ -65,7 +65,7 @@ const Remarks = (props) => {
         <CloseButton
           onClick={() => {
             setShow(!show);
-            history.push("/");
+            history.push("/institutional");
           }}
         />
       </Modal.Header>
@@ -89,7 +89,7 @@ const Remarks = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-      <Link to="/">
+      <Link to="/institutional">
         <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
       </Link>
       </Modal.Footer>
