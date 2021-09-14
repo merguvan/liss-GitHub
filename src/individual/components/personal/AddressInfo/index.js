@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -10,7 +10,7 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";

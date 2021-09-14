@@ -12,6 +12,7 @@ import IndividualMainPage from "./individual/pages/IndividualMainPage";
 import IndividualRouter from "./individual/pages/IndividualRouter";
 import InstitutionalMainPage from "./institutional/pages/MainPage";
 import InstitutionalRouter from "./institutional/pages/InstitutionalRouter";
+import AdminMainPage from "./admin/pages/AdminMainPage";
 
 function App(props) {
   // eslint-disable-next-line
@@ -61,6 +62,7 @@ function App(props) {
             exact
             component={InstitutionalMainPage}
           />
+
           <Route
             path="/institutional/:section"
             component={InstitutionalRouter}

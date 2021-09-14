@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
-import "react-bootstrap-country-select/dist/react-bootstrap-country-select.css";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
