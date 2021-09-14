@@ -55,6 +55,7 @@ function App(props) {
         <Switch>
           <Route path="/login_register" exact component={LoginPage} />
           <Route path="/individual" exact component={IndividualMainPage} />
+          <Route path="/admin" exact component={AdminMainPage} />
           <Route
             path="/institutional"
             exact

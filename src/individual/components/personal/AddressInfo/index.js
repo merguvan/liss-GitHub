@@ -56,13 +56,11 @@ const ContactPerson = () => {
   const [jsonformsData, setJsonformsData] = useState(initalData);
 
   const handleSubmit = (e) => {
-    console.log(jsonformsData);
     if (
       (Object.keys(jsonformsData).length === 1 &&
         Object.keys(jsonformsData.address[0]).length > 1) ||
       Object.keys(jsonformsData).length > 1
     ) {
-      console.log("object");
       dispatch(addPersonalInfo(jsonformsData));
     } else {
       history.push("/individual");
