@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -66,7 +66,23 @@ const ContactPerson = () => {
       history.push("/individual");
     }
   };
-
+  useEffect(() => {
+    console.log(jsonformsData, "jsonformsData");
+    const keys = Object.keys(jsonformsData);
+    for (let i = 0; i < keys.length; i++) {
+      // if (
+      //   Array.isArray(jsonformsData[keys[i]]) &&
+      //   jsonformsData[keys[i]].length > 0
+      // ) {
+      // } else if (
+      //   !Array.isArray(jsonformsData[keys[i]]) &&
+      //   jsonformsData[keys[i]].length > 0
+      // ) {
+      //   console.log("array degil", jsonformsData[keys[i]]);
+      // } else {
+      // }
+    }
+  });
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
@@ -95,13 +111,7 @@ const ContactPerson = () => {
             color="blue"
             type="submit"
             onClick={handleSubmit}
-          >
-            {(Object.keys(jsonformsData).length === 1 &&
-              Object.keys(jsonformsData.address[0]).length > 1) ||
-            Object.keys(jsonformsData).length > 1
-              ? "Save"
-              : "Close"}
-          </Button>
+          ></Button>
         </footer>
       </Fragment>
     </div>
