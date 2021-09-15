@@ -1,10 +1,10 @@
 import React from "react";
-import AdminSiderBar from "../components/AdminSiderBar";
+import AdminIndividualPage from "./AdminIndividualPage";
 
 const AdminMainPage = () => {
   return (
     <div>
-      <AdminSiderBar />
+      <AdminIndividualPage />
     </div>
   );
 };
