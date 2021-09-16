@@ -24,23 +24,23 @@ const useStyles = makeStyles((_theme) => ({
     padding: "1.5em",
     minWidth: "900px",
   },
-  title: {
-    textAlign: "center",
-    padding: "0.5em",
-  },
-  dataContent: {
-    display: "flex",
-    justifyContent: "center",
-    borderRadius: "0.25em",
-    backgroundColor: "#cecece",
-    marginBottom: "1rem",
-    padding: "1em",
-    height: "22rem",
-  },
-  resetButton: {
-    display: "flex",
-    justifyContent: "flex-end",
-  },
+  // title: {
+  //   textAlign: "center",
+  //   padding: "0.5em",
+  // },
+  // dataContent: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   borderRadius: "0.25em",
+  //   backgroundColor: "#cecece",
+  //   marginBottom: "1rem",
+  //   padding: "1em",
+  //   height: "22rem",
+  // },
+  // resetButton: {
+  //   display: "flex",
+  //   justifyContent: "flex-end",
+  // },
   demoform: {
     margin: "auto",
     padding: "1rem",

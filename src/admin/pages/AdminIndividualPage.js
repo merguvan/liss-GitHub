@@ -1,15 +1,17 @@
 import React, { useState, Fragment } from "react";
-import "./App.css";
 import data from "./mock-data.json";
 import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditableRow from "../components/EditableRow";
 import {Table, TableBody,TableCell,TableContainer,TableHead,TableRow,Paper, makeStyles} from '@material-ui/core';
 
 
-const useStyles = makeStyles({
-  table: {
+const admin_Main_Styles = makeStyles({
+  admin_table: {
     minWidth: 650,
   },
+  bg:{
+    backgroundColor:"#E5E1EE",
+  }
 });
 const App = () => {
   const [contacts, setContacts] = useState(data);
@@ -83,15 +85,14 @@ const App = () => {
 
     setContacts(newContacts);
   };
-  const classes = useStyles();
-
+  const classes = admin_Main_Styles();
   return (
     <TableContainer component={Paper} className="app-container">
       <form onSubmit={handleEditFormSubmit}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
+        <Table className={classes.admin_table} aria-label="simple table">
+          <TableHead className={classes.bg}>
+            <TableRow >
+              <TableCell>First Name</TableCell>
               <TableCell>Address</TableCell>
               <TableCell>Phone Number</TableCell>
               <TableCell>Email</TableCell>
