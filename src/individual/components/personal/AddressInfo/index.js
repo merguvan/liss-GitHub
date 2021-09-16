@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";
+import { set } from "mongoose";
 
 const initalData = {
   address: [{ personAddressType: "Legal" }],
@@ -54,7 +55,7 @@ const ContactPerson = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState(initalData);
-
+  const [save, setSave] = useState("");
   const handleSubmit = (e) => {
     if (
       (Object.keys(jsonformsData).length === 1 &&
@@ -66,23 +67,8 @@ const ContactPerson = () => {
       history.push("/individual");
     }
   };
-  useEffect(() => {
-    console.log(jsonformsData, "jsonformsData");
-    const keys = Object.keys(jsonformsData);
-    for (let i = 0; i < keys.length; i++) {
-      // if (
-      //   Array.isArray(jsonformsData[keys[i]]) &&
-      //   jsonformsData[keys[i]].length > 0
-      // ) {
-      // } else if (
-      //   !Array.isArray(jsonformsData[keys[i]]) &&
-      //   jsonformsData[keys[i]].length > 0
-      // ) {
-      //   console.log("array degil", jsonformsData[keys[i]]);
-      // } else {
-      // }
-    }
-  });
+  useEffect(() => {}, [jsonformsData]);
+  console.log(save);
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
@@ -111,7 +97,9 @@ const ContactPerson = () => {
             color="blue"
             type="submit"
             onClick={handleSubmit}
-          ></Button>
+          >
+            {(save && "Save") || "Close"}
+          </Button>
         </footer>
       </Fragment>
     </div>
