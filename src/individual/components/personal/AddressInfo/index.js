@@ -16,7 +16,7 @@ import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";
 import { set } from "mongoose";
 
-const initalData = {
+const initialData = {
   address: [{ personAddressType: "Legal" }],
 };
 
@@ -54,8 +54,8 @@ const ContactPerson = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [jsonformsData, setJsonformsData] = useState(initalData);
-  const [save, setSave] = useState("");
+  const [jsonformsData, setJsonformsData] = useState(initialData);
+  const [save, setSave] = useState(false);
   const handleSubmit = (e) => {
     if (
       (Object.keys(jsonformsData).length === 1 &&
@@ -67,8 +67,34 @@ const ContactPerson = () => {
       history.push("/individual");
     }
   };
-  useEffect(() => {}, [jsonformsData]);
-  console.log(save);
+  useEffect(() => {
+    const tempObject = jsonformsData;
+    const keys = Object.keys(tempObject); ///array
+
+    for (let i = 0; i < keys.length; i++) {
+      if (
+        jsonformsData[keys[i]].length === 0 ||
+        jsonformsData[keys[i]] === ""
+      ) {
+        delete tempObject[keys[i]];
+      } else {
+      }
+    }
+
+    setJsonformsData(tempObject);
+    if (
+      (Object.keys(jsonformsData).length === 1 &&
+        jsonformsData.address[0].personAddressType === "Legal" &&
+        Object.keys(jsonformsData.address[0]).length === 1) ||
+      Object.keys(jsonformsData).length === 0
+    ) {
+      setSave(false);
+    } else {
+      setSave(true);
+    }
+    console.log(jsonformsData);
+  }, [jsonformsData]);
+
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
