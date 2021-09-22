@@ -3,16 +3,16 @@ import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
 
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addRemarksInfo } from "../../actions/remarks";
 const Remarks = (props) => {
   const history = useHistory();
   const { remarks: storeRemarks } = useSelector(
-    (state) => state.remarksReducer
+    (state) => state?.remarksReducer
   );
-  const [save, setSave] = useState(false);
+  const [save, setSave] = useState("");
   const [remarks, setRemarks] = useState(storeRemarks || {});
   const dispatch = useDispatch();
   //const [remarks, setRemarks] = useState({});
@@ -24,16 +24,6 @@ const Remarks = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(() => {
-    if (
-      Object.values(storeRemarks).join("") !== Object.values(remarks).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [storeRemarks, remarks]);
 
   const handleSubmit = () => {
     dispatch(addRemarksInfo(remarks));
@@ -81,9 +71,14 @@ const Remarks = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/individual">
-          <Button onClick={handleSubmit}> {save ? "save" : "close"} </Button>
-        </Link>
+        <Button
+          variant="contained"
+          color="blue"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          {remarks?.personRemarks ? "Save" : "Close"}
+        </Button>
       </Modal.Footer>
     </Modal>
   );

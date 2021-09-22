@@ -10,7 +10,7 @@ import AchievementsInfo from "../../individual/components/achievements/index";
 import CertificationsInfo from "../../individual/components/certifications/index";
 import CapacityInfo from "../../individual/components/capacity/index";
 import ReferencesInfo from "../../individual/components/references/index";
-import RemarksInfo from "../../individual/components/remarks/RemarksInfo";
+import RemarksInfo from "../../individual/components/remarks/index";
 import ProjectsInfo from "../../individual/components/projects/index";
 import AttachmentsInfo from "../components/attachments/index";
 const InstitutionalRouter = () => {
