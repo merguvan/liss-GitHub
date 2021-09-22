@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Modal,
   Container,
@@ -20,6 +20,7 @@ import { addAttachmentInfo } from "../../actions/attachments";
 const Attachments = () => {
   const [attachmentType, setAddAttachmentType] = useState("");
   const [description, setDescription] = useState("");
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { addAttachment: storeAddAttachment } = useSelector(
@@ -27,6 +28,8 @@ const Attachments = () => {
   );
 
   const [show, setShow] = useState(true);
+
+  // useEffect(() => {}, [attachments]);
 
   const [attachments, setAttachments] = useState(storeAddAttachment || []);
   const handleAddAttachment = (e) => {

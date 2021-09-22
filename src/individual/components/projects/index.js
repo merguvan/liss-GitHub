@@ -14,10 +14,6 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProjectsInfo } from "../../actions/projects";
 
-// const initalData={
-//       address:[{personAddressType:"Legal"}]
-// }
-
 const useStyles = makeStyles((_theme) => ({
   container: {
     padding: "1.5em",
@@ -51,18 +47,20 @@ const renderers = [...materialRenderers];
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
-  const [save, setSave] = useState(false);
   const dispatch = useDispatch();
+  const [save, setSave] = useState("");
+
   useEffect(() => {
-    if (
-      Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [jsonformsData, setJsonformsData]);
+    const tempObject = jsonformsData;
+    const keys = Object.keys(tempObject);
+    keys.forEach((key) => {
+      if (tempObject[key]?.length == 0 || !tempObject[key]) {
+        delete tempObject[key];
+      }
+    });
+    setJsonformsData(tempObject);
+    Object.keys(jsonformsData).length > 0 ? setSave("Save") : setSave("Close");
+  }, [jsonformsData]);
 
   const handleSubmit = (e) => {
     dispatch(addProjectsInfo(jsonformsData));
@@ -98,7 +96,7 @@ const ContactPerson = ({ history }) => {
               type="submit"
               onClick={handleSubmit}
             >
-              {save ? "Save" : "Close"}
+              {save}
             </Button>
           </Link>
         </footer>
