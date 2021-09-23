@@ -5,9 +5,8 @@ import Institution from "../components/institution/AddressInfo/index";
 import Remarks from "../components/remarks/index";
 
 const InstitutionalRouter = (props) => {
-  console.log(props.match.params.section);
   const { section } = useParams();
-  console.log(section);
+
   switch (section) {
     case "contact":
       return <ContactForm />;

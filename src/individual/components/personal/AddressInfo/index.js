@@ -14,7 +14,6 @@ import { useHistory } from "react-router-dom";
 
 import { addPersonalInfo } from "../../../actions/personalInfoActions";
 import { useDispatch } from "react-redux";
-import { set } from "mongoose";
 
 const initialData = {
   address: [{ personAddressType: "Legal" }],

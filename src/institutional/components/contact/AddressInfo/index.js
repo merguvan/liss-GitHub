@@ -77,7 +77,6 @@ const ContactPerson = ({ history }) => {
     } else {
       setSave(true);
     }
-    console.log(jsonformsData);
   }, [jsonformsData]);
 
   const handleSubmit = (e) => {
@@ -87,7 +86,7 @@ const ContactPerson = ({ history }) => {
       console.log("fill all the values");
     }
   };
-  console.log(jsonformsData, "jsonforms");
+
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>

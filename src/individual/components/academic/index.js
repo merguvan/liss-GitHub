@@ -62,7 +62,7 @@ const ContactPerson = () => {
     const tempObject = jsonformsData;
     const keys = Object.keys(tempObject);
     keys.forEach((key) => {
-      if (tempObject[key].length == 0) {
+      if (tempObject[key].length === 0) {
         delete tempObject[key];
       }
     });

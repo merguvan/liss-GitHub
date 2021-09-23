@@ -54,7 +54,7 @@ const ContactPerson = ({ history }) => {
     const tempObject = jsonformsData;
     const keys = Object.keys(tempObject);
     keys.forEach((key) => {
-      if (tempObject[key]?.length == 0 || !tempObject[key]) {
+      if (tempObject[key]?.length === 0 || !tempObject[key]) {
         delete tempObject[key];
       }
     });

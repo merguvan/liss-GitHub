@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Container,
@@ -28,8 +28,6 @@ const Attachments = () => {
   );
 
   const [show, setShow] = useState(true);
-
-  // useEffect(() => {}, [attachments]);
 
   const [attachments, setAttachments] = useState(storeAddAttachment || []);
   const handleAddAttachment = (e) => {

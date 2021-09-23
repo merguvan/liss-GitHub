@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, CloseButton, Container, Button, Form } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css"; // or include from a CDN
@@ -12,7 +12,7 @@ const Remarks = (props) => {
   const { remarks: storeRemarks } = useSelector(
     (state) => state?.remarksReducer
   );
-  const [save, setSave] = useState("");
+
   const [remarks, setRemarks] = useState(storeRemarks || {});
   const dispatch = useDispatch();
   //const [remarks, setRemarks] = useState({});
