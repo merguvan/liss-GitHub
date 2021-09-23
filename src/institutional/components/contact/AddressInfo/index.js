@@ -50,18 +50,35 @@ const renderers = [...materialRenderers];
 const ContactPerson = ({ history }) => {
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState(initalData);
-  const [save, setSave] = useState(false);
+  const [save, setSave] = useState("");
 
   useEffect(() => {
-    if (
-      Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
+    const tempObject = jsonformsData;
+    const keys = Object.keys(tempObject); ///array
+
+    for (let i = 0; i < keys.length; i++) {
+      if (
+        jsonformsData[keys[i]]?.length === 0 ||
+        jsonformsData[keys[i]] === ""
+      ) {
+        delete tempObject[keys[i]];
+      } else {
+      }
     }
-  }, [jsonformsData, setJsonformsData]);
+
+    setJsonformsData(tempObject);
+    if (
+      (Object.keys(jsonformsData).length === 1 &&
+        jsonformsData.address?.[0].contactAddressType === "Legal" &&
+        Object.keys(jsonformsData.address[0]).length === 1) ||
+      Object.keys(jsonformsData).length === 0
+    ) {
+      setSave(false);
+    } else {
+      setSave(true);
+    }
+    console.log(jsonformsData);
+  }, [jsonformsData]);
 
   const handleSubmit = (e) => {
     if (Object.values(setJsonformsData).join("").length > 0) {
@@ -70,7 +87,7 @@ const ContactPerson = ({ history }) => {
       console.log("fill all the values");
     }
   };
-
+  console.log(jsonformsData, "jsonforms");
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
