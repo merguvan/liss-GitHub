@@ -1,22 +1,20 @@
 import React from "react";
-import { TableCell, TableRow, makeStyles, Button } from "@material-ui/core";
+import { TableCell, TableRow } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  admin_cell:{
-    padding:5,
-    paddingLeft:15,
-  }
-});
+// const useStyles = makeStyles({
+//   table: {
+//     minWidth: 650,
+//   },
+// });
 
 const EditableRow = ({
   editFormData,
   handleEditFormChange,
   handleCancelClick,
 }) => {
-  const classes = useStyles();
   return (
     <TableRow>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -26,7 +24,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -36,7 +34,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -46,7 +44,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="email"
           required="required"
@@ -56,7 +54,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="email"
           required="required"
@@ -66,7 +64,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="email"
           required="required"
@@ -76,7 +74,7 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
+      <TableCell>
         <input
           type="email"
           required="required"
@@ -86,11 +84,11 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </TableCell>
-      <TableCell className={classes.admin_cell}>
-        <Button color="primary" type="submit">Save</Button>
-        <Button color="primary" type="button" onClick={handleCancelClick}>
+      <TableCell>
+        <button type="submit">Save</button>
+        <button type="button" onClick={handleCancelClick}>
           Cancel
-        </Button>
+        </button>
       </TableCell>
     </TableRow>
   );

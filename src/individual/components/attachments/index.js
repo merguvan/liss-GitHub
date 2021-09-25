@@ -20,6 +20,7 @@ import { addAttachmentInfo } from "../../actions/attachments";
 const Attachments = () => {
   const [attachmentType, setAddAttachmentType] = useState("");
   const [description, setDescription] = useState("");
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { addAttachment: storeAddAttachment } = useSelector(

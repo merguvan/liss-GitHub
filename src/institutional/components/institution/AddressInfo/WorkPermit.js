@@ -36,7 +36,7 @@ const WorkPermit = ({ handlePersonAddressInfo }) => {
           ?.value === ""
     );
   }, [workPermitsArray]);
-  const checkButton = () => {};
+
   const handleMinusClick = (event, el) => {
     setWorkPermitsArray(workPermitsArray.filter((minus) => minus !== el));
     setWorkPermits((prev) => prev - 1);

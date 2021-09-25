@@ -55,18 +55,19 @@ const ContactPerson = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
-  const [save, setSave] = useState(false);
+  const [save, setSave] = useState("");
 
   useEffect(() => {
-    if (
-      Object.values(jsonformsData).join("") !==
-      Object.values(setJsonformsData).join("")
-    ) {
-      setSave(true);
-    } else {
-      setSave(false);
-    }
-  }, [jsonformsData, setJsonformsData]);
+    const tempObject = jsonformsData;
+    const keys = Object.keys(tempObject);
+    keys.forEach((key) => {
+      if (tempObject[key]?.length === 0 || !tempObject[key]) {
+        delete tempObject[key];
+      }
+    });
+    setJsonformsData(tempObject);
+    Object.keys(jsonformsData).length > 0 ? setSave("Save") : setSave("Close");
+  }, [jsonformsData]);
 
   const handleSubmit = (e) => {
     if ([...jsonformsData].length > 0) {
@@ -75,6 +76,7 @@ const ContactPerson = () => {
       history.push("/individual");
     }
   };
+  console.log(jsonformsData);
   return (
     <div style={{ padding: "20px" }}>
       <Fragment>
@@ -105,7 +107,7 @@ const ContactPerson = () => {
               type="submit"
               onClick={handleSubmit}
             >
-              {save ? "Save" : "Close"}
+              {save}
             </Button>
           </Link>
         </footer>

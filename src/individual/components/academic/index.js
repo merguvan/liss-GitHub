@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { JsonForms } from "@jsonforms/react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -50,7 +50,7 @@ const ContactPerson = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [jsonformsData, setJsonformsData] = useState("");
-
+  const [save, setSave] = useState(false);
   const handleSubmit = (e) => {
     if (Object.keys(jsonformsData).length > 0) {
       dispatch(addAcademicWorkDetails(jsonformsData));
@@ -58,6 +58,17 @@ const ContactPerson = () => {
       history.push("/individual");
     }
   };
+  useEffect(() => {
+    const tempObject = jsonformsData;
+    const keys = Object.keys(tempObject);
+    keys.forEach((key) => {
+      if (tempObject[key].length === 0) {
+        delete tempObject[key];
+      }
+    });
+    setJsonformsData(tempObject);
+    Object.keys(jsonformsData).length > 0 ? setSave("Save") : setSave("Close");
+  }, [jsonformsData]);
 
   return (
     <Fragment>
@@ -86,7 +97,7 @@ const ContactPerson = () => {
             type="submit"
             onClick={handleSubmit}
           >
-            {Object.keys(jsonformsData).length > 0 ? "Save" : "Close"}
+            {save}
           </Button>
         </Grid>
       </Grid>
