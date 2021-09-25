@@ -1,5 +1,7 @@
 import React from "react";
-import { TableCell, TableRow } from "@material-ui/core";
+import { TableCell, TableRow, Button } from "@material-ui/core";
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 // const useStyles = makeStyles({
 //   table: {
@@ -85,10 +87,20 @@ const EditableRow = ({
         ></input>
       </TableCell>
       <TableCell>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
+      <Button
+          variant="outlined"
+          size="small"
+          color="secondary" 
+          type="submit"><SaveIcon/>
+      </Button>
+      <Button
+          variant="contained"
+          size="small"
+          color="primary" 
+          type="button" 
+          onClick={handleCancelClick}>
+          <CancelIcon/>
+      </Button>
       </TableCell>
     </TableRow>
   );
