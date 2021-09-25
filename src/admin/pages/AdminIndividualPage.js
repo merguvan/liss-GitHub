@@ -2,16 +2,29 @@ import React, { useState, Fragment } from "react";
 import data from "./mock-data.json";
 import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditableRow from "../components/EditableRow";
-import {Table, TableBody,TableCell,TableContainer,TableHead,TableRow,Paper, makeStyles} from '@material-ui/core';
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  makeStyles,
+} from "@material-ui/core";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
   },
-  bg:{
-    backgroundColor:"#E5E1EE",
-  }
+  bg: {
+    backgroundColor: "#E5E1EE",
+  },
 });
 const App = () => {
   const [contacts, setContacts] = useState(data);
@@ -86,48 +99,145 @@ const App = () => {
     setContacts(newContacts);
   };
   const classes = admin_Main_Styles();
-  return (
-    <TableContainer component={Paper} className="app-container">
-      <form onSubmit={handleEditFormSubmit}>
-        <Table className={classes.admin_table} aria-label="simple table">
-          <TableHead className={classes.bg}>
-            <TableRow >
-              <TableCell>First Name</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Phone Number</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Nationality</TableCell>
-              <TableCell>Work Permit</TableCell>
-              <TableCell>Branch</TableCell>
-              <TableCell>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {contacts.map((contact) => (
-              <Fragment>
-                {editContactId === contact.id ? (
-                  <EditableRow
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    handleCancelClick={handleCancelClick}
-                  />
-                ) : (
-                  <ReadOnlyRow
-                    contact={contact}
-                    handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
-                  />
-                )}
-              </Fragment>
-            ))}
-          </TableBody>
-        </Table>
-      </form>
 
-    </TableContainer>
+  const [value, setValue] = React.useState("1");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <Box sx={{ width: "100%", typography: "body1" }}>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Individual" value="1" />
+            <Tab label="Institutional" value="2" />
+            <Tab label="Admin" value="3" />
+          </TabList>
+        </Box>
+        <TabPanel value="1">
+          <TableContainer component={Paper} className="app-container">
+          <h2>Individual</h2>
+            <form onSubmit={handleEditFormSubmit}>
+              <Table className={classes.admin_table} aria-label="simple table">
+                <TableHead className={classes.bg}>
+                  <TableRow>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Address</TableCell>
+                    <TableCell>Phone Number</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Nationality</TableCell>
+                    <TableCell>Work Permit</TableCell>
+                    <TableCell>Branch</TableCell>
+                    <TableCell>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {contacts.map((contact) => (
+                    <Fragment>
+                      {editContactId === contact.id ? (
+                        <EditableRow
+                          editFormData={editFormData}
+                          handleEditFormChange={handleEditFormChange}
+                          handleCancelClick={handleCancelClick}
+                        />
+                      ) : (
+                        <ReadOnlyRow
+                          contact={contact}
+                          handleEditClick={handleEditClick}
+                          handleDeleteClick={handleDeleteClick}
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+                </TableBody>
+              </Table>
+            </form>
+          </TableContainer>
+        </TabPanel>
+        <TabPanel value="2">
+        <TableContainer component={Paper} className="app-container">
+        <h2>Institutional</h2>
+            <form onSubmit={handleEditFormSubmit}>
+              <Table className={classes.admin_table} aria-label="simple table">
+                <TableHead className={classes.bg}>
+                  <TableRow>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Address</TableCell>
+                    <TableCell>Phone Number</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Nationality</TableCell>
+                    <TableCell>Work Permit</TableCell>
+                    <TableCell>Branch</TableCell>
+                    <TableCell>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {contacts.map((contact) => (
+                    <Fragment>
+                      {editContactId === contact.id ? (
+                        <EditableRow
+                          editFormData={editFormData}
+                          handleEditFormChange={handleEditFormChange}
+                          handleCancelClick={handleCancelClick}
+                        />
+                      ) : (
+                        <ReadOnlyRow
+                          contact={contact}
+                          handleEditClick={handleEditClick}
+                          handleDeleteClick={handleDeleteClick}
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+                </TableBody>
+              </Table>
+            </form>
+          </TableContainer>
+        </TabPanel>
+        <TabPanel value="3">
+        <TableContainer component={Paper} className="app-container">
+        <h2>Admin</h2>
+            <form onSubmit={handleEditFormSubmit}>
+              <Table className={classes.admin_table} aria-label="simple table">
+                <TableHead className={classes.bg}>
+                  <TableRow>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Address</TableCell>
+                    <TableCell>Phone Number</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Nationality</TableCell>
+                    <TableCell>Work Permit</TableCell>
+                    <TableCell>Branch</TableCell>
+                    <TableCell>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {contacts.map((contact) => (
+                    <Fragment>
+                      {editContactId === contact.id ? (
+                        <EditableRow
+                          editFormData={editFormData}
+                          handleEditFormChange={handleEditFormChange}
+                          handleCancelClick={handleCancelClick}
+                        />
+                      ) : (
+                        <ReadOnlyRow
+                          contact={contact}
+                          handleEditClick={handleEditClick}
+                          handleDeleteClick={handleDeleteClick}
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+                </TableBody>
+              </Table>
+            </form>
+          </TableContainer>
+        </TabPanel>
+      </TabContext>
+    </Box>
   );
 };
-
-
 
 export default App;

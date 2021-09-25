@@ -1,5 +1,7 @@
 import React from "react";
 import { TableCell, TableRow, Button, makeStyles } from "@material-ui/core";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const useStyles = makeStyles({
   admin_cell: {
@@ -32,7 +34,7 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
           type="button"
           onClick={(event) => handleEditClick(event, contact)}
         >
-          Edit
+          <EditIcon/>
         </Button>
         <Button
           variant="contained"
@@ -41,7 +43,7 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
           type="button"
           onClick={() => handleDeleteClick(contact.id)}
         >
-          View
+          <DeleteIcon/>
         </Button>
       </TableCell>
     </TableRow>
