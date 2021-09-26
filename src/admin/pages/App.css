@@ -25,7 +25,10 @@ form {
   gap: 5px;
 }
 
-
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
 /* form * {
   font-size: 12px;
 } */

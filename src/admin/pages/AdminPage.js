@@ -1,10 +1,8 @@
 import React, { useState, Fragment } from "react";
 import "./App.css";
 import data from "./mock-data.json";
-import InsReadOnlyRow from "../components/InsReadOnlyRow";
-import InsEditableRow from "../components/InsEditableRow";
-import DownloadIcon from '@mui/icons-material/Download'
-
+import AdminReadOnlyRow from "../components/AdminReadOnlyRow";
+import AdminEditableRow from "../components/AdminEditableRow";
 import {
   Table,
   TableBody,
@@ -14,8 +12,8 @@ import {
   TableRow,
   Paper,
   makeStyles,
-  Button
 } from "@material-ui/core";
+
 const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
@@ -96,22 +94,19 @@ const App = () => {
 
     setContacts(newContacts);
   };
+
   const classes = admin_Main_Styles();
 
   return (
     <TableContainer component={Paper} className="app-container">
-    <div className="flex-container">
-      <h2>Institutional</h2>
-      <Button variant="outlined" startIcon={<DownloadIcon />}>Download</Button>
-      </div>
+      <h2>Admin</h2>
       <form onSubmit={handleEditFormSubmit}>
         <Table className={classes.admin_table} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Country</TableCell>
-              <TableCell>Email</TableCell>
               <TableCell>Phone</TableCell>
+              <TableCell>Email</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -119,13 +114,13 @@ const App = () => {
             {contacts.map((contact) => (
               <Fragment>
                 {editContactId === contact.id ? (
-                  <InsEditableRow
+                  <AdminEditableRow
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   />
                 ) : (
-                  <InsReadOnlyRow
+                  <AdminReadOnlyRow
                     contact={contact}
                     handleEditClick={handleEditClick}
                     handleDeleteClick={handleDeleteClick}

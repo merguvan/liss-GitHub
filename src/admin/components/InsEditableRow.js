@@ -57,36 +57,6 @@ const EditableRow = ({
         ></input>
       </TableCell>
       <TableCell>
-        <input
-          type="email"
-          required="required"
-          placeholder="Enter an email..."
-          name="email"
-          value={editFormData.email}
-          onChange={handleEditFormChange}
-        ></input>
-      </TableCell>
-      <TableCell>
-        <input
-          type="email"
-          required="required"
-          placeholder="Enter an email..."
-          name="email"
-          value={editFormData.email}
-          onChange={handleEditFormChange}
-        ></input>
-      </TableCell>
-      <TableCell>
-        <input
-          type="email"
-          required="required"
-          placeholder="Enter an email..."
-          name="email"
-          value={editFormData.email}
-          onChange={handleEditFormChange}
-        ></input>
-      </TableCell>
-      <TableCell>
       <Button
           variant="outlined"
           size="small"
