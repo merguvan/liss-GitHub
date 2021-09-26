@@ -1,7 +1,11 @@
 import React, { useState, Fragment } from "react";
 import data from "./mock-data.json";
-import ReadOnlyRow from "../components/ReadOnlyRow";
-import EditableRow from "../components/EditableRow";
+import IndReadOnlyRow from "../components/IndReadOnlyRow";
+import IndEditableRow from "../components/IndEditableRow";
+import DownloadIcon from '@mui/icons-material/Download'
+import { styled } from '@mui/material/styles';
+import { tableCellClasses } from '@mui/material/TableCell';
+
 import {
   Table,
   TableBody,
@@ -11,20 +15,28 @@ import {
   TableRow,
   Paper,
   makeStyles,
+  Button
 } from "@material-ui/core";
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    // color: theme.palette.common.white,
+    fontSize: 16,
+    fontWeight:700,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    // fontSize: 14,
+  },
+}));
+
 
 const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
   },
-  bg: {
-    backgroundColor: "#E5E1EE",
-  },
+  // bg: {
+  //   backgroundColor: "#E5E1EE",
+  // },
 });
 const App = () => {
   const [contacts, setContacts] = useState(data);
@@ -100,143 +112,48 @@ const App = () => {
   };
   const classes = admin_Main_Styles();
 
-  const [value, setValue] = React.useState("1");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Individual" value="1" />
-            <Tab label="Institutional" value="2" />
-            <Tab label="Admin" value="3" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
-          <TableContainer component={Paper} className="app-container">
-          <h2>Individual</h2>
-            <form onSubmit={handleEditFormSubmit}>
-              <Table className={classes.admin_table} aria-label="simple table">
-                <TableHead className={classes.bg}>
-                  <TableRow>
-                    <TableCell>First Name</TableCell>
-                    <TableCell>Address</TableCell>
-                    <TableCell>Phone Number</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Nationality</TableCell>
-                    <TableCell>Work Permit</TableCell>
-                    <TableCell>Branch</TableCell>
-                    <TableCell>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {contacts.map((contact) => (
-                    <Fragment>
-                      {editContactId === contact.id ? (
-                        <EditableRow
-                          editFormData={editFormData}
-                          handleEditFormChange={handleEditFormChange}
-                          handleCancelClick={handleCancelClick}
-                        />
-                      ) : (
-                        <ReadOnlyRow
-                          contact={contact}
-                          handleEditClick={handleEditClick}
-                          handleDeleteClick={handleDeleteClick}
-                        />
-                      )}
-                    </Fragment>
-                  ))}
-                </TableBody>
-              </Table>
-            </form>
-          </TableContainer>
-        </TabPanel>
-        <TabPanel value="2">
-        <TableContainer component={Paper} className="app-container">
-        <h2>Institutional</h2>
-            <form onSubmit={handleEditFormSubmit}>
-              <Table className={classes.admin_table} aria-label="simple table">
-                <TableHead className={classes.bg}>
-                  <TableRow>
-                    <TableCell>First Name</TableCell>
-                    <TableCell>Address</TableCell>
-                    <TableCell>Phone Number</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Nationality</TableCell>
-                    <TableCell>Work Permit</TableCell>
-                    <TableCell>Branch</TableCell>
-                    <TableCell>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {contacts.map((contact) => (
-                    <Fragment>
-                      {editContactId === contact.id ? (
-                        <EditableRow
-                          editFormData={editFormData}
-                          handleEditFormChange={handleEditFormChange}
-                          handleCancelClick={handleCancelClick}
-                        />
-                      ) : (
-                        <ReadOnlyRow
-                          contact={contact}
-                          handleEditClick={handleEditClick}
-                          handleDeleteClick={handleDeleteClick}
-                        />
-                      )}
-                    </Fragment>
-                  ))}
-                </TableBody>
-              </Table>
-            </form>
-          </TableContainer>
-        </TabPanel>
-        <TabPanel value="3">
-        <TableContainer component={Paper} className="app-container">
-        <h2>Admin</h2>
-            <form onSubmit={handleEditFormSubmit}>
-              <Table className={classes.admin_table} aria-label="simple table">
-                <TableHead className={classes.bg}>
-                  <TableRow>
-                    <TableCell>First Name</TableCell>
-                    <TableCell>Address</TableCell>
-                    <TableCell>Phone Number</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Nationality</TableCell>
-                    <TableCell>Work Permit</TableCell>
-                    <TableCell>Branch</TableCell>
-                    <TableCell>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {contacts.map((contact) => (
-                    <Fragment>
-                      {editContactId === contact.id ? (
-                        <EditableRow
-                          editFormData={editFormData}
-                          handleEditFormChange={handleEditFormChange}
-                          handleCancelClick={handleCancelClick}
-                        />
-                      ) : (
-                        <ReadOnlyRow
-                          contact={contact}
-                          handleEditClick={handleEditClick}
-                          handleDeleteClick={handleDeleteClick}
-                        />
-                      )}
-                    </Fragment>
-                  ))}
-                </TableBody>
-              </Table>
-            </form>
-          </TableContainer>
-        </TabPanel>
-      </TabContext>
-    </Box>
+    <TableContainer component={Paper} className="app-container">
+    <div className="flex-container">
+      <h2>Individual</h2>
+      <Button variant="outlined" startIcon={<DownloadIcon />}>Download</Button>
+      </div>
+      <form onSubmit={handleEditFormSubmit}>
+        <Table className={classes.admin_table} aria-label="simple table">
+          <TableHead >
+            <TableRow>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Country</StyledTableCell>
+              <StyledTableCell>Work Permit</StyledTableCell>
+              <StyledTableCell>Email</StyledTableCell>
+              <StyledTableCell>Courses</StyledTableCell>
+              <StyledTableCell>Theses</StyledTableCell>
+              <StyledTableCell>Actions</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <IndEditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <IndReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </TableBody>
+        </Table>
+      </form>
+    </TableContainer>
   );
 };
 
