@@ -1,48 +1,12 @@
 import React from "react";
-import { TableCell, TableRow, Button } from "@material-ui/core";
+import { TableCell, TableRow, Button, makeStyles } from "@material-ui/core";
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { styled } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 import Stack from '@mui/material/Stack';
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 650,
-//   },
-// });
-const BootstrapButton = styled(Button)({
-  boxShadow: 'none',
-  textTransform: 'none',
-  fontSize: 16,
-  padding: '6px 12px',
-  border: '1px solid',
-  lineHeight: 1.5,
-  backgroundColor: '#0063cc',
-  borderColor: '#0063cc',
-  fontFamily: [
-    '-apple-system',
-    'BlinkMacSystemFont',
-    '"Segoe UI"',
-    'Roboto',
-    '"Helvetica Neue"',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-  '&:hover': {
-    backgroundColor: '#0069d9',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+
+const useStyles = makeStyles({
+  buttonColor: {
+    background:"#8FFF85",
   },
 });
 
@@ -51,6 +15,7 @@ const EditableRow = ({
   handleEditFormChange,
   handleCancelClick,
 }) => {
+  const classes = useStyles();
   return (
     <TableRow>
       <TableCell>
@@ -115,16 +80,16 @@ const EditableRow = ({
       </TableCell>
       <TableCell>
       <Stack spacing={2} direction="row">
-      <BootstrapButton
-          variant="outlined"
-          size="small"
-          color="secondary" 
-          type="submit"><SaveIcon/>
-      </BootstrapButton>
       <Button
           variant="contained"
           size="small"
           color="primary" 
+          type="submit"><SaveIcon/>
+      </Button>
+      <Button
+          variant="contained"
+          size="small"
+          color="secondary" 
           type="button" 
           onClick={handleCancelClick}>
           <CancelIcon/>

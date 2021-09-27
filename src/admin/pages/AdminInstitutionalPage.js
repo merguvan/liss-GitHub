@@ -19,10 +19,14 @@ import {
 const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
+    fontWeight: 300,
   },
   // bg: {
   //   backgroundColor: "#E5E1EE",
   // },
+  download:{
+    fontWeight:700,
+  }
 });
 const App = () => {
   const [contacts, setContacts] = useState(data);
@@ -102,7 +106,10 @@ const App = () => {
     <TableContainer component={Paper} className="app-container">
     <div className="flex-container">
       <h2>Institutional</h2>
-      <Button variant="outlined" startIcon={<DownloadIcon />}>Download</Button>
+      <Button
+      className={(classes.download)}
+      variant="outlined" 
+      startIcon={<DownloadIcon />}>Download</Button>
       </div>
       <form onSubmit={handleEditFormSubmit}>
         <Table className={classes.admin_table} aria-label="simple table">
