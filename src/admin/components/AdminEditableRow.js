@@ -1,14 +1,14 @@
 import React from "react";
-import { TableCell, TableRow, Button } from "@material-ui/core";
+import { TableCell, TableRow, Button, makeStyles } from "@material-ui/core";
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
+import Stack from '@mui/material/Stack';
 
-
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 650,
-//   },
-// });
+const useStyles = makeStyles({
+  buttonColor: {
+    background:"#8FFF85",
+  },
+});
 
 const EditableRow = ({
   editFormData,
@@ -48,20 +48,22 @@ const EditableRow = ({
         ></input>
       </TableCell>
       <TableCell>
+      <Stack spacing={2} direction="row">
       <Button
-          variant="outlined"
+          variant="contained"
           size="small"
-          color="secondary" 
+          color="primary" 
           type="submit"><SaveIcon/>
       </Button>
       <Button
           variant="contained"
           size="small"
-          color="primary" 
+          color="secondary" 
           type="button" 
           onClick={handleCancelClick}>
           <CancelIcon/>
       </Button>
+      </Stack>
       </TableCell>
     </TableRow>
   );

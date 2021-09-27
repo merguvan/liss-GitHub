@@ -34,6 +34,9 @@ const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
   },
+  download: {
+    fontWeight:700,
+  }
   // bg: {
   //   backgroundColor: "#E5E1EE",
   // },
@@ -117,7 +120,10 @@ const App = () => {
     <TableContainer component={Paper} className="app-container">
     <div className="flex-container">
       <h2>Individual</h2>
-      <Button variant="outlined" startIcon={<DownloadIcon />}>Download</Button>
+      <Button
+      className={(classes.download)}
+      variant="outlined" 
+      startIcon={<DownloadIcon />}>Download</Button>
       </div>
       <form onSubmit={handleEditFormSubmit}>
         <Table className={classes.admin_table} aria-label="simple table">
