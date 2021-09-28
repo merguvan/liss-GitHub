@@ -2,10 +2,11 @@ import React, { useState, Fragment } from "react";
 import data from "./mock-data.json";
 import IndReadOnlyRow from "../components/IndReadOnlyRow";
 import IndEditableRow from "../components/IndEditableRow";
-import DownloadIcon from '@mui/icons-material/Download'
-import { styled } from '@mui/material/styles';
-import { tableCellClasses } from '@mui/material/TableCell';
-
+import DownloadIcon from "@mui/icons-material/Download";
+import { styled } from "@mui/material/styles";
+import { tableCellClasses } from "@mui/material/TableCell";
+import exportFromJSON from "export-from-json";
+import { format } from "date-fns";
 import {
   Table,
   TableBody,
@@ -15,28 +16,36 @@ import {
   TableRow,
   Paper,
   makeStyles,
-  Button
+  Button,
 } from "@material-ui/core";
+
+const downloadXL = () => {
+  let time = format(new Date(), "hh/mm");
+  let date = format(new Date(), "yyyy/MM/dd");
+
+  const fileName = "Individuals date_" + date + "_time_" + time;
+  const exportType = exportFromJSON.types.xls;
+  exportFromJSON({ data, fileName, exportType });
+};
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     // color: theme.palette.common.white,
     fontSize: 16,
-    fontWeight:700,
+    fontWeight: 700,
   },
   [`&.${tableCellClasses.body}`]: {
     // fontSize: 14,
   },
 }));
 
-
 const admin_Main_Styles = makeStyles({
   admin_table: {
     minWidth: 650,
   },
   download: {
-    fontWeight:700,
-  }
+    fontWeight: 700,
+  },
   // bg: {
   //   backgroundColor: "#E5E1EE",
   // },
@@ -106,7 +115,6 @@ const App = () => {
 
   const handleDeleteClick = (contactId) => {
     const newContacts = [...contacts];
-
     const index = contacts.findIndex((contact) => contact.id === contactId);
 
     newContacts.splice(index, 1);
@@ -115,19 +123,22 @@ const App = () => {
   };
   const classes = admin_Main_Styles();
 
-  
   return (
     <TableContainer component={Paper} className="app-container">
-    <div className="flex-container">
-      <h2>Individual</h2>
-      <Button
-      className={(classes.download)}
-      variant="outlined" 
-      startIcon={<DownloadIcon />}>Download</Button>
+      <div className="flex-container">
+        <h2>Individual</h2>
+        <Button
+          onClick={downloadXL}
+          className={classes.download}
+          variant="outlined"
+          startIcon={<DownloadIcon />}
+        >
+          Download
+        </Button>
       </div>
       <form onSubmit={handleEditFormSubmit}>
         <Table className={classes.admin_table} aria-label="simple table">
-          <TableHead >
+          <TableHead>
             <TableRow>
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell>Country</StyledTableCell>
